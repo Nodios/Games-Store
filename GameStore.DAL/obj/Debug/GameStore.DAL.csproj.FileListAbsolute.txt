@@ -1,0 +1,14 @@
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\bin\Debug\GameStore.DAL.dll.config
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\bin\Debug\GameStore.DAL.dll
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\bin\Debug\GameStore.DAL.pdb
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\bin\Debug\EntityFramework.dll
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\bin\Debug\GameStore.Common.dll
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\bin\Debug\GameStore.Common.pdb
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\bin\Debug\EntityFramework.xml
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\obj\Debug\GameStore.DAL.csprojResolveAssemblyReference.cache
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\obj\Debug\GameStore.DAL.dll
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\obj\Debug\GameStore.DAL.pdb
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\obj\Debug\GameStore.DAL.Migrations.FirstMigration.resources
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\obj\Debug\GameStore.DAL.csproj.GenerateResource.Cache
