@@ -23,7 +23,8 @@ namespace GameStore.WebApi.Controllers
         // GET: api/Publisher
         public async Task<HttpResponseMessage> Get()
         {
-            return null;
+            var result = await CompanyService.GetRangeAsync();
+            return Request.CreateResponse(HttpStatusCode.OK, Mapper.Map<IEnumerable<PublisherModel>>(result));
         }
 
         // GET: api/Publisher/5

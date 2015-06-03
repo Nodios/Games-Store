@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <base href="/" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
@@ -8,17 +9,17 @@
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/style.min.css" rel="stylesheet" />
 </head>
-<body ng-app="mainModule">
-    <div ng-controller="NavigationController as nav" class="navigation">
-        <div>
-            <ul ng-repeat="menu in nav.menus">
-                <!-- :: one way binding -->
-                <li class="{{menu.active}}"><a ng-click="nav.setActive($index)">{{::menu.name}}</a></li>
-            </ul>
-        </div>
-    </div>
+
+
+
+<body>
+
+
+
+    <!-- Content -->
     <div class="container body-content">
         @RenderBody()
+
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
@@ -30,12 +31,16 @@
     @Scripts.Render("scripts")
 
     <!-- Angular and dependencies -->
-    @Scripts.Render("~/Scripts/angular.min.js")
-
+    @Scripts.Render("~/Scripts/angular.js")
+    @Scripts.Render("~/Scripts/angular-route.js")
     <!-- Modules -->
-    @Scripts.Render("~/app/modules/mainModule.js")
+    @Scripts.Render("~/app/mainModule.js")
 
     <!-- Controllers -->
     @Scripts.Render("~/app/controllers/NavigationController.js")
+    @Scripts.Render("~/app/controllers/PublisherController.js")
+
+    <!-- Directives -->
+    @Scripts.Render("~/app/directives/navTabsDirective.js")
 </body>
 </html>

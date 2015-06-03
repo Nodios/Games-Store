@@ -1,16 +1,17 @@
-﻿app.controller("NavigationController",function () {
+﻿
+app.controller("NavigationController", function () {
 
     // Proporties
     this.menus =
         [
-            { name: "Home", active:"active"},
+            { name: "Home", link:"#/", active:"active"},
             { name: "Games", active:"" },
-            { name: "Publisher", active:"" },
+            { name: "Publisher", link:"#/publisher", active:"" },
             { name: "About", active:"" }
         ];
 
 
-    // Sets active menu based on click
+    // TODO: Premjesti u servis ili komletno obrisi
     this.setActive = function (index) {
         for (var i = 0; i < this.menus.length; i++) {
             this.menus[i].active = "";
@@ -18,5 +19,6 @@
 
         this.menus[index].active = "active";
     };
+
 
 });

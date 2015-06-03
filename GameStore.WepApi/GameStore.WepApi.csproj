@@ -233,9 +233,14 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\controllers\PublisherController.js" />
+    <Content Include="app\directives\navTabs.html" />
+    <Content Include="app\directives\navTabsDirective.js" />
+    <Content Include="app\views\home.html" />
+    <Content Include="app\views\publisher.html" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="app\controllers\NavigationController.js" />
-    <Content Include="app\modules\mainModule.js" />
+    <Content Include="app\mainModule.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
@@ -1149,7 +1154,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -1157,7 +1161,7 @@
     <Content Include="Scripts\version.json" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\directives\" />
+    <Folder Include="app\modules\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
