@@ -70,10 +70,16 @@
 @import "bootstrap/variables";
 @import "bootstrap/wells";
 
-@navBackgroundColor: white;
+@bodyBackgroundColor: white;
+@navBackgroundColor : #dddddd;
 @fontColor: #dddddd;
 
 
+body{
+    background-color: @bodyBackgroundColor;
+}
+
+// NAVIGATION
 .navigation {
     .navbar;
     .navbar-fixed-top;
@@ -88,5 +94,20 @@
             .navbar-nav;
             .nav-pills;
         }
+    }
+}
+
+// PUBLISHERVIEW 
+.publisherView{
+    margin-top:5em;
+    div{
+        .container;
+    }
+    table{
+        margin-top:4em;
+        .table;
+    }
+    button{
+        .btn;
     }
 }

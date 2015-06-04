@@ -21,7 +21,7 @@ namespace GameStore.Repository
             // Other repos
             Bind<ICartRepository>().To<CartRepository>();
             Bind<ICommentRepository>().To<CommentRepository>();
-            Bind<ICompanyRepository>().To<CompanyRepository>();
+            Bind<IPublisherRepository>().To<PublisherRepository>();
             Bind<IGamesRepository>().To<GameRepository>();
             Bind<IInfoRepository>().To<InfoRepository>();
             Bind<IPostRepository>().To<PostRepository>();

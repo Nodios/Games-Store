@@ -57,7 +57,7 @@
   <ItemGroup>
     <Compile Include="CartRepository.cs" />
     <Compile Include="CommentRepository.cs" />
-    <Compile Include="CompanyRepository.cs" />
+    <Compile Include="PublisherRepository.cs" />
     <Compile Include="DIModule.cs" />
     <Compile Include="GameRepository.cs" />
     <Compile Include="InfoRepository.cs" />

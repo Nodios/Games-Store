@@ -8,7 +8,7 @@ namespace GameStore.Model
         {
             Bind<ICart>().To<Cart>();
             Bind<IComment>().To<Comment>();
-            Bind<ICompany>().To<Company>();
+            Bind<IPublisher>().To<Publisher>();
             Bind<IGame>().To<Game>();
             Bind<IInfo>().To<Info>();
             Bind<IPost>().To<Post>();

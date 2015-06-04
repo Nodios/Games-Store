@@ -13,10 +13,10 @@ namespace GameStore.DAL.Mapping
             Property(p => p.VotesDown);
 
             // Relationships
-            HasMany(p => p.Comments).WithRequired(c => c.Post).HasForeignKey(c => c.PostFK);
+            HasMany(p => p.Comments).WithRequired(c => c.Post).HasForeignKey(c => c.PostId);
             
-            HasOptional(p => p.User).WithMany(u => u.Posts).HasForeignKey(p => p.UserFK);
-            HasRequired(p => p.Game).WithMany(g => g.Posts).HasForeignKey(p => p.GameFK);
+            HasOptional(p => p.User).WithMany(u => u.Posts).HasForeignKey(p => p.UserId);
+            HasRequired(p => p.Game).WithMany(g => g.Posts).HasForeignKey(p => p.GameId);
 
         }
     }

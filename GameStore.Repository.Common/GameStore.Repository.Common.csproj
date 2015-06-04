@@ -41,7 +41,7 @@
   <ItemGroup>
     <Compile Include="ICartRepository.cs" />
     <Compile Include="ICommentRepository.cs" />
-    <Compile Include="ICompanyRepository.cs" />
+    <Compile Include="IPublisherRepository.cs" />
     <Compile Include="IGamesRepository.cs" />
     <Compile Include="IInfoRepository.cs" />
     <Compile Include="IPostRepository.cs" />

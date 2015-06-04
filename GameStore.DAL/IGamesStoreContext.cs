@@ -12,7 +12,7 @@ namespace GameStore.DAL
         DbSet<GameEntity> Games { get; set; }
         DbSet<InfoEntity> Info { get; set; }
         DbSet<PostEntity> Posts { get; set; }
-        DbSet<CompanyEntity> Publishers { get; set; }
+        DbSet<PublisherEntity> Publishers { get; set; }
         DbSet<ReviewEntity> Reviews { get; set; }
         DbSet<SupportEntity> Support { get; set; }
         DbSet<UserEntity> Users { get; set; }

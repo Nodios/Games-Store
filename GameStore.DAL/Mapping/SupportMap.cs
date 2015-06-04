@@ -7,7 +7,7 @@ namespace GameStore.DAL.Mapping
     {
         public SupportMap()
         {
-            HasKey(s => s.Id);
+            HasKey(s => s.PublisherId);
 
             Property(s => s.Address).IsRequired().HasMaxLength(200);
             Property(s => s.Email).IsRequired().HasMaxLength(50);

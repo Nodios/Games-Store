@@ -8,13 +8,14 @@ namespace GameStore.DAL.Mapping
         public GameMap()
         {
             HasKey(g => g.Id);
-
-         
+           
             Property(g => g.Name).IsRequired().HasMaxLength(50);
             Property(g => g.Description).IsRequired().HasMaxLength(500).HasColumnType("nvarchar");
             Property(g => g.OsSupport).IsRequired().HasMaxLength(50);
             Property(g => g.ReviewScore);
-          
+
+            // Relation ship
+            HasRequired(g => g.Publisher).WithMany(p => p.Games).HasForeignKey(g => g.PublisherId);
         }
 
        

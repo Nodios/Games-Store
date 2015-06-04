@@ -21,7 +21,7 @@ namespace GameStore.DAL
 
         public DbSet<CartEntity> Carts { get; set; }
         public DbSet<CommentEntity> Comments { get; set; }
-        public DbSet<CompanyEntity> Publishers { get; set; }
+        public DbSet<PublisherEntity> Publishers { get; set; }
         public DbSet<GameEntity> Games { get; set; }
         public DbSet<InfoEntity> Info { get; set; }
         public DbSet<PostEntity> Posts { get; set; }

@@ -7,8 +7,8 @@ namespace GameStore.DAL.Models
     {
         public string Title { get; set; }
 
-        public int? GameFK { get; set; }
-        public int? UserFK { get; set; }
+        public int GameId { get; set; }
+        public int? UserId { get; set; }
 
         public virtual GameEntity Game { get; set; }
         public virtual UserEntity User { get; set; }

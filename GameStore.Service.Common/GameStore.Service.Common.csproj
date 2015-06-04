@@ -40,7 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ICartService.cs" />
-    <Compile Include="ICompanyService.cs" />
+    <Compile Include="IPublisherService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -2,7 +2,6 @@
 {
     using GameStore.DAL.Models;
     using System;
-    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -16,7 +15,8 @@
 
         protected override void Seed(GameStore.DAL.GamesStoreContext context)
         {
-            context.Publishers.Add(new CompanyEntity()
+
+            context.Publishers.Add(new PublisherEntity()
             {
                 Id = 1,
                 Name = "EA",
@@ -30,9 +30,17 @@
                 }
             });
 
-            context.Publishers.Add(new CompanyEntity()
+           
+            context.Publishers.Add(new PublisherEntity()
             {
                 Id = 2,
+                Name = "Valve",
+                Description = "Loves food"
+            });
+
+            context.Publishers.Add(new PublisherEntity()
+            {
+                Id = 3,
                 Name = "Blizz",
                 Description = "Also loves money",
                 Games = null,

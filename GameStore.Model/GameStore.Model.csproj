@@ -51,7 +51,7 @@
     <Compile Include="AutoMapperMaps.cs" />
     <Compile Include="Cart.cs" />
     <Compile Include="Comment.cs" />
-    <Compile Include="Company.cs" />
+    <Compile Include="Publisher.cs" />
     <Compile Include="DIModule.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Info.cs" />

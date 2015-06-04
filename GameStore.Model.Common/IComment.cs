@@ -3,7 +3,9 @@ namespace GameStore.Model.Common
 {
     public interface IComment : IPostAndComment
     {
-        // Many comment to one post
+        int PostId { get; set; }
+
+        // Comment belongs to single post
         IPost Post { get; set; }
     }
 }

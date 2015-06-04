@@ -5,6 +5,7 @@ namespace GameStore.Model.Common
     public interface IUser
     {
         int Id { get; set; }
+
         string Username { get; set; }
 
         // One to one 

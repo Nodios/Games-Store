@@ -1,16 +1,27 @@
 ﻿
-app.controller("PublisherController", function ($scope, $http) {
+app.controller("PublisherController",['$scope', 'publisherFactory', function ($scope, publisherFactory) {
 
-    console.log("ALLLO");
+    $scope.searchString = "";
     $scope.publishers = [];
 
-    // TODO: Premjesti kasnije u factory ili servis 
+    console.log("Kontroler");
+
+    // TODO: 
     $scope.get = function () {
-        $http.get('/api/publisher').success(function (data, status, headers, config) {
-            $scope.publishers = data;
-            console.log(data);
-        }).error(function (data, status, headers, config) {
-            console.log("Ne radi :P");                         //TODO PREPRAVI KASNIJE 
-        });
+        console.log("Radi");
+        if ($scope.searchString.length > 0) {
+            publisherFactory.getPublisher($scope.searchString).success(function (data) {
+                $scope.publishers = [];
+                $scope.publishers.push(data);
+                console.log("Jipi");
+            });
+        }
+        else {
+           publisherFactory.getPublishers().success(function (data) {
+                $scope.publishers = data;
+                console.log(data);
+                console.log("Whoa");
+            });
+        }
     };
-});
+}]);

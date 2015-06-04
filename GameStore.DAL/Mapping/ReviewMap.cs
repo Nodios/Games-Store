@@ -12,7 +12,7 @@ namespace GameStore.DAL.Mapping
             Property(r => r.Score);
 
             // One to many
-            HasRequired(r => r.Game).WithMany(g => g.Reviews).HasForeignKey(r => r.FKGame);
+            HasRequired(r => r.Game).WithMany(g => g.Reviews).HasForeignKey(r => r.GameId);
         }
 
       

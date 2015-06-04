@@ -50,21 +50,21 @@
     <Compile Include="IGamesStoreContext.cs" />
     <Compile Include="Mapping\CartMap.cs" />
     <Compile Include="Mapping\CommentMap.cs" />
-    <Compile Include="Mapping\CompanyMap.cs" />
+    <Compile Include="Mapping\PublisherMap.cs" />
     <Compile Include="Mapping\GameMap.cs" />
     <Compile Include="Mapping\InfoMap.cs" />
     <Compile Include="Mapping\PostMap.cs" />
     <Compile Include="Mapping\ReviewMap.cs" />
     <Compile Include="Mapping\SupportMap.cs" />
     <Compile Include="Mapping\UserMap.cs" />
-    <Compile Include="Migrations\201506021132183_FirstMigration.cs" />
-    <Compile Include="Migrations\201506021132183_FirstMigration.Designer.cs">
-      <DependentUpon>201506021132183_FirstMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201506041909529_FirstMigration.cs" />
+    <Compile Include="Migrations\201506041909529_FirstMigration.Designer.cs">
+      <DependentUpon>201506041909529_FirstMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CartEntity.cs" />
     <Compile Include="Models\CommentEntity.cs" />
-    <Compile Include="Models\CompanyEntity.cs" />
+    <Compile Include="Models\PublisherEntity.cs" />
     <Compile Include="Models\GameEntity.cs" />
     <Compile Include="Models\IDataEntity.cs" />
     <Compile Include="Models\InfoEntity.cs" />
@@ -86,8 +86,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201506021132183_FirstMigration.resx">
-      <DependentUpon>201506021132183_FirstMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201506041909529_FirstMigration.resx">
+      <DependentUpon>201506041909529_FirstMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

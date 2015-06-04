@@ -9,7 +9,7 @@ namespace GameStore.Model.Common
         string Phone { get; set; }
 
         // One to one
-        ICompany Company { get; set; }
+        IPublisher Publisher { get; set; }
 
     }
 }

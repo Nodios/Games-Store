@@ -5,8 +5,6 @@ C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WepApi\bin\GameStore.WepApi.dll
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WepApi\bin\GameStore.WepApi.pdb
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WepApi\bin\Antlr3.Runtime.dll
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WepApi\bin\AutoMapper.dll
-C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WepApi\bin\EntityFramework.dll
-C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WepApi\bin\EntityFramework.SqlServer.dll
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WepApi\bin\GameStore.Model.Common.dll
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WepApi\bin\GameStore.Model.dll
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WepApi\bin\GameStore.Service.Common.dll

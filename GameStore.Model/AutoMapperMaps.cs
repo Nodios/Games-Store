@@ -13,8 +13,8 @@ namespace GameStore.Model
             AutoMapper.Mapper.CreateMap<IComment, Comment>().ReverseMap();
             AutoMapper.Mapper.CreateMap<CommentEntity, IComment>().ReverseMap();
 
-            AutoMapper.Mapper.CreateMap<ICompany, Company>().ReverseMap();
-            AutoMapper.Mapper.CreateMap<CompanyEntity, ICompany>().ReverseMap();
+            AutoMapper.Mapper.CreateMap<IPublisher, Publisher>().ReverseMap();
+            AutoMapper.Mapper.CreateMap<PublisherEntity, IPublisher>().ReverseMap();
 
             AutoMapper.Mapper.CreateMap<IGame, Game>().ReverseMap();
             AutoMapper.Mapper.CreateMap<GameEntity, IGame>().ReverseMap();

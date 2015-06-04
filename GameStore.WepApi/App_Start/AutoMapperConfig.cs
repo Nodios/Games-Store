@@ -11,11 +11,12 @@ namespace GameStore.WebApi.App_Start
             Model.AutoMapperMaps.Initalize();
 
             // Company controller
-            Mapper.CreateMap<ICompany, WebApi.Controllers.PublisherController.PublisherModel>().ReverseMap();
-            Mapper.CreateMap<Company, WebApi.Controllers.PublisherController.PublisherModel>().ReverseMap();
-
+            Mapper.CreateMap<IPublisher, WebApi.Controllers.PublisherController.PublisherModel>().ReverseMap();
+            Mapper.CreateMap<Publisher, WebApi.Controllers.PublisherController.PublisherModel>().ReverseMap();
             Mapper.CreateMap<ISupport, WebApi.Controllers.PublisherController.SupportModel>().ReverseMap();
             Mapper.CreateMap<Support, WebApi.Controllers.PublisherController.SupportModel>().ReverseMap();
+
+
         }
     }
 }

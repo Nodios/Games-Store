@@ -9,7 +9,7 @@ namespace GameStore.DAL.Mapping
         {
             // key
             HasKey(c => c.Id);
-
+        
             // One to one
             HasRequired(c => c.User).WithOptional(u => u.Cart);
 

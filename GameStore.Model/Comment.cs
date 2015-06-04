@@ -5,6 +5,8 @@ namespace GameStore.Model
     public class Comment : IComment
     {
         public int Id { get; set; }
+        public int PostId { get; set; }
+
         public int VotesUp { get; set; }
         public int VotesDown { get; set; }
         public string Description { get; set; }

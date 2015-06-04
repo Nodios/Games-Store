@@ -7,7 +7,7 @@ namespace GameStore.DAL.Models
     {
        
         public int Id { get; set; }
-        
+      
         // One to one
         public virtual UserEntity User { get; set; }
         public virtual ICollection<GameEntity> Games { get; set; }
