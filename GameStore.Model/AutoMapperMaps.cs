@@ -7,7 +7,7 @@ namespace GameStore.Model
     {
         public static void Initalize()
         {
-            AutoMapper.Mapper.CreateMap<CartEntity, ICart>().ReverseMap();
+            AutoMapper.Mapper.CreateMap<ICart, Cart>().ReverseMap();
             AutoMapper.Mapper.CreateMap<CartEntity, ICart>().ReverseMap();
 
             AutoMapper.Mapper.CreateMap<IComment, Comment>().ReverseMap();

@@ -30,7 +30,7 @@
                 }
             });
 
-           
+
             context.Publishers.Add(new PublisherEntity()
             {
                 Id = 2,
@@ -52,6 +52,50 @@
                 }
             });
 
+            context.Games.Add(new GameEntity()
+            {
+                Id = 1,
+                PublisherId = 1,
+                Name = "Fifa",
+                Description = "Nogomet",
+                OsSupport = "PC, PS4",
+            });
+
+            context.Games.Add(new GameEntity()
+            {
+                Id = 2,
+                PublisherId = 1,
+                Name = "NBA",
+                Description = "Kosarka",
+                OsSupport = "Android",
+            });
+
+            context.Games.Add(new GameEntity()
+            {
+                Id = 3,
+                PublisherId = 2,
+                Name = "Wow",
+                Description = "rpg",
+                OsSupport = "PC, PS4",
+            });
+
+            context.Games.Add(new GameEntity()
+            {
+                Id = 4,
+                PublisherId = 1,
+                Name = "Sims",
+                Description = "Waste of time",
+                OsSupport = "Sve",
+            });
+
+            context.Games.Add(new GameEntity()
+            {
+                Id = 5,
+                PublisherId = 3,
+                Name = "Bf",
+                Description = "Nanana",
+                OsSupport = "Sve",
+            });
 
             context.SaveChanges();
         }

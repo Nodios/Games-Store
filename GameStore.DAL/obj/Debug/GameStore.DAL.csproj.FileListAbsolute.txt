@@ -12,3 +12,4 @@ C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\obj\Debug\GameStore.DAL.dll
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\obj\Debug\GameStore.DAL.pdb
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\obj\Debug\GameStore.DAL.Migrations.FirstMigration.resources
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\obj\Debug\GameStore.DAL.csproj.GenerateResource.Cache
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\obj\Debug\GameStore.DAL.Migrations.SecondMigration.resources

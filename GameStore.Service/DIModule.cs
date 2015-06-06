@@ -10,6 +10,7 @@ namespace GameStore.Service
         public override void Load()
         {
             Bind<IPublisherService>().To<PublisherService>();
+            Bind<IGamesService>().To<GamesService>();
         }
     }
 }

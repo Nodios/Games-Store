@@ -4,16 +4,32 @@
         <input type="text" ng-model="searchString" />
         <button ng-click="get()">Search</button>
     </div>
-    <table>
+    <table ng-show="showPublishersTable">
         <tr>
-            <th>Id</th>
             <th>Name</th>
             <th>Description</th>
+            <th></th>
         </tr>
         <tr ng-repeat="item in publishers">
-            <td>{{item.Id}}.</td>
             <td>{{item.Name}}</td>
             <td>{{item.Description}}</td>
+            <td><button ng-click="getSupport(item,item.Id)">More</button></td>
+        </tr>
+    </table> 
+    <table ng-show="showSupportInfoTable">
+        <tr>
+            <th>Name</th>
+            <th>Desription</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Adress</th>
+        </tr>
+        <tr>
+            <td>{{publishers[0].Name}}</td>
+            <td>{{publishers[0].Description}}</td>
+            <td>{{support.Email}}</td>
+            <td>{{support.Phone}}</td>
+            <td>{{support.Address}}</td>
         </tr>
     </table>
 </div>

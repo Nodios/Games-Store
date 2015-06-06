@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CartService.cs" />
+    <Compile Include="GamesService.cs" />
     <Compile Include="PublisherService.cs" />
     <Compile Include="DIModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

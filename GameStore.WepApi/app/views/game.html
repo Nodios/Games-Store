@@ -1,0 +1,21 @@
+﻿<div class="gameView" ng-controller="GameController">
+    <div class="container">
+        <label>Search: </label>
+        <input type="text" ng-model="searchString" />
+        <button ng-click="get()">Search</button>
+    </div>
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Desription</th>
+            <th>Available on</th>
+            <th>Metacritic score</th>
+        </tr>
+        <tr ng-repeat="item in games">
+            <td>{{item.Name}}</td>
+            <td>{{item.Description}}</td>
+            <td>{{item.OsSupport}}</td>
+            <td>{{item.ReviewScore}}</td>
+        </tr>
+    </table>
+</div>

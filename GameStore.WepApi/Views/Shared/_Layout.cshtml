@@ -33,17 +33,19 @@
     <!-- Angular and dependencies -->
     @Scripts.Render("~/Scripts/angular.js")
     @Scripts.Render("~/Scripts/angular-route.js")
+
     <!-- Modules -->
     @Scripts.Render("~/app/mainModule.js")
 
     <!-- Controllers -->
     @Scripts.Render("~/app/controllers/NavigationController.js")
     @Scripts.Render("~/app/controllers/PublisherController.js")
+    @Scripts.Render("~/app/controllers/GameController.js")
 
     <!-- Directives -->
     @Scripts.Render("~/app/directives/navTabsDirective.js")
 
     <!-- Services -->
-    @Scripts.Render("~/app/services/publisherFactory.js")
+    @Scripts.Render("~/app/services/getFactory.js")
 </body>
 </html>

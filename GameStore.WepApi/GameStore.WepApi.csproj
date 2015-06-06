@@ -29,6 +29,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>AllFilesInProjectFolder</FilesToIncludeForPublish>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -220,6 +221,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PublisherController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -235,10 +237,12 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\controllers\GameController.js" />
     <Content Include="app\controllers\PublisherController.js" />
     <Content Include="app\directives\navTabs.html" />
     <Content Include="app\directives\navTabsDirective.js" />
-    <Content Include="app\services\publisherFactory.js" />
+    <Content Include="app\services\getFactory.js" />
+    <Content Include="app\views\game.html" />
     <Content Include="app\views\home.html" />
     <Content Include="app\views\publisher.html" />
     <Content Include="Areas\HelpPage\HelpPage.css" />

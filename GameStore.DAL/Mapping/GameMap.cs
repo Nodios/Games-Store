@@ -1,4 +1,6 @@
 ﻿using GameStore.DAL.Models;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Infrastructure.Annotations;
 using System.Data.Entity.ModelConfiguration;
 
 namespace GameStore.DAL.Mapping
@@ -9,7 +11,11 @@ namespace GameStore.DAL.Mapping
         {
             HasKey(g => g.Id);
            
-            Property(g => g.Name).IsRequired().HasMaxLength(50);
+            // Unique name
+            Property(g => g.Name).IsRequired().HasMaxLength(50)
+                .HasColumnAnnotation(IndexAnnotation.AnnotationName, new IndexAnnotation(new IndexAttribute()));
+
+
             Property(g => g.Description).IsRequired().HasMaxLength(500).HasColumnType("nvarchar");
             Property(g => g.OsSupport).IsRequired().HasMaxLength(50);
             Property(g => g.ReviewScore);

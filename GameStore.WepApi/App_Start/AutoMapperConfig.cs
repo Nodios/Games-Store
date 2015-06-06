@@ -16,7 +16,9 @@ namespace GameStore.WebApi.App_Start
             Mapper.CreateMap<ISupport, WebApi.Controllers.PublisherController.SupportModel>().ReverseMap();
             Mapper.CreateMap<Support, WebApi.Controllers.PublisherController.SupportModel>().ReverseMap();
 
-
+            // Game controller
+            Mapper.CreateMap<IGame, WepApi.Controllers.GameController.GameModel>().ReverseMap();
+            Mapper.CreateMap<Game, WepApi.Controllers.GameController.GameModel>().ReverseMap();
         }
     }
 }

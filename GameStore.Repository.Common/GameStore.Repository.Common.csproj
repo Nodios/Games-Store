@@ -42,7 +42,7 @@
     <Compile Include="ICartRepository.cs" />
     <Compile Include="ICommentRepository.cs" />
     <Compile Include="IPublisherRepository.cs" />
-    <Compile Include="IGamesRepository.cs" />
+    <Compile Include="IGameRepository.cs" />
     <Compile Include="IInfoRepository.cs" />
     <Compile Include="IPostRepository.cs" />
     <Compile Include="IRepository.cs" />

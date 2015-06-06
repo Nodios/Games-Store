@@ -61,6 +61,10 @@
     <Compile Include="Migrations\201506041909529_FirstMigration.Designer.cs">
       <DependentUpon>201506041909529_FirstMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506060830066_Second-Migration.cs" />
+    <Compile Include="Migrations\201506060830066_Second-Migration.Designer.cs">
+      <DependentUpon>201506060830066_Second-Migration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CartEntity.cs" />
     <Compile Include="Models\CommentEntity.cs" />
@@ -88,6 +92,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201506041909529_FirstMigration.resx">
       <DependentUpon>201506041909529_FirstMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506060830066_Second-Migration.resx">
+      <DependentUpon>201506060830066_Second-Migration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

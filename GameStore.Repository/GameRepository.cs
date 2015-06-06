@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GameStore.Repository
 {
-    public class GameRepository : IGamesRepository
+    public class GameRepository : IGameRepository
     {
         private IRepository repository;
 
@@ -33,6 +33,23 @@ namespace GameStore.Repository
         }
 
         /// <summary>
+        /// Get by name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public async Task<IGame> GetAsync(string name)
+        {
+            try
+            {
+                return Mapper.Map<IGame>(await repository.GetAsync<GameEntity>(c => c.Name == name));
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        /// <summary>
         /// Get all
         /// </summary>
         public async Task<IEnumerable<Model.Common.IGame>> GetRangeAsync()
@@ -44,6 +61,24 @@ namespace GameStore.Repository
             catch (Exception ex)
             {
 
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Get games from publisher
+        /// </summary>
+        /// <param name="publisherId">FK</param>
+        /// <returns>Collection of games that belong to publisher</returns>
+        public async Task<IEnumerable<IGame>> GetRangeAsync(int publisherId)
+        {
+            try
+            {
+                return Mapper.Map<IEnumerable<IGame>>(await repository
+                    .GetRangeAsync<GameEntity>(g => g.PublisherId == publisherId));
+            }
+            catch(Exception ex)
+            {
                 throw ex;
             }
         }

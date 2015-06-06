@@ -10,6 +10,5 @@ namespace Service.Common
         Task<IPublisher> GetAsync(string name);
         Task<ISupport> GetSupportAsync(int id);
         Task<IEnumerable<IPublisher>> GetRangeAsync();
-
     }
 }

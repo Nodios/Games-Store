@@ -4,14 +4,14 @@ app.controller("NavigationController", function () {
     // Proporties
     this.menus =
         [
-            { name: "Home", link:"#/", active:"active"},
-            { name: "Games", active:"" },
+            { name: "Home", link:"#/", active:"active"},          // Link goes into ng-href , link it's just bootstrap class used for menu selected effect
+            { name: "Games", link:"#/game",  active:"" },
             { name: "Publisher", link:"#/publisher", active:"" },
             { name: "About", active:"" }
         ];
 
 
-    // TODO: Premjesti u servis ili komletno obrisi
+    // If button is pressed set it's class to active - used just for effect 
     this.setActive = function (index) {
         for (var i = 0; i < this.menus.length; i++) {
             this.menus[i].active = "";

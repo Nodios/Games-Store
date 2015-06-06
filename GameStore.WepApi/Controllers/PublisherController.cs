@@ -14,7 +14,7 @@ namespace GameStore.WebApi.Controllers
     [RoutePrefix("api/Publisher")]
     public class PublisherController : ApiController
     {
-        private IPublisherService PublisherService { get; set; }
+        private IPublisherService PublisherService;
 
         public PublisherController(IPublisherService service)
         {
