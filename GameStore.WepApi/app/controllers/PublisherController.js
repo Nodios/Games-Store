@@ -6,6 +6,8 @@ app.controller("PublisherController", ['$scope', 'getFactory', function ($scope,
     $scope.searchString = "";
     $scope.showPublishersTable = false;        // tables are hidden by default
     $scope.showSupportInfoTable = false;        // tables are hidden by default
+    $scope.pageNumber = 1;
+    var pageSize = 10;
 
     // Get Publishers
     $scope.get = function () {
@@ -23,7 +25,8 @@ app.controller("PublisherController", ['$scope', 'getFactory', function ($scope,
             });
         }
         else {
-            getFactory.getPublishers().success(function (data) {
+            // Pass page number and page size 
+            getFactory.getPublishers($scope.pageNumber, pageSize).success(function (data) {
                 $scope.publishers = data;
             }).error(function () {
                 $scope.showPublishersTable = false;         // if there is error hide table
@@ -31,7 +34,7 @@ app.controller("PublisherController", ['$scope', 'getFactory', function ($scope,
         }
     };
 
-    // Gets support data... item - clicked item, id in db
+    // Gets support data... item - clicked item, id is FK in db
     $scope.getSupport = function (item, id) {
         // Empty array and add item to it
         $scope.publishers = [];
@@ -48,6 +51,5 @@ app.controller("PublisherController", ['$scope', 'getFactory', function ($scope,
             $scope.showSupportInfoTable = false;
         })
     };
-
 
 }]);

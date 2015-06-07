@@ -71,11 +71,11 @@
 @import "bootstrap/wells";
 
 @bodyBackgroundColor: white;
-@navBackgroundColor : #dddddd;
+@navBackgroundColor: #dddddd;
 @fontColor: #dddddd;
 
 
-body{
+body {
     background-color: @bodyBackgroundColor;
 }
 
@@ -97,20 +97,39 @@ body{
     }
 }
 
-// PUBLISHERVIEW 
-.publisherView{
-    margin-top:5em;
-    div{
+// PUBLISHERVIEW
+.publisherView {
+    margin-top: 5em;
+
+    div {
         .container;
     }
-    table{
-        margin-top:4em;
+
+    table {
+        margin-top: 4em;
         .table;
     }
-    button{
+
+    button {
         .btn;
-        td{
-            .btn-info;
-        }
+    }
+}
+
+// GAMEVIEW
+.gameView {
+    margin-top: 5em;
+
+    div {
+        .container;
+        margin-top:4em;
+    }
+
+    table {
+        margin-top: 4em;
+        .table;
+    }
+
+    button {
+        .btn;
     }
 }

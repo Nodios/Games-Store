@@ -57,13 +57,13 @@
     <Compile Include="Mapping\ReviewMap.cs" />
     <Compile Include="Mapping\SupportMap.cs" />
     <Compile Include="Mapping\UserMap.cs" />
-    <Compile Include="Migrations\201506041909529_FirstMigration.cs" />
-    <Compile Include="Migrations\201506041909529_FirstMigration.Designer.cs">
-      <DependentUpon>201506041909529_FirstMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201506061802146_FirstMigration.cs" />
+    <Compile Include="Migrations\201506061802146_FirstMigration.Designer.cs">
+      <DependentUpon>201506061802146_FirstMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201506060830066_Second-Migration.cs" />
-    <Compile Include="Migrations\201506060830066_Second-Migration.Designer.cs">
-      <DependentUpon>201506060830066_Second-Migration.cs</DependentUpon>
+    <Compile Include="Migrations\201506071105061_SecondMigration.cs" />
+    <Compile Include="Migrations\201506071105061_SecondMigration.Designer.cs">
+      <DependentUpon>201506071105061_SecondMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CartEntity.cs" />
@@ -90,11 +90,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201506041909529_FirstMigration.resx">
-      <DependentUpon>201506041909529_FirstMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201506061802146_FirstMigration.resx">
+      <DependentUpon>201506061802146_FirstMigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506060830066_Second-Migration.resx">
-      <DependentUpon>201506060830066_Second-Migration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201506071105061_SecondMigration.resx">
+      <DependentUpon>201506071105061_SecondMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

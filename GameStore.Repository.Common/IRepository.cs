@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
@@ -8,6 +9,8 @@ namespace GameStore.Repository.Common
     public interface IRepository
     {
         Task<T> GetAsync<T>(int id) where T : class;
+
+        IQueryable<T> Where<T>() where T : class;
 
         Task<IEnumerable<T>> GetRangeAsync<T>() where T : class;
 

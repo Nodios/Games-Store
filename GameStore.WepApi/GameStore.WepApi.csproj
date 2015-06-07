@@ -1160,7 +1160,9 @@
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -1179,6 +1181,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GameStore.Common\GameStore.Common.csproj">
+      <Project>{19928acc-be7b-446f-ba4d-6839259f7276}</Project>
+      <Name>GameStore.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GameStore.Model.Common\GameStore.Model.Common.csproj">
       <Project>{a6612c6e-76c7-4468-81ba-5a76f9acea84}</Project>
       <Name>GameStore.Model.Common</Name>

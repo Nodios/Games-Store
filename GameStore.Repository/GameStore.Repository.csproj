@@ -70,6 +70,10 @@
     <Compile Include="UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GameStore.Common\GameStore.Common.csproj">
+      <Project>{19928acc-be7b-446f-ba4d-6839259f7276}</Project>
+      <Name>GameStore.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GameStore.DAL\GameStore.DAL.csproj">
       <Project>{1024cb14-e894-4ee1-8ccf-c728215de9ff}</Project>
       <Name>GameStore.DAL</Name>

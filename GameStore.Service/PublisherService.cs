@@ -1,4 +1,5 @@
-﻿using GameStore.Model.Common;
+﻿using GameStore.Common;
+using GameStore.Model.Common;
 using GameStore.Repository.Common;
 using Service.Common;
 using System;
@@ -53,9 +54,9 @@ namespace GameStore.Service
         /// <summary>
         /// Returns collection of publishers
         /// </summary>
-        public virtual Task<IEnumerable<IPublisher>> GetRangeAsync()
+        public virtual Task<IEnumerable<IPublisher>> GetRangeAsync(PublisherFilter filter = null)
         {
-            return PublisherRepository.GetRangeAsync();
+            return PublisherRepository.GetRangeAsync(filter);
         }
     }
 }

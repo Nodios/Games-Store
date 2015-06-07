@@ -1,21 +1,28 @@
 ﻿<div class="gameView" ng-controller="GameController">
-    <div class="container">
+    <div>
         <label>Search: </label>
         <input type="text" ng-model="searchString" />
         <button ng-click="get()">Search</button>
     </div>
-    <table class="table">
+    <table ng-show="showGamesTable">
         <tr>
             <th>Name</th>
-            <th>Desription</th>
-            <th>Available on</th>
-            <th>Metacritic score</th>
+            <th>Price</th>
+            <th>Genre</th>
+            <th></th>
         </tr>
         <tr ng-repeat="item in games">
             <td>{{item.Name}}</td>
-            <td>{{item.Description}}</td>
-            <td>{{item.OsSupport}}</td>
-            <td>{{item.ReviewScore}}</td>
+            <td>{{item.Price | currency}}</td>
+            <td>{{item.Genre}}</td>
+            <td><a ng-click="getItemDetails(item)">details</a></td>
         </tr>
     </table>
+    <div ng-show="gameDetails">
+        <p>Name: {{games[0].Name}}</p>
+        <p>Price: {{games[0].Price |currency}}</p>
+        <p>Genre: {{games[0].Genre}}</p>
+        <p>Reviews: {{games[0].ReviewScore}}</p>
+        <p>Os support: {{games[0].OsSupport}}</p>
+    </div>
 </div>

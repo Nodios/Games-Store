@@ -6917,7 +6917,9 @@ address {
 .navigation div ul:before,
 .navigation div ul:after,
 .publisherView div:before,
-.publisherView div:after {
+.publisherView div:after,
+.gameView div:before,
+.gameView div:after {
   content: " ";
   display: table;
 }
@@ -6939,7 +6941,8 @@ address {
 .navigation:after,
 .navigation div:after,
 .navigation div ul:after,
-.publisherView div:after {
+.publisherView div:after,
+.gameView div:after {
   clear: both;
 }
 .center-block {
@@ -7297,6 +7300,135 @@ fieldset[disabled] .publisherView button {
 }
 .publisherView button:active,
 .publisherView button.active {
+  background-image: none;
+}
+.gameView {
+  margin-top: 5em;
+}
+.gameView div {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: 4em;
+}
+@media (min-width: 768px) {
+  .gameView div {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .gameView div {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .gameView div {
+    width: 1170px;
+  }
+}
+.gameView div > .navbar-header,
+.gameView div > .navbar-collapse {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+@media (min-width: 768px) {
+  .gameView div > .navbar-header,
+  .gameView div > .navbar-collapse {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+.gameView table {
+  margin-top: 4em;
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+.gameView table > thead > tr > th,
+.gameView table > tbody > tr > th,
+.gameView table > tfoot > tr > th,
+.gameView table > thead > tr > td,
+.gameView table > tbody > tr > td,
+.gameView table > tfoot > tr > td {
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #dddddd;
+}
+.gameView table > thead > tr > th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dddddd;
+}
+.gameView table > caption + thead > tr:first-child > th,
+.gameView table > colgroup + thead > tr:first-child > th,
+.gameView table > thead:first-child > tr:first-child > th,
+.gameView table > caption + thead > tr:first-child > td,
+.gameView table > colgroup + thead > tr:first-child > td,
+.gameView table > thead:first-child > tr:first-child > td {
+  border-top: 0;
+}
+.gameView table > tbody + tbody {
+  border-top: 2px solid #dddddd;
+}
+.gameView table .table {
+  background-color: #ffffff;
+}
+.gameView button {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.gameView button:focus,
+.gameView button:active:focus,
+.gameView button.active:focus,
+.gameView button.focus,
+.gameView button:active.focus,
+.gameView button.active.focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+.gameView button:hover,
+.gameView button:focus,
+.gameView button.focus {
+  color: #333333;
+  text-decoration: none;
+}
+.gameView button:active,
+.gameView button.active {
+  outline: 0;
+  background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+.gameView button.disabled,
+.gameView button[disabled],
+fieldset[disabled] .gameView button {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.gameView button:active,
+.gameView button.active {
   background-image: none;
 }
 /*# sourceMappingURL=style.css.map */

@@ -27,10 +27,13 @@ namespace GameStore.DAL.Migrations
                         Description = c.String(nullable: false, maxLength: 500),
                         OsSupport = c.String(nullable: false, maxLength: 50),
                         ReviewScore = c.Single(),
+                        Genre = c.Int(nullable: false),
+                        Price = c.Double(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.PublisherEntities", t => t.PublisherId, cascadeDelete: true)
-                .Index(t => t.PublisherId);
+                .Index(t => t.PublisherId)
+                .Index(t => t.Name);
             
             CreateTable(
                 "dbo.PostEntities",
@@ -186,6 +189,7 @@ namespace GameStore.DAL.Migrations
             DropIndex("dbo.CommentEntities", new[] { "PostId" });
             DropIndex("dbo.PostEntities", new[] { "UserId" });
             DropIndex("dbo.PostEntities", new[] { "GameId" });
+            DropIndex("dbo.GameEntities", new[] { "Name" });
             DropIndex("dbo.GameEntities", new[] { "PublisherId" });
             DropIndex("dbo.CartEntities", new[] { "Id" });
             DropTable("dbo.CartEntityGameEntities");

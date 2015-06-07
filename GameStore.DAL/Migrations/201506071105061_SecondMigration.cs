@@ -7,12 +7,12 @@ namespace GameStore.DAL.Migrations
     {
         public override void Up()
         {
-            CreateIndex("dbo.GameEntities", "Name");
+            AlterColumn("dbo.GameEntities", "Genre", c => c.String(nullable: false));
         }
         
         public override void Down()
         {
-            DropIndex("dbo.GameEntities", new[] { "Name" });
+            AlterColumn("dbo.GameEntities", "Genre", c => c.Int(nullable: false));
         }
     }
 }

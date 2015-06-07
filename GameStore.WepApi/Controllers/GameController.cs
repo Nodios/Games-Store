@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using GameStore.Common;
 using GameStore.Model.Common;
 using Service.Common;
 using System;
@@ -10,6 +11,7 @@ using System.Web.Http;
 
 namespace GameStore.WepApi.Controllers
 {
+    [RoutePrefix("api/game")]
     public class GameController : ApiController
     {
         private IGamesService GamesService;
@@ -19,12 +21,12 @@ namespace GameStore.WepApi.Controllers
             GamesService = gamesService;
         }
 
-        // Get api/game
-        public async Task<HttpResponseMessage> Get()
+        [Route("{pageNumber}/{pageSize}")]
+        public async Task<HttpResponseMessage> Get(int pageNumber = 0, int pageSize = 0)
         {
             try
             {
-                IEnumerable<IGame> result = await GamesService.GetRangeAsync();
+                IEnumerable<IGame> result = await GamesService.GetRangeAsync(new GameFilter(pageNumber, pageSize));
                 if (result != null)
                     return Request.CreateResponse(HttpStatusCode.OK, Mapper.Map<IEnumerable<GameModel>>(result));
                 else
@@ -36,7 +38,7 @@ namespace GameStore.WepApi.Controllers
             }
         }
 
-        [Route("api/game/{id}")]
+        [Route("{id}")]
         public async Task<HttpResponseMessage> Get(int id)
         {
             try
@@ -53,7 +55,7 @@ namespace GameStore.WepApi.Controllers
             }
         }
 
-        [Route("api/game/getByName/0/{name}")]
+        [Route("getByName/{name}")]
         public async Task<HttpResponseMessage> GetByName(string name)
         {
             try
@@ -70,8 +72,7 @@ namespace GameStore.WepApi.Controllers
             }
         }
         
-        // Get api/game/getRangeFromPublisherId/{id}
-        [Route("api/game/getRangeFromPublisherId/{id}")]
+        [Route("getRangeFromPublisherId/{id}")]
         public async Task<HttpResponseMessage> GetRangeFromPublisherId(int id)
         {
             try
@@ -99,6 +100,8 @@ namespace GameStore.WepApi.Controllers
             public string Description { get; set; }
             public string OsSupport { get; set; }
             public float? ReviewScore { get; set; }
+            public string Genre { get; set; }
+            public double Price { get; set; }
         }
     }
 }

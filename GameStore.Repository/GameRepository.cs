@@ -1,10 +1,13 @@
 ﻿using AutoMapper;
+using GameStore.Common;
 using GameStore.DAL.Models;
 using GameStore.Model.Common;
 using GameStore.Repository.Common;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
+using System.Data.Entity;
 
 namespace GameStore.Repository
 {
@@ -52,11 +55,20 @@ namespace GameStore.Repository
         /// <summary>
         /// Get all
         /// </summary>
-        public async Task<IEnumerable<Model.Common.IGame>> GetRangeAsync()
+        public async Task<IEnumerable<Model.Common.IGame>> GetRangeAsync(GameFilter filter = null)
         {
             try
             {
-                return Mapper.Map<IEnumerable<IGame>>(await repository.GetRangeAsync<GameEntity>());
+                if (filter != null)
+                {
+                    return Mapper.Map<IEnumerable<IGame>>(await 
+                        repository.Where<GameEntity>()
+                        .OrderBy(g => g.Name)
+                        .Skip((filter.PageNumber * filter.PageSize) - filter.PageSize)
+                        .Take(filter.PageSize).ToListAsync());
+                }
+                else
+                    return Mapper.Map<IEnumerable<IGame>>(await repository.GetRangeAsync<GameEntity>());
             }
             catch (Exception ex)
             {

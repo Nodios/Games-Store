@@ -1,4 +1,5 @@
-﻿using GameStore.Repository.Common;
+﻿using GameStore.Common;
+using GameStore.Repository.Common;
 using Service.Common;
 using System;
 using System.Collections.Generic;
@@ -41,9 +42,9 @@ namespace GameStore.Service
         /// <summary>
         /// Gets all games
         /// </summary>
-        public Task<IEnumerable<Model.Common.IGame>> GetRangeAsync()
+        public Task<IEnumerable<Model.Common.IGame>> GetRangeAsync(GameFilter filter = null)
         {
-            return GamesRepository.GetRangeAsync(); 
+            return GamesRepository.GetRangeAsync(filter); 
         }
 
         /// <summary>

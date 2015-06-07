@@ -16,3 +16,5 @@ C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Model\bin\Debug\EntityFramework
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Model\obj\Debug\GameStore.Model.csprojResolveAssemblyReference.cache
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Model\obj\Debug\GameStore.Model.dll
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Model\obj\Debug\GameStore.Model.pdb
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Model\bin\Debug\GameStore.Common.dll
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Model\bin\Debug\GameStore.Common.pdb

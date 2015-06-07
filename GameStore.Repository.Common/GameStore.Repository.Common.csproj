@@ -53,6 +53,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GameStore.Common\GameStore.Common.csproj">
+      <Project>{19928acc-be7b-446f-ba4d-6839259f7276}</Project>
+      <Name>GameStore.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GameStore.Model.Common\GameStore.Model.Common.csproj">
       <Project>{a6612c6e-76c7-4468-81ba-5a76f9acea84}</Project>
       <Name>GameStore.Model.Common</Name>

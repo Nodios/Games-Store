@@ -6,13 +6,13 @@
     var dataFactory = {};
 
     // GET publisher collection
-    dataFactory.getPublishers = function () {
-        return $http.get(urlPublisher);
+    dataFactory.getPublishers = function (pageNumber, pageSize) {
+        return $http.get(urlPublisher + "/" + pageNumber + "/" + pageSize);
     }
 
     // GET publisher by name
     dataFactory.getPublisher = function (name) {
-        return $http.get(urlPublisher + "/getbyname/0/" + name);
+        return $http.get(urlPublisher + "/getbyname/" + name);
     }
 
     // GET support by id
@@ -21,8 +21,8 @@
     }
 
     // GET collection of all games
-    dataFactory.getGames = function () {
-        return $http.get(urlGame);
+    dataFactory.getGames = function (pageNumber, pageSize) {
+        return $http.get(urlGame + "/" + pageNumber + "/" + pageSize);
     }
 
     // GET game by id
@@ -32,7 +32,7 @@
 
     // GET game by name search
     dataFactory.getGameByName = function (name) {
-        return $http.get(urlGame + "/getByName/0/" + name);
+        return $http.get(urlGame + "/getByName/" + name);
     }
 
     // GET games by publisherId search  - collection of games

@@ -45,6 +45,13 @@ namespace GameStore.Repository
         }
 
         /// <summary>
+        /// Get where
+        /// </summary>
+        public IQueryable<T> Where<T>() where T : class{
+            return context.Set<T>();
+        }
+
+        /// <summary>
         /// Geta all entites
         /// </summary>
         /// <returns>List or null</returns>

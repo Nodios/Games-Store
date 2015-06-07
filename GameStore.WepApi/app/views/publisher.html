@@ -4,6 +4,8 @@
         <input type="text" ng-model="searchString" />
         <button ng-click="get()">Search</button>
     </div>
+
+    <!-- Publishers table -->
     <table ng-show="showPublishersTable">
         <tr>
             <th>Name</th>
@@ -13,9 +15,24 @@
         <tr ng-repeat="item in publishers">
             <td>{{item.Name}}</td>
             <td>{{item.Description}}</td>
-            <td><button ng-click="getSupport(item,item.Id)">More</button></td>
+            <td><a ng-click="getSupport(item,item.Id)">details</a></td>
         </tr>
     </table> 
+
+    <!-- Paging for publisher table -->
+    <nav ng-show="showPublishersTable">
+        <ul class="pagination">
+            <li><a><<</a></li>
+            <li><a>{{pageNumber}}</a></li>
+            <li><a>{{pageNumber + 1}}</a></li>
+            <li><a>{{pageNumber + 2}}</a></li>
+            <li><a>{{pageNumber + 3}}</a></li>
+            <li><a>{{pageNumber + 4}}</a></li>
+            <li><a>>></a></li>
+        </ul>
+    </nav>
+
+    <!-- Publisher with info -->
     <table ng-show="showSupportInfoTable">
         <tr>
             <th>Name</th>

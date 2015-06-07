@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameStore.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,8 @@ namespace GameStore.Model.Common
         string Description { get; set; }
         string OsSupport { get; set; }
         float? ReviewScore { get; set; }
+        string Genre { get; set; }
+        double Price { get; set; }
 
         // Many to one, Game can have one company, company can have many games
         IPublisher Publisher { get; set; }

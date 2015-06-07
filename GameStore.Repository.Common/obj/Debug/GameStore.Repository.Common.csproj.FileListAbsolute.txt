@@ -5,3 +5,5 @@ C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Repository.Common\bin\Debug\Gam
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Repository.Common\obj\Debug\GameStore.Repository.Common.csprojResolveAssemblyReference.cache
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Repository.Common\obj\Debug\GameStore.Repository.Common.dll
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Repository.Common\obj\Debug\GameStore.Repository.Common.pdb
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Repository.Common\bin\Debug\GameStore.Common.dll
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Repository.Common\bin\Debug\GameStore.Common.pdb

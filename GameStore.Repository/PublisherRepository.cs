@@ -5,6 +5,9 @@ using GameStore.Repository.Common;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
+using GameStore.Common;
+using System.Data.Entity;
 
 namespace GameStore.Repository
 {
@@ -59,11 +62,20 @@ namespace GameStore.Repository
         /// <summary>
         /// Get all
         /// </summary>
-        public async Task<IEnumerable<Model.Common.IPublisher>> GetRangeAsync()
+        public async Task<IEnumerable<Model.Common.IPublisher>> GetRangeAsync(PublisherFilter filter = null)
         {
             try
             {
-                return Mapper.Map<IEnumerable<IPublisher>>(await repository.GetRangeAsync<PublisherEntity>());
+                if (filter != null)
+                {
+                    return Mapper.Map<IEnumerable<IPublisher>>(
+                        await repository.Where<PublisherEntity>()
+                        .OrderBy(p => p.Name)
+                        .Skip((filter.PageNumber * filter.PageSize) - filter.PageSize)
+                        .Take(filter.PageSize).ToListAsync());
+                }
+                else
+                    return Mapper.Map<IEnumerable<IPublisher>>(await repository.GetRangeAsync<PublisherEntity>());
             }
             catch (Exception ex)
             {

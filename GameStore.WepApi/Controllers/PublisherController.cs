@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using GameStore.Common;
 using GameStore.Model;
 using GameStore.Model.Common;
 using Service.Common;
@@ -22,11 +23,13 @@ namespace GameStore.WebApi.Controllers
         }
 
         // GET: api/Publisher
-        public async Task<HttpResponseMessage> Get()
+        [Route("{pageNumber}/{pageSize}")]
+        public async Task<HttpResponseMessage> Get(int pageNumber = 0, int pageSize = 0)
         {
             try
             {
-                IEnumerable<IPublisher> result = await PublisherService.GetRangeAsync();
+                IEnumerable<IPublisher> result = await PublisherService.GetRangeAsync(new PublisherFilter(pageNumber, pageSize));
+
                 if (result != null)
                     return Request.CreateResponse(HttpStatusCode.OK, Mapper.Map<IEnumerable<PublisherModel>>(result));
                 else
@@ -39,6 +42,7 @@ namespace GameStore.WebApi.Controllers
         }
 
         // GET: api/Publisher/5
+        [Route("{id}")]
         public async Task<HttpResponseMessage> Get(int id)
         {
             try
@@ -58,6 +62,7 @@ namespace GameStore.WebApi.Controllers
 
         //Get: api/Publisher/GetByName/0/Ea
         [HttpGet()]
+        [Route("getByName/{name}")]
         public async Task<HttpResponseMessage> GetByName(string name)
         {
             try
@@ -76,7 +81,7 @@ namespace GameStore.WebApi.Controllers
         }
 
         [HttpGet()]
-        //Get: api/Publisher/GetSupport/0
+        [Route("GetSupport/{id}")]
         public async Task<HttpResponseMessage> GetSupport(int id)
         {
             try

@@ -85,3 +85,5 @@ C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WepApi\bin\GameStore.Service.pd
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WepApi\bin\GameStore.Repository.Common.pdb
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WepApi\bin\GameStore.Repository.dll
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WepApi\bin\GameStore.Repository.pdb
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WepApi\bin\GameStore.Common.dll
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WepApi\bin\GameStore.Common.pdb

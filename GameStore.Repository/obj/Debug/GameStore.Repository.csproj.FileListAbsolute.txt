@@ -21,3 +21,5 @@ C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Repository\bin\Debug\Ninject.xm
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Repository\obj\Debug\GameStore.Repository.csprojResolveAssemblyReference.cache
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Repository\obj\Debug\GameStore.Repository.dll
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Repository\obj\Debug\GameStore.Repository.pdb
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Repository\bin\Debug\GameStore.Common.dll
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Repository\bin\Debug\GameStore.Common.pdb

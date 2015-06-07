@@ -1,4 +1,5 @@
-﻿using GameStore.Model.Common;
+﻿using GameStore.Common;
+using GameStore.Model.Common;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -8,7 +9,7 @@ namespace Service.Common
     {
         Task<IGame> GetAsync(int id);
         Task<IGame> GetAsync(string name);
-        Task<IEnumerable<IGame>> GetRangeAsync();
+        Task<IEnumerable<IGame>> GetRangeAsync(GameFilter filter = null);
         Task<IEnumerable<IGame>> GetRangeAsync(int publisherId);
 
     }

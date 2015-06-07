@@ -19,6 +19,8 @@ namespace GameStore.DAL.Mapping
             Property(g => g.Description).IsRequired().HasMaxLength(500).HasColumnType("nvarchar");
             Property(g => g.OsSupport).IsRequired().HasMaxLength(50);
             Property(g => g.ReviewScore);
+            Property(g => g.Genre).IsRequired();
+            Property(g => g.Price).IsRequired();
 
             // Relation ship
             HasRequired(g => g.Publisher).WithMany(p => p.Games).HasForeignKey(g => g.PublisherId);
