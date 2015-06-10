@@ -12,7 +12,7 @@ namespace GameStore.Model
         public int VotesUp { get; set; }
         public int VotesDown { get; set; }
         public string Description { get; set; }
-        public int Title { get; set; }
+        public string Title { get; set; }
 
         public virtual IGame Game { get; set; }
         public virtual IUser User { get; set; }

@@ -11,6 +11,5 @@ namespace Service.Common
         Task<IGame> GetAsync(string name);
         Task<IEnumerable<IGame>> GetRangeAsync(GameFilter filter = null);
         Task<IEnumerable<IGame>> GetRangeAsync(int publisherId);
-
     }
 }

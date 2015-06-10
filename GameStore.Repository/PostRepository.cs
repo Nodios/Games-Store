@@ -1,9 +1,13 @@
 ﻿using AutoMapper;
+using GameStore.Common;
 using GameStore.DAL.Models;
 using GameStore.Model.Common;
 using GameStore.Repository.Common;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Data.Entity;
+using System.Linq;
 
 namespace GameStore.Repository
 {
@@ -19,7 +23,7 @@ namespace GameStore.Repository
         /// <summary>
         /// Get by id
         /// </summary>
-        public async Task<Model.Common.IPost> GetAsnyc(int id)
+        public async Task<Model.Common.IPost> GetAsync(int id)
         {
             try
             {
@@ -28,6 +32,27 @@ namespace GameStore.Repository
             catch (Exception ex)
             {
                 
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Get range async
+        /// </summary>
+        public async Task<IEnumerable<IPost>> GetRangeAsync(int gameId,PostFilter filter)
+        {
+            try
+            {
+                return Mapper.Map<IEnumerable<IPost>>(await 
+                    repository.Where<PostEntity>()
+                    .Where(p => p.GameId == gameId)
+                    .OrderBy(p => p.VotesUp)
+                    .Skip((filter.PageNumber * filter.PageSize) - filter.PageSize)
+                    .Take(filter.PageSize).ToListAsync());
+                    
+            }
+            catch(Exception ex)
+            {
                 throw ex;
             }
         }

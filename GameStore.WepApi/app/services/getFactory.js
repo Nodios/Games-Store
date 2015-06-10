@@ -3,6 +3,7 @@
     // Urls 
     var urlPublisher = "/api/publisher";
     var urlGame = "/api/game"
+    var urlPost = "/api/post"
     var dataFactory = {};
 
     // GET publisher collection
@@ -38,6 +39,11 @@
     // GET games by publisherId search  - collection of games
     dataFactory.getGamesByPublisherId = function (id) {
         return $http.get(urlGame + /getRangeFromPublisherId/ + id);
+    }
+
+    // GET post by gameId, pageNumber, pageSize - return colletion of posts
+    dataFactory.getPosts = function (gameId, pageNumber, pageSize) {
+        return $http.get(urlPost + "/" + gameId + "/" + pageNumber + "/" + pageSize);
     }
 
     return dataFactory;

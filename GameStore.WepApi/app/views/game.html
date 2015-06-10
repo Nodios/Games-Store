@@ -22,7 +22,14 @@
         <p>Name: {{games[0].Name}}</p>
         <p>Price: {{games[0].Price |currency}}</p>
         <p>Genre: {{games[0].Genre}}</p>
-        <p>Reviews: {{games[0].ReviewScore}}</p>
+        <p>User reviews: {{games[0].ReviewScore}}</p>
         <p>Os support: {{games[0].OsSupport}}</p>
+    </div>
+
+    <!-- TODO: Move classes to less file -->   
+    <div ng-show="gameDetails">
+        <input ng-model="post.Title" type="text" class="form-control" placeholder="title" />
+        <textarea ng-model="post.Description" class="form-control" rows="3"></textarea>
+        <input type="submit" ng-model=""/>
     </div>
 </div>

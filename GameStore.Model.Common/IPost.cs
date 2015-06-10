@@ -4,7 +4,7 @@ namespace GameStore.Model.Common
 {
     public interface IPost : IPostAndComment
     {
-        int Title { get; set; }
+        string Title { get; set; }
 
         int GameId { get; set; }
         int? UserId { get; set; }

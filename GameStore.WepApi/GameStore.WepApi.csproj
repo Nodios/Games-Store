@@ -223,6 +223,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\PublisherController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -242,6 +243,7 @@
     <Content Include="app\directives\navTabs.html" />
     <Content Include="app\directives\navTabsDirective.js" />
     <Content Include="app\services\getFactory.js" />
+    <Content Include="app\services\postFactory.js" />
     <Content Include="app\views\game.html" />
     <Content Include="app\views\home.html" />
     <Content Include="app\views\publisher.html" />

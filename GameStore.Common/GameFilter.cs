@@ -6,8 +6,6 @@ namespace GameStore.Common
 {
     public class GameFilter : GenericFilter
     {
-        List<int> test = new List<int>();
-
         #region Constructor
 
         /// <summary>
