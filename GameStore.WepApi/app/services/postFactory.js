@@ -1,4 +1,9 @@
-﻿app.factory("postFactory", ['$http', function ($http) {
+﻿
+angular.module("mainModule").factory('postFactory', postFactory);
+
+postFactory.$inject = ['$http'];
+
+function postFactory ($http) {
     var postUrl = "api/post";
     var dataFactory = {};
 
@@ -8,4 +13,4 @@
     }
 
     return dataFactory;
-}]);
+}

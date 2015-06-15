@@ -1,4 +1,9 @@
-﻿app.factory("getFactory", ['$http', function ($http) {
+﻿
+angular.module("mainModule").factory('getFactory', getFactory);
+
+getFactory.$inject = ['$http'];
+
+function getFactory ($http) {
 
     // Urls 
     var urlPublisher = "/api/publisher";
@@ -48,4 +53,4 @@
 
     return dataFactory;
 
-}]);
+}

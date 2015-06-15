@@ -1,0 +1,8 @@
+﻿<nav>
+    <div class="navigation">
+        <ul ng-repeat="menu in vm.menus">
+            <!-- :: one way binding -->
+            <li class="{{menu.active}}"><a href="{{menu.link}}" ng-click="vm.setActive($index)">{{::menu.name}}</a></li>
+        </ul>
+    </div>
+</nav>

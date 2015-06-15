@@ -37,13 +37,15 @@
     <!-- Modules -->
     @Scripts.Render("~/app/mainModule.js")
 
-    <!-- Controllers -->
-    @Scripts.Render("~/app/controllers/NavigationController.js")
-    @Scripts.Render("~/app/controllers/PublisherController.js")
-    @Scripts.Render("~/app/controllers/GameController.js")
+    <!-- Navigation -->
+    @Scripts.Render("~/app/navigation/navTabs.directive.js")
+    @Scripts.Render("~/app/navigation/navigation.controller.js")
 
-    <!-- Directives -->
-    @Scripts.Render("~/app/directives/navTabsDirective.js")
+    <!-- Game -->
+    @Scripts.Render("~/app/game/game.controller.js")
+
+    <!-- Publisher -->
+    @Scripts.Render("~/app/publisher/publisher.controller.js")
 
     <!-- Services -->
     @Scripts.Render("~/app/services/getFactory.js")

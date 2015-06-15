@@ -238,17 +238,20 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\controllers\GameController.js" />
-    <Content Include="app\controllers\PublisherController.js" />
-    <Content Include="app\directives\navTabs.html" />
-    <Content Include="app\directives\navTabsDirective.js" />
+    <Content Include="app\game\game.controller.js" />
+    <Content Include="app\publisher\publisher.controller.js" />
+    <Content Include="app\navigation\navTabs.html" />
+    <Content Include="app\navigation\navTabs.directive.js" />
+    <Content Include="app\publisher\publisher.service.js" />
     <Content Include="app\services\getFactory.js" />
     <Content Include="app\services\postFactory.js" />
-    <Content Include="app\views\game.html" />
-    <Content Include="app\views\home.html" />
-    <Content Include="app\views\publisher.html" />
+    <Content Include="app\game\game.html" />
+    <Content Include="app\navigation\home.html" />
+    <Content Include="app\publisher\publisher.html" />
+    <Content Include="app\services\getRouteProvider.service.js" />
+    <Content Include="app\services\postRouteProvider.service.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
-    <Content Include="app\controllers\NavigationController.js" />
+    <Content Include="app\navigation\navigation.controller.js" />
     <Content Include="app\mainModule.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -1172,7 +1175,8 @@
     <Content Include="Scripts\version.json" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\modules\" />
+    <Folder Include="app\controllers\" />
+    <Folder Include="app\directives\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
@@ -1211,9 +1215,6 @@
       <Project>{2ae32d66-55ad-4e62-85d1-4db6a0e10d5c}</Project>
       <Name>GameStore.Service</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,13 +1,18 @@
 ﻿
-var app = angular.module("mainModule", ['ngRoute']);
+(function (angular) {
 
-// Configure routes
-app.config(function ($routeProvider) {
+    angular.module("mainModule", ['ngRoute']);
 
-    $routeProvider
-        .when('/', {templateUrl: 'app/views/home.html'})
-        .when('/publisher', { templateUrl: 'app/views/publisher.html', controller: 'PublisherController' })
-        .when('/game', { templateUrl: 'app/views/game.html', controller: 'GameController'})
-        .otherwise({ redirectTo: '/' });
+    // Configure routes
+    angular.module("mainModule", ['ngRoute']).config(config);
 
-});
+
+    function config($routeProvider) {
+
+        $routeProvider
+            .when('/', { templateUrl: 'app/navigation/home.html' })
+            .when('/publisher', { templateUrl: 'app/publisher/publisher.html', controller: 'PublisherController', controllerAs: 'vm' })
+            .when('/game', { templateUrl: 'app/game/game.html', controller: 'GameController', controllerAs: 'vm' })
+            .otherwise({ redirectTo: '/' });
+    }
+})(angular);

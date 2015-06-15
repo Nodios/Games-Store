@@ -1,0 +1,52 @@
+﻿<div class="publisherView" ng-controller="PublisherController">
+    <div class="container">
+        <label>Search: </label>
+        <input type="text" ng-model="vm.searchString" />
+        <button ng-click="vm.get()">Search</button>
+    </div>
+
+    <!-- Publishers table -->
+    <table ng-show="vm.showPublishersTable">
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+        <tr ng-repeat="item in vm.publishers">
+            <td>{{item.Name}}</td>
+            <td>{{item.Description}}</td>
+            <td><a ng-click="vm.getSupport(item,item.Id)">details</a></td>
+        </tr>
+    </table> 
+
+    <!-- Paging for publisher table -->
+    <nav ng-show="vm.showPublishersTable">
+        <ul class="pagination">
+            <li><a><<</a></li>
+            <li><a>{{vm.pageNumber}}</a></li>
+            <li><a>{{vm.pageNumber + 1}}</a></li>
+            <li><a>{{vm.pageNumber + 2}}</a></li>
+            <li><a>{{vm.pageNumber + 3}}</a></li>
+            <li><a>{{vm.pageNumber + 4}}</a></li>
+            <li><a>>></a></li>
+        </ul>
+    </nav>
+
+    <!-- Publisher with info -->
+    <table ng-show="vm.showSupportInfoTable">
+        <tr>
+            <th>Name</th>
+            <th>Desription</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Adress</th>
+        </tr>
+        <tr>
+            <td>{{vm.publishers[0].Name}}</td>
+            <td>{{vm.publishers[0].Description}}</td>
+            <td>{{vm.support.Email}}</td>
+            <td>{{vm.support.Phone}}</td>
+            <td>{{vm.support.Address}}</td>
+        </tr>
+    </table>
+</div>
