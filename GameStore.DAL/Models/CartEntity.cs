@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections.Generic;
 
 namespace GameStore.DAL.Models
@@ -6,7 +7,7 @@ namespace GameStore.DAL.Models
     public class CartEntity : IDataEntity
     {
        
-        public int Id { get; set; }
+        public Guid Id { get; set; }
       
         // One to one
         public virtual UserEntity User { get; set; }

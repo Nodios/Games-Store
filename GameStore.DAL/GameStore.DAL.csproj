@@ -57,13 +57,9 @@
     <Compile Include="Mapping\ReviewMap.cs" />
     <Compile Include="Mapping\SupportMap.cs" />
     <Compile Include="Mapping\UserMap.cs" />
-    <Compile Include="Migrations\201506061802146_FirstMigration.cs" />
-    <Compile Include="Migrations\201506061802146_FirstMigration.Designer.cs">
-      <DependentUpon>201506061802146_FirstMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201506071105061_SecondMigration.cs" />
-    <Compile Include="Migrations\201506071105061_SecondMigration.Designer.cs">
-      <DependentUpon>201506071105061_SecondMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201506191146497_first.cs" />
+    <Compile Include="Migrations\201506191146497_first.Designer.cs">
+      <DependentUpon>201506191146497_first.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CartEntity.cs" />
@@ -90,11 +86,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201506061802146_FirstMigration.resx">
-      <DependentUpon>201506061802146_FirstMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506071105061_SecondMigration.resx">
-      <DependentUpon>201506071105061_SecondMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201506191146497_first.resx">
+      <DependentUpon>201506191146497_first.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

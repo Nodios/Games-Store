@@ -97,7 +97,7 @@ namespace GameStore.Repository
         /// <summary>
         /// Delete entity, commit should be called afterwards to save changes
         /// </summary>
-        public Task<int> DeleteAsync<T>(int id) where T : class
+        public Task<int> DeleteAsync<T>(Guid id) where T : class
         {
             try
             {

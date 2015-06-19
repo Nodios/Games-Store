@@ -9,8 +9,10 @@ namespace GameStore.DAL.Mapping
     {
         public GameMap()
         {
-            HasKey(g => g.Id);
-           
+           // HasKey(g => g.Id);
+
+            Property(g => g.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+
             // Unique name
             Property(g => g.Name).IsRequired().HasMaxLength(50)
                 .HasColumnAnnotation(IndexAnnotation.AnnotationName, new IndexAnnotation(new IndexAttribute()));

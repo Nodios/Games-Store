@@ -8,8 +8,8 @@ namespace GameStore.Model.Common
 {
     public interface IGame
     {
-        int Id { get; set; }
-        int PublisherId { get; set; }
+        Guid Id { get; set; }
+        Guid PublisherId { get; set; }
 
         string Name { get; set; }
         string Description { get; set; }

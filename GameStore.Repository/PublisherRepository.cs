@@ -29,7 +29,7 @@ namespace GameStore.Repository
         /// <summary>
         /// Get company by id
         /// </summary>
-        public async Task<Model.Common.IPublisher> GetAsync(int id)
+        public async Task<Model.Common.IPublisher> GetAsync(Guid id)
         {
             try
             {
@@ -45,12 +45,12 @@ namespace GameStore.Repository
         /// <summary>
         /// Get by name
         /// </summary>
-        public async Task<Model.Common.IPublisher> GetAsync(string name)
+        public async Task<IEnumerable<IPublisher>> GetRangeAsync(string name)
         {
             try
             {
-                return Mapper.Map<IPublisher>(await 
-                    repository.GetAsync<PublisherEntity>(c => c.Name == name));
+                return Mapper.Map<IEnumerable<IPublisher>>(await 
+                    repository.GetRangeAsync<PublisherEntity>(c => c.Name.Contains(name)));
             }
             catch (Exception ex)
             {
@@ -118,7 +118,7 @@ namespace GameStore.Repository
         /// <summary>
         /// Delete with id
         /// </summary>
-        public async Task<int> DeleteAsync(int id)
+        public async Task<int> DeleteAsync(Guid id)
         {
             try
             {

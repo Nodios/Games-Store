@@ -1,0 +1,52 @@
+﻿<div class="publisherView" ng-controller="PublisherController">
+    <div class="container">
+        <label>Search: </label>
+        <input type="text" ng-model="vm.searchString" />
+        <button ng-click="vm.get()">Search</button>
+    </div>
+
+    <!-- Publishers table -->
+    <table ng-show="vm.showPublishersTable">
+        <tr>
+            <th>Name</th>
+            <th>Games</th>
+            <th></th>
+        </tr>
+        <tr ng-repeat="item in vm.publishers">
+            <td>{{item.Name}}</td>
+            <td><a>Show</a></td>
+            <td><a ng-click="vm.getSupport(item,item.Id)">details</a></td>
+        </tr>
+    </table> 
+
+    <!-- Paging for publisher table -->
+    <nav ng-if="vm.showPublishersTable">
+        <ul class="pagination">
+            <li><a ng-click="vm.setPageNumberTo(vm.pageNumber - 5)"><<</a></li>
+            <li><a ng-click="vm.setPageNumberTo(vm.pageNumber)">{{vm.pageNumber}}</a></li>
+            <li><a ng-click="vm.setPageNumberTo(vm.pageNumber + 1)">{{vm.pageNumber + 1}}</a></li> <!-- Tipa staviti u a ng-click="" poziv na neku funkciju i dodjeliti parameter za paging-->
+            <li><a ng-click="vm.setPageNumberTo(vm.pageNumber + 2)">{{vm.pageNumber + 2}}</a></li>
+            <li><a ng-click="vm.setPageNumberTo(vm.pageNumber + 3)">{{vm.pageNumber + 3}}</a></li>
+            <li><a ng-click="vm.setPageNumberTo(vm.pageNumber + 4)">{{vm.pageNumber + 4}}</a></li>
+            <li><a ng-click="vm.setPageNumberTo(vm.pageNumber + 5)">>></a></li>
+        </ul>
+    </nav>
+
+    <!-- Publisher with info -->
+    <table ng-if="vm.showSupportInfoTable">
+        <tr>
+            <th>Name</th>
+            <th>Desription</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Adress</th>
+        </tr>
+        <tr>
+            <td>{{vm.publisher.Name}}</td>
+            <td>{{vm.publisher.Description}}</td>
+            <td>{{vm.support.Email}}</td>
+            <td>{{vm.support.Phone}}</td>
+            <td>{{vm.support.Address}}</td>
+        </tr>
+    </table>
+</div>

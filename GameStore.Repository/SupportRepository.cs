@@ -20,7 +20,7 @@ namespace GameStore.Repository
         /// <summary>
         /// Get by id
         /// </summary>
-        public async Task<Model.Common.ISupport> GetAsync(int id)
+        public async Task<Model.Common.ISupport> GetAsync(Guid id)
         {
             try
             {
@@ -86,7 +86,7 @@ namespace GameStore.Repository
         /// <summary>
         /// Delete with id
         /// </summary>
-        public async Task<int> DeleteAsync(int id)
+        public async Task<int> DeleteAsync(Guid id)
         {
             try
             {

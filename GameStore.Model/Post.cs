@@ -1,13 +1,14 @@
 ﻿using GameStore.Model.Common;
+using System;
 using System.Collections.Generic;
 
 namespace GameStore.Model
 {
     public class Post : IPost
     {
-        public int Id { get; set; }
-        public int GameId { get; set; }
-        public int? UserId { get; set; }
+        public Guid Id { get; set; }
+        public Guid GameId { get; set; }
+        public Guid? UserId { get; set; }
 
         public int VotesUp { get; set; }
         public int VotesDown { get; set; }

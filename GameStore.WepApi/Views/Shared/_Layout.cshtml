@@ -25,17 +25,21 @@
             <p>&copy; @DateTime.Now.Year - Erkapić Luka</p>
         </footer>
     </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("scripts")
-
-    <!-- Angular and dependencies -->
-    @Scripts.Render("~/Scripts/angular.js")
-    @Scripts.Render("~/Scripts/angular-route.js")
+    <!-- 
+    Scripts.Render("~/bundles/jquery")
+    Scripts.Render("~/bundles/bootstrap")
+    Scripts.Render("scripts")-->
+    
+    <!-- Angular and dependencies 
+    Scripts.Render("~/Scripts/angular.js")
+    Scripts.Render("~/Scripts/angular-route.js")-->
 
     <!-- Modules -->
     @Scripts.Render("~/app/mainModule.js")
+
+    <!-- Services -->
+    @Scripts.Render("~/app/services/getRouteProvider.service.js")
+    @Scripts.Render("~/app/services/postRouteProvider.service.js")
 
     <!-- Navigation -->
     @Scripts.Render("~/app/navigation/navTabs.directive.js")
@@ -43,12 +47,11 @@
 
     <!-- Game -->
     @Scripts.Render("~/app/game/game.controller.js")
+    @Scripts.Render("~/app/game/game.service.js")
 
     <!-- Publisher -->
     @Scripts.Render("~/app/publisher/publisher.controller.js")
+    @Scripts.Render("~/app/publisher/publisher.service.js")
 
-    <!-- Services -->
-    @Scripts.Render("~/app/services/getFactory.js")
-    @Scripts.Render("~/app/services/postFactory.js")
 </body>
 </html>

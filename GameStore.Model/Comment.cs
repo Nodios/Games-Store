@@ -1,11 +1,12 @@
 ﻿using GameStore.Model.Common;
+using System;
 
 namespace GameStore.Model
 {
     public class Comment : IComment
     {
-        public int Id { get; set; }
-        public int PostId { get; set; }
+        public Guid Id { get; set; }
+        public Guid PostId { get; set; }
 
         public int VotesUp { get; set; }
         public int VotesDown { get; set; }

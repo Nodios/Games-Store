@@ -22,6 +22,7 @@ namespace GameStore.WepApi.Controllers
         }
 
         [Route("{pageNumber}/{pageSize}")]
+        [HttpGet]
         public async Task<HttpResponseMessage> Get(int pageNumber = 0, int pageSize = 0)
         {
             try
@@ -38,8 +39,9 @@ namespace GameStore.WepApi.Controllers
             }
         }
 
-        [Route("{id}")]
-        public async Task<HttpResponseMessage> Get(int id)
+        [Route("getbyid/{id}")]
+        [HttpGet]
+        public async Task<HttpResponseMessage> GetById(Guid id)
         {
             try
             {
@@ -60,9 +62,9 @@ namespace GameStore.WepApi.Controllers
         {
             try
             {
-                IGame result = await GamesService.GetAsync(name);
+                IEnumerable<IGame> result = await GamesService.GetRangeAsync(name);
                 if (result != null)
-                    return Request.CreateResponse(HttpStatusCode.OK, Mapper.Map<GameModel>(result));
+                    return Request.CreateResponse(HttpStatusCode.OK, Mapper.Map<IEnumerable<GameModel>>(result));
                 else
                     return Request.CreateResponse(HttpStatusCode.NotFound);
             }
@@ -73,7 +75,7 @@ namespace GameStore.WepApi.Controllers
         }
         
         [Route("getRangeFromPublisherId/{id}")]
-        public async Task<HttpResponseMessage> GetRangeFromPublisherId(int id)
+        public async Task<HttpResponseMessage> GetRangeFromPublisherId(Guid id)
         {
             try
             {
@@ -94,8 +96,8 @@ namespace GameStore.WepApi.Controllers
         /// </summary>
         public class GameModel
         {
-            public int Id { get; set; }
-            public int PublisherId { get; set; }
+         
+            public Guid PublisherId { get; set; }
             public string Name { get; set; }
             public string Description { get; set; }
             public string OsSupport { get; set; }

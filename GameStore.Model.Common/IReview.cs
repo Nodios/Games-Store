@@ -1,10 +1,11 @@
 ﻿
+using System;
 namespace GameStore.Model.Common
 {
     public interface IReview
     {
-        int Id { get; set; }
-        int? GameId { get; set; }
+        Guid Id { get; set; }
+        Guid? GameId { get; set; }
 
         float Score { get; set; }
         IGame Game { get; set; }

@@ -38,7 +38,7 @@ namespace GameStore.Service
         /// <param name="gameId">Game id</param>
         /// <param name="filter">Filter</param>
         /// <returns>Collection of posts</returns>
-        public Task<IEnumerable<Model.Common.IPost>> GetPosts(int gameId, PostFilter filter)
+        public Task<IEnumerable<Model.Common.IPost>> GetPosts(Guid gameId, PostFilter filter)
         {
             return PostRepository.GetRangeAsync(gameId, filter);
         }
@@ -62,7 +62,7 @@ namespace GameStore.Service
         /// <summary>
         /// Delete post
         /// </summary>
-        public Task<int> DeletePost(int id)
+        public Task<int> DeletePost(Guid id)
         {
             return PostRepository.DeleteAsync(id);
         }

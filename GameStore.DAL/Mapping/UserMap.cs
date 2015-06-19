@@ -1,4 +1,5 @@
 ﻿using GameStore.DAL.Models;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
 namespace GameStore.DAL.Mapping
@@ -7,8 +8,9 @@ namespace GameStore.DAL.Mapping
     {
         public UserMap()
         {
-            HasKey(u => u.Id);
+           // HasKey(u => u.Id);
 
+            Property(u => u.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(u => u.Username).IsRequired().HasMaxLength(50);
 
             //relationship constraints

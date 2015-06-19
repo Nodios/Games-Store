@@ -61,8 +61,6 @@ C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WepApi\bin\System.Web.WebPages.
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WepApi\bin\System.Web.WebPages.Deployment.xml
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WepApi\bin\System.Web.WebPages.Razor.xml
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WepApi\bin\Antlr3.Runtime.pdb
-C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WepApi\bin\EntityFramework.xml
-C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WepApi\bin\EntityFramework.SqlServer.xml
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WepApi\bin\Microsoft.AspNet.Identity.Core.xml
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WepApi\bin\Microsoft.AspNet.Identity.Owin.xml
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WepApi\bin\Microsoft.AspNet.Identity.EntityFramework.xml
@@ -87,3 +85,5 @@ C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WepApi\bin\GameStore.Repository
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WepApi\bin\GameStore.Repository.pdb
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WepApi\bin\GameStore.Common.dll
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WepApi\bin\GameStore.Common.pdb
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WepApi\bin\EntityFramework.xml
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WepApi\bin\EntityFramework.SqlServer.xml

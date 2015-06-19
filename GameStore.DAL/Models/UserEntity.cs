@@ -1,11 +1,12 @@
 ﻿
+using System;
 using System.Collections.Generic;
 
 namespace GameStore.DAL.Models
 {
     public class UserEntity : IDataEntity
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         public string Username { get; set; }
 

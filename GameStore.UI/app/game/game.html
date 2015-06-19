@@ -1,0 +1,36 @@
+﻿<div class="gameView" ng-controller="GameController">
+    <div>
+        <label>Search: </label>
+        <input type="text" ng-model="vm.searchString" />
+        <button ng-click="vm.get()">Search</button>
+    </div>
+    <table ng-if="vm.showGamesTable">
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Genre</th>
+            <th></th>
+        </tr>
+        <tr ng-repeat="item in vm.games">
+            <td>{{item.Name}}</td>
+            <td>{{item.Price | currency}}</td>
+            <td>{{item.Genre}}</td>
+            <td><a ng-click="vm.getItemDetails(item)">details</a></td>
+        </tr>
+    </table>
+    <div ng-if="vm.gameDetails">
+        <p>Name: {{vm.game.Name}}</p>
+        <p>Price: {{vm.game.Price |currency}}</p>
+        <p>Genre: {{vm.game.Genre}}</p>
+        <p>User reviews: {{vm.game.ReviewScore}}</p>
+        <p>Os support: {{vm.game.OsSupport}}</p>
+    </div>
+
+    <!-- TODO: Move classes to less file -->   
+    <div ng-if="vm.gameDetails">
+        <input ng-model="vm.post.Title" type="text" class="form-control" placeholder="title" />
+        <textarea ng-model="vm.post.Description" class="form-control" rows="3"></textarea>
+        <!--
+        <input type="submit" ng-model=""/>-->
+    </div>
+</div>

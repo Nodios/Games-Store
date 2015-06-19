@@ -1,8 +1,9 @@
 ﻿
+using System;
 namespace GameStore.DAL.Models
 {
     public interface IDataEntity
     {
-        int Id { get; set; }
+        Guid Id { get; set; }
     }
 }

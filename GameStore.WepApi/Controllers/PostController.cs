@@ -30,7 +30,7 @@ namespace GameStore.WepApi.Controllers
         #region Public methods
 
         [Route("{gameId}/{pageNumber}/{pageSize}")]
-        public async Task<HttpResponseMessage> Get(int gameId, int pageNumber = 0, int pageSize = 0)
+        public async Task<HttpResponseMessage> Get(Guid gameId, int pageNumber = 0, int pageSize = 0)
         {
             try
             {
@@ -74,13 +74,13 @@ namespace GameStore.WepApi.Controllers
 
         public class PostModel
         {
-            public int Id { get; set; }
+            public Guid Id { get; set; }
             public int VotesUp { get; set; }
             public int VotesDown { get; set; }
             public string Description { get; set; }
             public string Title { get; set; }
-            public int GameId { get; set; }
-            public int? UserId { get; set; }
+            public Guid GameId { get; set; }
+            public Guid? UserId { get; set; }
         }
     }
 }

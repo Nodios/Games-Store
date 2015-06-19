@@ -20,7 +20,7 @@ namespace GameStore.Repository
         /// <summary>
         /// Get comment
         /// </summary>
-        public async Task<Model.Common.IComment> GetAsync(int id)
+        public async Task<Model.Common.IComment> GetAsync(Guid id)
         {
             try
             {
@@ -87,7 +87,7 @@ namespace GameStore.Repository
             }
         }
 
-        public async Task<int> DeleteAsync(int id)
+        public async Task<int> DeleteAsync(Guid id)
         {
             try
             {

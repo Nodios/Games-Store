@@ -23,7 +23,7 @@ namespace GameStore.Repository
         /// <summary>
         /// Get by id
         /// </summary>
-        public async Task<Model.Common.IGame> GetAsync(int id)
+        public async Task<Model.Common.IGame> GetAsync(Guid id)
         {
             try
             {
@@ -40,11 +40,11 @@ namespace GameStore.Repository
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public async Task<IGame> GetAsync(string name)
+        public async Task<IEnumerable<IGame>> GetRangeAsync(string name)
         {
             try
             {
-                return Mapper.Map<IGame>(await repository.GetAsync<GameEntity>(c => c.Name == name));
+                return Mapper.Map<IEnumerable<IGame>>(await repository.GetRangeAsync<GameEntity>(c => c.Name.Contains(name)));
             }
             catch(Exception ex)
             {
@@ -82,7 +82,7 @@ namespace GameStore.Repository
         /// </summary>
         /// <param name="publisherId">FK</param>
         /// <returns>Collection of games that belong to publisher</returns>
-        public async Task<IEnumerable<IGame>> GetRangeAsync(int publisherId)
+        public async Task<IEnumerable<IGame>> GetRangeAsync(Guid publisherId)
         {
             try
             {
@@ -146,7 +146,7 @@ namespace GameStore.Repository
         /// <summary>
         /// Delete game
         /// </summary>
-        public async Task<int> DeleteAsync(int id)
+        public async Task<int> DeleteAsync(Guid id)
         {
             try
             {

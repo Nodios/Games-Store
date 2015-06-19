@@ -8,7 +8,7 @@ namespace GameStore.Repository.Common
         Task<T> AddAsync<T>(T entity) where T: class;
         Task<int> DeleteAsync<T>(T entity) where T:class;
         Task<T> UpdateAsync<T>(T entity) where T:class;
-        Task<int> DeleteAsync<T>(int id) where T:class;
+        Task<int> DeleteAsync<T>(Guid id) where T:class;
         Task<int> CommitAsync();
     }
 }

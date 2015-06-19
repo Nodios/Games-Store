@@ -1,4 +1,5 @@
 ﻿using GameStore.DAL.Models;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
 namespace GameStore.DAL.Mapping
@@ -7,9 +8,10 @@ namespace GameStore.DAL.Mapping
     {
         public InfoMap()
         {
-            HasKey(i => i.Id);
+            //HasKey(i => i.Id);
 
-          
+
+            Property(i => i.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(i => i.Address).IsRequired();
             Property(i => i.Email).IsRequired();
             Property(i => i.Name).IsRequired();

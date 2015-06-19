@@ -1,7 +1,7 @@
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Model.Common\bin\Debug\GameStore.Model.Common.dll
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Model.Common\bin\Debug\GameStore.Model.Common.pdb
-C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Model.Common\obj\Debug\GameStore.Model.Common.dll
-C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Model.Common\obj\Debug\GameStore.Model.Common.pdb
-C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Model.Common\obj\Debug\GameStore.Model.Common.csprojResolveAssemblyReference.cache
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Model.Common\bin\Debug\GameStore.Common.dll
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Model.Common\bin\Debug\GameStore.Common.pdb
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Model.Common\obj\Debug\GameStore.Model.Common.csprojResolveAssemblyReference.cache
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Model.Common\obj\Debug\GameStore.Model.Common.dll
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Model.Common\obj\Debug\GameStore.Model.Common.pdb

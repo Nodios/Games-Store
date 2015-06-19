@@ -8,11 +8,11 @@ namespace GameStore.Repository.Common
 {
     public interface IUserRepository
     {
-        Task<IUser> GetAsync(int id);
+        Task<IUser> GetAsync(Guid id);
         Task<IEnumerable<IUser>> GetAsync(Expression<Func<IUser, bool>> match);
         Task<int> AddAsync(IUser user);
         Task<int> UpdateAsync(IUser user);
         Task<int> DeleteAsync(IUser user);
-        Task<int> DeleteAsync(int id);
+        Task<int> DeleteAsync(Guid id);
     }
 }

@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections.Generic;
 
 namespace GameStore.DAL.Models
@@ -7,8 +8,8 @@ namespace GameStore.DAL.Models
     {
         public string Title { get; set; }
 
-        public int GameId { get; set; }
-        public int? UserId { get; set; }
+        public Guid GameId { get; set; }
+        public Guid? UserId { get; set; }
 
         public virtual GameEntity Game { get; set; }
         public virtual UserEntity User { get; set; }

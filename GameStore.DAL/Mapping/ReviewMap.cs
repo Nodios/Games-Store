@@ -8,7 +8,8 @@ namespace GameStore.DAL.Mapping
     {
         public ReviewMap()
         {
-            Property(r => r.Id).IsRequired().HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+
+            Property(r => r.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(r => r.Score);
 
             // One to many

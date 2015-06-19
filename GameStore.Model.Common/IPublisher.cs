@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace GameStore.Model.Common
 {
     public interface IPublisher
     {
-        int Id { get; set; }
+        Guid Id { get; set; }
 
         string Name { get; set; }
         string Description { get; set; }

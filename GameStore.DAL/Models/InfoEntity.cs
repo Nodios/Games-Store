@@ -1,11 +1,12 @@
 ﻿
 
 
+using System;
 namespace GameStore.DAL.Models
 {
     public class InfoEntity : IDataEntity
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         public string Name { get; set; }
         public string Surname { get; set; }

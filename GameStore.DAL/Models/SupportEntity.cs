@@ -1,10 +1,11 @@
 ﻿
 
+using System;
 namespace GameStore.DAL.Models
 {
     public class SupportEntity 
     {
-        public int PublisherId { get; set; }
+        public Guid PublisherId { get; set; }
 
         public string Email { get; set; }
         public string Address { get; set; }

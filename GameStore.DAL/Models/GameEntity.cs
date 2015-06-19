@@ -1,13 +1,14 @@
 ﻿
 using GameStore.Common;
+using System;
 using System.Collections.Generic;
 
 namespace GameStore.DAL.Models
 {
     public class GameEntity : IDataEntity
     {
-        public int Id { get; set; }
-        public int PublisherId { get; set; }
+        public Guid Id { get; set; }
+        public Guid PublisherId { get; set; }
 
         public string Name { get; set; }
         public string Description { get; set; }

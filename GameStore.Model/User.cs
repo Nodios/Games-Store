@@ -1,11 +1,12 @@
 ﻿using GameStore.Model.Common;
+using System;
 using System.Collections.Generic;
 
 namespace GameStore.Model
 {
     public class User : IUser
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Username { get; set; }
 
         // One to one 

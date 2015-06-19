@@ -16,10 +16,11 @@ namespace Service.Test
     public class PostServiceTest
     {
         List<IPost> postsList;
-
+        /*
         [TestInitialize]
         public void Initialize()
         {
+            
             postsList = new List<IPost>()
             {
                 new Post()
@@ -57,6 +58,6 @@ namespace Service.Test
 
             Assert.AreEqual(result.Result.ToString(), postsList.ToString());
 
-        }
+        }*/
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity.ModelConfiguration;
 using GameStore.DAL.Models;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GameStore.DAL.Mapping 
 {
@@ -8,7 +9,9 @@ namespace GameStore.DAL.Mapping
         public CartMap()
         {
             // key
-            HasKey(c => c.Id);
+           // HasKey(c => c.Id);
+
+            Property(c => c.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
         
             // One to one
             HasRequired(c => c.User).WithOptional(u => u.Cart);

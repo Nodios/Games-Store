@@ -30,7 +30,7 @@ namespace GameStore.Service
         /// <summary>
         /// Get by id
         /// </summary>
-        public virtual Task<IPublisher> GetAsync(int id)
+        public virtual Task<IPublisher> GetAsync(Guid id)
         {
             return PublisherRepository.GetAsync(id);
         }
@@ -38,7 +38,7 @@ namespace GameStore.Service
         /// <summary>
         /// Get support info for publisher
         /// </summary>
-        public virtual Task<ISupport> GetSupportAsync(int id)
+        public virtual Task<ISupport> GetSupportAsync(Guid id)
         {
             return SupportRepository.GetAsync(id);
         }
@@ -46,9 +46,9 @@ namespace GameStore.Service
         /// <summary>
         /// Get by name
         /// </summary>
-        public virtual Task<IPublisher> GetAsync(string name)
+        public virtual Task<IEnumerable<IPublisher>> GetRangeAsync(string name)
         {
-            return PublisherRepository.GetAsync(name);
+            return PublisherRepository.GetRangeAsync(name);
         }
 
         /// <summary>

@@ -43,7 +43,7 @@ namespace GameStore.WebApi.Controllers
 
         // GET: api/Publisher/5
         [Route("{id}")]
-        public async Task<HttpResponseMessage> Get(int id)
+        public async Task<HttpResponseMessage> Get(Guid id)
         {
             try
             {
@@ -67,10 +67,10 @@ namespace GameStore.WebApi.Controllers
         {
             try
             {
-                IPublisher result = await PublisherService.GetAsync(name);
+                IEnumerable<IPublisher> result = await PublisherService.GetRangeAsync(name);
 
                 if (result != null)
-                    return Request.CreateResponse(HttpStatusCode.OK, Mapper.Map<PublisherModel>(result));
+                    return Request.CreateResponse(HttpStatusCode.OK, Mapper.Map<IEnumerable<PublisherModel>>(result));
                 else
                     return Request.CreateResponse(HttpStatusCode.NotFound);
             }
@@ -82,7 +82,7 @@ namespace GameStore.WebApi.Controllers
 
         [HttpGet()]
         [Route("GetSupport/{id}")]
-        public async Task<HttpResponseMessage> GetSupport(int id)
+        public async Task<HttpResponseMessage> GetSupport(Guid id)
         {
             try
             {
@@ -104,7 +104,7 @@ namespace GameStore.WebApi.Controllers
         /// </summary>
         public class PublisherModel
         {
-            public int Id { get; set; }
+            public Guid Id { get; set; }
             public string Name { get; set; }
             public string Description { get; set; }
         }
@@ -114,7 +114,7 @@ namespace GameStore.WebApi.Controllers
         /// </summary>
         public class SupportModel
         {
-            public int PublisherId { get; set; }
+            public Guid PublisherId { get; set; }
             public string Email { get; set; }
             public string Address { get; set; }
             public string Phone { get; set; } 

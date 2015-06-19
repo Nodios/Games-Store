@@ -23,7 +23,7 @@ namespace GameStore.Repository
         /// <summary>
         /// Get by id
         /// </summary>
-        public async Task<Model.Common.IPost> GetAsync(int id)
+        public async Task<Model.Common.IPost> GetAsync(Guid id)
         {
             try
             {
@@ -39,7 +39,7 @@ namespace GameStore.Repository
         /// <summary>
         /// Get range async
         /// </summary>
-        public async Task<IEnumerable<IPost>> GetRangeAsync(int gameId,PostFilter filter)
+        public async Task<IEnumerable<IPost>> GetRangeAsync(Guid gameId,PostFilter filter)
         {
             try
             {
@@ -93,7 +93,7 @@ namespace GameStore.Repository
         /// Delete async
         /// </summary>
         /// <param name="id">Id</param>
-        public async Task<int> DeleteAsync(int id)
+        public async Task<int> DeleteAsync(Guid id)
         {
             try
             {

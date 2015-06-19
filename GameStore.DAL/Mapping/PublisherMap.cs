@@ -9,7 +9,8 @@ namespace GameStore.DAL.Mapping
     {
         public PublisherMap()
         {
-            HasKey(c => c.Id);
+         //   HasKey(c => c.Id);
+            Property(c => c.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
             Property(c => c.Description).IsRequired().HasMaxLength(1000).HasColumnType("nvarchar");
 

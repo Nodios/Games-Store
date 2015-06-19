@@ -1,0 +1,13 @@
+﻿
+<nav>
+    <div class="navigation">
+        <div>
+            <ul ng-repeat="menu in vm.menus">
+                <!-- :: one way binding -->
+                <li class="{{menu.active}}"><a href="{{menu.link}}" ng-click="vm.setActive($index)">{{::menu.name}}</a></li>
+            </ul>          
+            <a class="navbar-text pull-right">Guest account</a>
+            <a class="navbar-brand pull-right">Log in</a>
+        </div>
+    </div>
+</nav>

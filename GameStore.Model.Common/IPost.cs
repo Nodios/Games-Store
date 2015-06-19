@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace GameStore.Model.Common
 {
@@ -6,8 +7,8 @@ namespace GameStore.Model.Common
     {
         string Title { get; set; }
 
-        int GameId { get; set; }
-        int? UserId { get; set; }
+        Guid GameId { get; set; }
+        Guid? UserId { get; set; }
 
         IGame Game { get; set; }
         IUser User { get; set; }

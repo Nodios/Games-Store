@@ -39,7 +39,7 @@ namespace GameStore.Repository
         /// </summary>
         /// <param name="id">Entity id</param>
         /// <returns>Entity or null</returns>
-        public Task<T> GetAsync<T>(int id) where T : class
+        public Task<T> GetAsync<T>(Guid id) where T : class
         {
             return context.Set<T>().FindAsync(id);
         }
@@ -154,7 +154,7 @@ namespace GameStore.Repository
         /// <summary>
         /// Deletes entity
         /// </summary>
-        public async Task<int> DeleteAsync<T>(int id) where T : class
+        public async Task<int> DeleteAsync<T>(Guid id) where T : class
         {
             T entity = await GetAsync<T>(id);
             if (entity == null)

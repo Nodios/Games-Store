@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace GameStore.Model.Common
 {
     public interface IUser
     {
-        int Id { get; set; }
+        Guid Id { get; set; }
 
         string Username { get; set; }
 

@@ -1,4 +1,5 @@
 ﻿using GameStore.Common;
+using GameStore.Model.Common;
 using GameStore.Repository.Common;
 using Service.Common;
 using System;
@@ -26,7 +27,7 @@ namespace GameStore.Service
         /// <summary>
         /// Gets game by id
         /// </summary>
-        public Task<Model.Common.IGame> GetAsync(int id)
+        public Task<Model.Common.IGame> GetAsync(Guid id)
         {
             return GamesRepository.GetAsync(id);
         }
@@ -34,9 +35,9 @@ namespace GameStore.Service
         /// <summary>
         /// Gets game by name
         /// </summary>
-        public Task<Model.Common.IGame> GetAsync(string name)
+        public Task<IEnumerable<IGame>> GetRangeAsync(string name)
         {
-            return GamesRepository.GetAsync(name);
+            return GamesRepository.GetRangeAsync(name);
         }
 
         /// <summary>
@@ -52,7 +53,7 @@ namespace GameStore.Service
         /// </summary>
         /// <param name="publisherId">FK id</param>
         /// <returns>Collection of games</returns>
-        public Task<IEnumerable<Model.Common.IGame>> GetRangeAsync(int publisherId)
+        public Task<IEnumerable<Model.Common.IGame>> GetRangeAsync(Guid publisherId)
         {
             return GamesRepository.GetRangeAsync(publisherId);
         }

@@ -7,7 +7,7 @@ namespace GameStore.Model.Common
 {
     public interface IInfo
     {
-        int Id { get; set; }
+        Guid Id { get; set; }
 
         string Name { get; set; }
         string Surname { get; set; }

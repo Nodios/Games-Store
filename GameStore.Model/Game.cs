@@ -1,13 +1,14 @@
 ﻿using GameStore.Common;
 using GameStore.Model.Common;
+using System;
 using System.Collections.Generic;
 
 namespace GameStore.Model
 {
     public class Game : IGame
     {
-        public int Id { get; set; }
-        public int PublisherId { get; set; }
+        public Guid Id { get; set; }
+        public Guid PublisherId { get; set; }
 
         public string Name { get; set; }
         public string Description { get; set; }

@@ -1,10 +1,11 @@
 ﻿
 using GameStore.Model.Common;
+using System;
 namespace GameStore.Model
 {
     public class Support : ISupport
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         public string Email { get; set; }
         public string Address { get; set; }
