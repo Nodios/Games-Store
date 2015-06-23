@@ -9,7 +9,7 @@ namespace GameStore.DAL.Models
         public string Title { get; set; }
 
         public Guid GameId { get; set; }
-        public Guid? UserId { get; set; }
+        public string UserId { get; set; }
 
         public virtual GameEntity Game { get; set; }
         public virtual UserEntity User { get; set; }

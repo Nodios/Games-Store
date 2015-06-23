@@ -1,5 +1,7 @@
 ﻿using GameStore.Common;
+using GameStore.DAL.Mapping;
 using GameStore.DAL.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
@@ -8,13 +10,13 @@ using System.Reflection;
 
 namespace GameStore.DAL
 {
-    public class GamesStoreContext : DbContext, IGamesStoreContext
+    public class GamesStoreContext : IdentityDbContext<UserEntity>, IGamesStoreContext
     {
         #region Constructors
 
-        public GamesStoreContext() : base(ConnectionStrings.TEST_DB_CONNECTION) { }
-        public GamesStoreContext(string connection) : base(connection) { }
-
+        public GamesStoreContext() : base(ConnectionStrings.TEST_DB_CONNECTION, throwIfV1Schema: false) { }
+        public GamesStoreContext(string connection) : base(connection, throwIfV1Schema: false) { }
+      
         #endregion
 
         #region Proporties
@@ -27,39 +29,43 @@ namespace GameStore.DAL
         public DbSet<PostEntity> Posts { get; set; }
         public DbSet<ReviewEntity> Reviews { get; set; }
         public DbSet<SupportEntity> Support { get; set; }
-        public DbSet<UserEntity> Users { get; set; }
-
+     // public DbSet<UserEntity> StoreUser { get; set; }
+       
         #endregion
 
         #region Methods
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //modelBuilder.Configurations.Add(new CartMap());
-            //modelBuilder.Configurations.Add(new CommentMap());
-            //modelBuilder.Configurations.Add(new CompanyMap());
-            //modelBuilder.Configurations.Add(new GameMap());
-            //modelBuilder.Configurations.Add(new InfoMap());
-            //modelBuilder.Configurations.Add(new PostMap());
-            //modelBuilder.Configurations.Add(new ReviewMap());
-            //modelBuilder.Configurations.Add(new SupportMap());
-            //modelBuilder.Configurations.Add(new UserMap());
+            modelBuilder.Configurations.Add(new CartMap());
+            modelBuilder.Configurations.Add(new CommentMap());
+            modelBuilder.Configurations.Add(new PublisherMap());
+            modelBuilder.Configurations.Add(new GameMap());
+            modelBuilder.Configurations.Add(new InfoMap());
+            modelBuilder.Configurations.Add(new PostMap());
+            modelBuilder.Configurations.Add(new ReviewMap());
+            modelBuilder.Configurations.Add(new SupportMap());
+            modelBuilder.Configurations.Add(new UserMap());
 
             // Reflection to find configurations
-            var typesToRegister = Assembly.GetExecutingAssembly().GetTypes()
-                .Where(type => !String.IsNullOrEmpty(type.Namespace))
-                .Where(type => type.BaseType != null && type.BaseType.IsGenericType
-                && type.BaseType.GetGenericTypeDefinition() == typeof(EntityTypeConfiguration<>));
+            //var typesToRegister = Assembly.GetExecutingAssembly().GetTypes()
+            //    .Where(type => !String.IsNullOrEmpty(type.Namespace))
+            //    .Where(type => type.BaseType != null && type.BaseType.IsGenericType
+            //    && type.BaseType.GetGenericTypeDefinition() == typeof(EntityTypeConfiguration<>));
 
-            foreach(var type in typesToRegister)
-            {
-                dynamic configurationInstance = Activator.CreateInstance(type);
-                modelBuilder.Configurations.Add(configurationInstance);
-            }
+            //foreach(var type in typesToRegister)
+            //{
+            //    dynamic configurationInstance = Activator.CreateInstance(type);
+            //    modelBuilder.Configurations.Add(configurationInstance);
+            //}
 
             base.OnModelCreating(modelBuilder);
         }
 
+        public override DbSet<TEntity> Set<TEntity>()
+        {
+            return base.Set<TEntity>();                   // iz nekog razloga nije prihvaćao test bez overrida ove metode, navodno je bil
+        }
         #endregion
     }
 }

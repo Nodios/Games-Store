@@ -1,7 +1,10 @@
 ﻿using AutoMapper;
+using GameStore.DAL;
 using GameStore.DAL.Models;
 using GameStore.Model.Common;
 using GameStore.Repository.Common;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -11,6 +14,8 @@ namespace GameStore.Repository
     public class UserRepository : IUserRepository
     {
         private IRepository repository;
+        private PasswordHasher hasher;
+        private UserManager<UserEntity> userManager;
 
         /// <summary>
         /// Constructor
@@ -18,6 +23,9 @@ namespace GameStore.Repository
         public UserRepository(IRepository repository)
         {
             this.repository = repository;
+            hasher = new PasswordHasher();
+            userManager = new UserManager<UserEntity>
+                (new UserStore<UserEntity>(new GamesStoreContext()));
         }
 
         /// <summary>
@@ -27,7 +35,24 @@ namespace GameStore.Repository
         {
             try
             {
-                return Mapper.Map<IUser>(await repository.GetAsync<UserEntity>(id));
+                return Mapper.Map<Model.Common.IUser>(await repository.GetAsync<UserEntity>(id));
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
+        }
+
+
+        /// <summary>
+        /// Get all entites
+        /// </summary>
+        public async Task<IEnumerable<Model.Common.IUser>> GetAsync(System.Linq.Expressions.Expression<Func<Model.Common.IUser, bool>> match)
+        {
+            try
+            {
+                return Mapper.Map<IEnumerable<Model.Common.IUser>>(await repository.GetRangeAsync<UserEntity>());
             }
             catch (Exception ex)
             {
@@ -37,17 +62,17 @@ namespace GameStore.Repository
         }
 
         /// <summary>
-        /// Get all entites
+        /// Find user by username and password
         /// </summary>
-        public async Task<IEnumerable<Model.Common.IUser>> GetAsync(System.Linq.Expressions.Expression<Func<Model.Common.IUser, bool>> match)
+        public async Task<Model.Common.IUser> FindUserAsync(string username, string password)
         {
             try
             {
-                return Mapper.Map<IEnumerable<IUser>>(await repository.GetRangeAsync<UserEntity>());
+                UserEntity user = await userManager.FindAsync(username, password);
+                return Mapper.Map<Model.Common.IUser>(user);
             }
             catch (Exception ex)
             {
-                
                 throw ex;
             }
         }
@@ -107,8 +132,40 @@ namespace GameStore.Repository
         {
             try
             {
-                return await this.DeleteAsync(Mapper.Map<IUser>
+                return await this.DeleteAsync(Mapper.Map<Model.Common.IUser>
                     (await repository.GetAsync<UserEntity>(id)));
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Registers adds user
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns>True if success, false otherwise</returns>
+        public async Task<bool> RegisterUser(Model.Common.IUser user)
+        {
+            try
+            {
+                IdentityResult result = await userManager.CreateAsync(Mapper.Map<UserEntity>(user), user.Password);
+                return result.Succeeded;
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
+        }
+
+        public Task<IUnitOfWork> CreateUnitOfWork()
+        {
+            try
+            {
+                return Task.FromResult<IUnitOfWork>(repository.CreateUnitOfWork());
             }
             catch (Exception ex)
             {

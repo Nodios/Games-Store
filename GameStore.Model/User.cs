@@ -1,13 +1,14 @@
 ﻿using GameStore.Model.Common;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 
 namespace GameStore.Model
 {
-    public class User : IUser
+    public class User : IdentityUser, IUser
     {
-        public Guid Id { get; set; }
-        public string Username { get; set; }
+        public string Password { get; set; }
+        public string ConfirmPassword { get; set; }
 
         // One to one 
         public virtual IInfo Info { get; set; }

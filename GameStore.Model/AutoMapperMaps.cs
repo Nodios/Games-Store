@@ -7,32 +7,32 @@ namespace GameStore.Model
     {
         public static void Initalize()
         {
-            AutoMapper.Mapper.CreateMap<ICart, Cart>().ReverseMap();
-            AutoMapper.Mapper.CreateMap<CartEntity, ICart>().ReverseMap();
+            AutoMapper.Mapper.CreateMap<ICart, CartEntity>().ReverseMap();
+            AutoMapper.Mapper.CreateMap<CartEntity, Cart>().ReverseMap();
 
-            AutoMapper.Mapper.CreateMap<IComment, Comment>().ReverseMap();
-            AutoMapper.Mapper.CreateMap<CommentEntity, IComment>().ReverseMap();
+            AutoMapper.Mapper.CreateMap<IComment, CommentEntity>().ReverseMap();
+            AutoMapper.Mapper.CreateMap<CommentEntity, Comment>().ReverseMap();
 
-            AutoMapper.Mapper.CreateMap<IPublisher, Publisher>().ReverseMap();
-            AutoMapper.Mapper.CreateMap<PublisherEntity, IPublisher>().ReverseMap();
+            AutoMapper.Mapper.CreateMap<IPublisher, PublisherEntity>().ReverseMap();
+            AutoMapper.Mapper.CreateMap<PublisherEntity, Publisher>().ReverseMap();
 
-            AutoMapper.Mapper.CreateMap<IGame, Game>().ReverseMap();
-            AutoMapper.Mapper.CreateMap<GameEntity, IGame>().ReverseMap();
+            AutoMapper.Mapper.CreateMap<IGame, GameEntity>().ReverseMap();
+            AutoMapper.Mapper.CreateMap<GameEntity, Game>().ReverseMap();
 
-            AutoMapper.Mapper.CreateMap<IInfo, Info>().ReverseMap();
-            AutoMapper.Mapper.CreateMap<InfoEntity, IInfo>().ReverseMap();
+            AutoMapper.Mapper.CreateMap<IInfo, InfoEntity>().ReverseMap();
+            AutoMapper.Mapper.CreateMap<InfoEntity, Info>().ReverseMap();
 
-            AutoMapper.Mapper.CreateMap<IPost, Post>().ReverseMap();
-            AutoMapper.Mapper.CreateMap<PostEntity, IPost>().ReverseMap();
+            AutoMapper.Mapper.CreateMap<IPost, PostEntity>().ReverseMap();
+            AutoMapper.Mapper.CreateMap<PostEntity, Post>().ReverseMap();
 
-            AutoMapper.Mapper.CreateMap<IReview, Review>().ReverseMap();
-            AutoMapper.Mapper.CreateMap<ReviewEntity, IReview>().ReverseMap();
+            AutoMapper.Mapper.CreateMap<IReview, ReviewEntity>().ReverseMap();
+            AutoMapper.Mapper.CreateMap<ReviewEntity, Review>().ReverseMap();
 
-            AutoMapper.Mapper.CreateMap<ISupport, Support>().ReverseMap();
-            AutoMapper.Mapper.CreateMap<SupportEntity, ISupport>().ReverseMap();
+            AutoMapper.Mapper.CreateMap<ISupport, SupportEntity>().ReverseMap();
+            AutoMapper.Mapper.CreateMap<SupportEntity, Support>().ReverseMap();
 
-            AutoMapper.Mapper.CreateMap<IUser, User>().ReverseMap();
-            AutoMapper.Mapper.CreateMap<UserEntity, IUser>().ReverseMap(); 
+            AutoMapper.Mapper.CreateMap<IUser, UserEntity>().ReverseMap();
+            AutoMapper.Mapper.CreateMap<UserEntity, User>().ReverseMap();
         }
     }
 }

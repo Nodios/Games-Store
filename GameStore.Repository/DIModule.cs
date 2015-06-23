@@ -1,5 +1,6 @@
 ﻿using GameStore.DAL;
 using GameStore.Repository.Common;
+using Ninject.Extensions.Factory;
 
 namespace GameStore.Repository
 {
@@ -17,6 +18,7 @@ namespace GameStore.Repository
             Bind<IGamesStoreContext>().To<GamesStoreContext>();
             Bind<IRepository>().To<Repository>();
             Bind<IUnitOfWork>().To<UnitOfWork>();
+            Bind<IUnitOfWorkFactory>().ToFactory();
 
             // Other repos
             Bind<ICartRepository>().To<CartRepository>();

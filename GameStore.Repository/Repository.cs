@@ -6,6 +6,8 @@ using System.Data.Entity;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using System.Linq;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity;
 
 namespace GameStore.Repository
 {
@@ -13,8 +15,9 @@ namespace GameStore.Repository
     {
         #region Fields
 
-        private readonly IGamesStoreContext context;
-
+        protected IGamesStoreContext Context { get; private set; }
+        protected IUnitOfWorkFactory UnitOfWorkFactory { get; private set; }
+   
         #endregion
 
         #region Constructors
@@ -22,17 +25,23 @@ namespace GameStore.Repository
         /// <summary>
         /// Constructor , takes context
         /// </summary>
-        public Repository(IGamesStoreContext context)
+        public Repository(IGamesStoreContext context, IUnitOfWorkFactory unitOfWorkFactory)
         {
             if (context == null)
                 throw new ArgumentNullException("Context cannot be null");
 
-            this.context = context;
+            this.Context = context;
+            this.UnitOfWorkFactory = unitOfWorkFactory;
         }
 
         #endregion
 
         #region Methods
+
+        public IUnitOfWork CreateUnitOfWork()
+        {
+            return UnitOfWorkFactory.CreateUnitOfWork();
+        }
 
         /// <summary>
         /// Gets singe entity
@@ -41,14 +50,15 @@ namespace GameStore.Repository
         /// <returns>Entity or null</returns>
         public Task<T> GetAsync<T>(Guid id) where T : class
         {
-            return context.Set<T>().FindAsync(id);
+            return Context.Set<T>().FindAsync(id);
         }
 
         /// <summary>
         /// Get where
         /// </summary>
-        public IQueryable<T> Where<T>() where T : class{
-            return context.Set<T>();
+        public IQueryable<T> Where<T>() where T : class
+        {
+            return Context.Set<T>();
         }
 
         /// <summary>
@@ -57,7 +67,7 @@ namespace GameStore.Repository
         /// <returns>List or null</returns>
         public async Task<IEnumerable<T>> GetRangeAsync<T>() where T : class
         {
-            return await context.Set<T>().ToListAsync();
+            return await Context.Set<T>().ToListAsync();
         }
 
         /// <summary>
@@ -67,7 +77,7 @@ namespace GameStore.Repository
         /// <returns>Entity or null</returns>
         public Task<T> GetAsync<T>(Expression<Func<T, bool>> match) where T : class
         {
-            return context.Set<T>().FirstAsync(match);
+            return Context.Set<T>().FirstAsync(match);
         }
 
         /// <summary>
@@ -78,7 +88,7 @@ namespace GameStore.Repository
         public async Task<IEnumerable<T>> GetRangeAsync<T>
             (Expression<Func<T, bool>> match) where T : class
         {
-            return await context.Set<T>().Where(match).ToListAsync();
+            return await Context.Set<T>().Where(match).ToListAsync();
         }
 
         /// <summary>
@@ -90,8 +100,8 @@ namespace GameStore.Repository
         {
             try
             {
-                context.Set<T>().Add(entity);
-                return await context.SaveChangesAsync();
+                Context.Set<T>().Add(entity);
+                return await Context.SaveChangesAsync();
             }
             catch(Exception ex)
             {
@@ -108,8 +118,8 @@ namespace GameStore.Repository
         {
             try
             {
-                context.Set<T>().AddRange(listOfEntities);
-                return await context.SaveChangesAsync();
+                Context.Set<T>().AddRange(listOfEntities);
+                return await Context.SaveChangesAsync();
             }
             catch(Exception ex)
             {
@@ -124,10 +134,10 @@ namespace GameStore.Repository
         {
             try
             {
-                context.Set<T>().Attach(entity);
-                context.Entry<T>(entity).State = EntityState.Modified;
+                Context.Set<T>().Attach(entity);
+                Context.Entry<T>(entity).State = EntityState.Modified;
 
-                return await context.SaveChangesAsync();
+                return await Context.SaveChangesAsync();
             }
             catch(Exception ex)
             {
@@ -142,8 +152,8 @@ namespace GameStore.Repository
         {
             try
             {
-                context.Set<T>().Remove(entity);
-                return await context.SaveChangesAsync();
+                Context.Set<T>().Remove(entity);
+                return await Context.SaveChangesAsync();
             }
             catch(Exception ex)
             {

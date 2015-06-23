@@ -8,7 +8,7 @@ namespace GameStore.Model
     {
         public Guid Id { get; set; }
         public Guid GameId { get; set; }
-        public Guid? UserId { get; set; }
+        public string UserId { get; set; }
 
         public int VotesUp { get; set; }
         public int VotesDown { get; set; }

@@ -1,13 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GameStore.Model.Common;
 using System.Collections.Generic;
-using GameStore.Model;
-using Service.Common;
-using Moq;
-using GameStore.Repository.Common;
-using GameStore.Service;
-using System.Threading.Tasks;
-using GameStore.Common;
 
 namespace Service.Test
 {

@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Service.Common
+namespace GameStore.Service.Common
 {
     public interface IPublisherService
     {

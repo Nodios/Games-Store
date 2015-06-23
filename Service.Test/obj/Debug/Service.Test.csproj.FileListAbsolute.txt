@@ -28,3 +28,16 @@ C:\Users\luka\Desktop\Praksa\GameStore\Service.Test\bin\Debug\EntityFramework.xm
 C:\Users\luka\Desktop\Praksa\GameStore\Service.Test\obj\Debug\Service.Test.csprojResolveAssemblyReference.cache
 C:\Users\luka\Desktop\Praksa\GameStore\Service.Test\obj\Debug\Service.Test.dll
 C:\Users\luka\Desktop\Praksa\GameStore\Service.Test\obj\Debug\Service.Test.pdb
+C:\Users\luka\Desktop\Praksa\GameStore\Service.Test\bin\Debug\Service.Test.dll.config
+C:\Users\luka\Desktop\Praksa\GameStore\Service.Test\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\luka\Desktop\Praksa\GameStore\Service.Test\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\luka\Desktop\Praksa\GameStore\Service.Test\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\luka\Desktop\Praksa\GameStore\Service.Test\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\luka\Desktop\Praksa\GameStore\Service.Test\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\luka\Desktop\Praksa\GameStore\Service.Test\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\luka\Desktop\Praksa\GameStore\Service.Test\bin\Debug\Ninject.Extensions.Factory.dll
+C:\Users\luka\Desktop\Praksa\GameStore\Service.Test\bin\Debug\Castle.Core.dll
+C:\Users\luka\Desktop\Praksa\GameStore\Service.Test\bin\Debug\Ninject.Extensions.Factory.xml
+C:\Users\luka\Desktop\Praksa\GameStore\Service.Test\bin\Debug\Castle.Core.xml
+C:\Users\luka\Desktop\Praksa\GameStore\Service.Test\bin\Debug\AutoMapper.Net4.dll
+C:\Users\luka\Desktop\Praksa\GameStore\Service.Test\bin\Debug\AutoMapper.Net4.pdb

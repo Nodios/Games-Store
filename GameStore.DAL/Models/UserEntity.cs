@@ -1,14 +1,21 @@
 ﻿
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GameStore.DAL.Models
 {
-    public class UserEntity : IDataEntity
+    public class UserEntity : IdentityUser
     {
-        public Guid Id { get; set; }
+        [Required]
+        [StringLength(50, ErrorMessage="Password should be between 6 and 50 characthers", MinimumLength=6)]
+        [Display(Name="Password")]
+        public string Password { get; set; }
 
-        public string Username { get; set; }
+        [Compare("Password", ErrorMessage="Password and confirmation password do not match.")]
+        public string ConfirmPassword { get; set; }
 
         // One to one 
         public virtual InfoEntity Info { get; set; }

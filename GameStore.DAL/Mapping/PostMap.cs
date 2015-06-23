@@ -8,7 +8,6 @@ namespace GameStore.DAL.Mapping
     {
         public PostMap()
         {
-            Property(p => p.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(p => p.Description).IsRequired().HasMaxLength(1000).HasColumnType("nvarchar");
             Property(p => p.Title);
             Property(p => p.VotesDown);

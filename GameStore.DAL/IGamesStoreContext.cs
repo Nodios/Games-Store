@@ -1,4 +1,5 @@
 ﻿using GameStore.DAL.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
@@ -15,10 +16,10 @@ namespace GameStore.DAL
         DbSet<PublisherEntity> Publishers { get; set; }
         DbSet<ReviewEntity> Reviews { get; set; }
         DbSet<SupportEntity> Support { get; set; }
-        DbSet<UserEntity> Users { get; set; }
+    //    DbSet<UserEntity> StoreUser { get; set; }
 
-        DbSet<T> Set<T>() where T : class;
-        DbEntityEntry<T> Entry<T>(T entity) where T : class;
+        DbSet<TEntity> Set<TEntity>() where TEntity : class;
+        DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
         Task<int> SaveChangesAsync();
     }
 }

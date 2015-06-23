@@ -1,7 +1,7 @@
 ﻿using GameStore.Common;
 using GameStore.Model.Common;
 using GameStore.Repository.Common;
-using Service.Common;
+using GameStore.Service.Common;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

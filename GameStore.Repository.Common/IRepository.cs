@@ -8,6 +8,8 @@ namespace GameStore.Repository.Common
 {
     public interface IRepository
     {
+        IUnitOfWork CreateUnitOfWork();
+
         Task<T> GetAsync<T>(Guid id) where T : class;
 
         IQueryable<T> Where<T>() where T : class;

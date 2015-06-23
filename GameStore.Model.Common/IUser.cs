@@ -5,9 +5,12 @@ namespace GameStore.Model.Common
 {
     public interface IUser
     {
-        Guid Id { get; set; }
 
-        string Username { get; set; }
+        string UserName { get; set; }
+        string Password { get; set; }
+        string ConfirmPassword { get; set; }
+        string PasswordHash { get; set; }
+        string Email { get; set; }
 
         // One to one 
         IInfo Info { get; set; }

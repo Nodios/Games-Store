@@ -1,5 +1,6 @@
 ﻿using GameStore.Service.Common;
-using Service.Common;
+using GameStore.Service;
+
 
 namespace GameStore.Service
 {
@@ -13,6 +14,7 @@ namespace GameStore.Service
             Bind<IPublisherService>().To<PublisherService>();
             Bind<IGamesService>().To<GamesService>();
             Bind<IPostService>().To<PostService>();
+            Bind<IUserService>().To<UserService>();
         }
     }
 }
