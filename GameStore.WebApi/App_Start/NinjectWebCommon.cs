@@ -11,6 +11,7 @@ namespace GameStore.WebApi.App_Start
     using System;
     using System.Web;
     using System.Web.Http;
+    using System.Linq;
 
     public static class NinjectWebCommon
     {
@@ -40,14 +41,12 @@ namespace GameStore.WebApi.App_Start
         /// <returns>The created kernel.</returns>
         private static IKernel CreateKernel()
         {
-            //var settings = new NinjectSettings();
-            //settings.LoadExtensions = true;
-            //settings.ExtensionSearchPatterns = settings.ExtensionSearchPatterns
-            //    .Union(new string[] { "GamesStore.*.dll" }).ToArray();
-            // var kernel = new StandardKernel(settings);
+            var settings = new NinjectSettings();
+            settings.LoadExtensions = true;
+            settings.ExtensionSearchPatterns = settings.ExtensionSearchPatterns
+                .Union(new string[] { "GamesStore.*.dll" }).ToArray();
+            var kernel = new StandardKernel(settings);
 
-            // Ako ne valja obriši ovaj kernel i odkomentiraj gore
-            var kernel = new StandardKernel();
 
             try
             {

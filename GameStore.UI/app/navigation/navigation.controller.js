@@ -16,7 +16,11 @@
                 { name: "About", active: "" }
             ];
 
-      
+        vm.auth =
+            [  
+                { name: "Register", link: "#/register" },
+                { name: "Log in", link: "#/logIn" },
+            ];
 
         // If button is pressed set it's class to active - used just for effect 
         vm.setActive = function (index) {

@@ -18,7 +18,7 @@ namespace GameStore.WebApi.Providers
     public class ApplicationOAuthProvider : OAuthAuthorizationServerProvider
     {
         private readonly string _publicClientId;
-        IUserService userService;
+
 
         public ApplicationOAuthProvider(string publicClientId)
         {
@@ -28,7 +28,7 @@ namespace GameStore.WebApi.Providers
             }
 
             _publicClientId = publicClientId;
-            this.userService = userService;
+
         }
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)

@@ -43,6 +43,10 @@ namespace GameStore.WebApi.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid action.");
+                }
                 bool isRegistered = await userService.RegisterUser(Mapper.Map<IUser>(user));
 
                 if (isRegistered)

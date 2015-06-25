@@ -6919,7 +6919,9 @@ address {
 .publisherView div:before,
 .publisherView div:after,
 .gameView div:before,
-.gameView div:after {
+.gameView div:after,
+.register div:before,
+.register div:after {
   content: " ";
   display: table;
 }
@@ -6942,7 +6944,8 @@ address {
 .navigation div:after,
 .navigation ul:after,
 .publisherView div:after,
-.gameView div:after {
+.gameView div:after,
+.register div:after {
   clear: both;
 }
 .center-block {
@@ -7430,5 +7433,96 @@ fieldset[disabled] .gameView button {
 .gameView button:active,
 .gameView button.active {
   background-image: none;
+}
+.register {
+  margin-top: 8em;
+}
+.register div {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 768px) {
+  .register div {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .register div {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .register div {
+    width: 1170px;
+  }
+}
+.register div > .navbar-header,
+.register div > .navbar-collapse {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+@media (min-width: 768px) {
+  .register div > .navbar-header,
+  .register div > .navbar-collapse {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+.register h3 {
+  padding-bottom: 9px;
+  margin: 40px 0 20px;
+  border-bottom: 1px solid #eeeeee;
+}
+.register form {
+  margin-bottom: 15px;
+}
+.register input {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555555;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.register input:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+.register input::-moz-placeholder {
+  color: #999999;
+  opacity: 1;
+}
+.register input:-ms-input-placeholder {
+  color: #999999;
+}
+.register input::-webkit-input-placeholder {
+  color: #999999;
+}
+.register input[disabled],
+.register input[readonly],
+fieldset[disabled] .register input {
+  background-color: #eeeeee;
+  opacity: 1;
+}
+.register input[disabled],
+fieldset[disabled] .register input {
+  cursor: not-allowed;
+}
+textarea.register input {
+  height: auto;
 }
 /*# sourceMappingURL=style.css.map */

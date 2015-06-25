@@ -18,6 +18,7 @@ namespace GameStore.WebApi.Controllers
         private IPublisherService PublisherService;
 
         public PublisherController(IPublisherService service)
+            :base()
         {
             PublisherService = service;
         }
