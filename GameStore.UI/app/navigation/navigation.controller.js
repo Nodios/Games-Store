@@ -19,16 +19,19 @@
         vm.auth =
             [  
                 { name: "Register", link: "#/register" },
-                { name: "Log in", link: "#/logIn" },
+                { name: globalUser, link: "#/login" },
             ];
 
         // If button is pressed set it's class to active - used just for effect 
         vm.setActive = function (index) {
+            vm.clearActive();
+            vm.menus[index].active = "active";
+        };
+
+        vm.clearActive = function () {
             for (var i = 0; i < vm.menus.length; i++) {
                 vm.menus[i].active = "";
             }
-
-            vm.menus[index].active = "active";
         };
     }
     ])})(angular);

@@ -1,8 +1,8 @@
 ﻿(function (angular) {
 
-    angular.module("mainModule").service("gameService", 
-        ['$http', 'getRouteProvider', 'postRouteProvider',
-            function ($http, getRouteProvider, postRouteProvider) {
+    angular.module("mainModule").service("gameService",
+        ['$http', '$window', 'getRouteProvider', 'postRouteProvider',
+            function ($http,$window, getRouteProvider, postRouteProvider) {
 
                 return {
 
@@ -22,11 +22,19 @@
                     },
 
                     // Post
-                    postPost: function (post) {
-                        return $http.post(postRouteProvider.postPost(post));
+                    postPost: function (post) {                     
+
+                        var token = $window.sessionStorage.token;
+
+                        return $http({
+                            method: 'put',
+                            url: postRouteProvider.postPost(),
+                            headers: { 'Authorization': 'Bearer ' + token },
+                            data: post
+                        });
                     }
                 };
 
-        }]);
+            }]);
 
 })(angular)

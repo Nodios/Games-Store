@@ -15,6 +15,8 @@ namespace GameStore.WebApi
         {
             GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
             ConfigureAuth(app);
+
+            
         }
     }
 }

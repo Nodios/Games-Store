@@ -6,8 +6,8 @@
                 <!-- :: one way binding -->
                 <li class="{{menu.active}}"><a href="{{menu.link}}" ng-click="vm.setActive($index)">{{::menu.name}}</a></li>
             </ul>          
-            <a class="navbar-text pull-right" href="{{vm.auth[0].link}}">{{vm.auth[0].name}}</a>
-            <a class="navbar-brand pull-right" href="{{vm.auth[1].link}}">{{vm.auth[1].name}}</a>
+            <a class="navbar-text pull-right" href="{{vm.auth[0].link}}" ng-click="vm.clearActive()">{{vm.auth[0].name}}</a>
+            <a class="navbar-brand pull-right" href="{{vm.auth[1].link}}" ng-click="vm.clearActive()">{{vm.auth[1].name}}</a>
         </div>
     </div>
 </nav>

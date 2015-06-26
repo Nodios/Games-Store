@@ -97,3 +97,5 @@ C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WebApi\bin\Microsoft.Owin.Cors.
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WebApi\bin\System.Web.Cors.dll
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WebApi\bin\Microsoft.Owin.Cors.xml
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WebApi\bin\Ninject.WebApi.DependencyResolver.dll
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WebApi\bin\System.Web.Http.Cors.dll
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WebApi\bin\System.Web.Http.Cors.xml

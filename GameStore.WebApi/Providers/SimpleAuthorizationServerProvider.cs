@@ -18,9 +18,16 @@ namespace GameStore.WebApi.Providers
  
         }
 
-        public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
+        public override Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
         {
-            context.Validated();
+            // Resource owner password credentials does not provide a client ID.
+            if (context.ClientId == null)
+            {
+                context.Validated();
+            }
+
+            return Task.FromResult<object>(null);
+
         }
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)

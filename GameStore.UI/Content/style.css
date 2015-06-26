@@ -7525,4 +7525,62 @@ fieldset[disabled] .register input {
 textarea.register input {
   height: auto;
 }
+.login {
+  margin-top: 5em;
+}
+.login h3 {
+  padding-bottom: 9px;
+  margin: 40px 0 20px;
+  border-bottom: 1px solid #eeeeee;
+}
+.login form {
+  margin-bottom: 15px;
+}
+.login input {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555555;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.login input:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+.login input::-moz-placeholder {
+  color: #999999;
+  opacity: 1;
+}
+.login input:-ms-input-placeholder {
+  color: #999999;
+}
+.login input::-webkit-input-placeholder {
+  color: #999999;
+}
+.login input[disabled],
+.login input[readonly],
+fieldset[disabled] .login input {
+  background-color: #eeeeee;
+  opacity: 1;
+}
+.login input[disabled],
+fieldset[disabled] .login input {
+  cursor: not-allowed;
+}
+textarea.login input {
+  height: auto;
+}
 /*# sourceMappingURL=style.css.map */

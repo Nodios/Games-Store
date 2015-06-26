@@ -11,6 +11,7 @@ using System.Web.Http;
 
 namespace GameStore.WebApi.Controllers
 {
+    [RoutePrefix("api/post")]
     public class PostController : ApiController
     {
         private IPostService PostService;
@@ -48,17 +49,18 @@ namespace GameStore.WebApi.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
         }
+        */
 
-
-        [Route("{post}")]
-        [HttpPost]
-        public async Task<HttpResponseMessage> Post(PostModel post)
+        [Authorize]
+        [HttpPut]
+        [Route("Insert")]
+        public async Task<HttpResponseMessage> Insert(PostModel model)
         {
             try
             {
-                int result = await PostService.AddPost(Mapper.Map<IPost>(post));
+                int result = await PostService.AddPost(Mapper.Map<IPost>(model));
                 if (result == 1)
-                    return Request.CreateResponse(HttpStatusCode.Created, post);
+                    return Request.CreateResponse(HttpStatusCode.Created, model);
                 else
                     return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
@@ -67,8 +69,6 @@ namespace GameStore.WebApi.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
         }
-
-        */
 
         #endregion
 

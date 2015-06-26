@@ -13,16 +13,19 @@
                     confirmPassword: null
                 };
 
+            // Submit 
             vm.register = function (item) {
-                console.log(item);
-                authService.saveRegistration(item).success(function (data) {
 
-                    // Success
-                    console.log("Jipi");
+                if (item.password === item.confirmPassword) {
+                    authService.saveRegistration(item).success(function (data) {
 
-                }).error(function (data) {
-                    console.log("error " + String(data));
-                });
+                    }).error(function (data) {
+                        console.log("error " + String(data));
+                    });
+                }
+                else {
+                    alert("Please check your password fields.");
+                }
 
 
             };

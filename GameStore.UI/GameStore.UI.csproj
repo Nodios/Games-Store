@@ -57,6 +57,8 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\login\login.controller.js" />
+    <Content Include="app\login\login.html" />
     <Content Include="app\register\register.controller.js" />
     <Content Include="app\register\register.html" />
     <Content Include="app\services\authService.service.js" />

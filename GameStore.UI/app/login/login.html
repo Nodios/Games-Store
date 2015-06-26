@@ -1,0 +1,33 @@
+﻿<div ng-controller="LoginController" class="login">
+
+    <!-- LOGIN -->
+    <div class="container" ng-if="vm.login">
+
+        <h3>Log in</h3>
+        
+        <form class="container col-sm-4">
+            <label>Username: </label>
+            <input ng-model="user.userName" type="text" />
+            <br />
+            <label>Password:</label>
+            <input ng-model="user.password" type="password" />
+            <br />
+            <button class="btn btn-primary" ng-click="vm.login(user)">Submit</button>
+        </form>
+
+    </div>
+
+    <!-- LOGOUT -->
+    <div class="container" ng-if="vm.logout">
+
+        <h3>Logout</h3>
+
+        <form class="container col-sm-4">
+            <label>Username: </label>
+            <input ng-model="user.userName" readonly type="text" />
+            <br />
+            <button class="btn btn-danger" ng-click="vm.login(user)">Logut</button>
+        </form>
+
+    </div>
+</div>

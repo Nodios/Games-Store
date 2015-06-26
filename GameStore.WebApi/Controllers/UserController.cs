@@ -23,23 +23,9 @@ namespace GameStore.WebApi.Controllers
             this.userService = userService;
         }
 
-        public async Task<HttpResponseMessage> Get()
-        {
-            UserModel user = new UserModel()
-            {
-                UserName = "luka712",
-                Email = "luka712@hotmail.com",
-                PasswordHash = "luka071289",
-                Password = "luka071289",
-                ConfirmPassword = "luka071289"
-            };
-            var result = await userService.RegisterUser(Mapper.Map<IUser>(user));
-            return Request.CreateResponse(HttpStatusCode.OK, result);
-        }
-
         [Route("Register")]
-        [HttpPost]
-        public async Task<HttpResponseMessage> PostRegister(UserModel user)
+        [HttpPost()]
+        public async Task<HttpResponseMessage> Register(UserModel user)
         {
             try
             {
@@ -62,6 +48,8 @@ namespace GameStore.WebApi.Controllers
 
         public class UserModel : IdentityUser
         {
+            public string UserName { get; set; }
+            public string Email { get; set; }
             public string Password { get; set; }
             public string ConfirmPassword { get; set; }
 

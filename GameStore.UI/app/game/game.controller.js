@@ -1,8 +1,8 @@
 ﻿
 (function (angular) {
 
-    angular.module("mainModule").controller("GameController", ['gameService',
-        function (gameService) {
+    angular.module("mainModule").controller("GameController", ['$window','gameService',
+        function ( $window, gameService) {
 
             var vm = this;
 
@@ -11,11 +11,12 @@
             vm.pageNumber = 1;
             vm.games = [];      //for collection of games
             vm.game = null;   //for single game
-            vm.post = { GameId: 0, Title: null, Description: null };
+            vm.post = { GameId: 0, Title: null, Description: null};
             vm.posts = [];
             vm.searchString = "";
             vm.showGamesTable = false;
             vm.gameDetails = false;
+            vm.userLogedIn = false;
 
 
             // Search by name, if there is no name get every game
@@ -36,7 +37,7 @@
                         vm.games = data;
                     });
                 }
-            }
+            };
 
             // Get details of certain game
             vm.getItemDetails = function (item) {
@@ -45,18 +46,25 @@
                 vm.game = item;            // Add item item to array
                 vm.showGamesTable = false;       // hide game table
                 vm.gameDetails = true;          // show details table     
-            }
+
+                // Ako user ima token
+                if ($window.sessionStorage.token.length > 0)
+                    vm.userLogedIn = true;
+                else
+                    vm.userLogedIn = false;
+            };
 
             // Post        TODO: add logic 
             vm.postPost = function (post) {
-                post.GameId = $scope.posts[0].Id;
-                gameService.postPost(post).success(function (data) {
-                    console.log("success");
-                    console.log(post);
-                }).error(function () {
-                    console.log("error");
+
+                // Add id to post
+                post.GameId = vm.game.PublisherId;
+                gameService.postPost(post).success(function (response) {
+
+                }).error(function (response) {
+
                 });
-            }
+            };
         }
     ])
 })(angular);

@@ -1,13 +1,9 @@
 ﻿(function (angular) {
 
     angular.module("mainModule").service('authService',
-        ['$http', function ($http) {
+        ['$http', '$q', '$window', function ($http, $q, $window) {
 
-            var baseUrl = "gameStore/api/user";
-            var authentification = {
-                isAuth: false,
-                username: ""
-            };
+            var baseUrl = "gameStore";
 
             return {
 
@@ -15,15 +11,26 @@
 
                 },
 
-                saveRegistration: function (registration) {
-                    //logOut();
-                    console.log($.param(registration));
+                // LOG IN, SIGN IN
+                login: function(loginData){
+
+                    var data = "grant_type=password&username=" + loginData.userName + "&password=" + loginData.password;
 
                     return $http({
                         method: 'post',
-                        url: baseUrl + "/register",
-                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                        data : $.param(registration)              // $.param()   is from jQuery library 
+                        url: baseUrl + "/token",
+                        header: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        data: data
+                    });
+                },
+
+                // REGISTER, SIGN UP
+                saveRegistration: function (registration) {
+                   
+                    return $http({
+                        method: 'post',
+                        url: baseUrl + "/api/user/register",
+                        data : registration             
                     })
 
                 }

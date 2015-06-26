@@ -7,8 +7,8 @@
         return {
 
             // Post single post
-            postPost: function (post) {
-                return postUrl + "/" + post;
+            postPost: function () {
+                return postUrl + "/insert";
             }
         };
 
