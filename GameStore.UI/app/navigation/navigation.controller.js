@@ -2,10 +2,22 @@
 (function (angular) {
 
 
-    angular.module("mainModule").controller("NavigationController", [
-    function () {
+    angular.module("mainModule").controller("NavigationController", ['$scope', '$window', '$controller', 
+    function ($scope, $window, $controller) {
+
+
+
+        var modalRegisterController = $scope.$new();
+
+        $controller('ModalRegisterController', { $scope: modalRegisterController });
+
+        // GLOBALS  
+        $window.sessionStorage.user = "";
+        $window.sessionStorage.id = "";
+        $window.sessionStorage.token = "";
 
         var vm = this;
+        vm.userLogged = false;
 
         // Proporties
         vm.menus =
@@ -16,23 +28,38 @@
                 { name: "About", active: "" }
             ];
 
-        vm.auth =
-            [  
-                { name: "Register", link: "#/register" },
-                { name: globalUser, link: "#/login" },
-            ];
+        vm.authRegister = { name: "Register", link: "#/register" };
 
         // If button is pressed set it's class to active - used just for effect 
         vm.setActive = function (index) {
-            vm.clearActive();
+            clearActive();
             vm.menus[index].active = "active";
         };
 
-        vm.clearActive = function () {
+        // Opens register modal
+        vm.registerClick = function () {
+            modalRegisterController.open();
+        };
+
+
+        // Private 
+        // Sets active in menus to empty
+        var clearActive = function () {
+
             for (var i = 0; i < vm.menus.length; i++) {
                 vm.menus[i].active = "";
             }
         };
+
+        // Sets up log in menu item to user name if there is user signed in , else just says log in
+        if ($window.sessionStorage.user.length <= 0) {
+            vm.authUser = { name: "Log in", link: "#/login " };
+        }
+        else {
+            vm.authUser = { name: "Welcome " + $window.sessionStorage.user, link: "#/login" };
+        }
+
     }
-    ])})(angular);
+    ])
+})(angular);
 

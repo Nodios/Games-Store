@@ -2,12 +2,10 @@
 // Main Module
 (function (angular) {
 
-    angular.module("mainModule", ['ngRoute']);
+
 
     // Configure routes
-    angular.module("mainModule", ['ngRoute']).config(config);
-
-    angular.module("mainModule").value("userName", "");
+    angular.module("mainModule", ['ngRoute', 'ui.bootstrap']).config(config);
 
 
     function config($routeProvider) {

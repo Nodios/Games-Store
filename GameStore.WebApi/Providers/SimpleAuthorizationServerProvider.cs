@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using GameStore.Service.Common;
+using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -10,6 +12,8 @@ namespace GameStore.WebApi.Providers
     public class SimpleAuthorizationServerProvider : OAuthAuthorizationServerProvider
     {
         private IUserService userService;
+        private WebApi.Controllers.UserController.UserModel user;
+
         public SimpleAuthorizationServerProvider()
             : base()
         {
@@ -33,7 +37,7 @@ namespace GameStore.WebApi.Providers
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
 
-            WebApi.Controllers.UserController.UserModel user = Mapper.Map<WebApi.Controllers.UserController.UserModel>(await userService.FindAsync(context.UserName, context.Password));
+           user = Mapper.Map<WebApi.Controllers.UserController.UserModel>(await userService.FindAsync(context.UserName, context.Password));
 
             if (user == null)
             {
@@ -46,9 +50,31 @@ namespace GameStore.WebApi.Providers
                 identity.AddClaim(new Claim("sub", context.UserName));
                 identity.AddClaim(new Claim("role", "user"));
 
-                context.Validated(identity);
+                // Proporties
+                IDictionary<string, string> prop = new Dictionary<string, string>()
+                {
+                    { "username", user.UserName },
+                    { "id", user.Id}
+                };
+
+                // Add dictionary to auth proporties
+                AuthenticationProperties proporties = new AuthenticationProperties(prop);
+
+                AuthenticationTicket ticket = new AuthenticationTicket(identity, proporties);
+                
+                context.Validated(ticket);
             }
 
+        }
+
+        public override Task TokenEndpoint(OAuthTokenEndpointContext context)
+        {
+            foreach (KeyValuePair<string, string> property in context.Properties.Dictionary)
+            {
+                context.AdditionalResponseParameters.Add(property.Key, property.Value);
+            }
+
+            return Task.FromResult<object>(null);
         }
     }
 }

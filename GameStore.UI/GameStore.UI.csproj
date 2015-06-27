@@ -59,6 +59,9 @@
   <ItemGroup>
     <Content Include="app\login\login.controller.js" />
     <Content Include="app\login\login.html" />
+    <Content Include="app\modals\modalInstance.controller.js" />
+    <Content Include="app\modals\register\registerModal.controller.js" />
+    <Content Include="app\modals\register\register.html" />
     <Content Include="app\register\register.controller.js" />
     <Content Include="app\register\register.html" />
     <Content Include="app\services\authService.service.js" />
@@ -151,6 +154,7 @@
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Scripts\ui-bootstrap-tpls-0.13.0.min.js" />
     <Content Include="Scripts\version.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

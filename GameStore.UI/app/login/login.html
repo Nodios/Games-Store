@@ -7,12 +7,12 @@
         
         <form class="container col-sm-4">
             <label>Username: </label>
-            <input ng-model="user.userName" type="text" />
+            <input ng-model="vm.user.userName" type="text" />
             <br />
             <label>Password:</label>
-            <input ng-model="user.password" type="password" />
+            <input ng-model="vm.user.password" type="password" />
             <br />
-            <button class="btn btn-primary" ng-click="vm.login(user)">Submit</button>
+            <button class="btn btn-primary" ng-click="vm.loginUser(vm.user)">Submit</button>
         </form>
 
     </div>
@@ -24,9 +24,9 @@
 
         <form class="container col-sm-4">
             <label>Username: </label>
-            <input ng-model="user.userName" readonly type="text" />
+            <input ng-model="vm.user.userName" readonly type="text" />
             <br />
-            <button class="btn btn-danger" ng-click="vm.login(user)">Logut</button>
+            <button class="btn btn-danger" ng-click="vm.logoutUser()">Logut</button>
         </form>
 
     </div>

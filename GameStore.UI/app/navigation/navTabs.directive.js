@@ -12,7 +12,7 @@
                 },
                 controller: 'NavigationController',
                 controllerAs: 'vm',
-                bintToController: true
+                bindToController: true
             };
 
             return directive;

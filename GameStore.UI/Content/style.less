@@ -137,18 +137,13 @@ body {
 
 // REGISTER
 .register {
-    margin-top: 8em;
-
-    div {
-        .container;
-    }
 
     h3 {
-        .page-header;
+        .modal-title;
     }
 
     form {
-        .form-group;
+        .modal-body;
     }
 
     input {
@@ -170,5 +165,36 @@ body {
 
     input {
         .form-control;
+    }
+}
+
+// MODAL
+
+// overrides bootstrap modal
+.modal-open{
+    .pull-left;
+}
+
+// modal
+.modal-style {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+
+    .modal;
+
+    h3 {
+        .modal-title;
+    }
+
+    form {
+        .modal-body;
+    }
+
+    input {
+        .form-control;
+    }
+    button{
+        margin-right:20px;
     }
 }

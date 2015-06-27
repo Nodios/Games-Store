@@ -9,11 +9,12 @@
 
 
     <div class="container" ng-app="mainModule">
-    <!-- Menu navigation -->
-    <div ng-controller="NavigationController">
-        <nav-tabs></nav-tabs>
-    </div>
-    <div ng-view></div>
+       
+        <!-- Menu navigation -->
+        <div ng-controller="NavigationController">
+            <nav-tabs></nav-tabs>
+        </div>
+        <div ng-view></div>
     </div>
 
 
@@ -23,9 +24,12 @@
     <!-- Angular and dependencies -->
     <script src="Scripts/angular.min.js"></script>
     <script src="Scripts/angular-route.min.js"></script>
-
-    <!-- Modules -->
     <script src="app/mainModule.js"></script>
+    <script src="Scripts/ui-bootstrap-tpls-0.13.0.min.js"></script> <!-- Angular UI for modals -->
+
+    <!-- Modal -->
+    <script src="app/modals/modalInstance.controller.js"></script>  <!-- Modal instance, opened popup -->
+    <script src="app/modals/register/registerModal.controller.js"></script>  
 
     <!-- Services -->
     <script src="app/services/getRouteProvider.service.js"></script>
@@ -36,8 +40,6 @@
     <script src="app/navigation/navigation.controller.js"></script>
     <script src="app/navigation/navTabs.directive.js"></script>   
 
-    <!-- Register -->
-    <script src="app/register/register.controller.js"></script>
 
     <!-- Login -->
     <script src="app/login/login.controller.js"></script>
@@ -49,6 +51,7 @@
     <!-- Publisher -->
     <script src="app/publisher/publisher.controller.js"></script>
     <script src="app/publisher/publisher.service.js"></script>
+
 
     
 
