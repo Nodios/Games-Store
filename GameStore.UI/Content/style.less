@@ -84,17 +84,22 @@ body {
 .navigation {
     .navbar;
     .navbar-fixed-top;
-    .navbar-collapse;
     background-color: @navBackgroundColor;
 
     div {
         .container;
     }
 
-    ul {
+    .standardMenu {
         .nav;
         .navbar-nav;
         .nav-pills;
+    }
+
+    .dropmenu {
+        .navbar-brand;
+        .dropdown;
+        .pull-right;
     }
 }
 
@@ -135,43 +140,10 @@ body {
     }
 }
 
-// REGISTER
-.register {
-
-    h3 {
-        .modal-title;
-    }
-
-    form {
-        .modal-body;
-    }
-
-    input {
-        .form-control;
-    }
-}
-
-// LOGIN
-.login {
-    margin-top: 5em;
-
-    h3 {
-        .page-header;
-    }
-
-    form {
-        .form-group
-    }
-
-    input {
-        .form-control;
-    }
-}
-
 // MODAL
 
 // overrides bootstrap modal
-.modal-open{
+.modal-open {
     .pull-left;
 }
 
@@ -180,7 +152,6 @@ body {
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
     box-shadow: none;
-
     .modal;
 
     h3 {
@@ -194,7 +165,8 @@ body {
     input {
         .form-control;
     }
-    button{
-        margin-right:20px;
+
+    button {
+        margin-right: 20px;
     }
 }

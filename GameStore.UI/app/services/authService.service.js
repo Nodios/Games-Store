@@ -1,7 +1,7 @@
 ﻿(function (angular) {
 
     angular.module("mainModule").service('authService',
-        ['$http', '$q', '$window', function ($http, $q, $window) {
+        ['$http', '$q', '$window',function ($http, $q, $window) {
 
             var baseUrl = "gameStore";
 
@@ -30,6 +30,7 @@
                     return $http({
                         method: 'post',
                         url: baseUrl + "/api/user/register",
+                        header: { 'Content-Type': 'application/json' },
                         data : registration             
                     })
 

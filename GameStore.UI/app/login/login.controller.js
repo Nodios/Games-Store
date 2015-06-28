@@ -6,8 +6,6 @@
 
             var vm = this;
          
-            $scope.test = "Test woho";
-
             if ($window.sessionStorage.user.length > 0) {
                 vm.login = false;
                 vm.logout = true;

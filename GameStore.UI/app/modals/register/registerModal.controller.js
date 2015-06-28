@@ -14,14 +14,12 @@
             };
 
             // Open modal
-            $scope.open = function (size) {
-                console.log("Open");
-                test = false;
+            $scope.open = function () {
 
                 var modalInstance = $modal.open({
                     animation: true,
                     templateUrl: 'app/modals/register/register.html',
-                    controller: 'ModalController',
+                    controller: 'OpenRegisterModalCtrl',
                     windowClass: 'modal-style',
                     backdrop: true,
                     resolve: {
@@ -33,11 +31,7 @@
 
                 // Called after closing modal
                 modalInstance.result.then(function (userToRegister) {
-
                     register(userToRegister);
-
-                }, function () {
-                    $log.info('Modal dismissed at: ' + new Date());
                 });
             };
 
@@ -45,12 +39,11 @@
             // Used to register user
             var register = function (item) {
 
-                console.log(toString(item));
                 if (item.password === item.confirmPassword) {
 
-                    authService.saveRegistration(item).success(function (data) {
+                    authService.saveRegistration(item).success(function (data, status, header, config) {
 
-                    }).error(function (data) {
+                    }).error(function (data, status, header, config) {
                         alert(data);
                     });
                 }
@@ -63,4 +56,32 @@
 
         }]);
 
-})(angular)
+})(angular);
+
+
+
+
+// Used when modal is created 
+(function (angular) {
+
+    angular.module("mainModule").controller("OpenRegisterModalCtrl",
+        ['$scope', '$modalInstance', 'injectRegistration',
+        function ($scope, $modalInstance, injectRegistration) {
+
+
+            $scope.registration = injectRegistration;
+
+            // For cancel button
+            $scope.cancel = function () {
+                $modalInstance.dismiss('cancel');
+            };
+
+            // User register
+            $scope.registerUser = function (user) {
+                $modalInstance.close(user);
+            };
+
+        }]);
+
+
+})(angular);

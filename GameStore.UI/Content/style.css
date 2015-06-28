@@ -6914,8 +6914,8 @@ address {
 .navigation:after,
 .navigation div:before,
 .navigation div:after,
-.navigation ul:before,
-.navigation ul:after,
+.navigation .standardMenu:before,
+.navigation .standardMenu:after,
 .publisherView div:before,
 .publisherView div:after,
 .gameView div:before,
@@ -6940,7 +6940,7 @@ address {
 .dl-horizontal dd:after,
 .navigation:after,
 .navigation div:after,
-.navigation ul:after,
+.navigation .standardMenu:after,
 .publisherView div:after,
 .gameView div:after {
   clear: both;
@@ -7015,7 +7015,6 @@ body {
   top: 0;
   border-width: 0 0 1px;
   border-radius: 0;
-  max-height: 340px;
   background-color: #dddddd;
 }
 @media (min-width: 768px) {
@@ -7034,11 +7033,6 @@ body {
 @media (min-width: 768px) {
   .navigation {
     border-radius: 0;
-  }
-}
-@media (max-device-width: 480px) and (orientation: landscape) {
-  .navigation {
-    max-height: 200px;
   }
 }
 .navigation div {
@@ -7074,58 +7068,58 @@ body {
     margin-left: 0;
   }
 }
-.navigation ul {
+.navigation .standardMenu {
   margin-bottom: 0;
   padding-left: 0;
   list-style: none;
   margin: 7.5px -15px;
 }
-.navigation ul > li {
+.navigation .standardMenu > li {
   position: relative;
   display: block;
 }
-.navigation ul > li > a {
+.navigation .standardMenu > li > a {
   position: relative;
   display: block;
   padding: 10px 15px;
 }
-.navigation ul > li > a:hover,
-.navigation ul > li > a:focus {
+.navigation .standardMenu > li > a:hover,
+.navigation .standardMenu > li > a:focus {
   text-decoration: none;
   background-color: #eeeeee;
 }
-.navigation ul > li.disabled > a {
+.navigation .standardMenu > li.disabled > a {
   color: #777777;
 }
-.navigation ul > li.disabled > a:hover,
-.navigation ul > li.disabled > a:focus {
+.navigation .standardMenu > li.disabled > a:hover,
+.navigation .standardMenu > li.disabled > a:focus {
   color: #777777;
   text-decoration: none;
   background-color: transparent;
   cursor: not-allowed;
 }
-.navigation ul .open > a,
-.navigation ul .open > a:hover,
-.navigation ul .open > a:focus {
+.navigation .standardMenu .open > a,
+.navigation .standardMenu .open > a:hover,
+.navigation .standardMenu .open > a:focus {
   background-color: #eeeeee;
   border-color: #337ab7;
 }
-.navigation ul .nav-divider {
+.navigation .standardMenu .nav-divider {
   height: 1px;
   margin: 9px 0;
   overflow: hidden;
   background-color: #e5e5e5;
 }
-.navigation ul > li > a > img {
+.navigation .standardMenu > li > a > img {
   max-width: none;
 }
-.navigation ul > li > a {
+.navigation .standardMenu > li > a {
   padding-top: 10px;
   padding-bottom: 10px;
   line-height: 20px;
 }
 @media (max-width: 767px) {
-  .navigation ul .open .dropdown-menu {
+  .navigation .standardMenu .open .dropdown-menu {
     position: static;
     float: none;
     width: auto;
@@ -7134,45 +7128,68 @@ body {
     border: 0;
     box-shadow: none;
   }
-  .navigation ul .open .dropdown-menu > li > a,
-  .navigation ul .open .dropdown-menu .dropdown-header {
+  .navigation .standardMenu .open .dropdown-menu > li > a,
+  .navigation .standardMenu .open .dropdown-menu .dropdown-header {
     padding: 5px 15px 5px 25px;
   }
-  .navigation ul .open .dropdown-menu > li > a {
+  .navigation .standardMenu .open .dropdown-menu > li > a {
     line-height: 20px;
   }
-  .navigation ul .open .dropdown-menu > li > a:hover,
-  .navigation ul .open .dropdown-menu > li > a:focus {
+  .navigation .standardMenu .open .dropdown-menu > li > a:hover,
+  .navigation .standardMenu .open .dropdown-menu > li > a:focus {
     background-image: none;
   }
 }
 @media (min-width: 768px) {
-  .navigation ul {
+  .navigation .standardMenu {
     float: left;
     margin: 0;
   }
-  .navigation ul > li {
+  .navigation .standardMenu > li {
     float: left;
   }
-  .navigation ul > li > a {
+  .navigation .standardMenu > li > a {
     padding-top: 15px;
     padding-bottom: 15px;
   }
 }
-.navigation ul > li {
+.navigation .standardMenu > li {
   float: left;
 }
-.navigation ul > li > a {
+.navigation .standardMenu > li > a {
   border-radius: 4px;
 }
-.navigation ul > li + li {
+.navigation .standardMenu > li + li {
   margin-left: 2px;
 }
-.navigation ul > li.active > a,
-.navigation ul > li.active > a:hover,
-.navigation ul > li.active > a:focus {
+.navigation .standardMenu > li.active > a,
+.navigation .standardMenu > li.active > a:hover,
+.navigation .standardMenu > li.active > a:focus {
   color: #ffffff;
   background-color: #337ab7;
+}
+.navigation .dropmenu {
+  float: left;
+  padding: 15px 15px;
+  font-size: 18px;
+  line-height: 20px;
+  height: 50px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
+  position: relative;
+  float: right !important;
+}
+.navigation .dropmenu:hover,
+.navigation .dropmenu:focus {
+  text-decoration: none;
+}
+.navigation .dropmenu > img {
+  display: block;
+}
+@media (min-width: 768px) {
+  .navbar > .container .navigation .dropmenu,
+  .navbar > .container-fluid .navigation .dropmenu {
+    margin-left: -15px;
+  }
 }
 .publisherView {
   margin-top: 5em;
@@ -7430,119 +7447,6 @@ fieldset[disabled] .gameView button {
 .gameView button:active,
 .gameView button.active {
   background-image: none;
-}
-.register h3 {
-  margin: 0;
-  line-height: 1.42857143;
-}
-.register form {
-  position: relative;
-  padding: 15px;
-}
-.register input {
-  display: block;
-  width: 100%;
-  height: 34px;
-  padding: 6px 12px;
-  font-size: 14px;
-  line-height: 1.42857143;
-  color: #555555;
-  background-color: #ffffff;
-  background-image: none;
-  border: 1px solid #cccccc;
-  border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-}
-.register input:focus {
-  border-color: #66afe9;
-  outline: 0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
-}
-.register input::-moz-placeholder {
-  color: #999999;
-  opacity: 1;
-}
-.register input:-ms-input-placeholder {
-  color: #999999;
-}
-.register input::-webkit-input-placeholder {
-  color: #999999;
-}
-.register input[disabled],
-.register input[readonly],
-fieldset[disabled] .register input {
-  background-color: #eeeeee;
-  opacity: 1;
-}
-.register input[disabled],
-fieldset[disabled] .register input {
-  cursor: not-allowed;
-}
-textarea.register input {
-  height: auto;
-}
-.login {
-  margin-top: 5em;
-}
-.login h3 {
-  padding-bottom: 9px;
-  margin: 40px 0 20px;
-  border-bottom: 1px solid #eeeeee;
-}
-.login form {
-  margin-bottom: 15px;
-}
-.login input {
-  display: block;
-  width: 100%;
-  height: 34px;
-  padding: 6px 12px;
-  font-size: 14px;
-  line-height: 1.42857143;
-  color: #555555;
-  background-color: #ffffff;
-  background-image: none;
-  border: 1px solid #cccccc;
-  border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-}
-.login input:focus {
-  border-color: #66afe9;
-  outline: 0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
-}
-.login input::-moz-placeholder {
-  color: #999999;
-  opacity: 1;
-}
-.login input:-ms-input-placeholder {
-  color: #999999;
-}
-.login input::-webkit-input-placeholder {
-  color: #999999;
-}
-.login input[disabled],
-.login input[readonly],
-fieldset[disabled] .login input {
-  background-color: #eeeeee;
-  opacity: 1;
-}
-.login input[disabled],
-fieldset[disabled] .login input {
-  cursor: not-allowed;
-}
-textarea.login input {
-  height: auto;
 }
 .modal-open {
   float: left !important;

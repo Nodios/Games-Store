@@ -3,21 +3,30 @@
 // Used when modal is created 
 (function (angular) {
 
-    angular.module("mainModule").controller("ModalController", ['$scope', '$modalInstance', 'injectRegistration', function ($scope, $modalInstance, injectRegistration) {
-        
-        var vm = this;
-        vm.registration = injectRegistration;
-          
+    angular.module("mainModule").controller("ModalController",
+        ['$scope', '$modalInstance', 'injectRegistration', 'injectUserInfo',
+        function ($scope, $modalInstance, injectRegistration, injectUserInfo) {
 
-        // For cancel button
-        $scope.cancel = function () {
-            $modalInstance.dismiss('cancel');
-        };
+            var vm = this;
+            vm.registration = injectRegistration;
+            vm.userInfo = injectUserInfo;
 
-        $scope.registerUser = function (user) {
-            $modalInstance.close(user);
-        }
-    }]);
+            // For cancel button
+            $scope.cancel = function () {
+                $modalInstance.dismiss('cancel');
+            };
+
+            // User register
+            $scope.registerUser = function (user) {
+                $modalInstance.close(user);
+            };
+
+            // User login
+            $scope.userLogin = function (user) {
+                $modalInstance.close(user);
+            };
+
+        }]);
 
 
 })(angular)

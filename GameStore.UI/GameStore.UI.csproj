@@ -59,11 +59,11 @@
   <ItemGroup>
     <Content Include="app\login\login.controller.js" />
     <Content Include="app\login\login.html" />
+    <Content Include="app\modals\login\login.html" />
+    <Content Include="app\modals\login\loginModal.controller.js" />
     <Content Include="app\modals\modalInstance.controller.js" />
     <Content Include="app\modals\register\registerModal.controller.js" />
     <Content Include="app\modals\register\register.html" />
-    <Content Include="app\register\register.controller.js" />
-    <Content Include="app\register\register.html" />
     <Content Include="app\services\authService.service.js" />
     <Content Include="Content\bootstrap\alerts.less" />
     <Content Include="Content\bootstrap\badges.less" />

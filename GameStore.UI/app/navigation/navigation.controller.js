@@ -2,22 +2,25 @@
 (function (angular) {
 
 
-    angular.module("mainModule").controller("NavigationController", ['$scope', '$window', '$controller', 
+    angular.module("mainModule").controller("NavigationController", ['$scope', '$window', '$controller',
     function ($scope, $window, $controller) {
 
+        var vm = this;
 
-
-        var modalRegisterController = $scope.$new();
-
-        $controller('ModalRegisterController', { $scope: modalRegisterController });
+        vm.loggedIn = false;
+        vm.loggedOut = true;
 
         // GLOBALS  
-        $window.sessionStorage.user = "";
+        $window.sessionStorage.user = "Log in";
         $window.sessionStorage.id = "";
         $window.sessionStorage.token = "";
 
-        var vm = this;
-        vm.userLogged = false;
+        // Controllers 
+        var modalRegisterController = $scope.$new();
+        var modalLoginController = $scope.$new();
+
+        $controller('ModalRegisterController', { $scope: modalRegisterController });
+        $controller('ModalLoginController', { $scope: modalLoginController });
 
         // Proporties
         vm.menus =
@@ -28,7 +31,16 @@
                 { name: "About", active: "" }
             ];
 
-        vm.authRegister = { name: "Register", link: "#/register" };
+        // Right part of menu for unsigned user
+        vm.authRegister = { name: "Register" };
+        vm.authUser = { name: "Log in" };
+
+        // Drop down menu items for signed user
+        vm.loggedInUser = "";
+        vm.cart = { name: "Cart" };
+        vm.account = { name: "Account" };
+        vm.logout = { name: "Logout" };
+
 
         // If button is pressed set it's class to active - used just for effect 
         vm.setActive = function (index) {
@@ -41,6 +53,19 @@
             modalRegisterController.open();
         };
 
+        // Opens login modal
+        vm.loginClick = function () {
+            modalLoginController.open();
+        };
+
+        // Opens logout model
+        vm.logoutClick = function () {
+            $window.sessionStorage.user = "Log in";
+            $window.sessionStorage.id = "";
+            $window.sessionStorage.token = "";
+            vm.user = "Log in";
+            setMenuUser;
+        };
 
         // Private 
         // Sets active in menus to empty
@@ -51,15 +76,29 @@
             }
         };
 
-        // Sets up log in menu item to user name if there is user signed in , else just says log in
-        if ($window.sessionStorage.user.length <= 0) {
-            vm.authUser = { name: "Log in", link: "#/login " };
-        }
-        else {
-            vm.authUser = { name: "Welcome " + $window.sessionStorage.user, link: "#/login" };
-        }
+        // Sets menu name if user is signed in
+        var setMenuUser = function () {
 
+            // Sets up log in menu item to user name if there is user signed in , else just says log in
+            if ($window.sessionStorage.token.length > 0) {
+                vm.loggedIn = true;
+                vm.loggedOut = false;
+                vm.user = $window.sessionStorage.user + " ";
+            }
+            else {
+                vm.loggedIn = false;
+                vm.loggedOut = true;
+            }
+        };
+
+        // Keeps track on $window.sessionStorage.user changes            // ? 
+        $scope.$watch(function () {
+            return $window.sessionStorage.user;
+        }, function (newVal, oldVal) {
+            vm.loggedInUser = $window.sessionStorage.user;
+            setMenuUser();
+        });
     }
-    ])
+    ]);
 })(angular);
 
