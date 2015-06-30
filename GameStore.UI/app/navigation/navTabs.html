@@ -20,9 +20,9 @@
                 <a class="dropmenu" data-toggle="dropdown">welcome {{vm.user}}<span class="caret"></span></a>
                 <ul class="dropdown-menu pull-right">
                     <li><a>{{vm.cart.name}}</a></li>
-                    <li><a>{{vm.account.name}}</a></li>
+                    <li><a href="{{vm.account.link}}">{{vm.account.name}}</a></li>
                     <li class="divider"></li>
-                    <li><a ng-click="vm.logoutClick()">{{vm.logout.name}}</a></li>
+                    <li><a href="{{vm.logout.link}}" ng-click="vm.logoutClick()">{{vm.logout.name}}</a></li>
                 </ul>
 
             </div>

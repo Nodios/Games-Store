@@ -5,10 +5,8 @@ namespace GameStore.Model.Common
 {
     public interface IUser
     {
-
+        string Id { get; set; }
         string UserName { get; set; }
-        string Password { get; set; }
-        string ConfirmPassword { get; set; }
         string PasswordHash { get; set; }
         string Email { get; set; }
 

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity;
+using System.Data.Entity.Infrastructure;
 
 namespace GameStore.Repository
 {
@@ -134,12 +135,37 @@ namespace GameStore.Repository
         {
             try
             {
-                Context.Set<T>().Attach(entity);
-                Context.Entry<T>(entity).State = EntityState.Modified;
+                DbEntityEntry dbEntityEntry = Context.Entry(entity);
+                Context.Set<T>().Add(entity);
 
                 return await Context.SaveChangesAsync();
             }
             catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Update entity
+        /// </summary>
+        /// <typeparam name="T">Entity type</typeparam>
+        /// <param name="entity">Entity to update</param>
+        /// <param name="proportiesToUpdate">Entite proporties to update</param>
+        /// <returns>Save changes async</returns>
+        public async Task<int> UpdateAsync<T>(T entity, params Expression<Func<T, object>>[] proportiesToUpdate) where T : class
+        {
+            try
+            {
+                Context.Set<T>().Add(entity);
+                foreach (var property in proportiesToUpdate)
+                {
+                    Context.Entry<T>(entity).Property(property).IsModified = true;
+                }
+
+                return await Context.SaveChangesAsync();
+            }
+            catch (Exception ex)
             {
                 throw ex;
             }

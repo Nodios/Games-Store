@@ -8,6 +8,8 @@ namespace GameStore.DAL.Mapping
     {
         public UserMap()
         {
+            HasKey(u => u.Id);
+
             //relationship constraints
             HasOptional(u => u.Info).WithRequired(i => i.User);
             HasOptional(u => u.Cart).WithRequired(c => c.User);

@@ -11,7 +11,7 @@
     <div class="container" ng-app="mainModule">
        
         <!-- Menu navigation -->
-        <div ng-controller="NavigationController">
+        <div ng-controller="NavigationController" style="margin-top:5em;">
             <nav-tabs></nav-tabs>
         </div>
         <div ng-view></div>
@@ -36,6 +36,9 @@
     <script src="app/services/postRouteProvider.service.js"></script>
     <script src="app/services/authService.service.js"></script>
 
+    <!-- Filters -->
+    <script src="app/filters/password.filter.js"></script>
+
     <!-- Navigation -->
     <script src="app/navigation/navigation.controller.js"></script>
     <script src="app/navigation/navTabs.directive.js"></script>   
@@ -52,6 +55,9 @@
     <script src="app/publisher/publisher.controller.js"></script>
     <script src="app/publisher/publisher.service.js"></script>
 
+    <!-- Account -->
+    <script src="app/account/account.controller.js"></script>
+    <script src="app/account/account.service.js"></script>
 
     
 

@@ -7,9 +7,6 @@ namespace GameStore.Model
 {
     public class User : IdentityUser, IUser
     {
-        public string Password { get; set; }
-        public string ConfirmPassword { get; set; }
-
         // One to one 
         public virtual IInfo Info { get; set; }
         public virtual ICart Cart { get; set; }

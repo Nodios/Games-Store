@@ -5,6 +5,7 @@
         var apiPublisher = "gameStore/api/publisher";
         var apiGame = "gameStore/api/game"
         var apiPost = "gameStore/api/post"
+        var apiUser = "gameStore/api/user";
 
         return {
 
@@ -47,7 +48,10 @@
             getPosts: function (gameId, pageNumber, pageSize) {
                 return apiPost + "/" + gameId + "/" + pageNumber + "/" + pageSize;
             }
-
+            ,
+            getUserByUsername: function (username) {
+                return apiUser + "/" + username;
+            }
             
         }
 

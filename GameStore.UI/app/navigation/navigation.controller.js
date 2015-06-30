@@ -2,8 +2,11 @@
 (function (angular) {
 
 
-    angular.module("mainModule").controller("NavigationController", ['$scope', '$window', '$controller',
-    function ($scope, $window, $controller) {
+    angular.module("mainModule").controller("NavigationController", ['$scope', '$window', '$controller', '$location',
+    function ($scope, $window, $controller, $location) {
+
+        // Nav controller is first loaded controller and is alive all time 
+        $location.path("#/");  // redirect to home page every time when controller is created 
 
         var vm = this;
 
@@ -12,7 +15,6 @@
 
         // GLOBALS  
         $window.sessionStorage.user = "Log in";
-        $window.sessionStorage.id = "";
         $window.sessionStorage.token = "";
 
         // Controllers 
@@ -38,8 +40,8 @@
         // Drop down menu items for signed user
         vm.loggedInUser = "";
         vm.cart = { name: "Cart" };
-        vm.account = { name: "Account" };
-        vm.logout = { name: "Logout" };
+        vm.account = { name: "Account", link: "#/account" };
+        vm.logout = { name: "Logout", link: "#/" };
 
 
         // If button is pressed set it's class to active - used just for effect 
@@ -61,7 +63,6 @@
         // Opens logout model
         vm.logoutClick = function () {
             $window.sessionStorage.user = "Log in";
-            $window.sessionStorage.id = "";
             $window.sessionStorage.token = "";
             vm.user = "Log in";
             setMenuUser;

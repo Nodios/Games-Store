@@ -40,7 +40,6 @@
                 authService.login(user).success(function (data, status, header, config) {
 
                     $window.sessionStorage.user = data.username;
-                    $window.sessionStorage.id =data.id;
                     $window.sessionStorage.token = data.access_token;
 
                 }).error(function (data, status, header, config) {

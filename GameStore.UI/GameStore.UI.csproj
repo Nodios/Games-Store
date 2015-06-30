@@ -57,11 +57,14 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\account\account.controller.js" />
+    <Content Include="app\account\account.html" />
+    <Content Include="app\account\account.service.js" />
+    <Content Include="app\filters\password.filter.js" />
     <Content Include="app\login\login.controller.js" />
     <Content Include="app\login\login.html" />
     <Content Include="app\modals\login\login.html" />
     <Content Include="app\modals\login\loginModal.controller.js" />
-    <Content Include="app\modals\modalInstance.controller.js" />
     <Content Include="app\modals\register\registerModal.controller.js" />
     <Content Include="app\modals\register\register.html" />
     <Content Include="app\services\authService.service.js" />
@@ -971,10 +974,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="app\controllers\" />
-    <Folder Include="app\directives\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -5,6 +5,7 @@ using GameStore.Service.Common;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -22,9 +23,28 @@ namespace GameStore.WebApi.Controllers
         {
             this.userService = userService;
         }
+    
+        [Route("{username}")]
+        public async Task<HttpResponseMessage> Get(string username)
+        {
+            try
+            {
+                UserModel user = Mapper.Map<UserModel>(await userService.FindAsync(username));
+
+                if (user == null)
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "Can't find user with given id");
+                else
+                    return Request.CreateResponse(HttpStatusCode.OK, user);
+            }
+            catch (Exception ex )
+            {
+                
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
 
         [Route("Register")]
-        [HttpPost()]
+        [HttpPut()]
         public async Task<HttpResponseMessage> Register(UserModel user)
         {
             try
@@ -38,7 +58,7 @@ namespace GameStore.WebApi.Controllers
                 if (isRegistered)
                     return Request.CreateResponse(HttpStatusCode.Created, "User registered");
                 else
-                    return Request.CreateResponse(HttpStatusCode.BadRequest);
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Username already exists.");
             }
             catch (Exception ex)
             {
@@ -46,12 +66,28 @@ namespace GameStore.WebApi.Controllers
             }
         }
 
+
+
+        // TODO 
+        [Route("Update")]
+        [HttpPost]
+        [Authorize]
+        public async Task<HttpResponseMessage> Update(UserModel user)
+        {
+            try
+            {
+                return null;
+            }
+            catch (Exception ex)
+            {
+
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
+
         public class UserModel : IdentityUser
         {
-            public string UserName { get; set; }
-            public string Email { get; set; }
-            public string Password { get; set; }
-            public string ConfirmPassword { get; set; }
+            public override string Id { get; set; }       
 
             // One to one 
             public virtual IInfo Info { get; set; }

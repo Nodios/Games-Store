@@ -5,7 +5,9 @@ namespace GameStore.Service.Common
 {
     public interface IUserService
     {
-        Task<bool> RegisterUser(IUser user);
+        Task<IUser> FindAsync(string username);
         Task<IUser> FindAsync(string username, string password);
+        Task<bool> RegisterUser(IUser user);
+        Task<bool> UpdateAsync(IUser user, string password);
     }
 }

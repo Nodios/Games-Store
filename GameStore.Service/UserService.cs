@@ -18,11 +18,24 @@ namespace GameStore.Service
             UserRepository = userRepo;
         }
 
+        public async Task<IUser> FindAsync(string username)
+        {
+            try
+            {
+                return await UserRepository.GetAsync(username);
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
+        }
+
         public async Task<IUser> FindAsync(string username, string password)
         {
             try
             {
-                return await UserRepository.FindUserAsync(username, password);
+                return await UserRepository.GetAsync(username, password);
             }
             catch (Exception ex)
             {
@@ -40,11 +53,16 @@ namespace GameStore.Service
             {
                 return await UserRepository.RegisterUser(user);      
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                throw ex;
             }
+        }
+
+        public async Task<bool> UpdateAsync(IUser user, string password)
+        {
+            return await UserRepository.UpdateAsync(user, password);
         }
     }
 }

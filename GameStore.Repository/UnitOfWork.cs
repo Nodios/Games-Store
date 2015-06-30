@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using GameStore.Repository.Common;
 using GameStore.DAL;
+using System.Linq.Expressions;
 
 namespace GameStore.Repository
 {
@@ -63,6 +64,45 @@ namespace GameStore.Repository
                 else
                 {
                     entry.State = EntityState.Modified;
+                }
+
+                return Task.FromResult(entry.Entity as T);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Update
+        /// </summary>
+        /// <typeparam name="T">Entity type</typeparam>
+        /// <param name="entity">Entity to update</param>
+        /// <param name="entityParameters">Entity parameters to update</param>
+        public virtual Task<T> UpdateAsync<T>(T entity, params Expression<Func<T,object>>[] entityParameters) where T : class
+        {
+            try
+            {
+                DbEntityEntry entry = DbContext.Entry(entity);
+                if (entry.State == EntityState.Detached)
+                {
+                    DbContext.Set<T>().Attach(entity);
+
+                    // update params
+                    foreach (var p in entityParameters)
+                    {
+                        DbContext.Entry<T>(entity).Property(p).IsModified = true;
+                    }
+                }
+                else
+                {
+                    // update params
+                    foreach(var p in entityParameters)
+                    {
+                        DbContext.Entry<T>(entity).Property(p).IsModified = true;
+                    }
                 }
 
                 return Task.FromResult(entry.Entity as T);

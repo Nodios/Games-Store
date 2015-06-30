@@ -8,7 +8,7 @@
 
             vm.registration = {
                 userName: null,
-                password: null,
+                passwordHash: null,
                 confirmPassword: null,
                 email: null
             };
@@ -39,7 +39,7 @@
             // Used to register user
             var register = function (item) {
 
-                if (item.password === item.confirmPassword) {
+                if (item.passwordHash === item.confirmPassword) {
 
                     authService.saveRegistration(item).success(function (data, status, header, config) {
 

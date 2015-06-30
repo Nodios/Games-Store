@@ -9,13 +9,18 @@ namespace GameStore.DAL.Models
 {
     public class UserEntity : IdentityUser
     {
-        [Required]
-        [StringLength(50, ErrorMessage="Password should be between 6 and 50 characthers", MinimumLength=6)]
-        [Display(Name="Password")]
-        public string Password { get; set; }
+        public UserEntity()
+        {
+            if(String.IsNullOrEmpty(Id))
+            {
+                Id = Guid.NewGuid().ToString();
+            }
+        }
 
-        [Compare("Password", ErrorMessage="Password and confirmation password do not match.")]
-        public string ConfirmPassword { get; set; }
+        public override string Id { get; set; }
+
+        [Index(IsUnique=true)]
+        public override string UserName { get; set; }
 
         // One to one 
         public virtual InfoEntity Info { get; set; }

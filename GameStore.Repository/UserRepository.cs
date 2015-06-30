@@ -8,6 +8,9 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
+using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
+using System.Linq.Expressions;
 
 namespace GameStore.Repository
 {
@@ -31,11 +34,11 @@ namespace GameStore.Repository
         /// <summary>
         ///  Get by id
         /// </summary>
-        public async Task<Model.Common.IUser> GetAsync(Guid id)
+        public async Task<Model.Common.IUser> GetAsync(string username)
         {
             try
             {
-                return Mapper.Map<Model.Common.IUser>(await repository.GetAsync<UserEntity>(id));
+                return Mapper.Map<Model.Common.IUser>(await repository.GetAsync<UserEntity>(c => c.UserName == username));
             }
             catch (Exception ex)
             {
@@ -64,7 +67,7 @@ namespace GameStore.Repository
         /// <summary>
         /// Find user by username and password
         /// </summary>
-        public async Task<Model.Common.IUser> FindUserAsync(string username, string password)
+        public async Task<Model.Common.IUser> GetAsync(string username, string password)
         {
             try
             {
@@ -93,22 +96,7 @@ namespace GameStore.Repository
             }
         }
 
-        /// <summary>
-        /// Update user
-        /// </summary>
-        public async Task<int> UpdateAsync(Model.Common.IUser user)
-        {
-            try
-            {
-                return await this.repository.UpdateAsync<UserEntity>(Mapper.Map<UserEntity>(user));
-            }
-            catch (Exception ex)
-            {
-                
-                throw ex;
-            }
-        }
-
+       
         /// <summary>
         /// Delete user
         /// </summary>
@@ -151,7 +139,7 @@ namespace GameStore.Repository
         {
             try
             {
-                IdentityResult result = await userManager.CreateAsync(Mapper.Map<UserEntity>(user), user.Password);
+                IdentityResult result = await userManager.CreateAsync(Mapper.Map<UserEntity>(user), user.PasswordHash);
                 return result.Succeeded;
             }
             catch (Exception ex)
@@ -172,6 +160,30 @@ namespace GameStore.Repository
                 
                 throw ex;
             }
+        }
+
+        public async Task<bool> UpdateAsync(Model.Common.IUser user, string password)
+        {
+            try
+            {
+                IdentityResult validation = await userManager.PasswordValidator.ValidateAsync(password);
+
+                if (validation.Succeeded)
+                {
+                    IdentityResult result = await userManager.UpdateAsync(Mapper.Map<UserEntity>(user));
+                    bool success = result.Succeeded;
+
+                    return success;
+                }
+             
+                return false;
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
+            
         }
     }
 }

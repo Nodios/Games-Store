@@ -1,0 +1,54 @@
+﻿<div class="container" ng-controller="AccountController">
+    <h3>Account info</h3>
+    <br />
+
+    <!-- User table -->
+    <div class="col-sm-6">
+        <h5><strong>ACCOUNT LOGIN</strong></h5>
+        <br />
+        <table class="table">
+            <tr>
+                <td>USERNAME</td>
+                <td>{{user.UserName}}</td>
+                <td><button class="btn btn-sm" ng-click="vm.changeUsername()">CHANGE</button></td>
+            </tr>
+            <tr>
+                <td>EMAIL</td>
+                <td>* * * * * * * *</td>
+                <td><button class="btn btn-sm">CHANGE</button></td>
+            </tr>
+
+            <tr>
+                <td>PASSWORD</td>
+                <td>{{user.Email }}</td>
+                <td><button class="btn btn-sm">CHANGE</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Change account info-->
+    <!-- Username change -->
+    <div class="col-sm-5 col-sm-offset-1" ng-show="vm.showUserChangeTab">
+        <h5 class="h5">CHANGE USERNAME</h5>
+        <br />
+        <form class="form-group">
+            <div class="form-inline">
+                <label class="col-sm-4">Password</label>
+                <input type="password" class="form-control" />
+            </div>
+            <br />
+            <div class="form-inline">
+                <label class="col-sm-4">New username</label>
+                <input type="text" class="form-control" />
+            </div>
+            <br />
+            <div class="form-inline">
+                <div class="input-group">
+                    <div class="input-group-addon">Username</div>
+                    <input type="text" readonly class="form-control" />
+                </div>
+                <button class="btn btn-sm btn-primary">Change</button>
+            </div>
+        </form>
+    </div>
+</div>
