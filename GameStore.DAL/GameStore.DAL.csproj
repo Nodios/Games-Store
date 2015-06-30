@@ -65,6 +65,11 @@
     <Compile Include="Mapping\ReviewMap.cs" />
     <Compile Include="Mapping\SupportMap.cs" />
     <Compile Include="Mapping\UserMap.cs" />
+    <Compile Include="Migrations\201506301419483_first.cs" />
+    <Compile Include="Migrations\201506301419483_first.Designer.cs">
+      <DependentUpon>201506301419483_first.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CartEntity.cs" />
     <Compile Include="Models\CommentEntity.cs" />
     <Compile Include="Models\PublisherEntity.cs" />
@@ -87,6 +92,11 @@
       <Project>{19928acc-be7b-446f-ba4d-6839259f7276}</Project>
       <Name>GameStore.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201506301419483_first.resx">
+      <DependentUpon>201506301419483_first.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

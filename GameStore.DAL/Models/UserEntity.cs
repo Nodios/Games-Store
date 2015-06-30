@@ -9,16 +9,21 @@ namespace GameStore.DAL.Models
 {
     public class UserEntity : IdentityUser
     {
-        public UserEntity()
+        public override string Id
         {
-            if(String.IsNullOrEmpty(Id))
+            get
             {
-                Id = Guid.NewGuid().ToString();
+                return base.Id;
+            }
+            set
+            {
+                if (String.IsNullOrEmpty(value))
+                    base.Id = Guid.NewGuid().ToString();
+                else
+                    base.Id = value;
             }
         }
-
-        public override string Id { get; set; }
-
+        
         [Index(IsUnique=true)]
         public override string UserName { get; set; }
 

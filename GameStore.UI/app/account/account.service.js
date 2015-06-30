@@ -1,8 +1,8 @@
 ﻿(function (angular) {
 
     angular.module("mainModule").service("userService", [
-        '$http', '$window', 'getRouteProvider', 'postRouteProvider',
-        function ($http, $window, getRouteProvider, postRouteProvider) {
+        '$http', '$window', 'getRouteProvider', 'putRouteProvider',
+        function ($http, $window, getRouteProvider, putRouteProvider) {
 
             return {
                 getUserByUsername: function (username) {
@@ -14,8 +14,8 @@
                     var token = $window.sessionStorage.token;
 
                     return $http({
-                        method: 'post',
-                        url: postRouteProvider.updateUser(user),
+                        method: 'put',
+                        url: putRouteProvider.updateUser(user),
                         headers: { 'Authorization': 'Bearer ' + token },
                         data: user
                     });

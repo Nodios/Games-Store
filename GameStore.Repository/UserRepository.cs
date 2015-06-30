@@ -145,7 +145,7 @@ namespace GameStore.Repository
             catch (Exception ex)
             {
                 
-                throw ex;
+                throw ex.InnerException;
             }
         }
 
@@ -162,7 +162,7 @@ namespace GameStore.Repository
             }
         }
 
-        public async Task<bool> UpdateAsync(Model.Common.IUser user, string password)
+        public async Task<int> UpdateAsync(Model.Common.IUser user, string password)
         {
             try
             {
@@ -170,18 +170,43 @@ namespace GameStore.Repository
 
                 if (validation.Succeeded)
                 {
-                    IdentityResult result = await userManager.UpdateAsync(Mapper.Map<UserEntity>(user));
-                    bool success = result.Succeeded;
+                    user.PasswordHash = hasher.HashPassword(user.PasswordHash);
 
-                    return success;
+                    return await repository.UpdateAsync<UserEntity>(Mapper.Map<UserEntity>(user));
+                }
+
+                return 0;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex.InnerException;
+            }
+        }
+ 
+        /// <summary>
+        /// Updates only user name and password proporites
+        /// </summary>
+        public async Task<int> UpdateEmailOrUsernameAsync(Model.Common.IUser user, string password)
+        {
+            try
+            {
+                IdentityResult validation = await userManager.PasswordValidator.ValidateAsync(password);
+
+                if (validation.Succeeded)
+                {
+                    user.PasswordHash = hasher.HashPassword(user.PasswordHash);
+
+                    // Only allows user name or email to change
+                    return await repository.UpdateAsync<UserEntity>(Mapper.Map<UserEntity>(user), u => u.Email, u=> u.UserName);
                 }
              
-                return false;
+                return 0;
             }
             catch (Exception ex)
             {
                 
-                throw ex;
+                throw ex.InnerException;
             }
             
         }

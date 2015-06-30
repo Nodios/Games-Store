@@ -60,9 +60,9 @@ namespace GameStore.Service
             }
         }
 
-        public async Task<bool> UpdateAsync(IUser user, string password)
+        public async Task<int> UpdateEmailOrUsernameAsync(Model.Common.IUser user, string password)
         {
-            return await UserRepository.UpdateAsync(user, password);
+            return await UserRepository.UpdateEmailOrUsernameAsync(user, password);
         }
     }
 }

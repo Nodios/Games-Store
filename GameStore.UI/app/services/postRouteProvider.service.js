@@ -10,10 +10,7 @@
             // Post single post
             postPost: function () {
                 return postUrl + "/insert";
-            },
-            updateUser: function (user) {
-                return postUser + "/" + user;
-            } 
+            },  
         };
 
     }]);

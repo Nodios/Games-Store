@@ -44,7 +44,7 @@ namespace GameStore.WebApi.Controllers
         }
 
         [Route("Register")]
-        [HttpPut()]
+        [HttpPost()]
         public async Task<HttpResponseMessage> Register(UserModel user)
         {
             try
@@ -58,7 +58,7 @@ namespace GameStore.WebApi.Controllers
                 if (isRegistered)
                     return Request.CreateResponse(HttpStatusCode.Created, "User registered");
                 else
-                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Username already exists.");
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Error while creating new user.");
             }
             catch (Exception ex)
             {
@@ -69,14 +69,19 @@ namespace GameStore.WebApi.Controllers
 
 
         // TODO 
-        [Route("Update")]
-        [HttpPost]
+        [Route("Update/{user}")]
         [Authorize]
+        [HttpPut]
         public async Task<HttpResponseMessage> Update(UserModel user)
         {
             try
             {
-                return null;
+                int result = await userService.UpdateEmailOrUsernameAsync(Mapper.Map<IUser>(user), user.PasswordHash);
+
+                if (result == 1)
+                    return Request.CreateResponse(HttpStatusCode.OK, "User updated.");
+                else
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Update failed.");
             }
             catch (Exception ex)
             {
@@ -87,7 +92,20 @@ namespace GameStore.WebApi.Controllers
 
         public class UserModel : IdentityUser
         {
-            public override string Id { get; set; }       
+            public override string Id
+            {
+                get
+                {
+                    return base.Id;
+                }
+                set
+                {
+                    if (String.IsNullOrEmpty(value))
+                        base.Id = Guid.NewGuid().ToString();
+                    else
+                        base.Id = value;
+                }
+            }
 
             // One to one 
             public virtual IInfo Info { get; set; }

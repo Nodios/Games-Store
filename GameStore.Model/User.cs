@@ -7,6 +7,21 @@ namespace GameStore.Model
 {
     public class User : IdentityUser, IUser
     {
+        public override string Id
+        {
+            get
+            {
+                return base.Id;
+            }
+            set
+            {
+                if (String.IsNullOrEmpty(Id))
+                    base.Id = Guid.NewGuid().ToString();
+                else
+                    base.Id = value;
+            }
+        }
+
         // One to one 
         public virtual IInfo Info { get; set; }
         public virtual ICart Cart { get; set; }

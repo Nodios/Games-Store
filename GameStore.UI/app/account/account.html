@@ -34,20 +34,20 @@
         <form class="form-group">
             <div class="form-inline">
                 <label class="col-sm-4">Password</label>
-                <input type="password" class="form-control" />
+                <input type="password" class="form-control" ng-model="user.PasswordHash" />
             </div>
             <br />
             <div class="form-inline">
                 <label class="col-sm-4">New username</label>
-                <input type="text" class="form-control" />
+                <input type="text" class="form-control" ng-model="user.UserName"/>
             </div>
             <br />
             <div class="form-inline">
                 <div class="input-group">
                     <div class="input-group-addon">Username</div>
-                    <input type="text" readonly class="form-control" />
+                    <input type="text" readonly class="form-control" ng-model="user.UserName" />
                 </div>
-                <button class="btn btn-sm btn-primary">Change</button>
+                <button class="btn btn-sm btn-primary" ng-click="vm.confirmNewUsername(user)">Change</button>
             </div>
         </form>
     </div>

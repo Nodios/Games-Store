@@ -137,6 +137,7 @@ namespace GameStore.Repository
             {
                 DbEntityEntry dbEntityEntry = Context.Entry(entity);
                 Context.Set<T>().Add(entity);
+                dbEntityEntry.State = EntityState.Modified;
 
                 return await Context.SaveChangesAsync();
             }
@@ -157,7 +158,9 @@ namespace GameStore.Repository
         {
             try
             {
+                DbEntityEntry dbEntityEntry = Context.Entry(entity);
                 Context.Set<T>().Add(entity);
+                dbEntityEntry.State = EntityState.Unchanged;
                 foreach (var property in proportiesToUpdate)
                 {
                     Context.Entry<T>(entity).Property(property).IsModified = true;

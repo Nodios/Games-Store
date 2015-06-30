@@ -28,7 +28,7 @@
                 saveRegistration: function (registration) {
                    
                     return $http({
-                        method: 'put',
+                        method: 'post',
                         url: baseUrl + "/api/user/register",
                         header: { 'Content-Type': 'application/json' },
                         data : registration             
