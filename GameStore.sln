@@ -19,11 +19,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameStore.Service.Common", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameStore.Service", "GameStore.Service\GameStore.Service.csproj", "{2AE32D66-55AD-4E62-85D1-4DB6A0E10D5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Test", "Service.Test\Service.Test.csproj", "{F2580BCB-8A26-4AE8-BB81-72BCD1216F75}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameStore.WebApi", "GameStore.WebApi\GameStore.WebApi.csproj", "{05409974-FCD7-4B0A-B6D5-3A2BABF01DBE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameStore.UI", "GameStore.UI\GameStore.UI.csproj", "{FE168CBD-D506-40D7-9085-454D4A6393D0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{D9D5FED0-0129-4BE4-AAFB-BC264A253F70}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,10 +68,6 @@ Global
 		{2AE32D66-55AD-4E62-85D1-4DB6A0E10D5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2AE32D66-55AD-4E62-85D1-4DB6A0E10D5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2AE32D66-55AD-4E62-85D1-4DB6A0E10D5C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F2580BCB-8A26-4AE8-BB81-72BCD1216F75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F2580BCB-8A26-4AE8-BB81-72BCD1216F75}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F2580BCB-8A26-4AE8-BB81-72BCD1216F75}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F2580BCB-8A26-4AE8-BB81-72BCD1216F75}.Release|Any CPU.Build.0 = Release|Any CPU
 		{05409974-FCD7-4B0A-B6D5-3A2BABF01DBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{05409974-FCD7-4B0A-B6D5-3A2BABF01DBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05409974-FCD7-4B0A-B6D5-3A2BABF01DBE}.Release|Any CPU.ActiveCfg = Release|Any CPU

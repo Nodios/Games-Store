@@ -29,8 +29,9 @@
                     // Success
 
                     // save token and user to session storage
+                    console.log(response);
                     $window.sessionStorage.token = response.access_token;
-                    $window.sessionStorage.userName = item.userName;
+                    $window.sessionStorage.userName = response.userName;
                     $window.sessionStorage.id = response.id;
 
                     vm.login = false;
@@ -50,7 +51,7 @@
                 $window.sessionStorage.id = "";
 
                 vm.login = true;
-               vm.logout = false;
+                vm.logout = false;
             };
             
         }]);

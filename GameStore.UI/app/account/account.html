@@ -9,7 +9,7 @@
         <table class="table">
             <tr>
                 <td>USERNAME</td>
-                <td>{{user.UserName}}</td>
+                <td>{{::user.UserName}}</td>
                 <td><button class="btn btn-sm" ng-click="vm.changeUsername()">CHANGE</button></td>
             </tr>
             <tr>
@@ -20,7 +20,7 @@
 
             <tr>
                 <td>PASSWORD</td>
-                <td>{{user.Email }}</td>
+                <td>{{::user.Email }}</td>
                 <td><button class="btn btn-sm">CHANGE</button></td>
             </tr>
         </table>

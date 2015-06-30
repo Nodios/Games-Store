@@ -3,4 +3,3 @@ C:\Users\luka\Desktop\Praksa\GameStore\GameStore.UI\bin\GameStore.UI.dll
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.UI\bin\GameStore.UI.pdb
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.UI\obj\Debug\GameStore.UI.dll
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.UI\obj\Debug\GameStore.UI.pdb
-C:\Users\luka\Desktop\Praksa\GameStore\GameStore.UI\obj\Debug\GameStore.UI.csprojResolveAssemblyReference.cache

@@ -36,9 +36,9 @@
             // PRIVATE
             // used to log in user
             var login = function (user) {
-
+                console.log(user);
                 authService.login(user).success(function (data, status, header, config) {
-
+                    console.log(data);
                     $window.sessionStorage.user = data.username;
                     $window.sessionStorage.token = data.access_token;
 

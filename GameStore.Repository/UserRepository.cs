@@ -1,16 +1,12 @@
 ﻿using AutoMapper;
 using GameStore.DAL;
 using GameStore.DAL.Models;
-using GameStore.Model.Common;
 using GameStore.Repository.Common;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Linq;
-using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
-using System.Linq.Expressions;
 
 namespace GameStore.Repository
 {
@@ -27,8 +23,7 @@ namespace GameStore.Repository
         {
             this.repository = repository;
             hasher = new PasswordHasher();
-            userManager = new UserManager<UserEntity>
-                (new UserStore<UserEntity>(new GamesStoreContext()));
+            userManager = new UserManager<UserEntity>(new UserStore<UserEntity>(new GamesStoreContext()));
         }
 
         /// <summary>
@@ -42,7 +37,7 @@ namespace GameStore.Repository
             }
             catch (Exception ex)
             {
-                
+
                 throw ex;
             }
         }
@@ -59,7 +54,7 @@ namespace GameStore.Repository
             }
             catch (Exception ex)
             {
-                
+
                 throw ex;
             }
         }
@@ -71,7 +66,11 @@ namespace GameStore.Repository
         {
             try
             {
-                UserEntity user = await userManager.FindAsync(username, password);
+                UserEntity user;
+                using (UserManager<UserEntity> userManager = manager())
+                {
+                    user = await userManager.FindAsync(username, password);
+                }
                 return Mapper.Map<Model.Common.IUser>(user);
             }
             catch (Exception ex)
@@ -91,12 +90,12 @@ namespace GameStore.Repository
             }
             catch (Exception ex)
             {
-                
+
                 throw ex;
             }
         }
 
-       
+
         /// <summary>
         /// Delete user
         /// </summary>
@@ -108,7 +107,7 @@ namespace GameStore.Repository
             }
             catch (Exception ex)
             {
-                
+
                 throw ex;
             }
         }
@@ -125,7 +124,7 @@ namespace GameStore.Repository
             }
             catch (Exception ex)
             {
-                
+
                 throw ex;
             }
         }
@@ -144,7 +143,7 @@ namespace GameStore.Repository
             }
             catch (Exception ex)
             {
-                
+
                 throw ex.InnerException;
             }
         }
@@ -155,10 +154,10 @@ namespace GameStore.Repository
             {
                 return Task.FromResult<IUnitOfWork>(repository.CreateUnitOfWork());
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                
-                throw ex;
+
+                throw;
             }
         }
 
@@ -183,7 +182,7 @@ namespace GameStore.Repository
                 throw ex.InnerException;
             }
         }
- 
+
         /// <summary>
         /// Updates only user name and password proporites
         /// </summary>
@@ -198,17 +197,30 @@ namespace GameStore.Repository
                     user.PasswordHash = hasher.HashPassword(user.PasswordHash);
 
                     // Only allows user name or email to change
-                    return await repository.UpdateAsync<UserEntity>(Mapper.Map<UserEntity>(user), u => u.Email, u=> u.UserName);
+                    return await repository.UpdateAsync<UserEntity>(Mapper.Map<UserEntity>(user), u => u.Email, u => u.UserName);
                 }
-             
+
                 return 0;
             }
             catch (Exception ex)
             {
-                
+
                 throw ex.InnerException;
             }
-            
+
         }
+
+        #region Private fields
+
+        /// <summary>
+        /// User manager initialize
+        /// </summary>
+        /// <returns>new user manager</returns>
+        private UserManager<UserEntity> manager()
+        {
+            return new UserManager<UserEntity>(new UserStore<UserEntity>(new GamesStoreContext()));
+        } 
+
+        #endregion
     }
 }

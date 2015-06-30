@@ -1,4 +1,3 @@
-C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Repository\bin\Debug\AutoMapper.Net4.dll
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Repository\bin\Debug\GameStore.Repository.dll.config
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Repository\bin\Debug\GameStore.Repository.dll
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Repository\bin\Debug\GameStore.Repository.pdb
@@ -18,9 +17,7 @@ C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Repository\bin\Debug\GameStore.
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Repository\bin\Debug\GameStore.DAL.pdb
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Repository\bin\Debug\GameStore.Model.Common.pdb
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Repository\bin\Debug\GameStore.Repository.Common.pdb
-C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Repository\bin\Debug\AutoMapper.pdb
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Repository\bin\Debug\AutoMapper.xml
-C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Repository\bin\Debug\AutoMapper.Net4.pdb
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Repository\bin\Debug\Castle.Core.xml
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Repository\bin\Debug\EntityFramework.xml
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Repository\bin\Debug\EntityFramework.SqlServer.xml

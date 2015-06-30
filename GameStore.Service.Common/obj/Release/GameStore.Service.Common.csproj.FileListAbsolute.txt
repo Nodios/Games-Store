@@ -1,0 +1,8 @@
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Service.Common\bin\Release\GameStore.Service.Common.dll
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Service.Common\bin\Release\GameStore.Service.Common.pdb
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Service.Common\bin\Release\GameStore.Common.dll
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Service.Common\bin\Release\GameStore.Model.Common.dll
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Service.Common\bin\Release\GameStore.Common.pdb
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Service.Common\bin\Release\GameStore.Model.Common.pdb
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Service.Common\obj\Release\GameStore.Service.Common.dll
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Service.Common\obj\Release\GameStore.Service.Common.pdb

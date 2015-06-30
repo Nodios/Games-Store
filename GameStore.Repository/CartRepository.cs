@@ -103,9 +103,9 @@ namespace GameStore.Repository
             {
                 return repository.DeleteAsync<CartEntity>(Mapper.Map<CartEntity>(cart));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
         }
 

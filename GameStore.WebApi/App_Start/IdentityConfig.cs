@@ -1,9 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using GameStore.WebApi.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
-using GameStore.WebApi.Models;
 
 namespace GameStore.WebApi
 {

@@ -5,6 +5,8 @@
         function ($scope, $window, userService) {
 
             var vm = this;
+            vm.tableUserName;
+            vm.tableEmail;
             vm.showUserChangeTab = false;
 
             // Crate user and add data to it
@@ -12,7 +14,6 @@
             userService.getUserByUsername($window.sessionStorage.user).success(function (data) {
                 $scope.user = data;
                 $scope.user.PasswordHash = "";
-                console.log(data);
             });
 
 
@@ -23,8 +24,6 @@
 
             // Confirm username change
             vm.confirmNewUsername = function (userData) {
-
-                console.log(userData);
 
                 userService.updateUser(userData).success(function (data) {
                     console.log(data);

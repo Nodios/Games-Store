@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using GameStore.Common;
-using GameStore.Model;
 using GameStore.Model.Common;
 using GameStore.Service.Common;
 using System;

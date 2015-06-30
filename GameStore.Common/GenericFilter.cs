@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 namespace GameStore.Common
 {
     public abstract class GenericFilter

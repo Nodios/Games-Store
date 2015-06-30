@@ -4,10 +4,6 @@ using GameStore.DAL.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Data.Entity;
-using System.Data.Entity.Core.Objects;
-using System.Data.Entity.ModelConfiguration;
-using System.Linq;
-using System.Reflection;
 
 namespace GameStore.DAL
 {
@@ -64,5 +60,10 @@ namespace GameStore.DAL
             return base.Set<TEntity>();                   
         }
         #endregion
+
+        void Dispose()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

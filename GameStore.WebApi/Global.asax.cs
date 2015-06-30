@@ -1,8 +1,5 @@
-﻿using GameStore.WebApi.App_Start;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using GameStore.Model;
+using GameStore.WebApi.App_Start;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -20,7 +17,11 @@ namespace GameStore.WebApi
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            AutoMapperConfig.Initialize();
+            AutoMapper.Mapper.Initialize(cfg =>
+            {
+                cfg.AddProfile<AutomapperModelLayerMapping>();
+                cfg.AddProfile<AutoMapperWebApiLayerMapping>();
+            });
         }
     }
 }

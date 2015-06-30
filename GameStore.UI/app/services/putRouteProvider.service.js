@@ -5,7 +5,7 @@
 
         return {
             updateUser: function (user) {
-                return postUser + "/update/" + user;
+                return postUser + "/UpdateUserOrMail/" + user;
             }
         }
     }]);

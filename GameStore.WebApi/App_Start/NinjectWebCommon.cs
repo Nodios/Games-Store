@@ -9,9 +9,9 @@ namespace GameStore.WebApi.App_Start
     using Ninject.Web.Common;
     using Ninject.Web.WebApi;
     using System;
+    using System.Linq;
     using System.Web;
     using System.Web.Http;
-    using System.Linq;
 
     public static class NinjectWebCommon
     {

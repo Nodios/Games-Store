@@ -1,10 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using GameStore.DAL;
+using GameStore.Repository.Common;
+using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using GameStore.Repository.Common;
-using GameStore.DAL;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace GameStore.Repository
 {
@@ -41,9 +41,9 @@ namespace GameStore.Repository
                 }
                 return Task.FromResult(dbEntity.Entity as T);
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                throw ex;
+                throw;
             }
         }
 
@@ -68,10 +68,10 @@ namespace GameStore.Repository
 
                 return Task.FromResult(entry.Entity as T);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
-                throw ex;
+                throw;
             }
         }
 
@@ -107,10 +107,10 @@ namespace GameStore.Repository
 
                 return Task.FromResult(entry.Entity as T);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
-                throw ex;
+                throw;
             }
         }
 
@@ -128,9 +128,9 @@ namespace GameStore.Repository
                 }
                 return Task.FromResult(1);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw ;
             }
         }
 
@@ -148,10 +148,10 @@ namespace GameStore.Repository
                 }
                 return DeleteAsync<T>(entity);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 
-                throw ex;
+                throw;
             }
         }
 
@@ -167,6 +167,6 @@ namespace GameStore.Repository
             DbContext.Dispose();
         }
 
-        #endregion
+        #endregion     
     }
 }

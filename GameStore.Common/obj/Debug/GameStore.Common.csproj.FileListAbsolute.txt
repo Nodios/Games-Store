@@ -2,4 +2,3 @@ C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Common\bin\Debug\GameStore.Comm
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Common\bin\Debug\GameStore.Common.pdb
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Common\obj\Debug\GameStore.Common.dll
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Common\obj\Debug\GameStore.Common.pdb
-C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Common\obj\Debug\GameStore.Common.csprojResolveAssemblyReference.cache

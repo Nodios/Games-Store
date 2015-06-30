@@ -3,12 +3,10 @@ using GameStore.Repository.Common;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using System.Linq;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity;
-using System.Data.Entity.Infrastructure;
 
 namespace GameStore.Repository
 {

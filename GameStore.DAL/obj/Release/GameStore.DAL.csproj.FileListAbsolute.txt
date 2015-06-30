@@ -1,0 +1,17 @@
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\bin\Release\GameStore.DAL.dll.config
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\bin\Release\GameStore.DAL.dll
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\bin\Release\GameStore.DAL.pdb
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\bin\Release\EntityFramework.dll
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\bin\Release\GameStore.Common.dll
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\bin\Release\Microsoft.AspNet.Identity.Core.dll
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\bin\Release\GameStore.Common.pdb
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\bin\Release\EntityFramework.xml
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\bin\Release\Microsoft.AspNet.Identity.Core.xml
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\obj\Release\GameStore.DAL.Migrations.first.resources
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\obj\Release\GameStore.DAL.csproj.GenerateResource.Cache
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\obj\Release\GameStore.DAL.dll
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\obj\Release\GameStore.DAL.pdb

@@ -5,9 +5,9 @@ using GameStore.Model.Common;
 using GameStore.Repository.Common;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Linq;
 using System.Data.Entity;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace GameStore.Repository
 {

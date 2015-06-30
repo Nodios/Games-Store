@@ -1,0 +1,15 @@
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Service\bin\Release\GameStore.Service.dll
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Service\bin\Release\GameStore.Service.pdb
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Service\bin\Release\GameStore.Common.dll
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Service\bin\Release\GameStore.Model.Common.dll
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Service\bin\Release\GameStore.Repository.Common.dll
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Service\bin\Release\GameStore.Service.Common.dll
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Service\bin\Release\Ninject.dll
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Service\bin\Release\GameStore.Common.pdb
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Service\bin\Release\GameStore.Model.Common.pdb
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Service\bin\Release\GameStore.Repository.Common.pdb
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Service\bin\Release\GameStore.Service.Common.pdb
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Service\bin\Release\Ninject.xml
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Service\obj\Release\GameStore.Service.csprojResolveAssemblyReference.cache
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Service\obj\Release\GameStore.Service.dll
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Service\obj\Release\GameStore.Service.pdb

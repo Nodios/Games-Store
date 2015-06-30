@@ -1,5 +1,4 @@
-﻿using GameStore.Common;
-using GameStore.Model.Common;
+﻿using GameStore.Model.Common;
 using System;
 using System.Collections.Generic;
 

@@ -1,8 +1,8 @@
+using GameStore.WebApi.Areas.HelpPage.ModelDescriptions;
+using GameStore.WebApi.Areas.HelpPage.Models;
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
-using GameStore.WebApi.Areas.HelpPage.ModelDescriptions;
-using GameStore.WebApi.Areas.HelpPage.Models;
 
 namespace GameStore.WebApi.Areas.HelpPage.Controllers
 {

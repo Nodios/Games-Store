@@ -12,7 +12,7 @@ namespace GameStore.Repository.Common
 
         Task<IEnumerable<IUser>> GetAsync(Expression<Func<IUser, bool>> match);
         Task<int> AddAsync(IUser user);
-        Task<bool> UpdateAsync(IUser user, string password);
+        Task<int> UpdateAsync(IUser user, string password);
         Task<int> UpdateEmailOrUsernameAsync(Model.Common.IUser user, string password);
         Task<int> DeleteAsync(IUser user);
         Task<int> DeleteAsync(Guid id);

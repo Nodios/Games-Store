@@ -1,5 +1,4 @@
 ﻿using GameStore.DAL.Models;
-using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;

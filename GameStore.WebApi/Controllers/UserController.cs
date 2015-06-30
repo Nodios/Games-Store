@@ -1,12 +1,9 @@
 ﻿using AutoMapper;
-using GameStore.Model;
 using GameStore.Model.Common;
 using GameStore.Service.Common;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -69,10 +66,10 @@ namespace GameStore.WebApi.Controllers
 
 
         // TODO 
-        [Route("Update/{user}")]
+        [Route("UpdateUserOrMail/{user}")]
         [Authorize]
         [HttpPut]
-        public async Task<HttpResponseMessage> Update(UserModel user)
+        public async Task<HttpResponseMessage> UpdatePasswordOrMail(UserModel user)
         {
             try
             {
