@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace GameStore.Repository
 {
@@ -14,7 +15,6 @@ namespace GameStore.Repository
     {
         private IRepository repository;
         private PasswordHasher hasher;
-        private UserManager<UserEntity> userManager;
 
         /// <summary>
         /// Constructor
@@ -23,8 +23,35 @@ namespace GameStore.Repository
         {
             this.repository = repository;
             hasher = new PasswordHasher();
-            userManager = new UserManager<UserEntity>(new UserStore<UserEntity>(new GamesStoreContext()));
         }
+
+        #region Other methods
+
+        /// <summary>
+        /// Initalize user manager
+        /// </summary>
+        /// <returns>new user manager</returns>
+        private UserManager<UserEntity> createUserManager()
+        {
+            return new UserManager<UserEntity>(new UserStore<UserEntity>(new GamesStoreContext()));
+        }
+
+        public Task<IUnitOfWork> CreateUnitOfWork()
+        {
+            try
+            {
+                return Task.FromResult<IUnitOfWork>(repository.CreateUnitOfWork());
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        #endregion
+
+        #region Get 
 
         /// <summary>
         ///  Get by id
@@ -67,7 +94,7 @@ namespace GameStore.Repository
             try
             {
                 UserEntity user;
-                using (UserManager<UserEntity> userManager = manager())
+                using (UserManager<UserEntity> userManager = createUserManager())
                 {
                     user = await userManager.FindAsync(username, password);
                 }
@@ -79,7 +106,11 @@ namespace GameStore.Repository
             }
         }
 
-        /// <summary>
+        #endregion
+
+        #region Add
+
+		 /// <summary>
         /// Add user
         /// </summary>
         public async Task<int> AddAsync(Model.Common.IUser user)
@@ -95,8 +126,32 @@ namespace GameStore.Repository
             }
         }
 
+          /// <summary>
+        /// Registers adds user
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns>True if success, false otherwise</returns>
+        public async Task<bool> RegisterUser(Model.Common.IUser user, string password)
+        {
+            try
+            {
+                using (UserManager<UserEntity> userManager = createUserManager())
+                {
+                    IdentityResult result = await userManager.CreateAsync(Mapper.Map<UserEntity>(user), password);
+                    return result.Succeeded;
+                }
+            }
+            catch (Exception ex)
+            {
 
-        /// <summary>
+                throw ex.InnerException;
+            }
+        } 
+	#endregion
+
+        #region Delete
+
+		 /// <summary>
         /// Delete user
         /// </summary>
         public async Task<int> DeleteAsync(Model.Common.IUser user)
@@ -127,19 +182,23 @@ namespace GameStore.Repository
 
                 throw ex;
             }
-        }
+        } 
 
-        /// <summary>
-        /// Registers adds user
+	    #endregion
+
+        #region  Update
+
+	    /// <summary>
+        /// Updates user, return int as result
         /// </summary>
-        /// <param name="user"></param>
-        /// <returns>True if success, false otherwise</returns>
-        public async Task<bool> RegisterUser(Model.Common.IUser user)
+        /// <param name="user">User</param>
+        /// <param name="password">User password for validation</param>
+        /// <returns>Int { 0: operation failed }</returns>
+        public async Task<int> UpdateAsync(Model.Common.IUser user)
         {
             try
             {
-                IdentityResult result = await userManager.CreateAsync(Mapper.Map<UserEntity>(user), user.PasswordHash);
-                return result.Succeeded;
+                return await repository.UpdateAsync<UserEntity>(Mapper.Map<UserEntity>(user));
             }
             catch (Exception ex)
             {
@@ -148,11 +207,32 @@ namespace GameStore.Repository
             }
         }
 
-        public Task<IUnitOfWork> CreateUnitOfWork()
+        /// <summary>
+        /// Updates user and return updated user
+        /// </summary>
+        /// <param name="user">User to update</param>
+        /// <param name="password">User password</param>
+        /// <returns>IUser</returns>
+        public async Task<Model.Common.IUser> UpdateUserAsync(Model.Common.IUser user, string password)
         {
             try
             {
-                return Task.FromResult<IUnitOfWork>(repository.CreateUnitOfWork());
+                IUnitOfWork uow = repository.CreateUnitOfWork();
+                bool passwordValid = false;
+                Task<UserEntity> result = null;
+           
+                // Check if user is valid
+                using (UserManager<UserEntity> UserManager = createUserManager())
+                {
+                    UserEntity userToCheck = await UserManager.FindByIdAsync(user.Id);
+                    passwordValid = await UserManager.CheckPasswordAsync(userToCheck, password);
+                }
+
+                if (passwordValid)
+                      result = uow.UpdateAsync<UserEntity>(Mapper.Map<UserEntity>(user));
+
+                await uow.CommitAsync();
+                return await Task.FromResult(Mapper.Map<Model.Common.IUser>(result.Result) as Model.Common.IUser);
             }
             catch (Exception)
             {
@@ -161,66 +241,70 @@ namespace GameStore.Repository
             }
         }
 
-        public async Task<int> UpdateAsync(Model.Common.IUser user, string password)
+        /// <summary>
+        /// Updates only username or email
+        /// </summary>
+        /// <param name="user">UserToUpdate</param>
+        /// <param name="password">User password</param>
+        /// <returns>IUser</returns>
+        public async Task<Model.Common.IUser> UpdateUserEmailOrUsernameAsync(Model.Common.IUser user,string password)
         {
             try
             {
-                IdentityResult validation = await userManager.PasswordValidator.ValidateAsync(password);
+                IUnitOfWork uow = repository.CreateUnitOfWork();
+                bool passwordValid = false;
+                Task<UserEntity> result = null;
 
-                if (validation.Succeeded)
+                // Check if user is valid
+                using (UserManager<UserEntity> UserManager = createUserManager())
                 {
-                    user.PasswordHash = hasher.HashPassword(user.PasswordHash);
-
-                    return await repository.UpdateAsync<UserEntity>(Mapper.Map<UserEntity>(user));
+                    UserEntity userToCheck = await UserManager.FindByIdAsync(user.Id);
+                    passwordValid = await UserManager.CheckPasswordAsync(userToCheck, password);
                 }
 
-                return 0;
+                if (passwordValid)
+                    result = uow.UpdateAsync<UserEntity>(Mapper.Map<UserEntity>(user), u => u.Email, u => u.UserName);
+
+                await uow.CommitAsync();
+                return await Task.FromResult(Mapper.Map<Model.Common.IUser>(result.Result) as Model.Common.IUser);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
-                throw ex.InnerException;
+                throw;
             }
         }
 
         /// <summary>
-        /// Updates only user name and password proporites
+        /// Change user password
         /// </summary>
-        public async Task<int> UpdateEmailOrUsernameAsync(Model.Common.IUser user, string password)
+        /// <param name="user">User </param>
+        /// <param name="newPassword">New password</param>
+        /// <returns>IUser</returns>
+        public async Task<Model.Common.IUser> UpdateUserPasswordAsync(Model.Common.IUser user, string newPassword)
         {
             try
             {
-                IdentityResult validation = await userManager.PasswordValidator.ValidateAsync(password);
-
-                if (validation.Succeeded)
+                Model.Common.IUser userToReturn = null;
+                using (UserManager<UserEntity> UserManager = createUserManager())
                 {
-                    user.PasswordHash = hasher.HashPassword(user.PasswordHash);
-
-                    // Only allows user name or email to change
-                    return await repository.UpdateAsync<UserEntity>(Mapper.Map<UserEntity>(user), u => u.Email, u => u.UserName);
+                    IdentityResult result = await UserManager.ChangePasswordAsync(user.Id, user.PasswordHash, newPassword);
+                    if (result.Succeeded)
+                        userToReturn = Mapper.Map<Model.Common.IUser>(await UserManager.FindByIdAsync(user.Id));
                 }
 
-                return 0;
+                return userToReturn;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
-                throw ex.InnerException;
+                
+                throw;
             }
-
         }
 
-        #region Private fields
+	    #endregion
 
-        /// <summary>
-        /// User manager initialize
-        /// </summary>
-        /// <returns>new user manager</returns>
-        private UserManager<UserEntity> manager()
-        {
-            return new UserManager<UserEntity>(new UserStore<UserEntity>(new GamesStoreContext()));
-        } 
 
-        #endregion
+   
     }
 }

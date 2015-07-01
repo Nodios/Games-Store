@@ -7,11 +7,12 @@
             var vm = this;
 
             vm.registration = {
-                userName: null,
-                passwordHash: null,
-                confirmPassword: null,
-                email: null
+                userName: "",
+                email: ""
             };
+
+            vm.password = "";
+            vm.confirmPassword = "";
 
             // Open modal
             $scope.open = function () {
@@ -25,23 +26,36 @@
                     resolve: {
                         injectRegistration: function () {
                             return vm.registration;
+                        },
+                        injectPassword: function () {
+                            return vm.password;
+                        },
+                        injectConfirmPassword: function () {
+                            return vm.confirmPassword;
                         }
                     }
                 });
 
-                // Called after closing modal
-                modalInstance.result.then(function (userToRegister) {
-                    register(userToRegister);
+                // Called after closing modal, 
+                modalInstance.result.then(function (data) {
+                    
+                    var user = data.registration;
+                    var pass = data.password;
+                    var cp = data.confirmPassword;
+
+                    register(user,pass,cp);
                 });
             };
 
             // Private functions
             // Used to register user
-            var register = function (item) {
+            var register = function (item, pass, confirmPass) {
 
-                if (item.passwordHash === item.confirmPassword) {
-
-                    authService.saveRegistration(item).success(function (data, status, header, config) {
+                console.log(pass);
+                console.log(confirmPass);
+                if (pass === confirmPass && pass.length >= 6) {
+                    
+                    authService.saveRegistration(item, pass).success(function (data, status, header, config) {
 
                     }).error(function (data, status, header, config) {
                         alert(data);
@@ -65,11 +79,14 @@
 (function (angular) {
 
     angular.module("mainModule").controller("OpenRegisterModalCtrl",
-        ['$scope', '$modalInstance', 'injectRegistration',
-        function ($scope, $modalInstance, injectRegistration) {
+        ['$scope', '$modalInstance', 'injectRegistration', 'injectPassword', 'injectConfirmPassword',
+        function ($scope, $modalInstance, injectRegistration,injectPassword, injectConfirmPassword) {
 
-
-            $scope.registration = injectRegistration;
+            $scope.data = {
+                user: injectRegistration,
+                password: injectPassword,
+                confirmPassword: injectConfirmPassword
+            }
 
             // For cancel button
             $scope.cancel = function () {
@@ -77,8 +94,8 @@
             };
 
             // User register
-            $scope.registerUser = function (user) {
-                $modalInstance.close(user);
+            $scope.registerUser = function (data) {
+                $modalInstance.close(data);
             };
 
         }]);

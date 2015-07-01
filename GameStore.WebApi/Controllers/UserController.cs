@@ -4,6 +4,7 @@ using GameStore.Service.Common;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace GameStore.WebApi.Controllers
     public class UserController : ApiController
     {
         private IUserService userService;
+        private UserModel userForValidation;
 
         public UserController(IUserService userService)
         {
@@ -27,6 +29,7 @@ namespace GameStore.WebApi.Controllers
             try
             {
                 UserModel user = Mapper.Map<UserModel>(await userService.FindAsync(username));
+                userForValidation = user;
 
                 if (user == null)
                     return Request.CreateResponse(HttpStatusCode.NotFound, "Can't find user with given id");
@@ -42,7 +45,7 @@ namespace GameStore.WebApi.Controllers
 
         [Route("Register")]
         [HttpPost()]
-        public async Task<HttpResponseMessage> Register(UserModel user)
+        public async Task<HttpResponseMessage> Register(PostAndPutModel user)
         {
             try
             {
@@ -50,7 +53,11 @@ namespace GameStore.WebApi.Controllers
                 {
                     return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid action.");
                 }
-                bool isRegistered = await userService.RegisterUser(Mapper.Map<IUser>(user));
+
+                // add password to user
+                user.User.PasswordHash = user.Password;
+
+                bool isRegistered = await userService.RegisterUser(Mapper.Map<IUser>(user.User), user.Password);
 
                 if (isRegistered)
                     return Request.CreateResponse(HttpStatusCode.Created, "User registered");
@@ -69,22 +76,31 @@ namespace GameStore.WebApi.Controllers
         [Route("UpdateUserOrMail/{user}")]
         [Authorize]
         [HttpPut]
-        public async Task<HttpResponseMessage> UpdatePasswordOrMail(UserModel user)
+        public async Task<HttpResponseMessage> UpdatePasswordOrMail(PostAndPutModel user)
         {
             try
             {
-                int result = await userService.UpdateEmailOrUsernameAsync(Mapper.Map<IUser>(user), user.PasswordHash);
+                IUser result = await userService.UpdateEmailOrUsernameAsync(Mapper.Map<IUser>(user.User), user.Password);
 
-                if (result == 1)
-                    return Request.CreateResponse(HttpStatusCode.OK, "User updated.");
+                if (user == null)
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Error while validating user. Update failed");
                 else
-                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Update failed.");
+                    return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
             {
 
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
+        }
+
+        /// <summary>
+        /// Keeps user model that holds user and password
+        /// </summary>
+        public class PostAndPutModel
+        {
+            public UserModel User { get; set; }
+            public string Password { get; set; }
         }
 
         public class UserModel : IdentityUser

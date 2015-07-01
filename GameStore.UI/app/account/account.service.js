@@ -9,7 +9,7 @@
                     return $http.get(getRouteProvider.getUserByUsername(username));
                 },
 
-                updateUser: function (user) {                                       // update 
+                updateUser: function (user, password) {                                       // update 
 
                     var token = $window.sessionStorage.token;
 
@@ -17,10 +17,13 @@
                         method: 'put',
                         url: putRouteProvider.updateUser(user),
                         headers: { 'Authorization': 'Bearer ' + token },
-                        data: user
+                        data: {
+                            user: user,
+                            password: password
+                        }
                     });
                 }
             };
-    }]);
-    
+        }]);
+
 })(angular);

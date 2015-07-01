@@ -55,22 +55,14 @@ namespace GameStore.Repository
         {
             try
             {
-                DbEntityEntry entry = DbContext.Entry(entity);
-                if (entry.State == EntityState.Detached)
-                {
-                    DbContext.Set<T>().Attach(entity);
-                    DbContext.Entry<T>(entity).State = EntityState.Modified;
-                }
-                else
-                {
-                    entry.State = EntityState.Modified;
-                }
+                DbEntityEntry entityEntry = DbContext.Entry<T>(entity);
+                DbContext.Set<T>().Add(entity);
+                entityEntry.State = EntityState.Modified;
 
-                return Task.FromResult(entry.Entity as T);
+                return Task.FromResult<T>(entityEntry.Entity as T);
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -85,24 +77,12 @@ namespace GameStore.Repository
         {
             try
             {
-                DbEntityEntry entry = DbContext.Entry(entity);
-                if (entry.State == EntityState.Detached)
+                DbEntityEntry entry = DbContext.Entry<T>(entity);
+                DbContext.Set<T>().Add(entity);
+                entry.State = EntityState.Unchanged;
+                foreach(var p in entityParameters)
                 {
-                    DbContext.Set<T>().Attach(entity);
-
-                    // update params
-                    foreach (var p in entityParameters)
-                    {
-                        DbContext.Entry<T>(entity).Property(p).IsModified = true;
-                    }
-                }
-                else
-                {
-                    // update params
-                    foreach(var p in entityParameters)
-                    {
-                        DbContext.Entry<T>(entity).Property(p).IsModified = true;
-                    }
+                    DbContext.Entry<T>(entity).Property(p).IsModified = true;
                 }
 
                 return Task.FromResult(entry.Entity as T);

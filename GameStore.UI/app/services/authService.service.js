@@ -26,13 +26,16 @@
                 },
 
                 // REGISTER, SIGN UP
-                saveRegistration: function (registration) {
+                saveRegistration: function (registration, password) {
                    
                     return $http({
                         method: 'post',
                         url: baseUrl + "/api/user/register",
                         header: { 'Content-Type': 'application/json' },
-                        data : registration             
+                        data: {
+                            user: registration,
+                            password: password
+                        }
                     })
 
                 }

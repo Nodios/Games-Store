@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace GameStore.Repository
@@ -68,11 +69,13 @@ namespace GameStore.Repository
             {
                 if (filter != null)
                 {
-                    return Mapper.Map<IEnumerable<IPublisher>>(
-                        await repository.Where<PublisherEntity>()
-                        .OrderBy(p => p.Name)
-                        .Skip((filter.PageNumber * filter.PageSize) - filter.PageSize)
-                        .Take(filter.PageSize).ToListAsync());
+                    
+                        return Mapper.Map<IEnumerable<IPublisher>>(
+                            await repository.Where<PublisherEntity>()
+                            .OrderBy(u => u.Name)
+                            .Skip((filter.PageNumber * filter.PageSize) - filter.PageSize)
+                            .Take(filter.PageSize).ToListAsync());
+                      
                 }
                 else
                     return Mapper.Map<IEnumerable<IPublisher>>(await repository.GetRangeAsync<PublisherEntity>());
@@ -147,5 +150,6 @@ namespace GameStore.Repository
         }  
 
         #endregion
+        
     }
 }

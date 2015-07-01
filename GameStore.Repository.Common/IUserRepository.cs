@@ -8,16 +8,25 @@ namespace GameStore.Repository.Common
 {
     public interface IUserRepository
     {
+        // Get
         Task<IUser> GetAsync(string username);
-
         Task<IEnumerable<IUser>> GetAsync(Expression<Func<IUser, bool>> match);
+        Task<IUser> GetAsync(string username, string password);
+
+        // Add
         Task<int> AddAsync(IUser user);
-        Task<int> UpdateAsync(IUser user, string password);
-        Task<int> UpdateEmailOrUsernameAsync(Model.Common.IUser user, string password);
+        Task<bool> RegisterUser(IUser user, string password);
+
+        // Update
+        Task<int> UpdateAsync(IUser user);
+        Task<IUser> UpdateUserAsync(IUser user, string password);
+        Task<IUser> UpdateUserEmailOrUsernameAsync(IUser user, string password);
+        Task<IUser> UpdateUserPasswordAsync(IUser user, string newPassword);
+
+        // Delete
         Task<int> DeleteAsync(IUser user);
         Task<int> DeleteAsync(Guid id);
-        Task<bool> RegisterUser(IUser user);
-        Task<IUser> GetAsync(string username, string password);
+
         Task<IUnitOfWork> CreateUnitOfWork();
     }
 }

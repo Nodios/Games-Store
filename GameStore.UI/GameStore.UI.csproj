@@ -61,8 +61,6 @@
     <Content Include="app\account\account.html" />
     <Content Include="app\account\account.service.js" />
     <Content Include="app\filters\password.filter.js" />
-    <Content Include="app\login\login.controller.js" />
-    <Content Include="app\login\login.html" />
     <Content Include="app\modals\login\login.html" />
     <Content Include="app\modals\login\loginModal.controller.js" />
     <Content Include="app\modals\register\registerModal.controller.js" />

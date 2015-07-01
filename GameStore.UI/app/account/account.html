@@ -9,19 +9,19 @@
         <table class="table">
             <tr>
                 <td>USERNAME</td>
-                <td>{{::user.UserName}}</td>
+                <td>{{::user.userData.UserName}}</td>
                 <td><button class="btn btn-sm" ng-click="vm.changeUsername()">CHANGE</button></td>
             </tr>
             <tr>
-                <td>EMAIL</td>
+                <td>PASSWORD</td>
                 <td>* * * * * * * *</td>
                 <td><button class="btn btn-sm">CHANGE</button></td>
             </tr>
 
             <tr>
-                <td>PASSWORD</td>
-                <td>{{::user.Email }}</td>
-                <td><button class="btn btn-sm">CHANGE</button></td>
+                <td>EMAIL</td>
+                <td>{{::user.userData.Email }}</td>
+                <td><button class="btn btn-sm" ng-click="vm.changeEmail()">CHANGE</button></td>
             </tr>
         </table>
     </div>
@@ -34,20 +34,45 @@
         <form class="form-group">
             <div class="form-inline">
                 <label class="col-sm-4">Password</label>
-                <input type="password" class="form-control" ng-model="user.PasswordHash" />
+                <input type="password" class="form-control" ng-model="user.password" />
             </div>
             <br />
             <div class="form-inline">
                 <label class="col-sm-4">New username</label>
-                <input type="text" class="form-control" ng-model="user.UserName"/>
+                <input type="text" class="form-control" ng-model="user.userData.UserName"/>
             </div>
             <br />
             <div class="form-inline">
                 <div class="input-group">
                     <div class="input-group-addon">Username</div>
-                    <input type="text" readonly class="form-control" ng-model="user.UserName" />
+                    <input type="text" readonly class="form-control" ng-model="user.userData.UserName" />
                 </div>
-                <button class="btn btn-sm btn-primary" ng-click="vm.confirmNewUsername(user)">Change</button>
+                <button class="btn btn-sm btn-primary" ng-click="vm.confirmNewUsernameOrEmail(user)">Change</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Email change -->
+    <div class="col-sm-5 col-sm-offset-1" ng-show="vm.showEmailChangeTab">
+        <h5 class="h5">CHANGE EMAIL</h5>
+        <br />
+        <form class="form-group">
+            <div class="form-inline">
+                <label class="col-sm-4">Password</label>
+                <input type="password" class="form-control" ng-model="user.password" />
+            </div>
+            <br />
+            <div class="form-inline">
+                <label class="col-sm-4">New email</label>
+                <input type="text" class="form-control" ng-model="user.userData.Email" />
+            </div>
+            <br />
+            <div class="form-inline">
+                <div class="input-group">
+                    <div class="input-group-addon">Email</div>
+                    <input type="text" readonly class="form-control" ng-model="user.userData.Email" />
+                </div>
+                <button class="btn btn-sm btn-primary" ng-click="vm.confirmNewUsernameOrEmail(user)">Change</button>
             </div>
         </form>
     </div>
