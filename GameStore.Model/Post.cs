@@ -12,13 +12,15 @@ namespace GameStore.Model
 
         public int VotesUp { get; set; }
         public int VotesDown { get; set; }
+        public string Author { get; set; }
         public string Description { get; set; }
-        public string Title { get; set; }
+
 
         public virtual IGame Game { get; set; }
         public virtual IUser User { get; set; }
 
         // One to many, post can have many comments
         public virtual ICollection<IComment> Comments { get; set; }
+
     }
 }

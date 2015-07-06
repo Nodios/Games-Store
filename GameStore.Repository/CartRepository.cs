@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using GameStore.Common;
 using GameStore.DAL.Models;
 using GameStore.Model.Common;
 using GameStore.Repository.Common;
@@ -24,18 +25,18 @@ namespace GameStore.Repository
 
         #endregion
 
-        #region Methods
-
+        #region Get
+		
         /// <summary>
         /// Gets ICart by id
         /// </summary>
         /// <param name="id">id</param>
         /// <returns>Icart</returns>
-        public async Task<Model.Common.ICart> GetAsync(Guid id)
+        public async Task<Model.Common.ICart> GetAsync(string userId)
         {
             try
             {
-                return Mapper.Map<ICart>(await repository.GetAsync<CartEntity>(id));
+                return Mapper.Map<ICart>(await repository.GetAsync<CartEntity>(c => c.UserId == userId));
             }
             catch (Exception ex)
             {
@@ -59,16 +60,20 @@ namespace GameStore.Repository
             }
         }
 
+	#endregion
+
+        #region Add
+		
         /// <summary>
         /// Add cart
         /// </summary>
         /// <param name="cart">Icart</param>
         /// <returns>Added Icart</returns>
-        public async Task<int> Add(Model.Common.ICart cart)
+        public async Task<int> AddAsync(Model.Common.ICart cart)
         {
             try
             {
-               return await repository.AddAsync<CartEntity>(Mapper.Map<CartEntity>(cart));
+                return await repository.AddAsync<CartEntity>(Mapper.Map<CartEntity>(cart));
             }
             catch (Exception ex)
             {
@@ -77,12 +82,16 @@ namespace GameStore.Repository
 
         }
 
+	#endregion
+
+        #region Update
+
         /// <summary>
         /// Updates cart
         /// </summary>
         /// <param name="cart">Icart entity</param>
         /// <returns>Icart</returns>
-        public async Task<int> Update(Model.Common.ICart cart)
+        public async Task<int> UpdateAsync(Model.Common.ICart cart)
         {
             try
             {
@@ -93,6 +102,26 @@ namespace GameStore.Repository
                 throw ex;
             }
         }
+
+        public async Task<ICart> UpdateCartAsync(ICart cart)
+        {
+            try
+            {
+                IUnitOfWork uow = repository.CreateUnitOfWork();
+                CartEntity result = await uow.UpdateAsync<CartEntity>(Mapper.Map<CartEntity>(cart));
+                await uow.CommitAsync();
+                return Mapper.Map<ICart>(result);
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+        }
+
+        #endregion
+
+        #region Delete
 
         /// <summary>
         /// Deletes cart
@@ -123,7 +152,7 @@ namespace GameStore.Repository
             {
                 throw ex;
             }
-        } 
+        }
 
         #endregion
     }

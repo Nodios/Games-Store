@@ -2,6 +2,7 @@
 using GameStore.Common;
 using GameStore.Model.Common;
 using GameStore.Service.Common;
+using GameStore.WebApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -97,27 +98,8 @@ namespace GameStore.WebApi.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
-        }
-
-        /// <summary>
-        /// Publisher class
-        /// </summary>
-        public class PublisherModel
-        {
-            public Guid Id { get; set; }
-            public string Name { get; set; }
-            public string Description { get; set; }
-        }
-
-        /// <summary>
-        /// Support class
-        /// </summary>
-        public class SupportModel
-        {
-            public Guid PublisherId { get; set; }
-            public string Email { get; set; }
-            public string Address { get; set; }
-            public string Phone { get; set; }
-        }
+        }  
     }
+
+   
 }

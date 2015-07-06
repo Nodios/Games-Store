@@ -2,7 +2,6 @@
 using GameStore.DAL.Mapping;
 using GameStore.DAL.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
-using System;
 using System.Data.Entity;
 
 namespace GameStore.DAL
@@ -28,11 +27,11 @@ namespace GameStore.DAL
         public DbSet<CommentEntity> Comments { get; set; }
         public DbSet<PublisherEntity> Publishers { get; set; }
         public DbSet<GameEntity> Games { get; set; }
+        public DbSet<GameImageEntity> GameImages { get; set; }
         public DbSet<InfoEntity> Info { get; set; }
         public DbSet<PostEntity> Posts { get; set; }
         public DbSet<ReviewEntity> Reviews { get; set; }
         public DbSet<SupportEntity> Support { get; set; }
-     // public DbSet<UserEntity> StoreUser { get; set; }
        
         #endregion
 
@@ -44,6 +43,7 @@ namespace GameStore.DAL
             modelBuilder.Configurations.Add(new CommentMap());
             modelBuilder.Configurations.Add(new PublisherMap());
             modelBuilder.Configurations.Add(new GameMap());
+            modelBuilder.Configurations.Add(new GameImageMap());
             modelBuilder.Configurations.Add(new InfoMap());
             modelBuilder.Configurations.Add(new PostMap());
             modelBuilder.Configurations.Add(new ReviewMap());
@@ -59,11 +59,7 @@ namespace GameStore.DAL
         {
             return base.Set<TEntity>();                   
         }
+ 
         #endregion
-
-        void Dispose()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

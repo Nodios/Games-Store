@@ -1,3 +1,4 @@
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WebApi\obj\Debug\GameStore.WebApi.csprojResolveAssemblyReference.cache
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WebApi\bin\GameStore.WebApi.dll.config
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WebApi\bin\GameStore.WebApi.dll
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WebApi\bin\GameStore.WebApi.pdb
@@ -93,6 +94,5 @@ C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WebApi\bin\System.Web.Http.Owin
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WebApi\bin\GameStore.DAL.pdb
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WebApi\bin\Ninject.Extensions.Factory.xml
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WebApi\bin\Castle.Core.xml
-C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WebApi\obj\Debug\GameStore.WebApi.csprojResolveAssemblyReference.cache
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WebApi\obj\Debug\GameStore.WebApi.dll
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WebApi\obj\Debug\GameStore.WebApi.pdb

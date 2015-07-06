@@ -1,12 +1,11 @@
 ﻿using GameStore.Model.Common;
-using System;
 using System.Collections.Generic;
 
 namespace GameStore.Model
 {
     public class Cart : ICart
     {
-        public Guid Id { get; set; }
+        public string UserId { get; set; }
         
         // One to one
         public virtual IUser User { get; set; }

@@ -11,10 +11,42 @@
     <div class="container" ng-app="mainModule">
        
         <!-- Menu navigation -->
-        <div ng-controller="NavigationController" style="margin-top:5em;">
-            <nav-tabs></nav-tabs>
+        <div ng-controller="NavigationController as vm" style="margin-top:5em;">
+
+            <!-- NAVIGATION -->
+            <nav>
+                <div class="navigation">
+                    <div>
+
+                        <!-- Menu -->
+                        <ul class="standardMenu" ng-repeat="menu in menus">
+                            <!-- :: one way binding -->
+                            <li class="{{menu.active}}"><a href="{{menu.link}}" ng-click="vm.setActive($index)">{{::menu.name}}</a></li>
+                        </ul>
+
+                        <!-- User signed out-->
+                        <div ng-show="vm.loggedOut">
+                            <a class="navbar-text pull-right" ng-click="vm.registerClick()">{{vm.authRegister.name}}</a>
+                            <a class="navbar-brand pull-right" ng-click="vm.loginClick()">{{vm.authUser.name}}</a>
+                        </div>
+
+                        <!-- Drop down menu, user signed in -->
+                        <div ng-show="vm.loggedIn === true">
+                            <a class="dropmenu" data-toggle="dropdown">welcome {{vm.user}}<span class="caret"></span></a>                      
+                            <ul class="dropdown-menu pull-right">
+                                <li><a href="{{vm.cart.link}}">{{vm.cart.name}}</a></li>
+                                <li><a href="{{vm.account.link}}">{{vm.account.name}}</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{{vm.logout.link}}" ng-click="vm.logoutClick()">{{vm.logout.name}}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- VIEW -->
+            <div ng-view></div>
         </div>
-        <div ng-view></div>
     </div>
 
 
@@ -42,7 +74,6 @@
 
     <!-- Navigation -->
     <script src="app/navigation/navigation.controller.js"></script>
-    <script src="app/navigation/navTabs.directive.js"></script>   
 
 
     <!-- Game -->
@@ -57,6 +88,9 @@
     <script src="app/account/account.controller.js"></script>
     <script src="app/account/account.service.js"></script>
 
+    <!-- Cart -->
+    <script src="app/cart/cart.controller.js"></script>
+    <script src="app/cart/cart.service.js"></script>
     
 
 </body>

@@ -6,7 +6,7 @@ namespace GameStore.DAL.Models
 {
     public class PostEntity : PostsAndComments
     {
-        public string Title { get; set; }
+        public string Author { get; set; }
 
         public Guid GameId { get; set; }
         public string UserId { get; set; }
@@ -16,5 +16,5 @@ namespace GameStore.DAL.Models
 
         // One to many, post can have many comments
         public virtual ICollection<CommentEntity> Comments { get; set; }
-    }
+    } 
 }

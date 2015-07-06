@@ -6,6 +6,9 @@
         var apiGame = "gameStore/api/game"
         var apiPost = "gameStore/api/post"
         var apiUser = "gameStore/api/user";
+        var apiGameImage = "gameStore/api/gameImage";
+        var apiReview = "gamestore/api/review";
+        var apiCart = "gamestore/api/cart";
 
         return {
 
@@ -41,7 +44,7 @@
 
             // Collection
             getGamesByPublisherId: function (publisherId) {
-                return urlGame + /getRangeFromPublisherId/ + publisherId;
+                return apiGame + /getRangeFromPublisherId/ + publisherId;
             },
 
             // Collection
@@ -49,8 +52,25 @@
                 return apiPost + "/" + gameId + "/" + pageNumber + "/" + pageSize;
             }
             ,
+
+            // Single
             getUserByUsername: function (username) {
                 return apiUser + "/" + username;
+            },
+
+            // Collection
+            getImages: function (gameId) {
+                return apiGameImage + "/" + gameId;
+            },
+
+            // Collection
+            getReviews: function (gameId, pageNumber, pageSize) {
+                return apiReview + "/" + gameId + "/" + pageNumber + "/" + pageSize;
+            },
+
+            // Get cart
+            getCart: function (userId) {
+                return apiCart + "/" + userId;
             }
             
         }

@@ -15,6 +15,7 @@
 
         // GLOBALS  
         $window.sessionStorage.user = "Log in";
+        $window.sessionStorage.id = "";
         $window.sessionStorage.token = "";
 
         // Controllers 
@@ -25,7 +26,7 @@
         $controller('ModalLoginController', { $scope: modalLoginController });
 
         // Proporties
-        vm.menus =
+        $scope.menus =
             [
                 { name: "Home", link: "#/", active: "active" },          // Link goes into ng-href , link it's just bootstrap class used for menu selected effect
                 { name: "Games", link: "#/game", active: "" },
@@ -34,12 +35,12 @@
             ];
 
         // Right part of menu for unsigned user
+        vm.user;
         vm.authRegister = { name: "Register" };
         vm.authUser = { name: "Log in" };
 
         // Drop down menu items for signed user
-        vm.loggedInUser = "";
-        vm.cart = { name: "Cart" };
+        vm.cart = { name: "Cart" , link: "#/cart"};
         vm.account = { name: "Account", link: "#/account" };
         vm.logout = { name: "Logout", link: "#/" };
 
@@ -47,7 +48,7 @@
         // If button is pressed set it's class to active - used just for effect 
         vm.setActive = function (index) {
             clearActive();
-            vm.menus[index].active = "active";
+            $scope.menus[index].active = "active";
         };
 
         // Opens register modal
@@ -72,8 +73,8 @@
         // Sets active in menus to empty
         var clearActive = function () {
 
-            for (var i = 0; i < vm.menus.length; i++) {
-                vm.menus[i].active = "";
+            for (var i = 0; i < $scope.menus.length; i++) {
+                $scope.menus[i].active = "";
             }
         };
 
@@ -96,8 +97,16 @@
         $scope.$watch(function () {
             return $window.sessionStorage.user;
         }, function (newVal, oldVal) {
-            vm.loggedInUser = $window.sessionStorage.user;
             setMenuUser();
+        });
+
+      
+        // EVENTS 
+        // used by child controller to set game link to active
+        $scope.$on('setGameLinkToActive', function (event, data) {
+
+            // Clear menu classes and set game menu class to active 
+            vm.setActive(1);
         });
     }
     ]);

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using GameStore.Service.Common;
+using GameStore.WebApi.Models;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace GameStore.WebApi.Providers
     public class SimpleAuthorizationServerProvider : OAuthAuthorizationServerProvider
     {
         private IUserService userService;
-        private WebApi.Controllers.UserController.UserModel user;
+        private UserModel user;
 
         public SimpleAuthorizationServerProvider()
             : base()
@@ -37,7 +38,7 @@ namespace GameStore.WebApi.Providers
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
 
-           user = Mapper.Map<WebApi.Controllers.UserController.UserModel>(await userService.FindAsync(context.UserName, context.Password));
+           user = Mapper.Map<UserModel>(await userService.FindAsync(context.UserName, context.Password));
 
             if (user == null)
             {

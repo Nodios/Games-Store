@@ -9,19 +9,36 @@
                     return $http.get(getRouteProvider.getUserByUsername(username));
                 },
 
-                updateUser: function (user, password) {                                       // update 
+                // Updates user username or email
+                updateUser: function (user, password) {                                  
 
                     var token = $window.sessionStorage.token;
 
                     return $http({
                         method: 'put',
-                        url: putRouteProvider.updateUser(user),
+                        url: putRouteProvider.updateUser(),
                         headers: { 'Authorization': 'Bearer ' + token },
                         data: {
                             user: user,
                             password: password
                         }
                     });
+                },
+
+                updateUserPassword: function (userId, oldPassword, newPassword) {
+
+                    var token = $window.sessionStorage.token;
+
+                    return $http({
+                        method: 'put',
+                        url: putRouteProvider.updateUserPassword(),
+                        headers: { 'Authorization': 'Bearer ' + token },
+                        data: {
+                            userId: userId,
+                            oldPassword: oldPassword,
+                            newPassword: newPassword
+                        }
+                    })
                 }
             };
         }]);

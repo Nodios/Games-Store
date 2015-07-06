@@ -14,7 +14,7 @@
         </tr>
         <tr ng-repeat="item in vm.publishers">
             <td>{{item.Name}}</td>
-            <td><a>Show</a></td>
+            <td><a ng-click="vm.showGames(item.Id)">Show</a></td>
             <td><a ng-click="vm.getSupport(item,item.Id)">details</a></td>
         </tr>
     </table> 

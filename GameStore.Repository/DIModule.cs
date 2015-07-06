@@ -25,6 +25,7 @@ namespace GameStore.Repository
             Bind<ICommentRepository>().To<CommentRepository>();
             Bind<IPublisherRepository>().To<PublisherRepository>();
             Bind<IGameRepository>().To<GameRepository>();
+            Bind<IGameImageRepository>().To<GameImageRepository>();
             Bind<IInfoRepository>().To<InfoRepository>();
             Bind<IPostRepository>().To<PostRepository>();
             Bind<IReviewRepository>().To<ReviewRepository>();

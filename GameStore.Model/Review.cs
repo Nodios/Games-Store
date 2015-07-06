@@ -8,6 +8,8 @@ namespace GameStore.Model
         public Guid Id { get; set; }
         public Guid? GameId { get; set; }
 
+        public string Title { get; set; }
+        public string Description { get; set; }
         public float Score { get; set; }
         public virtual IGame Game { get; set; }
     }

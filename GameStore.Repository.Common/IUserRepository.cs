@@ -21,12 +21,11 @@ namespace GameStore.Repository.Common
         Task<int> UpdateAsync(IUser user);
         Task<IUser> UpdateUserAsync(IUser user, string password);
         Task<IUser> UpdateUserEmailOrUsernameAsync(IUser user, string password);
-        Task<IUser> UpdateUserPasswordAsync(IUser user, string newPassword);
+        Task<bool> UpdateUserPasswordAsync(string userId,string oldPassword, string newPassword);
 
         // Delete
         Task<int> DeleteAsync(IUser user);
         Task<int> DeleteAsync(Guid id);
 
-        Task<IUnitOfWork> CreateUnitOfWork();
     }
 }

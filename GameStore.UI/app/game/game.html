@@ -1,36 +1,141 @@
-﻿<div class="gameView" ng-controller="GameController">
-    <div>
-        <label>Search: </label>
-        <input type="text" ng-model="vm.searchString" />
-        <button ng-click="vm.get()">Search</button>
+﻿<div ng-controller="GameController">
+    <div class="gameView">
+        <div>
+            <label>Search: </label>
+            <input type="text" ng-model="vm.searchString" />
+            <button ng-click="vm.get()">Search</button>
+        </div>
+        <div class="bottom-buffer"  ng-if="vm.showGamesTable">
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Genre</th>
+                    <th></th>
+                </tr>
+                <tr ng-repeat="item in vm.games">
+                    <td>{{item.Name}}</td>
+                    <td>{{item.Price | currency}}</td>
+                    <td>{{item.Genre}}</td>
+                    <td><a ng-click="vm.getItemDetails(item)">details</a></td>
+                </tr>
+            </table>
+            <button class="btn btn-success">
+                <span class="glyphicon glyphicon-menu-left"></span>
+                Previous
+            </button>
+            <button class="btn btn-success pull-right">
+                Next
+                <span class="glyphicon glyphicon-menu-right  col-sm-offset-1"></span>
+            </button>
+        </div>
     </div>
-    <table ng-if="vm.showGamesTable">
-        <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Genre</th>
-            <th></th>
-        </tr>
-        <tr ng-repeat="item in vm.games">
-            <td>{{item.Name}}</td>
-            <td>{{item.Price | currency}}</td>
-            <td>{{item.Genre}}</td>
-            <td><a ng-click="vm.getItemDetails(item)">details</a></td>
-        </tr>
-    </table>
+
+
+    <!-- Show game details-->
     <div ng-if="vm.gameDetails">
-        <p>Name: {{vm.game.Name}}</p>
-        <p>Price: {{vm.game.Price |currency}}</p>
-        <p>Genre: {{vm.game.Genre}}</p>
-        <p>User reviews: {{vm.game.ReviewScore}}</p>
-        <p>Os support: {{vm.game.OsSupport}}</p>
+        <h3 class="page-header">{{vm.game.Name}}</h3>
+        <br />
+        <br />
+
+        <!-- Show images -->
+        <div class="col-sm-offset-1 col-sm-4">
+            <div ng-repeat="image in vm.gameImages">
+                <img ng-src="data:image/png;base64,{{image.Content}}" />
+
+            </div>
+        </div>
+
+        <!-- Show buy form -->
+        <div class="col-sm-offset-1 col-sm-4">
+            <form class="form-inline">
+                <label class="h3">Price: {{vm.game.Price |currency}}</label>
+                <br />
+                <label>Genre: {{vm.game.Genre}}</label>
+                <br />
+                <label>Os support: {{vm.game.OsSupport}}</label>
+                <br />
+                <label>Description :</label>
+                <p>{{vm.game.Description}}</p>
+                <!-- Show only if there are user reviews -->
+                <p class="h4" ng-if="vm.game.ReviewScore != null">User reviews: {{vm.game.ReviewScore}}<a>see more</a></p>
+                <br />
+                <button class="btn btn-success" ng-click="vm.addToCart()">Add to cart</button>
+            </form>
+        </div>
     </div>
 
-    <!-- TODO: Move classes to less file -->   
-    <div ng-if="vm.userLogedIn">
-        <input ng-model="vm.post.Title" class="form-control" type="text" placeholder="title" />
-        <textarea ng-model="vm.post.Description" class="form-control" rows="3"></textarea>
+    <!-- Game details-->
+    <div class="top-buffer col-sm-12" ng-if="vm.gameDetails">
 
-        <button class="btn btn-primary" ng-click="vm.postPost(vm.post)">Submit</button>
+        <!-- Review header -->
+        <div class="col-sm-7 top-buffer">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td><h4>User reviews</h4></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>
+                        <button class="btn btn-sm btn-primary" type="button">
+                            Average rating <span class="badge">4</span>
+                        </button>
+                    </td>
+                    <td></td>
+                    <td>
+                        <h5><a ng-click="vm.addReview = true">Add review</a></h5>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Reviews -->
+        <div class="pull-left col-sm-6">
+            <div ng-repeat="review in vm.reviews">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        {{::review.Title}}
+                    </div>
+                    <p class="panel-body">{{::review.Description}}</p>
+                </div>
+            </div>
+            <button class="btn btn-link" ng-click="vm.Previous()">
+                <span class="glyphicon glyphicon-menu-left"></span>
+                Previous
+            </button>
+            <button class="btn btn-link pull-right" ng-click="vm.Next()">
+                Next
+                <span class="glyphicon glyphicon-menu-right  col-sm-offset-1"></span>
+            </button>
+        </div>
+
+        <!-- Adds review -->
+        <div class="pull-right col-sm-6" ng-if="vm.addReview">
+            <div class="input-group">
+                <div class="input-group-addon">Title</div>
+                <input type="text" class="form-control" placeholder="Title" ng-model="vm.review.Title">
+            </div>
+            <br />
+            <textarea ng-model="vm.review.Description" placeholder="type review here" class="form-control" rows="5"></textarea>
+            <br />
+            <div class="input-group">
+                <div class="input-group-addon">Score</div>
+                <select class="form-control" ng-model="vm.review.Score">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <br />
+            <div class="form-inline">
+                <button class="btn btn-primary" ng-click="vm.postReview(vm.review)">Submit review</button>
+                <button class="btn btn-danger col-sm-offset-1" ng-click="vm.addReview = false">Cancel action</button>
+            </div>
+        </div>
     </div>
 </div>

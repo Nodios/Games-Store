@@ -7,7 +7,6 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Linq;
 
 namespace GameStore.Repository
 {
@@ -34,19 +33,6 @@ namespace GameStore.Repository
         private UserManager<UserEntity> createUserManager()
         {
             return new UserManager<UserEntity>(new UserStore<UserEntity>(new GamesStoreContext()));
-        }
-
-        public Task<IUnitOfWork> CreateUnitOfWork()
-        {
-            try
-            {
-                return Task.FromResult<IUnitOfWork>(repository.CreateUnitOfWork());
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
         }
 
         #endregion
@@ -281,19 +267,18 @@ namespace GameStore.Repository
         /// <param name="user">User </param>
         /// <param name="newPassword">New password</param>
         /// <returns>IUser</returns>
-        public async Task<Model.Common.IUser> UpdateUserPasswordAsync(Model.Common.IUser user, string newPassword)
+        public async Task<bool> UpdateUserPasswordAsync(string userId,string oldPassword, string newPassword)
         {
             try
             {
-                Model.Common.IUser userToReturn = null;
+
+                IdentityResult result;
                 using (UserManager<UserEntity> UserManager = createUserManager())
                 {
-                    IdentityResult result = await UserManager.ChangePasswordAsync(user.Id, user.PasswordHash, newPassword);
-                    if (result.Succeeded)
-                        userToReturn = Mapper.Map<Model.Common.IUser>(await UserManager.FindByIdAsync(user.Id));
+                    result = await UserManager.ChangePasswordAsync(userId, oldPassword, newPassword);              
                 }
 
-                return userToReturn;
+                return result.Succeeded;
             }
             catch (Exception)
             {

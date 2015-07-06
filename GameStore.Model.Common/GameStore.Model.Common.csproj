@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="ICart.cs" />
     <Compile Include="IComment.cs" />
+    <Compile Include="IGameImage.cs" />
     <Compile Include="IPublisher.cs" />
     <Compile Include="IGame.cs" />
     <Compile Include="IInfo.cs" />

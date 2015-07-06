@@ -2,6 +2,7 @@
 using AutoMapper;
 using GameStore.Model;
 using GameStore.Model.Common;
+using GameStore.WebApi.Models;
 
 
 namespace GameStore.WebApi.App_Start
@@ -10,23 +11,35 @@ namespace GameStore.WebApi.App_Start
     {
         protected override void Configure()
         {
+            // Cart controller
+            Mapper.CreateMap<ICart,CartModel>().ReverseMap();
+            Mapper.CreateMap<Cart, CartModel>().ReverseMap();
+
             // Company controller
-            Mapper.CreateMap<IPublisher, WebApi.Controllers.PublisherController.PublisherModel>().ReverseMap();
-            Mapper.CreateMap<Publisher, WebApi.Controllers.PublisherController.PublisherModel>().ReverseMap();
-            Mapper.CreateMap<ISupport, WebApi.Controllers.PublisherController.SupportModel>().ReverseMap();
-            Mapper.CreateMap<Support, WebApi.Controllers.PublisherController.SupportModel>().ReverseMap();
+            Mapper.CreateMap<IPublisher, PublisherModel>().ReverseMap();
+            Mapper.CreateMap<Publisher, PublisherModel>().ReverseMap();
+            Mapper.CreateMap<ISupport, SupportModel>().ReverseMap();
+            Mapper.CreateMap<Support, SupportModel>().ReverseMap();
 
             // Game controller
-            Mapper.CreateMap<IGame, WebApi.Controllers.GameController.GameModel>().ReverseMap();
-            Mapper.CreateMap<Game, WebApi.Controllers.GameController.GameModel>().ReverseMap();
+            Mapper.CreateMap<IGame, GameModel>().ReverseMap();
+            Mapper.CreateMap<Game, GameModel>().ReverseMap();
+
+            // Game image controller
+            Mapper.CreateMap<IGameImage, GameImageModel>().ReverseMap();
+            Mapper.CreateMap<GameImage, GameImageModel>().ReverseMap();
 
             // Post controller
-            Mapper.CreateMap<IPost, WebApi.Controllers.PostController.PostModel>().ReverseMap();
-            Mapper.CreateMap<Post, WebApi.Controllers.PostController.PostModel>().ReverseMap();
+            Mapper.CreateMap<IPost, PostModel>().ReverseMap();
+            Mapper.CreateMap<Post, PostModel>().ReverseMap();
+
+            // Review controller
+            Mapper.CreateMap<IReview, ReviewModel>().ReverseMap();
+            Mapper.CreateMap<Review,ReviewModel>().ReverseMap();
 
             // User controller
-            Mapper.CreateMap<IUser, WebApi.Controllers.UserController.UserModel>().ReverseMap();
-            Mapper.CreateMap<User, WebApi.Controllers.UserController.UserModel>().ReverseMap();
+            Mapper.CreateMap<IUser, UserModel>().ReverseMap();
+            Mapper.CreateMap<User, UserModel>().ReverseMap();
         }
 
         public override string ProfileName

@@ -30,6 +30,7 @@ namespace GameStore.Model
         public virtual ICollection<IGame> Games { get; set; }
         public virtual ICollection<IComment> Comments { get; set; }
         public virtual ICollection<IPost> Posts { get; set; }
-        public virtual ICollection<IReview> Reviews { get; set; }           
+        public virtual ICollection<IReview> Reviews { get; set; }
+
     }
 }

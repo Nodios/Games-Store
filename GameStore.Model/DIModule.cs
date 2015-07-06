@@ -10,11 +10,13 @@ namespace GameStore.Model
             Bind<IComment>().To<Comment>();
             Bind<IPublisher>().To<Publisher>();
             Bind<IGame>().To<Game>();
+            Bind<IGameImage>().To<GameImage>();
             Bind<IInfo>().To<Info>();
             Bind<IPost>().To<Post>();
             Bind<IReview>().To<Review>();
             Bind<ISupport>().To<Support>();
             Bind<IUser>().To<User>();
+           
         }
     }
 }

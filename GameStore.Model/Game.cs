@@ -22,6 +22,7 @@ namespace GameStore.Model
         // One to many, game can have many posts
         public virtual ICollection<IPost> Posts { get; set; }
         public virtual ICollection<IReview> Reviews { get; set; }
+        public virtual ICollection<IGameImage> GameImages { get; set; }
 
         // Many to many 
         public virtual ICollection<IUser> Users { get; set; }

@@ -8,7 +8,8 @@
 
             vm.registration = {
                 userName: "",
-                email: ""
+                email: "",
+                cart: {}
             };
 
             vm.password = "";
@@ -51,8 +52,6 @@
             // Used to register user
             var register = function (item, pass, confirmPass) {
 
-                console.log(pass);
-                console.log(confirmPass);
                 if (pass === confirmPass && pass.length >= 6) {
                     
                     authService.saveRegistration(item, pass).success(function (data, status, header, config) {

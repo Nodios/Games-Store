@@ -22,6 +22,7 @@ namespace GameStore.Model.Common
         ICollection<IReview> Reviews { get; set; }
         ICollection<IPost> Posts { get; set; }
         ICollection<IUser> Users { get; set; }
+        ICollection<IGameImage> GameImages { get; set; }
 
     }
 }

@@ -1,3 +1,4 @@
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Model\obj\Debug\GameStore.Model.csprojResolveAssemblyReference.cache
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Model\bin\Debug\GameStore.Model.dll.config
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Model\bin\Debug\GameStore.Model.dll
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Model\bin\Debug\GameStore.Model.pdb
@@ -19,6 +20,5 @@ C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Model\bin\Debug\EntityFramework
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Model\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Model\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Model\bin\Debug\Ninject.xml
-C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Model\obj\Debug\GameStore.Model.csprojResolveAssemblyReference.cache
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Model\obj\Debug\GameStore.Model.dll
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.Model\obj\Debug\GameStore.Model.pdb

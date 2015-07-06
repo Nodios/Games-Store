@@ -1,7 +1,8 @@
 ﻿
 (function (angular) {
-    angular.module("mainModule").controller("PublisherController", ['publisherService',
-    function (publisherService) {
+    angular.module("mainModule").controller("PublisherController",
+        ['$location', 'publisherService',
+    function ($location, publisherService) {
 
         var vm = this;
 
@@ -63,8 +64,13 @@
             }
 
             vm.get();
-        }
+        };
+
+        // Should redirect to games and get games that belong to publisher
+        vm.showGames = function (publisherId) {
+            $location.path('/game/' + publisherId);
+        };
 
     }
-    ])
+        ]);
 })(angular);

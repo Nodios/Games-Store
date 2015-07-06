@@ -60,6 +60,9 @@
     <Content Include="app\account\account.controller.js" />
     <Content Include="app\account\account.html" />
     <Content Include="app\account\account.service.js" />
+    <Content Include="app\cart\cart.controller.js" />
+    <Content Include="app\cart\cart.html" />
+    <Content Include="app\cart\cart.service.js" />
     <Content Include="app\filters\password.filter.js" />
     <Content Include="app\modals\login\login.html" />
     <Content Include="app\modals\login\loginModal.controller.js" />
@@ -170,10 +173,7 @@
     <Content Include="app\game\game.html" />
     <Content Include="app\game\game.service.js" />
     <Content Include="app\mainModule.js" />
-    <Content Include="app\navigation\home.html" />
     <Content Include="app\navigation\navigation.controller.js" />
-    <Content Include="app\navigation\navTabs.directive.js" />
-    <Content Include="app\navigation\navTabs.html" />
     <Content Include="app\publisher\publisher.controller.js" />
     <Content Include="app\publisher\publisher.html" />
     <Content Include="app\publisher\publisher.service.js" />
@@ -989,7 +989,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>60995</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:51228/</IISUrl>
+          <IISUrl>http://localhost:51229/</IISUrl>
           <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
           <IISAppRootUrl>http://localhost:51228/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

@@ -11,9 +11,12 @@ namespace GameStore.Service
         public override void Load()
         {
             Bind<IPublisherService>().To<PublisherService>();
+            Bind<ICartService>().To<CartService>();
             Bind<IGamesService>().To<GamesService>();
             Bind<IPostService>().To<PostService>();
+            Bind<IReviewService>().To<ReviewService>();
             Bind<IUserService>().To<UserService>();
+            Bind<IGameImageService>().To<GameImageService>();
         }
     }
 }

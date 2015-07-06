@@ -21,6 +21,9 @@ namespace GameStore.Model
             AutoMapper.Mapper.CreateMap<IGame, GameEntity>().ReverseMap();
             AutoMapper.Mapper.CreateMap<GameEntity, Game>().ReverseMap();
 
+            AutoMapper.Mapper.CreateMap<IGameImage, GameImageEntity>().ReverseMap();
+            AutoMapper.Mapper.CreateMap<GameImageEntity, GameImage>().ReverseMap();
+
             AutoMapper.Mapper.CreateMap<IInfo, InfoEntity>().ReverseMap();
             AutoMapper.Mapper.CreateMap<InfoEntity, Info>().ReverseMap();
 

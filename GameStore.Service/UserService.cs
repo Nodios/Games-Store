@@ -44,7 +44,7 @@ namespace GameStore.Service
         /// <summary>
         /// Register add user
         /// </summary>
-        public async Task<bool> RegisterUser(Model.Common.IUser user, string password)
+        public async Task<bool> RegisterUser(IUser user, string password)
         {
             try
             {
@@ -57,9 +57,14 @@ namespace GameStore.Service
             }
         }
 
-        public async Task<Model.Common.IUser> UpdateEmailOrUsernameAsync(Model.Common.IUser user, string password)
+        public async Task<IUser> UpdateEmailOrUsernameAsync(IUser user, string password)
         {
             return await UserRepository.UpdateUserEmailOrUsernameAsync(user, password);
+        }
+
+        public async Task<bool> UpdatePasswordAsync(string userId, string oldPassword, string newPassword)
+        {
+            return await UserRepository.UpdateUserPasswordAsync(userId, oldPassword, newPassword);
         }
     }
 }

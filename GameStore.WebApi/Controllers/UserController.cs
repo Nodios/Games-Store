@@ -1,10 +1,11 @@
 ﻿using AutoMapper;
+using GameStore.Model;
 using GameStore.Model.Common;
 using GameStore.Service.Common;
+using GameStore.WebApi.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -22,7 +23,7 @@ namespace GameStore.WebApi.Controllers
         {
             this.userService = userService;
         }
-    
+
         [Route("{username}")]
         public async Task<HttpResponseMessage> Get(string username)
         {
@@ -36,16 +37,16 @@ namespace GameStore.WebApi.Controllers
                 else
                     return Request.CreateResponse(HttpStatusCode.OK, user);
             }
-            catch (Exception ex )
+            catch (Exception ex)
             {
-                
+
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
         }
 
         [Route("Register")]
         [HttpPost()]
-        public async Task<HttpResponseMessage> Register(PostAndPutModel user)
+        public async Task<HttpResponseMessage> Register(ChangeUserModel user)
         {
             try
             {
@@ -53,6 +54,10 @@ namespace GameStore.WebApi.Controllers
                 {
                     return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid action.");
                 }
+
+                // add cart if there is no cart for user
+                if (user.User.Cart == null)
+                    user.User.Cart = new CartModel() { UserId = user.User.Id };
 
                 // add password to user
                 user.User.PasswordHash = user.Password;
@@ -70,19 +75,18 @@ namespace GameStore.WebApi.Controllers
             }
         }
 
-
-
-        // TODO 
-        [Route("UpdateUserOrMail/{user}")]
+        [Route("UpdateUserOrMail")]
         [Authorize]
         [HttpPut]
-        public async Task<HttpResponseMessage> UpdatePasswordOrMail(PostAndPutModel user)
+        public async Task<HttpResponseMessage> UpdateUsernameOrMail(ChangeUserModel model)
         {
             try
             {
-                IUser result = await userService.UpdateEmailOrUsernameAsync(Mapper.Map<IUser>(user.User), user.Password);
+                model.User.Cart = null;
+                IUser result = await userService.UpdateEmailOrUsernameAsync(Mapper.Map<IUser>(model.User), model.Password);
 
-                if (user == null)
+
+                if (model == null)
                     return Request.CreateResponse(HttpStatusCode.BadRequest, "Error while validating user. Update failed");
                 else
                     return Request.CreateResponse(HttpStatusCode.OK, result);
@@ -94,41 +98,48 @@ namespace GameStore.WebApi.Controllers
             }
         }
 
+        [Route("UpdatePassword")]
+        [Authorize]
+        [HttpPut]
+        public async Task<HttpResponseMessage> UpdatePassword(ChangeUserPasswordModel model)
+        {
+            try
+            {
+                bool result = await userService.UpdatePasswordAsync(model.UserId, model.OldPassword, model.NewPassword);
+
+                if (result)
+                    return Request.CreateResponse(HttpStatusCode.OK, "Password updated.");
+                else
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Update failed.");
+            }
+            catch (Exception ex)
+            {
+
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
+
         /// <summary>
         /// Keeps user model that holds user and password
         /// </summary>
-        public class PostAndPutModel
+        public class ChangeUserModel
         {
             public UserModel User { get; set; }
             public string Password { get; set; }
         }
 
-        public class UserModel : IdentityUser
+        /// <summary>
+        /// Keeps model data for changing user password
+        /// </summary>
+        public class ChangeUserPasswordModel
         {
-            public override string Id
-            {
-                get
-                {
-                    return base.Id;
-                }
-                set
-                {
-                    if (String.IsNullOrEmpty(value))
-                        base.Id = Guid.NewGuid().ToString();
-                    else
-                        base.Id = value;
-                }
-            }
-
-            // One to one 
-            public virtual IInfo Info { get; set; }
-            public virtual ICart Cart { get; set; }
-
-            // One to many
-            public virtual ICollection<IGame> Games { get; set; }
-            public virtual ICollection<IComment> Comments { get; set; }
-            public virtual ICollection<IPost> Posts { get; set; }
-            public virtual ICollection<IReview> Reviews { get; set; }         
+            public string UserId { get; set; }
+            public string OldPassword { get; set; }
+            public string NewPassword { get; set; }
         }
+
+
+
     }
+
 }

@@ -1,4 +1,5 @@
-﻿using GameStore.Model.Common;
+﻿using GameStore.Common;
+using GameStore.Model.Common;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -7,11 +8,11 @@ namespace GameStore.Repository.Common
 {
     public interface ICartRepository
     {
-        Task<ICart> GetAsync(Guid id);
+        Task<ICart> GetAsync(string userId);
         Task<IEnumerable<ICart>> GetAsync();
-        Task<int> Add(ICart cart);
-        Task<int> Update(ICart cart);
-
+        Task<int> AddAsync(ICart cart);
+        Task<int> UpdateAsync(ICart cart);
+        Task<ICart> UpdateCartAsync(ICart cart);
         Task<int> DeleteAsync(ICart cart);
         Task<int> DeleteAsync(Guid id);
         

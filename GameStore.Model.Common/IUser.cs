@@ -17,6 +17,6 @@ namespace GameStore.Model.Common
         ICollection<IGame> Games { get; set; }
         ICollection<IComment> Comments { get; set; }
         ICollection<IPost> Posts { get; set; }
-        ICollection<IReview> Reviews { get; set; }           
+        ICollection<IReview> Reviews { get; set; }      
     }
 }

@@ -11,6 +11,9 @@ namespace GameStore.DAL.Mapping
 
             Property(r => r.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(r => r.Score);
+            Property(p => p.Title).HasMaxLength(100).IsRequired();
+            Property(p => p.Description).IsRequired();
+            
 
             // One to many
             HasRequired(r => r.Game).WithMany(g => g.Reviews).HasForeignKey(r => r.GameId);

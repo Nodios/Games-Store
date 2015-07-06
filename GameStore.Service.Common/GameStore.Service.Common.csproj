@@ -39,9 +39,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ICartService.cs" />
+    <Compile Include="IGameImageService.cs" />
     <Compile Include="IGamesService.cs" />
     <Compile Include="IPostService.cs" />
     <Compile Include="IPublisherService.cs" />
+    <Compile Include="IReviewService.cs" />
     <Compile Include="IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

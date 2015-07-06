@@ -15,7 +15,7 @@
             <tr>
                 <td>PASSWORD</td>
                 <td>* * * * * * * *</td>
-                <td><button class="btn btn-sm">CHANGE</button></td>
+                <td><button class="btn btn-sm" ng-click="vm.changePassword()">CHANGE</button></td>
             </tr>
 
             <tr>
@@ -74,6 +74,32 @@
                 </div>
                 <button class="btn btn-sm btn-primary" ng-click="vm.confirmNewUsernameOrEmail(user)">Change</button>
             </div>
+        </form>
+    </div>
+
+    <!-- Change password -->
+    <div class="col-sm-5 col-sm-offset-1" ng-show="vm.showPasswordChangeTab">
+        <h5 class="h5">CHANGE PASSWORD</h5>
+        <br />
+        <form class="form-group">
+            <div class="form-inline">
+                <label class="col-sm-4">Old password</label>
+                <input type="password" class="form-control" ng-model="user.password" />
+            </div>
+            <br />
+            <div class="form-inline">
+                <label class="col-sm-4">New password</label>
+                <input type="password" class="form-control" ng-model="newPassword" />
+            </div>
+            <br />
+            <div class="form-inline">
+                <label class="col-sm-4">Confirm new password</label>
+                <input type="password" class="form-control" ng-model="confirmNewPassword" />
+            </div>
+            <br />
+
+            <button class="btn btn-sm btn-primary" ng-click="vm.confirmNewPassword(user, newPassword, confirmNewPassword)">Change</button>
+
         </form>
     </div>
 </div>

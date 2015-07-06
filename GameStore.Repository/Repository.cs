@@ -74,9 +74,9 @@ namespace GameStore.Repository
         /// </summary>
         /// <param name="match">Expression</param>
         /// <returns>Entity or null</returns>
-        public Task<T> GetAsync<T>(Expression<Func<T, bool>> match) where T : class
+        public async Task<T> GetAsync<T>(Expression<Func<T, bool>> match) where T : class
         {
-            return Context.Set<T>().FirstAsync(match);
+            return await Context.Set<T>().FirstAsync(match);
         }
 
         /// <summary>

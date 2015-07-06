@@ -29,6 +29,7 @@ namespace GameStore.DAL.Models
         // One to one 
         public virtual InfoEntity Info { get; set; }
         public virtual CartEntity Cart { get; set; }
+       
 
         // One to many
         public virtual ICollection<CommentEntity> Comments { get; set; }

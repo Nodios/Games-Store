@@ -49,6 +49,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,6 +61,7 @@
     <Compile Include="IGamesStoreContext.cs" />
     <Compile Include="Mapping\CartMap.cs" />
     <Compile Include="Mapping\CommentMap.cs" />
+    <Compile Include="Mapping\GameImageMap.cs" />
     <Compile Include="Mapping\PublisherMap.cs" />
     <Compile Include="Mapping\GameMap.cs" />
     <Compile Include="Mapping\InfoMap.cs" />
@@ -67,13 +69,14 @@
     <Compile Include="Mapping\ReviewMap.cs" />
     <Compile Include="Mapping\SupportMap.cs" />
     <Compile Include="Mapping\UserMap.cs" />
-    <Compile Include="Migrations\201506301419483_first.cs" />
-    <Compile Include="Migrations\201506301419483_first.Designer.cs">
-      <DependentUpon>201506301419483_first.cs</DependentUpon>
+    <Compile Include="Migrations\201507052036276_first.cs" />
+    <Compile Include="Migrations\201507052036276_first.Designer.cs">
+      <DependentUpon>201507052036276_first.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CartEntity.cs" />
     <Compile Include="Models\CommentEntity.cs" />
+    <Compile Include="Models\GameImageEntity.cs" />
     <Compile Include="Models\PublisherEntity.cs" />
     <Compile Include="Models\GameEntity.cs" />
     <Compile Include="Models\IDataEntity.cs" />
@@ -96,8 +99,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201506301419483_first.resx">
-      <DependentUpon>201506301419483_first.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201507052036276_first.resx">
+      <DependentUpon>201507052036276_first.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

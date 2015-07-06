@@ -23,6 +23,7 @@ namespace GameStore.DAL.Models
         // One to many, game can have many posts
         public virtual ICollection<PostEntity> Posts { get; set; }
         public virtual ICollection<ReviewEntity> Reviews { get; set; }
+        public virtual ICollection<GameImageEntity> GameImages { get; set; }
        
         // Many to many 
         public virtual ICollection<UserEntity> Users { get; set; }

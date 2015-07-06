@@ -5,10 +5,10 @@ namespace GameStore.Model.Common
 {
     public interface IPost : IPostAndComment
     {
-        string Title { get; set; }
-
         Guid GameId { get; set; }
         string UserId { get; set; }
+
+        string Author { get; set; }
 
         IGame Game { get; set; }
         IUser User { get; set; }

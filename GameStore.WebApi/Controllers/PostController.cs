@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using GameStore.Model.Common;
 using GameStore.Service.Common;
+using GameStore.WebApi.Models;
 using System;
 using System.Net;
 using System.Net.Http;
@@ -69,17 +70,7 @@ namespace GameStore.WebApi.Controllers
         }
 
         #endregion
-
-
-        public class PostModel
-        {
-            public Guid Id { get; set; }
-            public int VotesUp { get; set; }
-            public int VotesDown { get; set; }
-            public string Description { get; set; }
-            public string Title { get; set; }
-            public Guid GameId { get; set; }
-            public Guid? UserId { get; set; }
-        }
+ 
     }
+
 }

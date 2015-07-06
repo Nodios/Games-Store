@@ -1,5 +1,6 @@
 namespace GameStore.DAL.Migrations
 {
+    using System;
     using System.Data.Entity.Migrations;
     
     public partial class first : DbMigration
@@ -10,12 +11,11 @@ namespace GameStore.DAL.Migrations
                 "dbo.CartEntities",
                 c => new
                     {
-                        Id = c.Guid(nullable: false, identity: true),
-                        User_Id = c.String(nullable: false, maxLength: 128),
+                        UserId = c.String(nullable: false, maxLength: 128),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AspNetUsers", t => t.User_Id)
-                .Index(t => t.User_Id);
+                .PrimaryKey(t => t.UserId)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId)
+                .Index(t => t.UserId);
             
             CreateTable(
                 "dbo.GameEntities",
@@ -36,11 +36,23 @@ namespace GameStore.DAL.Migrations
                 .Index(t => t.Name);
             
             CreateTable(
+                "dbo.GameImageEntities",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false, identity: true),
+                        GameId = c.Guid(nullable: false),
+                        Content = c.Binary(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.GameEntities", t => t.GameId, cascadeDelete: true)
+                .Index(t => t.GameId);
+            
+            CreateTable(
                 "dbo.PostEntities",
                 c => new
                     {
                         Id = c.Guid(nullable: false, identity: true),
-                        Title = c.String(),
+                        Author = c.String(nullable: false),
                         GameId = c.Guid(nullable: false),
                         UserId = c.String(maxLength: 128),
                         VotesUp = c.Int(nullable: false),
@@ -137,6 +149,8 @@ namespace GameStore.DAL.Migrations
                     {
                         Id = c.Guid(nullable: false, identity: true),
                         GameId = c.Guid(nullable: false),
+                        Title = c.String(nullable: false, maxLength: 100),
+                        Description = c.String(nullable: false),
                         Score = c.Single(nullable: false),
                         UserEntity_Id = c.String(maxLength: 128),
                     })
@@ -210,13 +224,13 @@ namespace GameStore.DAL.Migrations
                 "dbo.CartEntityGameEntities",
                 c => new
                     {
-                        CartEntity_Id = c.Guid(nullable: false),
+                        CartEntity_UserId = c.String(nullable: false, maxLength: 128),
                         GameEntity_Id = c.Guid(nullable: false),
                     })
-                .PrimaryKey(t => new { t.CartEntity_Id, t.GameEntity_Id })
-                .ForeignKey("dbo.CartEntities", t => t.CartEntity_Id, cascadeDelete: true)
+                .PrimaryKey(t => new { t.CartEntity_UserId, t.GameEntity_Id })
+                .ForeignKey("dbo.CartEntities", t => t.CartEntity_UserId, cascadeDelete: true)
                 .ForeignKey("dbo.GameEntities", t => t.GameEntity_Id, cascadeDelete: true)
-                .Index(t => t.CartEntity_Id)
+                .Index(t => t.CartEntity_UserId)
                 .Index(t => t.GameEntity_Id);
             
         }
@@ -224,9 +238,8 @@ namespace GameStore.DAL.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.CartEntities", "User_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.CartEntityGameEntities", "GameEntity_Id", "dbo.GameEntities");
-            DropForeignKey("dbo.CartEntityGameEntities", "CartEntity_Id", "dbo.CartEntities");
+            DropForeignKey("dbo.CartEntityGameEntities", "CartEntity_UserId", "dbo.CartEntities");
             DropForeignKey("dbo.GameEntities", "PublisherId", "dbo.PublisherEntities");
             DropForeignKey("dbo.SupportEntities", "PublisherId", "dbo.PublisherEntities");
             DropForeignKey("dbo.PostEntities", "UserId", "dbo.AspNetUsers");
@@ -239,10 +252,12 @@ namespace GameStore.DAL.Migrations
             DropForeignKey("dbo.UserEntityGameEntities", "UserEntity_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.CommentEntities", "UserEntity_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.CartEntities", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.PostEntities", "GameId", "dbo.GameEntities");
             DropForeignKey("dbo.CommentEntities", "PostId", "dbo.PostEntities");
+            DropForeignKey("dbo.GameImageEntities", "GameId", "dbo.GameEntities");
             DropIndex("dbo.CartEntityGameEntities", new[] { "GameEntity_Id" });
-            DropIndex("dbo.CartEntityGameEntities", new[] { "CartEntity_Id" });
+            DropIndex("dbo.CartEntityGameEntities", new[] { "CartEntity_UserId" });
             DropIndex("dbo.UserEntityGameEntities", new[] { "GameEntity_Id" });
             DropIndex("dbo.UserEntityGameEntities", new[] { "UserEntity_Id" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
@@ -261,9 +276,10 @@ namespace GameStore.DAL.Migrations
             DropIndex("dbo.CommentEntities", new[] { "PostId" });
             DropIndex("dbo.PostEntities", new[] { "UserId" });
             DropIndex("dbo.PostEntities", new[] { "GameId" });
+            DropIndex("dbo.GameImageEntities", new[] { "GameId" });
             DropIndex("dbo.GameEntities", new[] { "Name" });
             DropIndex("dbo.GameEntities", new[] { "PublisherId" });
-            DropIndex("dbo.CartEntities", new[] { "User_Id" });
+            DropIndex("dbo.CartEntities", new[] { "UserId" });
             DropTable("dbo.CartEntityGameEntities");
             DropTable("dbo.UserEntityGameEntities");
             DropTable("dbo.AspNetRoles");
@@ -277,6 +293,7 @@ namespace GameStore.DAL.Migrations
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.CommentEntities");
             DropTable("dbo.PostEntities");
+            DropTable("dbo.GameImageEntities");
             DropTable("dbo.GameEntities");
             DropTable("dbo.CartEntities");
         }

@@ -2,6 +2,7 @@
 using GameStore.Common;
 using GameStore.Model.Common;
 using GameStore.Service.Common;
+using GameStore.WebApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -62,9 +63,9 @@ namespace GameStore.WebApi.Controllers
         {
             try
             {
-                IEnumerable<IGame> result = await GamesService.GetRangeAsync(name);
+                IEnumerable<GameModel> result = Mapper.Map < IEnumerable < GameModel >> (await GamesService.GetRangeAsync(name));
                 if (result != null)
-                    return Request.CreateResponse(HttpStatusCode.OK, Mapper.Map<IEnumerable<GameModel>>(result));
+                    return Request.CreateResponse(HttpStatusCode.OK, result);
                 else
                     return Request.CreateResponse(HttpStatusCode.NotFound);
             }
@@ -90,20 +91,6 @@ namespace GameStore.WebApi.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
         }
-
-        /// <summary>
-        /// Game class
-        /// </summary>
-        public class GameModel
-        {
-
-            public Guid PublisherId { get; set; }
-            public string Name { get; set; }
-            public string Description { get; set; }
-            public string OsSupport { get; set; }
-            public float? ReviewScore { get; set; }
-            public string Genre { get; set; }
-            public double Price { get; set; }
-        }
     }
+   
 }

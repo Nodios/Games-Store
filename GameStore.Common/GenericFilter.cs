@@ -1,7 +1,7 @@
 ﻿
 namespace GameStore.Common
 {
-    public abstract class GenericFilter
+    public class GenericFilter
     {
          #region Fields
 

@@ -41,6 +41,7 @@
                     console.log(data);
                     $window.sessionStorage.user = data.username;
                     $window.sessionStorage.token = data.access_token;
+                    $window.sessionStorage.id = data.id;
 
                 }).error(function (data, status, header, config) {
                     alert(data.error + " : " + data.error_description);

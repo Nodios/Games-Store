@@ -142,11 +142,15 @@ namespace GameStore.Repository
 
         #region Dispose implementation
 
+        
+
+        #endregion     
+    
+       
+    
         public void Dispose()
         {
             DbContext.Dispose();
         }
-
-        #endregion     
     }
 }

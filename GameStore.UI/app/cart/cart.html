@@ -1,0 +1,15 @@
+﻿<div class="container" ng-controller="CartController">
+    <h3>Cart </h3>
+    <table class="col-sm-6 table top-buffer">
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+        <tr ng-repeat="item in vm.games">
+            <td>{{item.Name}}</td>
+            <td>{{item.Price | currency}}</td>
+            <td><a>Delete</a></td>
+        </tr>
+    </table>
+</div>

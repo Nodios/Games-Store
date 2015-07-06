@@ -67,6 +67,7 @@
     <Compile Include="AutomapperModelLayerMapping.cs" />
     <Compile Include="Cart.cs" />
     <Compile Include="Comment.cs" />
+    <Compile Include="GameImage.cs" />
     <Compile Include="Publisher.cs" />
     <Compile Include="DIModule.cs" />
     <Compile Include="Game.cs" />

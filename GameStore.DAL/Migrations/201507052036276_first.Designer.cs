@@ -2,6 +2,7 @@
 namespace GameStore.DAL.Migrations
 {
     using System.CodeDom.Compiler;
+    using System.Data.Entity.Migrations;
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
@@ -12,7 +13,7 @@ namespace GameStore.DAL.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201506301419483_first"; }
+            get { return "201507052036276_first"; }
         }
         
         string IMigrationMetadata.Source
