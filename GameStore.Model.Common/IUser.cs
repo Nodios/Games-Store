@@ -14,7 +14,6 @@ namespace GameStore.Model.Common
         ICart Cart { get; set; }
 
         // One to many
-        ICollection<IGame> Games { get; set; }
         ICollection<IComment> Comments { get; set; }
         ICollection<IPost> Posts { get; set; }
         ICollection<IReview> Reviews { get; set; }      

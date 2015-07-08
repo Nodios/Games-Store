@@ -131,15 +131,19 @@ namespace GameStore.Repository
         /// </summary>
         public async Task<int> UpdateAsync<T>(T entity) where T : class
         {
+
+            DbEntityEntry dbEntityEntry = Context.Entry(entity);
+            if (dbEntityEntry.State == EntityState.Detached)
+            {
+                Context.Set<T>().Attach(entity);
+            }
+            dbEntityEntry.State = EntityState.Modified;
+
             try
             {
-                DbEntityEntry dbEntityEntry = Context.Entry(entity);
-                Context.Set<T>().Add(entity);
-                dbEntityEntry.State = EntityState.Modified;
-
                 return await Context.SaveChangesAsync();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -168,6 +172,23 @@ namespace GameStore.Repository
             }
             catch (Exception ex)
             {
+                throw ex;
+            }
+        }
+
+
+        public Task<int> UpdateAttachAsync<T>(T entity) where T : class
+        {
+            try
+            {
+                DbEntityEntry dbEntityEntry = Context.Entry(entity);
+                Context.Set<T>().Attach(entity);
+
+                return Context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                
                 throw ex;
             }
         }
@@ -202,5 +223,6 @@ namespace GameStore.Repository
         }
 
         #endregion
+
     }
 }

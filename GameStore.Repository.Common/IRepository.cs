@@ -32,6 +32,8 @@ namespace GameStore.Repository.Common
 
         Task<int> UpdateAsync<T>(T entity, params Expression<Func<T, object>>[] proportiesToUpdate) where T : class;
 
+ 
+
 
     }
 }

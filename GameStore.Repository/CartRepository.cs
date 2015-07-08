@@ -1,11 +1,14 @@
 ﻿using AutoMapper;
-using GameStore.Common;
 using GameStore.DAL.Models;
 using GameStore.Model.Common;
 using GameStore.Repository.Common;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
+using System.Data;
+using GameStore.DAL;
+using System.Data.Entity.Infrastructure;
 
 namespace GameStore.Repository
 {
@@ -103,19 +106,39 @@ namespace GameStore.Repository
             }
         }
 
-        public async Task<ICart> UpdateCartAsync(ICart cart)
+        /// <summary>
+        /// NOTE: Deletes previous cart, adds new one
+        /// </summary>
+        /// <param name="cart">Cart item</param>
+        /// <param name="deleteOldEntries">If delete, deletes old entries</param>
+        /// <returns>Saves cart item</returns>
+        public async Task<ICart> UpdateCartAsync(ICart cart, bool deletePreviousCart)
         {
             try
             {
+                
                 IUnitOfWork uow = repository.CreateUnitOfWork();
-                CartEntity result = await uow.UpdateAsync<CartEntity>(Mapper.Map<CartEntity>(cart));
+                Task<CartEntity> result;
+
+                if (deletePreviousCart)
+                {
+                    await uow.DeleteAsync<CartEntity>(c => c.UserId == cart.UserId);
+                    result = uow.AddAsync<CartEntity>(AutoMapper.Mapper.Map<CartEntity>(cart));
+                }
+                else
+                {
+                    result = uow.UpdateWithAddAsync<CartEntity>(AutoMapper.Mapper.Map<CartEntity>(cart));
+                }
+  
                 await uow.CommitAsync();
-                return Mapper.Map<ICart>(result);
+                ICart entity = Mapper.Map<ICart>(result.Result);
+                return entity;
+
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 
-                throw;
+                throw ex;
             }
         }
 

@@ -71,6 +71,29 @@
             $location.path('/game/' + publisherId);
         };
 
+        vm.next = function () {
+
+            vm.pageNumber++;
+
+            publisherService.getPublishers(vm.pageNumber, pageSize).success(function (data) {
+
+                vm.publishers = data;
+
+                if (data.length == 0)
+                    vm.pageNumber--;
+            })
+        };
+
+        vm.previous = function () {
+
+            vm.pageNumber--;
+            if (vm.pageNumber < 1)
+                vm.pageNumber = 1;
+
+            publisherService.getPublishers(vm.pageNumber, pageSize).success(function (data) {
+                vm.publishers = data;
+            })
+        };
     }
         ]);
 })(angular);

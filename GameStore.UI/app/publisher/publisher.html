@@ -6,31 +6,28 @@
     </div>
 
     <!-- Publishers table -->
-    <table ng-show="vm.showPublishersTable">
-        <tr>
-            <th>Name</th>
-            <th>Games</th>
-            <th></th>
-        </tr>
-        <tr ng-repeat="item in vm.publishers">
-            <td>{{item.Name}}</td>
-            <td><a ng-click="vm.showGames(item.Id)">Show</a></td>
-            <td><a ng-click="vm.getSupport(item,item.Id)">details</a></td>
-        </tr>
-    </table> 
-
-    <!-- Paging for publisher table -->
-    <nav ng-if="vm.showPublishersTable">
-        <ul class="pagination">
-            <li><a ng-click="vm.setPageNumberTo(vm.pageNumber - 5)"><<</a></li>
-            <li><a ng-click="vm.setPageNumberTo(vm.pageNumber)">{{vm.pageNumber}}</a></li>
-            <li><a ng-click="vm.setPageNumberTo(vm.pageNumber + 1)">{{vm.pageNumber + 1}}</a></li> <!-- Tipa staviti u a ng-click="" poziv na neku funkciju i dodjeliti parameter za paging-->
-            <li><a ng-click="vm.setPageNumberTo(vm.pageNumber + 2)">{{vm.pageNumber + 2}}</a></li>
-            <li><a ng-click="vm.setPageNumberTo(vm.pageNumber + 3)">{{vm.pageNumber + 3}}</a></li>
-            <li><a ng-click="vm.setPageNumberTo(vm.pageNumber + 4)">{{vm.pageNumber + 4}}</a></li>
-            <li><a ng-click="vm.setPageNumberTo(vm.pageNumber + 5)">>></a></li>
-        </ul>
-    </nav>
+    <div ng-show="vm.showPublishersTable">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Games</th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="item in vm.publishers">
+                <td>{{item.Name}}</td>
+                <td><a ng-click="vm.showGames(item.Id)">Show</a></td>
+                <td><a ng-click="vm.getSupport(item,item.Id)">details</a></td>
+            </tr>
+        </table>
+        <button class="btn btn-success" ng-click="vm.previous()">
+            <span class="glyphicon glyphicon-menu-left"></span>
+            Previous
+        </button>
+        <button class="btn btn-success pull-right" ng-click="vm.next()">
+            Next
+            <span class="glyphicon glyphicon-menu-right  col-sm-offset-1"></span>
+        </button>
+    </div>
 
     <!-- Publisher with info -->
     <table ng-if="vm.showSupportInfoTable">

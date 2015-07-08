@@ -1,9 +1,6 @@
-﻿using GameStore.Repository.Common;
+﻿using GameStore.Model.Common;
+using GameStore.Repository.Common;
 using GameStore.Service.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace GameStore.Service
@@ -22,9 +19,24 @@ namespace GameStore.Service
             return await repository.GetAsync(userId);
         }
 
-        public async Task<Model.Common.ICart> UpdateAsync(Model.Common.ICart cart)
+
+        /// <summary>
+        /// Update
+        /// </summary>
+        public async Task<int> UpdateAsync(ICart cart)
         {
-            return await repository.UpdateCartAsync(cart);
+            return await repository.UpdateAsync(cart);
+        }
+
+        /// <summary>
+        /// Updates and return cart
+        /// </summary>
+        /// <param name="cart">Cart</param>
+        /// <param name="deletePreviousCart">Deletes previous items in cart if true</param>
+        /// <returns>Neawly created cart</returns>
+        public async Task<ICart> UpdateCartAsync(Model.Common.ICart cart, bool deletePreviousCart = false)
+        {
+            return await repository.UpdateCartAsync(cart, deletePreviousCart);
         }
     }
 }

@@ -115,7 +115,9 @@
 
             // Post new review
             vm.postReview = function (review) {
-                console.log(review);
+
+                review.gameId = vm.game.GameId;
+
                 // Checks if there is token... User is logged in if there is token
                 if ($window.sessionStorage.token.length > 0) {
                     gameService.postReview(review).success(function (data) {
@@ -151,6 +153,34 @@
                     alert("Please log in");
                 }
             }
+
+            // Next items in games list
+            vm.nextInGamesList = function () {
+                vm.pageNumber++;
+
+                gameService.getGames(vm.pageNumber, pageSize).success(function (data) {
+                    vm.games = [];                                                    // emtpy array
+
+                    if (data.length > 0)
+                        vm.games = data;
+                    else
+                        vm.pageNumber--;
+                  
+                });
+            };
+
+            // previous items in games list
+            vm.previousInGamesList = function () {
+
+                vm.pageNumber--;
+                if (vm.pageNumber < 1)
+                    vm.pageNumber = 1;
+
+                gameService.getGames(vm.pageNumber, pageSize).success(function (data) {
+                    vm.games = [];                                                    // emtpy array
+                    vm.games = data;
+                });
+            };
         }
     ])
 })(angular);

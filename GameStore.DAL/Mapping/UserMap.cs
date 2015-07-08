@@ -10,8 +10,6 @@ namespace GameStore.DAL.Mapping
             //relationship constraints
             HasOptional(u => u.Info).WithRequired(i => i.User);
             HasOptional(u => u.Cart).WithRequired(c => c.User);
-            HasMany(u => u.Games).WithMany(g => g.Users);
-
         }
     }
 }

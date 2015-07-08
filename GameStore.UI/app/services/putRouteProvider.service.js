@@ -14,6 +14,9 @@
             },
             updateCart: function () {
                 return postCart + "/Update";
+            },
+            updateFromCart: function () {
+                return postCart + "/UpdateFromCart";
             }
 
         }

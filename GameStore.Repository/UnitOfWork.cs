@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace GameStore.Repository
 {
@@ -14,13 +15,15 @@ namespace GameStore.Repository
 
         public UnitOfWork(IGamesStoreContext context)
         {
-            if(context == null)
+            if (context == null)
             {
                 throw new ArgumentNullException("Context cannot be null");
             }
 
             DbContext = context;
         }
+
+        #region Add
 
         /// <summary>
         /// Adds entity, commit should be called afterwards to save changes
@@ -31,19 +34,42 @@ namespace GameStore.Repository
             try
             {
                 DbEntityEntry dbEntity = DbContext.Entry(entity);
-                if(dbEntity.State != EntityState.Detached)
+                if (dbEntity.State != EntityState.Detached)
                 {
                     dbEntity.State = EntityState.Added;
                 }
                 else
                 {
-                   DbContext.Set<T>().Add(entity);
+                    DbContext.Set<T>().Add(entity);
                 }
                 return Task.FromResult(dbEntity.Entity as T);
             }
-            catch(Exception)
+            catch (Exception)
             {
                 throw;
+            }
+        }
+
+        #endregion
+
+        #region Update
+
+        /// <summary>
+        /// Update without adding new entites
+        /// </summary>
+        public virtual Task<T> UpdateWithAttachAsync<T>(T entity) where T : class
+        {
+            try
+            {
+                DbEntityEntry entry = DbContext.Entry<T>(entity);
+                entry.State = EntityState.Modified;
+
+                return Task.FromResult(entry.Entity as T);
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
             }
         }
 
@@ -51,7 +77,7 @@ namespace GameStore.Repository
         /// Updates entity, commit should be called afterwards to save changes
         /// </summary>
         /// <returns>T entity</returns>
-        public virtual Task<T> UpdateAsync<T>(T entity) where T : class
+        public virtual Task<T> UpdateWithAddAsync<T>(T entity) where T : class
         {
             try
             {
@@ -73,14 +99,14 @@ namespace GameStore.Repository
         /// <typeparam name="T">Entity type</typeparam>
         /// <param name="entity">Entity to update</param>
         /// <param name="entityParameters">Entity parameters to update</param>
-        public virtual Task<T> UpdateAsync<T>(T entity, params Expression<Func<T,object>>[] entityParameters) where T : class
+        public virtual Task<T> UpdateWithAddAsync<T>(T entity, params Expression<Func<T, object>>[] entityParameters) where T : class
         {
             try
             {
                 DbEntityEntry entry = DbContext.Entry<T>(entity);
                 DbContext.Set<T>().Add(entity);
                 entry.State = EntityState.Unchanged;
-                foreach(var p in entityParameters)
+                foreach (var p in entityParameters)
                 {
                     DbContext.Entry<T>(entity).Property(p).IsModified = true;
                 }
@@ -93,6 +119,11 @@ namespace GameStore.Repository
                 throw;
             }
         }
+
+
+        #endregion
+
+        #region Delete
 
         /// <summary>
         /// Deletes entity,commit should be called afterwards to save changes
@@ -110,7 +141,7 @@ namespace GameStore.Repository
             }
             catch (Exception)
             {
-                throw ;
+                throw;
             }
         }
 
@@ -130,27 +161,57 @@ namespace GameStore.Repository
             }
             catch (Exception)
             {
-                
+
                 throw;
             }
         }
+
+
+        /// <summary>
+        /// Delete entity, commit should be called afterwards to save changes
+        /// </summary>
+        public Task<int> DeleteAsync<T>(Expression<Func<T, bool>> match) where T : class
+        {
+            try
+            {
+                T entity = DbContext.Set<T>().Where(match).First();
+                if (entity == null)
+                {
+                    return Task.FromResult(0);
+                }
+                return DeleteAsync<T>(entity);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        #endregion
+
+        #region Other methods
 
         public async Task<int> CommitAsync()
         {
             return await DbContext.SaveChangesAsync();
         }
 
+
+        #endregion
+
         #region Dispose implementation
 
-        
-
-        #endregion     
-    
-       
-    
         public void Dispose()
         {
             DbContext.Dispose();
         }
+
+        #endregion
+
+
+
+
+
     }
 }

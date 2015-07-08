@@ -9,7 +9,7 @@
         <tr ng-repeat="item in vm.games">
             <td>{{item.Name}}</td>
             <td>{{item.Price | currency}}</td>
-            <td><a>Delete</a></td>
+            <td><a ng-click="vm.delete(item)">Delete</a></td>
         </tr>
     </table>
 </div>

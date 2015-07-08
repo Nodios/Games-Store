@@ -9,20 +9,17 @@ namespace GameStore.DAL.Mapping
     {
         public GameMap()
         {
-           // HasKey(g => g.Id);
-
             Property(g => g.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
             // Unique name
-            Property(g => g.Name).IsRequired().HasMaxLength(50)
-                .HasColumnAnnotation(IndexAnnotation.AnnotationName, new IndexAnnotation(new IndexAttribute()));
-
+            Property(g => g.Name).IsRequired().HasMaxLength(50);
 
             Property(g => g.Description).IsRequired().HasMaxLength(500).HasColumnType("nvarchar");
             Property(g => g.OsSupport).IsRequired().HasMaxLength(50);
             Property(g => g.ReviewScore);
             Property(g => g.Genre).IsRequired();
             Property(g => g.Price).IsRequired();
+            Property(g => g.IsInCart).IsRequired();
 
             // Relation ship
             HasRequired(g => g.Publisher).WithMany(p => p.Games).HasForeignKey(g => g.PublisherId);

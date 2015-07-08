@@ -20,11 +20,11 @@
                     <td><a ng-click="vm.getItemDetails(item)">details</a></td>
                 </tr>
             </table>
-            <button class="btn btn-success">
+            <button class="btn btn-success" ng-click="vm.previousInGamesList()">
                 <span class="glyphicon glyphicon-menu-left"></span>
                 Previous
             </button>
-            <button class="btn btn-success pull-right">
+            <button class="btn btn-success pull-right" ng-click="vm.nextInGamesList()">
                 Next
                 <span class="glyphicon glyphicon-menu-right  col-sm-offset-1"></span>
             </button>
