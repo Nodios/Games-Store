@@ -1,15 +1,43 @@
 ﻿<div class="container" ng-controller="CartController">
-    <h3>Cart </h3>
-    <table class="col-sm-6 table top-buffer">
-        <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th></th>
-        </tr>
-        <tr ng-repeat="item in vm.games">
-            <td>{{item.Name}}</td>
-            <td>{{item.Price | currency}}</td>
-            <td><a ng-click="vm.delete(item)">Delete</a></td>
-        </tr>
-    </table>
+
+    <!-- Show if there are games -->
+    <div ng-if="vm.showTablesIfThereAreGames">
+        <h3 class="top-buffer">In Cart </h3>
+        <div class="col-sm-7 top-buffer">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tr ng-repeat="item in vm.games">
+                    <td>{{$index + 1}}</td>
+                    <td>{{item.Name}}</td>
+                    <td>{{item.Price | currency}}</td>
+                    <td><a class="text-danger" ng-click="vm.delete(item)">Remove</a></td>
+                    <td></td>
+                </tr>
+                <tfoot>
+                    <tr>
+                        <td><strong>total</strong></td>
+                        <td></td>
+                        <td><strong>{{total|currency}}</strong></td>
+                        <td></td>
+                        <td><button class="btn btn-sm btn-success">Purchase</button></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+       
+    </div>
+
+    <!-- Show if there are no games in cart -->
+    <div ng-if="vm.showIfThereAreNoGames">
+        <h4 class="h4">Cart is empty ! <a>Click to find games.</a> </h4>
+    </div>
+    
 </div>

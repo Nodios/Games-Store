@@ -1,7 +1,7 @@
 ﻿(function (angular) {
 
-    angular.module("mainModule").service("cartService", ['$http','$window','getRouteProvider', 'putRouteProvider',
-    function ($http,$window, getRouteProvider, putRouteProvider) {
+    angular.module("mainModule").service("cartService", ['$http', '$window', 'getRouteProvider', 'putRouteProvider', 'deleteRouteProvider',
+    function ($http, $window, getRouteProvider, putRouteProvider, deleteRouteProvider) {
 
         return {
 
@@ -21,6 +21,18 @@
                     headers: { 'Authorization': 'Bearer ' + token },
                     data: data
                 })
+            },
+
+            deleteGame: function (game) {
+
+                var token = $window.sessionStorage.token;
+
+                return $http({
+                    method: 'DELETE',
+                    url: deleteRouteProvider.deleteGame(),
+                    headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json'},
+                    data: game
+                });
             }
 
         }

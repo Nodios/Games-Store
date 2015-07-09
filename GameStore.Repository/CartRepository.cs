@@ -98,7 +98,8 @@ namespace GameStore.Repository
         {
             try
             {
-                return await repository.UpdateAsync(Mapper.Map<CartEntity>(cart));
+                int result = await repository.UpdateWithAddAsync(Mapper.Map<CartEntity>(cart));
+                return result;
             }
             catch (Exception ex)
             {
@@ -118,12 +119,13 @@ namespace GameStore.Repository
             {
                 
                 IUnitOfWork uow = repository.CreateUnitOfWork();
-                Task<CartEntity> result;
+                Task<CartEntity> result = null;
 
                 if (deletePreviousCart)
                 {
-                    await uow.DeleteAsync<CartEntity>(c => c.UserId == cart.UserId);
-                    result = uow.AddAsync<CartEntity>(AutoMapper.Mapper.Map<CartEntity>(cart));
+                    int deleted = await uow.DeleteAsync<CartEntity>(c => c.GamesInCart == cart.GamesInCart);
+                 //   if(deleted != 0)
+                     //   result = uow.AddAsync<CartEntity>(AutoMapper.Mapper.Map<CartEntity>(cart));
                 }
                 else
                 {

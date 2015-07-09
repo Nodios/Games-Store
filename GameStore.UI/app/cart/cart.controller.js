@@ -1,35 +1,51 @@
 ﻿(function (angular) {
 
     angular.module("mainModule").controller("CartController", [
-        '$window', 'cartService',
-        function ($window, cartService) {
+        '$scope','$window', '$route', 'cartService',
+        function ($scope, $window, $route, cartService) {
 
             var vm = this;
             vm.games = "";
+            $scope.total = 0;
+            vm.showTablesIfThereAreGames = false;
+            vm.showIfThereAreNoGames = false;
 
-            
+            // Get items in cart
             cartService.getCart($window.sessionStorage.id).success(function (data) {
-                console.log(data);
                 vm.games = data.GamesInCart;
-            }).error(function (data) {
-                console.log(data);
+
+                if (vm.games.length > 0) {
+
+                    vm.showTablesIfThereAreGames = true;
+                    totalSum();
+                } else {
+                    vm.showIfThereAreNoGames = true;
+                }
             });
 
+            // Delete item from cart
             vm.delete = function (item) {
 
-                // Delete from list
-                var cart = {
-                    gamesInCart: vm.games,
-                    userId: $window.sessionStorage.id
-                };
+                console.log(item);
 
-                cart.gamesInCart.pop(item);
+                cartService.deleteGame(item).success(function (data) {
+                    
+                    if (data === 1)
+                        $route.reload();
 
-                cartService.updateFromCart(cart).success(function (data) {
+                }).error(function (data) {                   
                     alert(data);
-                }).error(function () {
-                    alert("Server error");
                 });
+            }
+
+            // Price of all games
+            function totalSum () {
+                var sum = 0;
+                for (var i = 0; i < vm.games.length; i++) {
+
+                    sum += vm.games[i].Price;
+                }
+                $scope.total = sum;
             }
     }]);
 

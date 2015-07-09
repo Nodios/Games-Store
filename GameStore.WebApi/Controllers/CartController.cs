@@ -40,31 +40,31 @@ namespace GameStore.WebApi.Controllers
             }
         }
 
-        [Route("UpdateFromCart")]
-        [Authorize]
-        [HttpPut]
-        public async Task<HttpResponseMessage> UpdateCart(CartModel model)
-        {
-            try
-            {
-                // Change game id to cart
-                for (int i = 0; i < model.GamesInCart.Count; i++)
-                {
-                    model.GamesInCart[i].IsInCart = true;
-                }
-                ICart result = await service.UpdateCartAsync(AutoMapper.Mapper.Map<ICart>(model), true);
+        //[Route("UpdateFromCart")]
+        //[Authorize]
+        //[HttpPut]
+        //public async Task<HttpResponseMessage> UpdateCart(CartModel model)
+        //{
+        //    try
+        //    {
+        //        // Change game id to cart
+        //        for (int i = 0; i < model.GamesInCart.Count; i++)
+        //        {
+        //            model.GamesInCart[i].IsInCart = true;
+        //        }
+        //        ICart result = await service.UpdateCartAsync(AutoMapper.Mapper.Map<ICart>(model), true);
 
-                if(result == null)
-                    return Request.CreateResponse(HttpStatusCode.BadRequest, "error");
-                else
-                    return Request.CreateResponse(HttpStatusCode.OK, result);
-            }
-            catch (Exception ex)
-            {
+        //        if(result == null)
+        //            return Request.CreateResponse(HttpStatusCode.BadRequest, "error");
+        //        else
+        //            return Request.CreateResponse(HttpStatusCode.OK, AutoMapper.Mapper.Map<CartModel>(result));
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
-            }
-        }
+        //        return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+        //    }
+        //}
 
         [Route("Update")]
         [Authorize]
@@ -80,7 +80,7 @@ namespace GameStore.WebApi.Controllers
                 }
                 int result = await service.UpdateAsync(AutoMapper.Mapper.Map<ICart>(model));
 
-                if (result != 0)
+                if (result == 0)
                     return Request.CreateResponse(HttpStatusCode.BadRequest, "error");
                 else
                     return Request.CreateResponse(HttpStatusCode.OK, "Added to cart");

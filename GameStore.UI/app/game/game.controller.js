@@ -25,8 +25,10 @@
             // If there is paramater publisherId within route, used when navigated from other menus 
             if ($routeParams.publisherId != null) {
                 gameService.getGamesByPublisherId($routeParams.publisherId).success(function (data) {
-                    vm.showGamesTable = true;
+
                     vm.games = data;
+                    if (vm.games.length > 0)
+                        vm.showGamesTable = true;
 
                     // Sends data upwards to parent controller, navigation controller that is
                     $scope.$emit('setGameLinkToActive', 'active');
@@ -38,7 +40,6 @@
             // Search by name, if there is no name get every game
             vm.get = function () {
 
-                vm.showGamesTable = true;
                 vm.gameDetails = false;
 
                 // If there is text in search box
@@ -46,14 +47,24 @@
                     gameService.getGameByName(vm.searchString).success(function (data) {
                         vm.games = [];                                                      //empty array
                         vm.games = data;
+                        vm.pageNumber = 1;
+
+                        // Show tables if there is data , otherwise alert not found
+                        alertIfNotFound();
                     });
                 }
                 else {
                     gameService.getGames(vm.pageNumber, pageSize).success(function (data) {
                         vm.games = [];                                                    // emtpy array
                         vm.games = data;
+
+                        // Show tables if there is data , otherwise alert not found
+                        alertIfNotFound();
                     });
                 }
+
+              
+
 
             };
 
@@ -95,13 +106,13 @@
 
                     if (vm.reviews.length === 0) {
                         reviewPage = 1;
-                        vm.Previous();
+                        vm.Back();
                     }
                 });
             }
 
             // Previews review click
-            vm.Previous = function () {
+            vm.Back = function () {
 
                 reviewPage--;
                 if (reviewPage < 1)
@@ -121,7 +132,7 @@
                 // Checks if there is token... User is logged in if there is token
                 if ($window.sessionStorage.token.length > 0) {
                     gameService.postReview(review).success(function (data) {
-                        
+
                         // add to reviews
                         vm.reviews.push(data);
                     }).error(function (data) {
@@ -165,12 +176,12 @@
                         vm.games = data;
                     else
                         vm.pageNumber--;
-                  
+
                 });
             };
 
             // previous items in games list
-            vm.previousInGamesList = function () {
+            vm.backInGamesList = function () {
 
                 vm.pageNumber--;
                 if (vm.pageNumber < 1)
@@ -181,6 +192,19 @@
                     vm.games = data;
                 });
             };
+
+
+            // PRIVATE
+
+            // If there are items in vm.games shows table, otherwise alerts not found
+            function alertIfNotFound() {
+                if (vm.games.length > 0) {
+                    vm.showGamesTable = true;
+                }
+                else {
+                    alert("Not found");
+                }
+            }
         }
     ])
 })(angular);

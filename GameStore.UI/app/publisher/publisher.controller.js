@@ -84,7 +84,7 @@
             })
         };
 
-        vm.previous = function () {
+        vm.back = function () {
 
             vm.pageNumber--;
             if (vm.pageNumber < 1)

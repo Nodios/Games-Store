@@ -28,7 +28,11 @@ namespace GameStore.Repository.Common
 
         Task<int> DeleteAsync<T>(Guid id) where T : class;
 
+        Task<int> DeleteRangeAsync<T>(IEnumerable<T> entites) where T : class;
+
         Task<int> UpdateAsync<T>(T entity) where T: class;
+
+        Task<int> UpdateWithAddAsync<T>(T entity) where T : class;
 
         Task<int> UpdateAsync<T>(T entity, params Expression<Func<T, object>>[] proportiesToUpdate) where T : class;
 

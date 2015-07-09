@@ -3,6 +3,7 @@ using GameStore.DAL.Mapping;
 using GameStore.DAL.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace GameStore.DAL
 {
@@ -50,7 +51,7 @@ namespace GameStore.DAL
             modelBuilder.Configurations.Add(new SupportMap());
             modelBuilder.Configurations.Add(new UserMap());
 
-         
+            modelBuilder.Conventions.Add<ManyToManyCascadeDeleteConvention>();
 
             base.OnModelCreating(modelBuilder);
         }

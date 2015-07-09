@@ -8,25 +8,44 @@
     <!-- Publishers table -->
     <div ng-show="vm.showPublishersTable">
         <table>
-            <tr>
-                <th>Name</th>
-                <th>Games</th>
-                <th></th>
-            </tr>
+            <thead>
+                <tr>
+                    <th class="col-sm-1">#</th>
+                    <th>Name</th>
+                    <th>Games</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
             <tr ng-repeat="item in vm.publishers">
+                <td>{{($index + 1) + (5 * (vm.pageNumber - 1))}}</td>
                 <td>{{item.Name}}</td>
                 <td><a ng-click="vm.showGames(item.Id)">Show</a></td>
                 <td><a ng-click="vm.getSupport(item,item.Id)">details</a></td>
+                <td></td>
             </tr>
+            <tfoot>
+                <tr>
+                    <td>
+                        <button ng-if="vm.pageNumber !== 1" class="btn btn-sm btn-warning" ng-click="vm.back()">
+                            <span class="glyphicon glyphicon-menu-left"></span>
+                            Back
+                        </button>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+
+                        <button ng-if="vm.publishers.length === 5" class="btn btn-sm btn-warning pull-right" ng-click="vm.next()">
+                            Next
+                            <span class="glyphicon glyphicon-menu-right  col-sm-offset-1"></span>
+                        </button>
+                    </td>
+                </tr>
+            </tfoot>
         </table>
-        <button class="btn btn-success" ng-click="vm.previous()">
-            <span class="glyphicon glyphicon-menu-left"></span>
-            Previous
-        </button>
-        <button class="btn btn-success pull-right" ng-click="vm.next()">
-            Next
-            <span class="glyphicon glyphicon-menu-right  col-sm-offset-1"></span>
-        </button>
+
     </div>
 
     <!-- Publisher with info -->

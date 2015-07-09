@@ -89,7 +89,7 @@ namespace GameStore.Repository
             try
             {
                 return Mapper.Map<IEnumerable<IGame>>(await repository
-                    .GetRangeAsync<GameEntity>(g => g.PublisherId == publisherId));
+                    .GetRangeAsync<GameEntity>(g => g.PublisherId == publisherId && g.IsInCart == false));
             }
             catch (Exception ex)
             {
@@ -154,7 +154,7 @@ namespace GameStore.Repository
         {
             try
             {
-                return await this.DeleteAsync(Mapper.Map<IGame>(await repository.GetAsync<GameEntity>(id)));
+                return await repository.DeleteAsync<GameEntity>(id);
             }
             catch (Exception ex)
             {
@@ -162,5 +162,6 @@ namespace GameStore.Repository
                 throw ex;
             }
         }
+
     }
 }

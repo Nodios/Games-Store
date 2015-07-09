@@ -63,7 +63,7 @@ namespace GameStore.WebApi.Controllers
         {
             try
             {
-                IEnumerable<GameModel> result = Mapper.Map < IEnumerable < GameModel >> (await GamesService.GetRangeAsync(name));
+                IEnumerable<GameModel> result = Mapper.Map<IEnumerable<GameModel>>(await GamesService.GetRangeAsync(name));
                 if (result != null)
                     return Request.CreateResponse(HttpStatusCode.OK, result);
                 else
@@ -91,6 +91,24 @@ namespace GameStore.WebApi.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
         }
+
+        [Authorize]
+        [Route("delete")]
+        [HttpDelete]
+        public async Task<HttpResponseMessage> Delete(GameModel game)
+        {
+            try
+            {
+                int result = await GamesService.DeleteAsync(game.Id);
+
+                return Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (Exception ex)
+            {
+
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
     }
-   
+
 }

@@ -5,29 +5,45 @@
             <input type="text" ng-model="vm.searchString" />
             <button ng-click="vm.get()">Search</button>
         </div>
-        <div class="bottom-buffer"  ng-if="vm.showGamesTable">
-            <table>
-                <tr>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Genre</th>
-                    <th></th>
-                </tr>
+        <div ng-if="vm.showGamesTable">
+            <table class="col-sm-10">
+                <thead>
+                    <tr>
+                        <th class="col-sm-1">#</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Genre</th>
+                        <th></th>
+                    </tr>
+                </thead>
                 <tr ng-repeat="item in vm.games">
+                    <td>{{($index+1) + (5 * (vm.pageNumber - 1))}}</td>
                     <td>{{item.Name}}</td>
                     <td>{{item.Price | currency}}</td>
                     <td>{{item.Genre}}</td>
                     <td><a ng-click="vm.getItemDetails(item)">details</a></td>
                 </tr>
+                <tfoot>
+                    <tr>
+                        <td>
+                            <button ng-if="vm.pageNumber !== 1" class="btn btn-sm btn-warning" ng-click="vm.backInGamesList()">
+                                <span class="glyphicon glyphicon-menu-left"></span>
+                                Back
+                            </button>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <button ng-if="vm.games.length === 5" class="btn btn-sm btn-warning pull-right" ng-click="vm.nextInGamesList()">
+                                Next
+                                <span class="glyphicon glyphicon-menu-right  col-sm-offset-1"></span>
+                            </button>
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
-            <button class="btn btn-success" ng-click="vm.previousInGamesList()">
-                <span class="glyphicon glyphicon-menu-left"></span>
-                Previous
-            </button>
-            <button class="btn btn-success pull-right" ng-click="vm.nextInGamesList()">
-                Next
-                <span class="glyphicon glyphicon-menu-right  col-sm-offset-1"></span>
-            </button>
+
         </div>
     </div>
 
@@ -102,9 +118,9 @@
                     <p class="panel-body">{{::review.Description}}</p>
                 </div>
             </div>
-            <button class="btn btn-link" ng-click="vm.Previous()">
+            <button class="btn btn-link" ng-click="vm.Back()">
                 <span class="glyphicon glyphicon-menu-left"></span>
-                Previous
+                Back
             </button>
             <button class="btn btn-link pull-right" ng-click="vm.Next()">
                 Next

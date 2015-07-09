@@ -17,3 +17,4 @@ C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\obj\Debug\GameStore.DAL.pdb
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\obj\Debug\GameStore.DAL.Migrations.f.resources
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\obj\Debug\GameStore.DAL.csproj.GenerateResource.Cache
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\obj\Debug\GameStore.DAL.Migrations.s.resources
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.DAL\obj\Debug\GameStore.DAL.Migrations._new.resources

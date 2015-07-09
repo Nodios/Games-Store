@@ -31,7 +31,7 @@
                 { name: "Home", link: "#/", active: "active" },          // Link goes into ng-href , link it's just bootstrap class used for menu selected effect
                 { name: "Games", link: "#/game", active: "" },
                 { name: "Publisher", link: "#/publisher", active: "" },
-                { name: "About", active: "" }
+                { name: "Discussion forum", active: "" }
             ];
 
         // Right part of menu for unsigned user

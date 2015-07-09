@@ -150,6 +150,26 @@ namespace GameStore.Repository
         }
 
         /// <summary>
+        /// Updates entity, commit should be called afterwards to save changes
+        /// </summary>
+        /// <returns>T entity</returns>
+        public async virtual Task<int> UpdateWithAddAsync<T>(T entity) where T : class
+        {
+            try
+            {
+                DbEntityEntry entityEntry = Context.Entry<T>(entity);
+                Context.Set<T>().Add(entity);
+                entityEntry.State = EntityState.Modified;
+
+                return await Context.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
         /// Update entity
         /// </summary>
         /// <typeparam name="T">Entity type</typeparam>
@@ -172,23 +192,6 @@ namespace GameStore.Repository
             }
             catch (Exception ex)
             {
-                throw ex;
-            }
-        }
-
-
-        public Task<int> UpdateAttachAsync<T>(T entity) where T : class
-        {
-            try
-            {
-                DbEntityEntry dbEntityEntry = Context.Entry(entity);
-                Context.Set<T>().Attach(entity);
-
-                return Context.SaveChangesAsync();
-            }
-            catch (Exception ex)
-            {
-                
                 throw ex;
             }
         }
@@ -222,6 +225,19 @@ namespace GameStore.Repository
             return await DeleteAsync<T>(entity);
         }
 
+        public async Task<int> DeleteRangeAsync<T>(IEnumerable<T> entites) where T: class
+        {
+            try
+            {
+                Context.Set<T>().RemoveRange(entites);
+                return await Context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
+        }
         #endregion
 
     }

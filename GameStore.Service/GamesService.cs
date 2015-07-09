@@ -57,5 +57,10 @@ namespace GameStore.Service
         {
             return GamesRepository.GetRangeAsync(publisherId);
         }
+
+        public Task<int> DeleteAsync(Guid id)
+        {
+            return GamesRepository.DeleteAsync(id);
+        }
     }
 }

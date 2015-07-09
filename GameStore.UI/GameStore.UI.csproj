@@ -69,6 +69,7 @@
     <Content Include="app\modals\register\registerModal.controller.js" />
     <Content Include="app\modals\register\register.html" />
     <Content Include="app\services\authService.service.js" />
+    <Content Include="app\services\deleteRouteProvider.js" />
     <Content Include="app\services\putRouteProvider.service.js" />
     <Content Include="Content\bootstrap\alerts.less" />
     <Content Include="Content\bootstrap\badges.less" />
