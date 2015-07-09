@@ -64,6 +64,8 @@
     <Content Include="app\cart\cart.html" />
     <Content Include="app\cart\cart.service.js" />
     <Content Include="app\filters\password.filter.js" />
+    <Content Include="app\home\home.controller.js" />
+    <Content Include="app\home\home.html" />
     <Content Include="app\modals\login\login.html" />
     <Content Include="app\modals\login\loginModal.controller.js" />
     <Content Include="app\modals\register\registerModal.controller.js" />
@@ -147,6 +149,10 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\style.css.map" />
     <Content Include="Content\style.less" />
+    <Content Include="images\deal1.jpg" />
+    <Content Include="images\menu1.jpg" />
+    <Content Include="images\menu2.jpg" />
+    <Content Include="images\menu3.png" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-cookies.min.js.map" />

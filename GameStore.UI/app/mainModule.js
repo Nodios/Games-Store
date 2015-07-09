@@ -11,6 +11,7 @@
     function config($routeProvider) {
 
         $routeProvider
+            .when('/', { templateUrl: 'app/home/home.html', controller: 'HomeController', controllerAs: 'vm'})
             .when('/publisher', { templateUrl: 'app/publisher/publisher.html', controller: 'PublisherController', controllerAs: 'vm' })
             .when('/game', { templateUrl: 'app/game/game.html', controller: 'GameController', controllerAs: 'vm' })
             .when('/game/:publisherId', { templateUrl: 'app/game/game.html', controller: 'GameController', controllerAs: 'vm'})
