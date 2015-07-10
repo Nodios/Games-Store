@@ -51,7 +51,7 @@ namespace GameStore.WebApi.Controllers
         */
 
         [Authorize]
-        [HttpPut]
+        [HttpPost]
         [Route("Insert")]
         public async Task<HttpResponseMessage> Insert(PostModel model)
         {

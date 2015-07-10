@@ -6,6 +6,8 @@
 
                 return {
 
+                    //#region GET
+
                     // Get games collection
                     getGames: function (pageNumber, pageSize) {
                         return $http.get(getRouteProvider.getGames(pageNumber, pageSize));
@@ -36,23 +38,25 @@
                         return $http.get(getRouteProvider.getReviews(gameId, pageNumber, pageSize));
                     },
 
-                    // Post
+                    //#endregion
+
+                    //#region POST
+
                     postPost: function (post) {
 
-                        var token = $window.sessionStorage.token;
+                        var token = $window.localStorage.token;
 
                         return $http({
-                            method: 'put',
+                            method: 'post',
                             url: postRouteProvider.postPost(),
                             headers: { 'Authorization': 'Bearer ' + token },
                             data: post
                         });
                     },
 
-                    // Post review 
                     postReview: function (review) {
 
-                        var token = $window.sessionStorage.token;
+                        var token = $window.localStorage.token;
 
                         return $http({
                             method: 'post',
@@ -62,10 +66,13 @@
                         });
                     },
 
-                    // Update cart
+                    //#endregion
+
+                    //#region PUT
+
                     putCart: function (cart) {
 
-                        var token = $window.sessionStorage.token;
+                        var token = $window.localStorage.token;
                         console.log(cart);
                         return $http({
                             method: 'put',
@@ -74,6 +81,8 @@
                             data: cart
                         });
                     }
+
+                    //#endregion
                 };
 
             }]);

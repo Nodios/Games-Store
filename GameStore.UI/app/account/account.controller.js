@@ -1,92 +1,101 @@
 ﻿(function (angular) {
 
-    angular.module("mainModule").controller("AccountController", [
-        '$scope','$window', '$route','userService',
-        function ($scope, $window, $route, userService) {
-            
-            var vm = this;
+    angular.module("mainModule").controller("AccountController",
+        ['$scope', '$window', '$route', 'userService',
+             function ($scope, $window, $route, userService) {
 
-            // Tables to show
-            vm.showUserChangeTab = false;
-            vm.showEmailChangeTab = false;
-            vm.showPasswordChangeTab = false;
- 
-            // For password changes
-            $scope.newPassword = "";
-            $scope.confirmNewPassword = "";
+                 //#region Proporties
 
-            // Crate user and add data to it
-            $scope.user;
-            userService.getUserByUsername($window.sessionStorage.user).success(function (data) {
+                 var vm = $scope.vm = {};
 
-                $scope.user = {
-                    userData: data,
-                    password: ""
-                }
-            });
-       
-            // Change username click
-            vm.changeUsername = function () {
-                vm.showUserChangeTab = true;
-                vm.showEmailChangeTab = false;
-                vm.showPasswordChangeTab = false;
-            };
+                 // Tables to show
+                 vm.showUserChangeTab = false;
+                 vm.showEmailChangeTab = false;
+                 vm.showPasswordChangeTab = false;
 
-            // Change mail click
-            vm.changeEmail = function () {
-                vm.showEmailChangeTab = true;
-                vm.showUserChangeTab = false;
-                vm.showPasswordChangeTab = false;
-            };
+                 // For password changes
+                 vm.newPassword = "";
+                 vm.confirmNew = "";
 
-            //Change password click
-            vm.changePassword = function () {
-                vm.showPasswordChangeTab = true;
-                vm.showUserChangeTab = false;
-                vm.showEmailChangeTab = false;
-            }
+                 // Crate user and add data to it
+                 vm.user;
+                 userService.getUserByUsername($window.localStorage.user).success(function (data) {
 
-            // Confirm username change  
-            vm.confirmNewUsernameOrEmail = function (user) {
+                     vm.user = {
+                         userData: data,
+                         password: ""
+                     }
+                 });
 
-                var userToUpload = user.userData;
-                var passToSend = user.password;
+                 //#endregion
 
-                userService.updateUser(userToUpload, passToSend).success(function (data) {
+                 //#region Methods
 
-                    alert("Username:  " + data.UserName + "\n" + "Email: " + data.Email);
-                    $window.sessionStorage.user = data.UserName;
-                    $route.reload();               // reload route
+                 // Change username click
+                 vm.changeUsername = function () {
+                     vm.showUserChangeTab = true;
+                     vm.showEmailChangeTab = false;
+                     vm.showPasswordChangeTab = false;
+                 };
 
-                }).error(function (data) {
-                    alert(data);
-                });
-            };
+                 // Change mail click
+                 vm.changeEmail = function () {
+                     vm.showEmailChangeTab = true;
+                     vm.showUserChangeTab = false;
+                     vm.showPasswordChangeTab = false;
+                 };
 
-            // Confirm new pass, userdata and confirm pass
-            vm.confirmNewPassword = function (user, newPassword, confirmPass) {
+                 //Change password click
+                 vm.changePassword = function () {
+                     vm.showPasswordChangeTab = true;
+                     vm.showUserChangeTab = false;
+                     vm.showEmailChangeTab = false;
+                 }
 
-                // Data to send
-                var userId = user.userData.Id;
-                var oldPassword = user.password;
-                var newPass = newPassword;
+                 // Confirm username change  
+                 vm.confirmNewUsernameOrEmail = function (user) {
 
-                // Check if password are same and have required length
-                if (newPass === confirmPass && newPass.length >= 6) {
+                     var userToUpload = user.userData;
+                     var passToSend = user.password;
 
-                    userService.updateUserPassword(userId, oldPassword, newPass).success(function (data) {
+                     userService.updateUser(userToUpload, passToSend).success(function (data) {
 
-                        alert(data);
-                        $route.reload();                       //reload route
+                         alert("Username:  " + data.UserName + "\n" + "Email: " + data.Email);
+                         $window.localStorage.user = data.UserName;
+                         $route.reload();               // reload route
 
-                    }).error(function (data) {
-                        alert(data);
-                    });
-                }
-                else {
-                    alert("Password length should at least 6 charachters. Make sure that new password and confirm new password fields are same.");
-                }
-            }
-    }]);
+                     }).error(function (data) {
+                         alert(data);
+                     });
+                 };
+
+                 // Confirm new pass, userdata and confirm pass
+                 vm.confirmNewPassword = function (user, newPassword, confirmPass) {
+
+                     // Data to send
+                     var userId = user.userData.Id;
+                     var oldPassword = user.password;
+                     var newPass = newPassword;
+
+                     // Check if password are same and have required length
+                     if (newPass === confirmPass && newPass.length >= 6) {
+
+                         userService.updateUserPassword(userId, oldPassword, newPass).success(function (data) {
+
+                             alert(data);
+                             $route.reload();                       //reload route
+
+                         }).error(function (data) {
+                             alert(data);
+                         });
+                     }
+                     else {
+                         alert("Password length should at least 6 charachters. Make sure that new password and confirm new password fields are same.");
+                     }
+                 }
+
+                 //#endregion
+
+             }]);
 
 })(angular);

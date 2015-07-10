@@ -2,21 +2,24 @@
 (function (angular) {
 
 
-    angular.module("mainModule").controller("NavigationController", ['$scope', '$window', '$controller', '$location',
-    function ($scope, $window, $controller, $location) {
+    angular.module("mainModule").controller("NavigationController",
+        ['$scope', '$window', '$controller', '$location', 'navigationMenuService',
+             function ($scope, $window, $controller, $location, navigationMenuService) {
 
         // Nav controller is first loaded controller and is alive all time 
         $location.path("#/");  // redirect to home page every time when controller is created 
 
-        var vm = this;
+        //#region Proporties
+
+        var vm = $scope.vm = {};
 
         vm.loggedIn = false;
         vm.loggedOut = true;
 
         // GLOBALS  
-        $window.sessionStorage.user = "Log in";
-        $window.sessionStorage.id = "";
-        $window.sessionStorage.token = "";
+        $window.localStorage.user = "Log in";
+        $window.localStorage.id = "";
+        $window.localStorage.token = "";
 
         // Controllers 
         var modalRegisterController = $scope.$new();
@@ -25,16 +28,10 @@
         $controller('ModalRegisterController', { $scope: modalRegisterController });
         $controller('ModalLoginController', { $scope: modalLoginController });
 
-        // Proporties
-        $scope.menus =
-            [
-                { name: "Home", link: "#/", active: "active" },          // Link goes into ng-href , link it's just bootstrap class used for menu selected effect
-                { name: "Games", link: "#/game", active: "" },
-                { name: "Publisher", link: "#/publisher", active: "" },
-                { name: "Discussion forum", active: "" }
-            ];
 
-        // Right part of menu for unsigned user
+        vm.menus = navigationMenuService.getMenu();
+           
+        // Right part of menu for unsigned user , handled without navigatonMenuService
         vm.user;
         vm.authRegister = { name: "Register" };
         vm.authUser = { name: "Log in" };
@@ -44,11 +41,13 @@
         vm.account = { name: "Account", link: "#/account" };
         vm.logout = { name: "Logout", link: "#/" };
 
+        //#endregion
+        
+        //#region Methods
 
-        // If button is pressed set it's class to active - used just for effect 
+        // Set CSS of navigation menu to active
         vm.setActive = function (index) {
-            clearActive();
-            $scope.menus[index].active = "active";
+            navigationMenuService.setMenuToActive(index);
         };
 
         // Opens register modal
@@ -63,29 +62,24 @@
 
         // Opens logout model
         vm.logoutClick = function () {
-            $window.sessionStorage.user = "Log in";
-            $window.sessionStorage.token = "";
+            $window.localStorage.user = "Log in";
+            $window.localStorage.token = "";
             vm.user = "Log in";
-            setMenuUser;
+            setMenuUser();
         };
+    
+        //#endregion
 
-        // Private 
-        // Sets active in menus to empty
-        var clearActive = function () {
-
-            for (var i = 0; i < $scope.menus.length; i++) {
-                $scope.menus[i].active = "";
-            }
-        };
+        //#region Private methods
 
         // Sets menu name if user is signed in
         var setMenuUser = function () {
 
             // Sets up log in menu item to user name if there is user signed in , else just says log in
-            if ($window.sessionStorage.token.length > 0) {
+            if ($window.localStorage.token.length > 0) {
                 vm.loggedIn = true;
                 vm.loggedOut = false;
-                vm.user = $window.sessionStorage.user + " ";
+                vm.user = $window.localStorage.user + " ";
             }
             else {
                 vm.loggedIn = false;
@@ -93,22 +87,19 @@
             }
         };
 
-        // Keeps track on $window.sessionStorage.user changes            // ? 
+        //#endregion
+
+        //#region Events and handlers
+
+        // Keeps track on $window.localStorage.user changes          
         $scope.$watch(function () {
-            return $window.sessionStorage.user;
+            return $window.localStorage.user;
         }, function (newVal, oldVal) {
             setMenuUser();
         });
 
-      
-        // EVENTS 
-        // used by child controller to set game link to active
-        $scope.$on('setGameLinkToActive', function (event, data) {
+                 //#endregion
 
-            // Clear menu classes and set game menu class to active 
-            vm.setActive(1);
-        });
-    }
-    ]);
+    }]);
 })(angular);
 

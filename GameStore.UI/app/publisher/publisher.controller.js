@@ -1,10 +1,10 @@
 ﻿
 (function (angular) {
     angular.module("mainModule").controller("PublisherController",
-        ['$location', 'publisherService',
-    function ($location, publisherService) {
+        ['$scope','$location', 'publisherService',
+    function ($scope, $location, publisherService) {
 
-        var vm = this;
+        var vm = $scope.vm = {};
 
         vm.publishers = [];
         vm.publisher = null;

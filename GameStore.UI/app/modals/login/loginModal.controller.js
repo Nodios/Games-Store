@@ -1,9 +1,10 @@
 ﻿(function (angular) {
 
-    angular.module("mainModule").controller("ModalLoginController", ['$scope', '$window', '$modal', '$log', 'authService',
-        function ($scope, $window, $modal,$log, authService) {
+    angular.module("mainModule").controller("ModalLoginController",
+        ['$scope', '$window', '$modal', '$log', 'authService',
+             function ($scope, $window, $modal,$log, authService) {
 
-            var vm = this;
+            var vm = $scope.vm = {};
 
             vm.user = { userName: null, password: null };
 
@@ -39,9 +40,9 @@
                 console.log(user);
                 authService.login(user).success(function (data, status, header, config) {
                     console.log(data);
-                    $window.sessionStorage.user = data.username;
-                    $window.sessionStorage.token = data.access_token;
-                    $window.sessionStorage.id = data.id;
+                    $window.localStorage.user = data.username;
+                    $window.localStorage.token = data.access_token;
+                    $window.localStorage.id = data.id;
 
                 }).error(function (data, status, header, config) {
                     alert(data.error + " : " + data.error_description);
@@ -58,7 +59,7 @@
 
     angular.module("mainModule").controller("OpenLoginModalCtrl",
         ['$scope', '$modalInstance', 'injectUserInfo',
-        function ($scope, $modalInstance, injectUserInfo) {
+             function ($scope, $modalInstance, injectUserInfo) {
 
             var vm = this;
             $scope.userInfo = injectUserInfo;

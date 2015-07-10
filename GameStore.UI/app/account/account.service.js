@@ -1,10 +1,12 @@
 ﻿(function (angular) {
 
-    angular.module("mainModule").service("userService", [
-        '$http', '$window', 'getRouteProvider', 'putRouteProvider',
-        function ($http, $window, getRouteProvider, putRouteProvider) {
+    angular.module("mainModule").service("userService",
+        ['$http', '$window', 'getRouteProvider', 'putRouteProvider',
+            function ($http, $window, getRouteProvider, putRouteProvider) {
+
 
             return {
+
                 getUserByUsername: function (username) {
                     return $http.get(getRouteProvider.getUserByUsername(username));
                 },
@@ -12,7 +14,7 @@
                 // Updates user username or email
                 updateUser: function (user, password) {                                  
 
-                    var token = $window.sessionStorage.token;
+                    var token = $window.localStorage.token;
 
                     return $http({
                         method: 'put',
@@ -27,7 +29,7 @@
 
                 updateUserPassword: function (userId, oldPassword, newPassword) {
 
-                    var token = $window.sessionStorage.token;
+                    var token = $window.localStorage.token;
 
                     return $http({
                         method: 'put',

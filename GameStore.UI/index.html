@@ -19,7 +19,7 @@
                     <div>
 
                         <!-- Menu -->
-                        <ul class="standardMenu" ng-repeat="menu in menus">
+                        <ul class="standardMenu" ng-repeat="menu in vm.menus">
                             <!-- :: one way binding -->
                             <li class="{{menu.active}}"><a href="{{menu.link}}" ng-click="vm.setActive($index)">{{::menu.name}}</a></li>
                         </ul>
@@ -69,6 +69,7 @@
     <script src="app/services/authService.service.js"></script>
     <script src="app/services/putRouteProvider.service.js"></script>
     <script src="app/services/deleteRouteProvider.js"></script>
+    <script src="app/services/navigationMenu.service.js"></script>
 
     <!-- Filters -->
     <script src="app/filters/password.filter.js"></script>

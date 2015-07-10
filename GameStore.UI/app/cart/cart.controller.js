@@ -1,52 +1,64 @@
 ﻿(function (angular) {
 
     angular.module("mainModule").controller("CartController", [
-        '$scope','$window', '$route', 'cartService',
-        function ($scope, $window, $route, cartService) {
+        '$scope', '$window', '$route', 'cartService',
+             function ($scope, $window, $route, cartService) {
 
-            var vm = this;
-            vm.games = "";
-            $scope.total = 0;
-            vm.showTablesIfThereAreGames = false;
-            vm.showIfThereAreNoGames = false;
+                 //#region Proporties
 
-            // Get items in cart
-            cartService.getCart($window.sessionStorage.id).success(function (data) {
-                vm.games = data.GamesInCart;
+                 var vm = $scope.vm = {};
+                 vm.games = "";
+                 vm.total = 0;
+                 vm.showTablesIfThereAreGames = false;
+                 vm.showIfThereAreNoGames = false;
 
-                if (vm.games.length > 0) {
+                 //#endregion
 
-                    vm.showTablesIfThereAreGames = true;
-                    totalSum();
-                } else {
-                    vm.showIfThereAreNoGames = true;
-                }
-            });
+                 //#region Methods
 
-            // Delete item from cart
-            vm.delete = function (item) {
+                 // Get items in cart
+                 cartService.getCart($window.localStorage.id).success(function (data) {
+                     vm.games = data.GamesInCart;
 
-                console.log(item);
+                     if (vm.games.length > 0) {
 
-                cartService.deleteGame(item).success(function (data) {
-                    
-                    if (data === 1)
-                        $route.reload();
+                         vm.showTablesIfThereAreGames = true;
+                         totalSum();
+                     } else {
+                         vm.showIfThereAreNoGames = true;
+                     }
+                 });
 
-                }).error(function (data) {                   
-                    alert(data);
-                });
-            }
+                 // Delete item from cart
+                 vm.delete = function (item) {
 
-            // Price of all games
-            function totalSum () {
-                var sum = 0;
-                for (var i = 0; i < vm.games.length; i++) {
+                     console.log(item);
 
-                    sum += vm.games[i].Price;
-                }
-                $scope.total = sum;
-            }
-    }]);
+                     cartService.deleteGame(item).success(function (data) {
+
+                         if (data === 1)
+                             $route.reload();
+
+                     }).error(function (data) {
+                         alert(data);
+                     });
+                 }
+
+                 //#endregion
+
+                 //#region Private methods
+
+                 // Price of all games
+                 function totalSum() {
+                     var sum = 0;
+                     for (var i = 0; i < vm.games.length; i++) {
+
+                         sum += vm.games[i].Price;
+                     }
+                     $scope.total = sum;
+                 }
+
+                 //#endregion
+             }]);
 
 })(angular);

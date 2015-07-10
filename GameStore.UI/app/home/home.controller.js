@@ -3,7 +3,7 @@
     angular.module("mainModule").controller("HomeController", ['$scope',
         function ($scope) {
 
-
+            // TODO 
             $scope.myInterval = 5000; 
 
             $scope.slides = [
