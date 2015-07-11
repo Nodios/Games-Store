@@ -11,38 +11,22 @@
 
                // Variables
                var pageSize = 5;
+               var reviewsToShowCount = 2;
                vm.pageNumber = 1;
 
                vm.games = [];              //for collection of games
                vm.game = null;             //for single game
                vm.reviews = [];            // For showing all reviews
                vm.review = {};             //For adding review
+               vm.userId;
                vm.gameImages;
 
                vm.searchString = "";
                vm.showGamesTable = false;
-               vm.gameDetails = false;
-               vm.addReview = false;
+               vm.showGameDetails = false;
+               vm.showAddReview = false;            // show add review form
+               vm.showEditReview = false;           // show edit review form
                var reviewPage = 1;             // Used for reviews when watching game details
-
-               //#endregion
-
-               //#region To handle on controller creation
-
-               // If there is paramater publisherId within route, used when navigated from other menus 
-               if ($routeParams.publisherId != null) {
-                   gameService.getGamesByPublisherId($routeParams.publisherId).success(function (data) {
-
-                       vm.games = data;
-                       if (vm.games.length > 0)
-                           vm.showGamesTable = true;
-
-                       // Sends data upwards to parent controller, navigation controller that is
-                       $scope.$emit('setGameLinkToActive', 'active');
-                   }).error(function (data) {
-                       console.log(data);
-                   });
-               };
 
                //#endregion
 
@@ -51,7 +35,7 @@
                // Search by name, if there is no name get every game
                vm.get = function () {
 
-                   vm.gameDetails = false;
+                   vm.showGameDetails = false;
 
                    // If there is text in search box
                    if (vm.searchString.length > 0) {
@@ -92,7 +76,7 @@
                    };
 
                    vm.showGamesTable = false;       // hide game table
-                   vm.gameDetails = true;          // show details table     
+                   vm.showGameDetails = true;          // show details table     
 
                    // Get images for detail
                    gameService.getImages(vm.game.Id).success(function (data) {
@@ -104,8 +88,7 @@
                        vm.reviews = [];
                        vm.reviews = data;
                    });
-               };
-
+               }
                // Next review click
                vm.Next = function () {
 
@@ -133,19 +116,32 @@
                    gameService.getReviews(vm.game.Id, reviewPage, 2).success(function (data) {
                        vm.reviews = data;
                    });
+
                }
 
                // Post new review
                vm.postReview = function (review) {
 
-                   review.gameId = vm.game.GameId;
+                   review.gameId = vm.game.Id;
+                   review.userId = $window.localStorage.id;
+                   review.author = $window.localStorage.user;
 
                    // Checks if there is token... User is logged in if there is token
                    if ($window.localStorage.token.length > 0) {
                        gameService.postReview(review).success(function (data) {
 
-                           // add to reviews
-                           vm.reviews.push(data);
+                           // Pop if it goes above max show list
+                           if (vm.reviews.length >= reviewsToShowCount)
+                           {
+                               // swap so that new review comes to top
+                               var temp = vm.reviews[0];
+                               vm.reviews[0] = data;
+                               vm.reviews[1] = temp;
+                           } else {
+                               vm.reviews.push(data);
+                           }
+                               
+
                        }).error(function (data) {
                            alert("Server error");
                        });
@@ -157,7 +153,6 @@
                // Add game to car
                vm.addToCart = function () {
 
-                   console.log(vm.game);
                    if ($window.localStorage.token.length > 0) {
                        var cart = {
                            userId: $window.localStorage.id,
@@ -204,6 +199,35 @@
                    });
                };
 
+               //TODO IMPLEMENT
+               // If delete review is clicked
+               vm.deleteReview = function (review) {
+                   gameService.deleteReview(review).success(function () {
+                       vm.reviews.pop(review);
+                       vm.Next();
+                   }).error(function () {
+                       // Error handling
+                   });
+               };
+
+               //TODO IMPLEMENT
+               // edit review click
+               vm.editReview = function (review) {
+                   if ($window.localStorage.token.length > 0) {
+                       gameService.putReview(review).success(function (data) {
+
+                           // Remove old review ,and add new
+                           vm.reviews.pop(review);
+                           vm.reviews.push(data);
+                       }).error(function (data) {
+                           //TODO error message
+                       });
+                   }
+                   else {
+                       alert("Plese log in to edit.");          // CHANGE later
+                   }
+               };
+
                //#endregion
 
                //#region Private methods
@@ -216,7 +240,41 @@
                    else {
                        alert("Not found");
                    }
+               };
+
+               //#endregion
+
+               //#region To handle on controller creation
+
+               // If there is paramater publisherId within route, used when navigated from other menus 
+               if ($routeParams.publisherId != null) {
+                   gameService.getGamesByPublisherId($routeParams.publisherId).success(function (data) {
+
+                       vm.games = data;
+                       if (vm.games.length > 0)
+                           vm.showGamesTable = true;
+
+                       // Sends data upwards to parent controller, navigation controller that is
+                       $scope.$emit('setGameLinkToActive', 'active');
+                   }).error(function (data) {
+                       console.log(data);
+                   });
+               } else {
+
+                   // Default, if not navigated from other place, just search
+                   vm.get();
                }
+
+               //#endregion
+
+               //#region Events
+
+               // Watch changes on id, if changed change user id
+               $scope.$watch(function () {
+                   return $window.localStorage.id;
+               }, function (newValue, oldValue) {
+                   vm.userId = newValue;
+               });
 
                //#endregion
            }

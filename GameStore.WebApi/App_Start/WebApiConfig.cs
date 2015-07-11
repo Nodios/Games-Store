@@ -14,7 +14,7 @@ namespace GameStore.WebApi
            config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
             // Enable cors
-           var corsAttr = new EnableCorsAttribute("http://localhost:51227", "*", "*");
+           EnableCorsAttribute corsAttr = new EnableCorsAttribute("http://localhost:51227", "*", "*");
            config.EnableCors(corsAttr);
 
             // Web API routes

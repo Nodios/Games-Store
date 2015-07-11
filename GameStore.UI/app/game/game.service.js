@@ -1,8 +1,8 @@
 ﻿(function (angular) {
 
     angular.module("mainModule").service("gameService",
-        ['$http', '$window', 'getRouteProvider', 'postRouteProvider', 'putRouteProvider',
-            function ($http, $window, getRouteProvider, postRouteProvider, putRouteProvider) {
+        ['$http', '$window', 'getRouteProvider', 'postRouteProvider', 'putRouteProvider', 'deleteRouteProvider',
+            function ($http, $window, getRouteProvider, postRouteProvider, putRouteProvider, deleteRouteProvider) {
 
                 return {
 
@@ -42,18 +42,6 @@
 
                     //#region POST
 
-                    postPost: function (post) {
-
-                        var token = $window.localStorage.token;
-
-                        return $http({
-                            method: 'post',
-                            url: postRouteProvider.postPost(),
-                            headers: { 'Authorization': 'Bearer ' + token },
-                            data: post
-                        });
-                    },
-
                     postReview: function (review) {
 
                         var token = $window.localStorage.token;
@@ -73,12 +61,40 @@
                     putCart: function (cart) {
 
                         var token = $window.localStorage.token;
-                        console.log(cart);
+
                         return $http({
                             method: 'put',
                             url: putRouteProvider.updateCart(),
                             headers: { 'Authorization': 'Bearer ' + token },
                             data: cart
+                        });
+                    },
+
+                    putReview: function (review) {
+
+                        var token = $window.localStorage.token;
+
+                        return $http({
+                            method: 'put',
+                            url: putRouteProvider.updateReview(),
+                            headers: { 'Authorization': 'Bearer ' + token },
+                            data: review
+                        });
+                    },
+
+                    //#endregion
+
+                    //#region DELETE
+
+                    deleteReview: function (review) {
+
+                        var token = $window.localStorage.token;
+
+                        return $http({
+                            method: 'delete',
+                            url: deleteRouteProvider.deleteReview(),
+                            headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' },
+                            data: review
                         });
                     }
 

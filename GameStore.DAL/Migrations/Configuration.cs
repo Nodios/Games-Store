@@ -17,7 +17,7 @@ namespace GameStore.DAL.Migrations
 
         protected override void Seed(GameStore.DAL.GamesStoreContext context)
         {
-            
+
             context.Publishers.Add(new PublisherEntity()
             {
                 Description = "Seven hundred twelve counts of extortion. Eight hundred and forty-nine counts of racketeering. Two hundred and forty-six counts of fraud. Eighty-seven counts of conspiracy murder.Five hundred and twenty-seven counts of obstruction of justice. How do the defendants plead?",
@@ -195,7 +195,7 @@ namespace GameStore.DAL.Migrations
             });
 
             context.SaveChanges();
-            
+
             // Fifa
             Image image1 = Image.FromFile(@"C:\Users\Luka\Desktop\bla\slika1.png");
             GameEntity game = context.Games.Where(g => g.Name == "Fifa").First();
@@ -210,7 +210,7 @@ namespace GameStore.DAL.Migrations
             };
             context.Games.AddOrUpdate(game);
 
-            
+
 
             // Nba
             Image image2 = Image.FromFile(@"C:\Users\Luka\Desktop\bla\slika2.png");
@@ -225,7 +225,7 @@ namespace GameStore.DAL.Migrations
                
             };
             context.Games.AddOrUpdate(game2);
-            
+
             //Battlefield
             Image image3 = Image.FromFile(@"C:\Users\Luka\Desktop\bla\slika3.png");
             GameEntity game3 = context.Games.Where(g => g.Name == "Battlefield").First();

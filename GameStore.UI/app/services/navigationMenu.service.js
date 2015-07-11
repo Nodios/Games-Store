@@ -4,14 +4,14 @@
 (function (angular) {
 
 
-    angular.module("mainModule").service("navigationMenuService", [function(){
+    angular.module("mainModule").service("navigationMenuService", ["NAVIGATION_LINKS", function(NAVIGATION_LINKS){
 
         var menus =
             [
-                { name: "Home", link: "#/", active: "active" },          // Link goes into ng-href , link it's just bootstrap class used for menu selected effect
-                { name: "Games", link: "#/game", active: "" },
-                { name: "Publisher", link: "#/publisher", active: "" },
-                { name: "Discussion forum", active: "" }
+                { name: "Home", link: NAVIGATION_LINKS.HOME , active: "active" },          // Link goes into ng-href , link it's just bootstrap class used for menu selected effect
+                { name: "Games", link: NAVIGATION_LINKS.GAME, active: "" },
+                { name: "Publisher", link: NAVIGATION_LINKS.PUBLISHER , active: "" },
+                { name: "Discussion forum", link: NAVIGATION_LINKS.FORUM, active: "" }
             ];
 
         return {

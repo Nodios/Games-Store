@@ -17,6 +17,7 @@ namespace GameStore.DAL.Mapping
 
             // One to many
             HasRequired(r => r.Game).WithMany(g => g.Reviews).HasForeignKey(r => r.GameId);
+            HasRequired(r => r.User).WithMany(u => u.Reviews).HasForeignKey(r => r.UserId);
         }
 
       

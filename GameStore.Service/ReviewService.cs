@@ -26,14 +26,14 @@ namespace GameStore.Service
             return await repository.AddIReviewAsync(review);
         }
 
-        public async Task<int> UpdateAsync(Model.Common.IReview review)
+        public async Task<IReview> UpdateAsync(Model.Common.IReview review)
         {
-            return await repository.UpdateAsync(review);
+            return await repository.UpdateIReviewAsync(review);
         }
 
-        public async Task<int> DeleteAsync(Model.Common.IReview review)
+        public async Task<int> DeleteAsync(Guid id)
         {
-            return await repository.Delete(review);
+            return await repository.Delete(id);
         }
     }
 }

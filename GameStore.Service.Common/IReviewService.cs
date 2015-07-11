@@ -10,7 +10,7 @@ namespace GameStore.Service.Common
     {
         Task<IEnumerable<IReview>> GetAsync(Guid gameId, GenericFilter filter);
         Task<IReview> AddAsync(IReview review);
-        Task<int> UpdateAsync(IReview review);
-        Task<int> DeleteAsync(IReview review);
+        Task<IReview> UpdateAsync(IReview review);
+        Task<int> DeleteAsync(Guid id);
     }
 }

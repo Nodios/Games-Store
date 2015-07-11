@@ -1,10 +1,14 @@
 ﻿<div ng-controller="GameController">
     <div class="gameView">
+
+        <!-- Search bar-->
         <div>
             <label>Search: </label>
             <input type="text" ng-model="vm.searchString" />
             <button ng-click="vm.get()">Search</button>
         </div>
+
+        <!-- Games table -->
         <div ng-if="vm.showGamesTable">
             <table class="col-sm-10">
                 <thead>
@@ -49,7 +53,7 @@
 
 
     <!-- Show game details-->
-    <div ng-if="vm.gameDetails">
+    <div ng-if="vm.showGameDetails">
         <h3 class="page-header">{{vm.game.Name}}</h3>
         <br />
         <br />
@@ -82,7 +86,7 @@
     </div>
 
     <!-- Game details-->
-    <div class="top-buffer col-sm-12" ng-if="vm.gameDetails">
+    <div class="top-buffer col-sm-12" ng-if="vm.showGameDetails">
 
         <!-- Review header -->
         <div class="col-sm-7 top-buffer">
@@ -95,14 +99,10 @@
                     </tr>
                 </thead>
                 <tr>
-                    <td>
-                        <button class="btn btn-sm btn-primary" type="button">
-                            Average rating <span class="badge">4</span>
-                        </button>
-                    </td>
+                    <td></td>
                     <td></td>
                     <td>
-                        <h5><a ng-click="vm.addReview = true">Add review</a></h5>
+                        <h5><a ng-click="vm.showAddReview = true ; vm.showEditReview=false;vm.review = {}">Add review</a></h5>
                     </td>
                 </tr>
             </table>
@@ -111,11 +111,21 @@
         <!-- Reviews -->
         <div class="pull-left col-sm-6">
             <div ng-repeat="review in vm.reviews">
+
                 <div class="panel panel-success">
                     <div class="panel-heading">
-                        {{::review.Title}}
+                        {{::review.Title}} - by<a> {{::review.Author}}</a>
+                        <p class="pull-right">User score: {{::review.Score}}</p>
                     </div>
-                    <p class="panel-body">{{::review.Description}}</p>
+                    <p class="panel-body">
+                        {{::review.Description}}
+                        <br />
+                    </p>
+                    <div class="panel-footer" ng-show="review.UserId==vm.userId">
+                        <!-- If users id are same show footer s-->
+                        <a ng-click="vm.review=review;vm.showEditReview=true;vm.showAddReview=false">Edit</a>
+                        <a class="col-sm-offset-1" ng-click="vm.deleteReview(review)">Delete</a>
+                    </div>
                 </div>
             </div>
             <button class="btn btn-link" ng-click="vm.Back()">
@@ -129,7 +139,8 @@
         </div>
 
         <!-- Adds review -->
-        <div class="pull-right col-sm-6" ng-if="vm.addReview">
+        <div class="pull-right col-sm-6" ng-if="vm.showAddReview">
+            <h4>Add review</h4>
             <div class="input-group">
                 <div class="input-group-addon">Title</div>
                 <input type="text" class="form-control" placeholder="Title" ng-model="vm.review.Title">
@@ -150,8 +161,38 @@
             <br />
             <div class="form-inline">
                 <button class="btn btn-primary" ng-click="vm.postReview(vm.review)">Submit review</button>
-                <button class="btn btn-danger col-sm-offset-1" ng-click="vm.addReview = false">Cancel action</button>
+                <button class="btn btn-danger col-sm-offset-1" ng-click="vm.showAddReview = false">Cancel action</button>
             </div>
         </div>
+
+
+        <!-- Edit Review -->
+        <div class="pull-right col-sm-6" ng-if="vm.showEditReview">
+            <h4>Edit review</h4>
+            <div class="input-group">
+                <div class="input-group-addon">Title</div>
+                <input type="text" class="form-control" placeholder="Title" ng-model="vm.review.Title">
+            </div>
+            <br />
+            <textarea ng-model="vm.review.Description" placeholder="type review here" class="form-control" rows="5"></textarea>
+            <br />
+            <div class="input-group">
+                <div class="input-group-addon">Score</div>
+                <select class="form-control" ng-model="vm.review.Score">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <br />
+            <div class="form-inline">
+                <button class="btn btn-success" ng-click="vm.editReview(vm.review)">Edit review</button>
+                <button class="btn btn-danger col-sm-offset-1" ng-click="vm.showEditReview = false">Cancel action</button>
+            </div>
+        </div>
+
+
     </div>
 </div>

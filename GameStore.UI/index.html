@@ -37,7 +37,7 @@
                                 <li><a href="{{vm.cart.link}}">{{vm.cart.name}}</a></li>
                                 <li><a href="{{vm.account.link}}">{{vm.account.name}}</a></li>
                                 <li class="divider"></li>
-                                <li><a href="{{vm.logout.link}}" ng-click="vm.logoutClick()">{{vm.logout.name}}</a></li>
+                                <li><a ng-click="vm.logoutClick()">{{vm.logout.name}}</a></li>
                             </ul>
                         </div>
                     </div>
@@ -70,7 +70,7 @@
     <script src="app/services/putRouteProvider.service.js"></script>
     <script src="app/services/deleteRouteProvider.js"></script>
     <script src="app/services/navigationMenu.service.js"></script>
-
+    <script src="app/constants/navigation.constants.js"></script>
     <!-- Filters -->
     <script src="app/filters/password.filter.js"></script>
 

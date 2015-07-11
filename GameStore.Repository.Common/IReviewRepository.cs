@@ -14,6 +14,7 @@ namespace GameStore.Repository.Common
         Task<IReview> AddIReviewAsync(IReview review);
         Task<int> AddAsync(IReview review);
         Task<int> UpdateAsync(IReview review);
+        Task<IReview> UpdateIReviewAsync(IReview review);
         Task<int> Delete(Guid id);
         Task<int> Delete(IReview review);
     }

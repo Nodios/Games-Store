@@ -100,6 +100,29 @@ namespace GameStore.Repository
                 throw ex;
             }
         }
+
+        /// <summary>
+        /// Update IReview
+        /// </summary>
+        /// <param name="review">IReview</param>
+        /// <returns>IReview</returns>
+        public async Task<IReview> UpdateIReviewAsync(IReview review)
+        {
+            try
+            {
+                IUnitOfWork uow = repository.CreateUnitOfWork();
+                ReviewEntity result = await uow.UpdateWithAttachAsync<ReviewEntity>(AutoMapper.Mapper.Map<ReviewEntity>(review));
+                await uow.CommitAsync();
+
+                return AutoMapper.Mapper.Map<IReview>(result);
+
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
+        }
         
         #endregion
 
@@ -121,11 +144,17 @@ namespace GameStore.Repository
             }
         }
 
+        /// <summary>
+        /// Adds review and updates game with score
+        /// </summary>
+        /// <param name="review">Review</param>
+        /// <returns>Review</returns>
         public async Task<IReview> AddIReviewAsync(IReview review)
         {
             try
             {
                 IUnitOfWork uow = repository.CreateUnitOfWork();
+                
                 ReviewEntity result =  await uow.AddAsync<ReviewEntity>(Mapper.Map<ReviewEntity>(review));
                 await uow.CommitAsync();
 
@@ -151,8 +180,7 @@ namespace GameStore.Repository
         {
             try
             {
-                return await this.Delete(Mapper.Map<IReview>(
-                    await repository.GetAsync<ReviewEntity>(id)));
+                return await repository.DeleteAsync<ReviewEntity>(id);
             }
             catch (Exception ex)
             {

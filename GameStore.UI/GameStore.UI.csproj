@@ -63,6 +63,7 @@
     <Content Include="app\cart\cart.controller.js" />
     <Content Include="app\cart\cart.html" />
     <Content Include="app\cart\cart.service.js" />
+    <Content Include="app\constants\navigation.constants.js" />
     <Content Include="app\filters\password.filter.js" />
     <Content Include="app\home\home.controller.js" />
     <Content Include="app\home\home.html" />

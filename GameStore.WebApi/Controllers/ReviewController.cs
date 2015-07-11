@@ -86,7 +86,7 @@ namespace GameStore.WebApi.Controllers
         {
             try
             {
-                int result = await service.DeleteAsync(AutoMapper.Mapper.Map<IReview>(model));
+                int result = await service.DeleteAsync(model.Id);
                 if (result == 0)
                     return Request.CreateResponse(HttpStatusCode.BadRequest, "Failed.");
                 else

@@ -1,22 +1,26 @@
 ﻿(function (angular) {
 
     angular.module("mainModule").service("putRouteProvider", [function () {
-        var postUser = "gameStore/api/user";
-        var postCart = "gameStore/api/cart";
+        var putUser = "gameStore/api/user";
+        var putCart = "gameStore/api/cart";
+        var putReview = "gameStore/api/review";
 
         return {
             // used for updating mail or username
             updateUser: function () {
-                return postUser + "/UpdateUserOrMail";
+                return putUser + "/UpdateUserOrMail";
             },
             updateUserPassword: function () {
-                return postUser + "/UpdatePassword";
+                return putUser + "/UpdatePassword";
             },
             updateCart: function () {
-                return postCart + "/Update";
+                return putCart + "/Update";
             },
             updateFromCart: function () {
-                return postCart + "/UpdateFromCart";
+                return putCart + "/UpdateFromCart";
+            },
+            updateReview: function () {
+                return putReview + "/Update";
             }
 
         }

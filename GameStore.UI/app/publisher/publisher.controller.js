@@ -4,6 +4,9 @@
         ['$scope','$location', 'publisherService',
     function ($scope, $location, publisherService) {
 
+
+        //#region Proporties
+
         var vm = $scope.vm = {};
 
         vm.publishers = [];
@@ -14,6 +17,10 @@
         vm.showSupportInfoTable = false;        // tables are hidden by default
         vm.pageNumber = 1;
         var pageSize = 5;
+
+        //#endregion
+
+        //#region Methods
 
         // Get Publishers
         vm.get = function () {
@@ -94,6 +101,15 @@
                 vm.publishers = data;
             })
         };
+
+        //#endregion
+
+        //#region To handle on controller load
+
+        vm.get();
+
+        //#endregion
+
     }
         ]);
 })(angular);
