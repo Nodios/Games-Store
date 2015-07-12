@@ -1,21 +1,19 @@
 ﻿(function (angular) {
 
-    angular.module('mainModule').service('postRouteProvider', [function () {
-
-        var postUrl = "gameStore/api/post";
-        var postUser = "gameStore/api/user/update";
-        var postReview = "gameStore/api/review";
+    angular.module('mainModule').service('postRouteProvider',
+        ['ROUTE_PREFIX',
+            function (ROUTE_PREFIX) {
 
         return {
 
             // Post single post
             postPost: function () {
-                return postUrl + "/insert";
+                return ROUTE_PREFIX.POST + "/insert";
             },
             
             // Post single review
             postReview: function () {
-                return postReview;
+                return ROUTE_PREFIX.REVIEW;
             }
         };
 

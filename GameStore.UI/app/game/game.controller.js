@@ -2,8 +2,8 @@
 (function (angular) {
 
     angular.module("mainModule").controller("GameController",
-        ['$scope', '$routeParams', '$window', 'gameService',
-           function ($scope, $routeParams, $window, gameService) {
+        ['$scope', '$routeParams', '$window', 'gameService', 'notificationService',
+           function ($scope, $routeParams, $window, gameService, notificationService) {
 
                //#region Proporties
 
@@ -161,13 +161,13 @@
                        cart.gamesInCart.push(vm.game);
 
                        gameService.putCart(cart).success(function () {
-                           alert("Added to cart");
+                           notificationService.addNotification("Added to cart.", true);
                        }).error(function (data) {
-                           console.log(data);
+                           notificationService.addNotification("Error occurred. Game is not in cart.", false);
                        });
                    }
                    else {
-                       alert("Please log in");
+                       //TODO add tool top or pop up for log in
                    }
                }
 

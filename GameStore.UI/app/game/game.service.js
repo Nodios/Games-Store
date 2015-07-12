@@ -1,8 +1,8 @@
 ﻿(function (angular) {
 
     angular.module("mainModule").service("gameService",
-        ['$http', '$window', 'getRouteProvider', 'postRouteProvider', 'putRouteProvider', 'deleteRouteProvider',
-            function ($http, $window, getRouteProvider, postRouteProvider, putRouteProvider, deleteRouteProvider) {
+        ['$http', '$window', 'ROUTE_PREFIX' ,
+            function ($http, $window, ROUTE_PREFIX) {
 
                 return {
 
@@ -10,32 +10,32 @@
 
                     // Get games collection
                     getGames: function (pageNumber, pageSize) {
-                        return $http.get(getRouteProvider.getGames(pageNumber, pageSize));
+                        return $http.get(ROUTE_PREFIX.GAME + "/" + pageNumber + "/" + pageSize);
                     },
 
                     // Get game
                     getGame: function (id) {
-                        return $http.get(getRouteProvider.getGame(id));
+                        return $http.get(ROUTE_PREFIX.GAME + "/getById/" + id);
                     },
 
                     // Get game
                     getGameByName: function (name) {
-                        return $http.get(getRouteProvider.getGameByName(name));
+                        return $http.get(ROUTE_PREFIX.GAME + "/getByName/" + name);
                     },
 
                     // Get collection that belongs to publisher
                     getGamesByPublisherId: function (publisherId) {
-                        return $http.get(getRouteProvider.getGamesByPublisherId(publisherId));
+                        return $http.get(ROUTE_PREFIX.GAME  + "/getRangeFromPublisherId/" + publisherId);
                     },
 
                     // Get images that belong to game
                     getImages: function (gameId) {
-                        return $http.get(getRouteProvider.getImages(gameId));
+                        return $http.get(ROUTE_PREFIX.GAME_IMAGE + "/" + gameId);
                     },
 
                     // Get ocllection of reviews that belong to game
                     getReviews: function (gameId, pageNumber, pageSize) {
-                        return $http.get(getRouteProvider.getReviews(gameId, pageNumber, pageSize));
+                        return $http.get(ROUTE_PREFIX.REVIEW + "/" + gameId + "/" + pageNumber + "/" + pageSize);
                     },
 
                     //#endregion
@@ -48,7 +48,7 @@
 
                         return $http({
                             method: 'post',
-                            url: postRouteProvider.postReview(),
+                            url: ROUTE_PREFIX.REVIEW,
                             headers: { 'Authorization': 'Bearer ' + token },
                             data: review
                         });
@@ -64,7 +64,7 @@
 
                         return $http({
                             method: 'put',
-                            url: putRouteProvider.updateCart(),
+                            url: ROUTE_PREFIX.CART,
                             headers: { 'Authorization': 'Bearer ' + token },
                             data: cart
                         });
@@ -76,7 +76,7 @@
 
                         return $http({
                             method: 'put',
-                            url: putRouteProvider.updateReview(),
+                            url: ROUTE_PREFIX.REVIEW,
                             headers: { 'Authorization': 'Bearer ' + token },
                             data: review
                         });
@@ -92,7 +92,7 @@
 
                         return $http({
                             method: 'delete',
-                            url: deleteRouteProvider.deleteReview(),
+                            url: ROUTE_PREFIX.REVIEW,
                             headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' },
                             data: review
                         });

@@ -1,18 +1,18 @@
 ﻿(function(angular){
 
-    angular.module("mainModule").service("deleteRouteProvider", [
-    function () {
+    angular.module("mainModule").service("deleteRouteProvider", ['ROUTE_PREFIX',
+    function (ROUTE_PREFIX) {
 
         var apiGame = "gameStore/api/Game";
         var apiReview = "gameStore/api/Review";
 
         return {
             deleteGame: function () {
-                return apiGame + "/delete";
+                return ROUTE_PREFIX.GAME + "/delete";
             },
 
             deleteReview: function () {
-                return apiReview + "/delete";
+                return ROUTE_PREFIX.REVIEW + "/delete";
             }
         };
     }]);

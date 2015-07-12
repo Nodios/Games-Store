@@ -74,6 +74,7 @@
     <Content Include="app\services\authService.service.js" />
     <Content Include="app\services\deleteRouteProvider.js" />
     <Content Include="app\services\navigationMenu.service.js" />
+    <Content Include="app\services\notification.service.js" />
     <Content Include="app\services\putRouteProvider.service.js" />
     <Content Include="Content\bootstrap\alerts.less" />
     <Content Include="Content\bootstrap\badges.less" />
@@ -158,6 +159,8 @@
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-cookies.min.js.map" />
+    <Content Include="Scripts\angular-growl-notifications.js" />
+    <Content Include="Scripts\angular-growl-notifications.min.js" />
     <Content Include="Scripts\angular-loader.min.js.map" />
     <Content Include="Scripts\angular-message-format.min.js.map" />
     <Content Include="Scripts\angular-messages.min.js.map" />

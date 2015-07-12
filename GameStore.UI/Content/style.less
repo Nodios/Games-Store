@@ -85,6 +85,17 @@
     margin-bottom:20px;
 }
 
+.right-buffer{
+    margin-right:20px;
+};
+
+// Absolut
+.absolute{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
 body {
     background-color: @bodyBackgroundColor;
 }
@@ -153,6 +164,9 @@ body {
 
 // overrides bootstrap modal
 .modal-open {
+    position: fixed;
+    bottom: 0;
+    left: 0;
     .pull-left;
 }
 
@@ -179,3 +193,31 @@ body {
         margin-right: 20px;
     }
 }
+
+
+// NOTIFCATION
+
+.notification{
+  position: fixed;
+  top: 150px;
+  right: 10px;
+
+}
+
+
+.sample-show-hide {
+  padding:10px;
+  border:1px solid black;
+  background:white;
+}
+
+.sample-show-hide {
+  -webkit-transition:all linear 0.5s;
+  transition:all linear 0.5s;
+}
+
+.sample-show-hide.ng-hide {
+  opacity:0;
+}
+
+

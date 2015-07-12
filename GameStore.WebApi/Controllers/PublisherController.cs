@@ -42,26 +42,7 @@ namespace GameStore.WebApi.Controllers
             }
         }
 
-        // GET: api/Publisher/5
-        [Route("{id}")]
-        public async Task<HttpResponseMessage> Get(Guid id)
-        {
-            try
-            {
-                IPublisher result = await PublisherService.GetAsync(id);
-
-                if (result != null)
-                    return Request.CreateResponse(HttpStatusCode.OK, Mapper.Map<PublisherModel>(result));
-                else
-                    return Request.CreateResponse(HttpStatusCode.NotFound);
-            }
-            catch (Exception ex)
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
-            }
-        }
-
-        //Get: api/Publisher/GetByName/0/Ea
+        //Get: api/Publisher/GetByName/Ea
         [HttpGet()]
         [Route("getByName/{name}")]
         public async Task<HttpResponseMessage> GetByName(string name)

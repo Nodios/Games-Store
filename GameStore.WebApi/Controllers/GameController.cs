@@ -93,7 +93,6 @@ namespace GameStore.WebApi.Controllers
         }
 
         [Authorize]
-        [Route("delete")]
         [HttpDelete]
         public async Task<HttpResponseMessage> Delete(GameModel game)
         {

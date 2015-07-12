@@ -6,7 +6,7 @@
     <link href="Content/style.min.css" rel="stylesheet" />
 </head>
 <body>
-
+   
 
     <div class="container" ng-app="mainModule">
        
@@ -46,6 +46,11 @@
 
             <!-- VIEW -->
             <div ng-view></div>
+
+            <!-- Alert -->
+            <div id="notification" class="notification {{vm.alert.cls}}">
+                {{vm.alert.msg}}
+            </div>
         </div>
     </div>
 
@@ -59,6 +64,7 @@
     <script src="app/mainModule.js"></script>
     <script src="Scripts/ui-bootstrap-tpls-0.13.0.min.js"></script> <!-- Angular UI for modals -->
 
+
     <!-- Modal -->
     <script src="app/modals/register/registerModal.controller.js"></script>  
     <script src="app/modals/login/loginModal.controller.js"></script>
@@ -71,6 +77,9 @@
     <script src="app/services/deleteRouteProvider.js"></script>
     <script src="app/services/navigationMenu.service.js"></script>
     <script src="app/constants/navigation.constants.js"></script>
+    <script src="app/services/notification.service.js"></script>
+
+
     <!-- Filters -->
     <script src="app/filters/password.filter.js"></script>
 

@@ -1,22 +1,23 @@
 ﻿(function (angular) {
 
-    angular.module("mainModule").service("publisherService", ['$http', 'getRouteProvider', function ($http, getRouteProvider) {
+    angular.module("mainModule").service("publisherService",
+        ['$http', 'ROUTE_PREFIX', function ($http, ROUTE_PREFIX) {
 
         return {
 
             // Get publisher by name
             getPublishersByName: function (name) {
-                return $http.get(getRouteProvider.getPublishersByName(name));
+                return $http.get(ROUTE_PREFIX.PUBLISHER + "/getByName/" + name);
             },
 
             // Get publishers
             getPublishers: function (pageNumber, pageSize) {
-                return $http.get(getRouteProvider.getPublishers(pageNumber, pageSize));
+                return $http.get(ROUTE_PREFIX.PUBLISHER + "/" + pageNumber + "/" + pageSize);
             },
 
             // Get support
             getSupport: function(publisherId){
-                return $http.get(getRouteProvider.getSupport(publisherId));
+                return $http.get(ROUTE_PREFIX.PUBLISHER + "/getSupport/" + publisherId);
             }
         }
     }

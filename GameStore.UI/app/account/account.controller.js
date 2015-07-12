@@ -1,8 +1,8 @@
 ﻿(function (angular) {
 
     angular.module("mainModule").controller("AccountController",
-        ['$scope', '$window', '$route', 'userService',
-             function ($scope, $window, $route, userService) {
+        ['$scope', '$window', '$route', 'userService','notificationService',
+             function ($scope, $window, $route, userService, notificationService) {
 
                  //#region Proporties
 
@@ -60,12 +60,12 @@
 
                      userService.updateUser(userToUpload, passToSend).success(function (data) {
 
-                         alert("Username:  " + data.UserName + "\n" + "Email: " + data.Email);
                          $window.localStorage.user = data.UserName;
                          $route.reload();               // reload route
+                         notificationService.addNotification("User info changed", true);
 
                      }).error(function (data) {
-                         alert(data);
+                         otificationService.addNotification(data, false);
                      });
                  };
 
@@ -82,11 +82,11 @@
 
                          userService.updateUserPassword(userId, oldPassword, newPass).success(function (data) {
 
-                             alert(data);
+                             notificationService.addNotification(data, true);
                              $route.reload();                       //reload route
 
                          }).error(function (data) {
-                             alert(data);
+                             notificationService.addNotification(data, false);
                          });
                      }
                      else {

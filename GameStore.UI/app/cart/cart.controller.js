@@ -1,8 +1,8 @@
 ﻿(function (angular) {
 
     angular.module("mainModule").controller("CartController", [
-        '$scope', '$window', '$route', 'cartService',
-             function ($scope, $window, $route, cartService) {
+        '$scope', '$window', '$route', 'cartService', 'notificationService',
+             function ($scope, $window, $route, cartService, notificationService) {
 
                  //#region Proporties
 
@@ -36,11 +36,12 @@
 
                      cartService.deleteGame(item).success(function (data) {
 
+                         notificationService.addNotification("Game removed from cart.", true);
                          if (data === 1)
                              $route.reload();
 
                      }).error(function (data) {
-                         alert(data);
+                         notificationService.addNotification("Error occurred. Couldn't delete item from cart.", false);
                      });
                  }
 

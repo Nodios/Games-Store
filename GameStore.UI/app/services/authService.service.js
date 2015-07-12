@@ -1,7 +1,7 @@
 ﻿(function (angular) {
 
     angular.module("mainModule").service('authService',
-        ['$http', '$q', '$window',function ($http, $q, $window) {
+        ['$http', '$q', '$window', 'ROUTE_PREFIX', function ($http, $q, $window, ROUTE_PREFIX) {
 
             var baseUrl = "gameStore";
 
@@ -29,7 +29,7 @@
                    
                     return $http({
                         method: 'post',
-                        url: baseUrl + "/api/user/register",
+                        url: ROUTE_PREFIX.USER + "/register",
                         header: { 'Content-Type': 'application/json' },
                         data: {
                             user: registration,
