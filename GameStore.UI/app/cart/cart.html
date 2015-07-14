@@ -27,17 +27,59 @@
                         <td></td>
                         <td><strong>{{vm.total|currency}}</strong></td>
                         <td></td>
-                        <td><button class="btn btn-sm btn-success">Purchase</button></td>
+                        <td><button class="btn btn-sm btn-success" ng-click="vm.newOrder()">Order</button></td>
                     </tr>
                 </tfoot>
             </table>
         </div>
-       
+
     </div>
 
     <!-- Show if there are no games in cart -->
     <div ng-if="vm.showIfThereAreNoGames">
         <h4 class="h4">Cart is empty ! <a href="#game">Click to find games.</a> </h4>
     </div>
-    
+
+
+    <!-- Show order form -->
+    <div ng-if="vm.showOrderForm" class="col-sm-3">
+        <h4 class="page-header">Order form</h4>
+
+        <!-- First part of form -->
+        <form class="form-horizontal">
+            <label class="col-sm-4 control-label">Surname</label>
+            <div>
+                <input type="text" class="form-control" placeholder="Surname" ng-model="vm.order.Surname" />
+            </div>
+            <br />
+            <label class="col-sm-4 control-label">Name</label>
+            <div>
+                <input type="text" class="form-control" placeholder="Name" ng-model="vm.order.Name" />
+            </div>
+            <br />
+            <div class="divider"></div>
+            <br />
+            <label class="col-sm-4 control-label">Address</label>
+            <div>
+                <input type="text" class="form-control" placeholder="Delivery address" ng-model="vm.order.DeliveryAddress" />
+            </div>
+            <br />
+            <label class="col-sm-4 control-label">Email</label>
+            <div>
+                <input type="email" class="form-control" placeholder="Contact mail" ng-model="vm.order.ContactEmail" />
+            </div>
+            <br />
+            <br />
+            <label class="col-sm-4 control-label">Price</label>
+            <div>
+                <input type="text" readonly class="form-control" ng-model="vm.total|currency" />
+            </div>
+            <br />
+
+            <button class="btn btn-success col-sm-offset-1" ng-click="vm.addOrder(vm.order)">Submit Order</button>
+            <button class="btn btn-danger col-sm-offset-2" ng-click="vm.cancelOrder()">Cancel</button>
+        </form>
+    </div>
+
+
 </div>

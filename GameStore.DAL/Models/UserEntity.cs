@@ -34,7 +34,8 @@ namespace GameStore.DAL.Models
         // One to many
         public virtual ICollection<CommentEntity> Comments { get; set; }
         public virtual ICollection<PostEntity> Posts { get; set; }
-        public virtual ICollection<ReviewEntity> Reviews { get; set; }     
+        public virtual ICollection<ReviewEntity> Reviews { get; set; }
+        public virtual ICollection<OrderEntity> Orders { get; set; }
      
     }
 }

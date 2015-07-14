@@ -27,6 +27,7 @@ namespace GameStore.DAL.Models
         public virtual ICollection<GameImageEntity> GameImages { get; set; }
 
         public virtual ICollection<CartEntity> Carts { get; set; }
+        public virtual ICollection<OrderEntity> Orders { get; set; }
 
     }
 }

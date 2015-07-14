@@ -13,6 +13,8 @@
                var pageSize = 5;
                var reviewsToShowCount = 2;
                vm.pageNumber = 1;
+               vm.rate = 0; // Review score
+               vm.overstart = 0;
 
                vm.games = [];              //for collection of games
                vm.game = null;             //for single game
@@ -31,6 +33,12 @@
                //#endregion
 
                //#region Methods
+
+               // Set review score
+               vm.clickRate = function () {
+                   vm.overStar = vm.rate;
+                   vm.review.Score = vm.rate;
+               };
 
                // Search by name, if there is no name get every game
                vm.get = function () {
@@ -128,11 +136,19 @@
 
                    // Checks if there is token... User is logged in if there is token
                    if ($window.localStorage.token.length > 0) {
+
+
+                       // If title or review are short, show error and return
+                       if (vm.review.Title.length < 5 || vm.review.Description.length < 20) {
+                           notificationService.addNotification("Title should be at least 5 charachters long. Description should be at least 20 charachters long", false);
+                           return;
+                       }
+
                        gameService.postReview(review).success(function (data) {
 
                            // Pop if it goes above max show list
-                           if (vm.reviews.length >= reviewsToShowCount)
-                           {
+                           if (vm.reviews.length >= reviewsToShowCount) {
+
                                // swap so that new review comes to top
                                var temp = vm.reviews[0];
                                vm.reviews[0] = data;
@@ -140,13 +156,11 @@
                            } else {
                                vm.reviews.push(data);
                            }
-                               
-
                        }).error(function (data) {
-                           alert("Server error");
+                           notificationService.addNotificationalert(data,false);
                        });
                    } else {
-                       alert("Please log in to add review.");
+                       notificationService.addNotification("Please log in.", false);
                    }
                };
 
@@ -214,6 +228,14 @@
                // edit review click
                vm.editReview = function (review) {
                    if ($window.localStorage.token.length > 0) {
+
+                       // If title or review are short, show error and return
+                       if (vm.review.Title.length < 5 || vm.review.Description.length < 20) {
+                           notificationService.addNotification("Title should be at least 5 charachters long. Description should be at least 20 charachters long", false);
+                           return;
+                       }
+
+
                        gameService.putReview(review).success(function (data) {
 
                            // Remove old review ,and add new
@@ -224,7 +246,7 @@
                        });
                    }
                    else {
-                       alert("Plese log in to edit.");          // CHANGE later
+                       notificationService.addNotification("Please log in.", false);
                    }
                };
 

@@ -30,6 +30,7 @@ namespace GameStore.Repository
             Bind<IPostRepository>().To<PostRepository>();
             Bind<IReviewRepository>().To<ReviewRepository>();
             Bind<ISupportRepository>().To<SupportRepository>();
+            Bind<IOrderRepository>().To<OrderRepository>();
             Bind<IUserRepository>().To<UserRepository>();
 
 

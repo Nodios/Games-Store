@@ -57,6 +57,7 @@
     <Compile Include="ICartRepository.cs" />
     <Compile Include="ICommentRepository.cs" />
     <Compile Include="IGameImageRepository.cs" />
+    <Compile Include="IOrderRepository.cs" />
     <Compile Include="IPublisherRepository.cs" />
     <Compile Include="IGameRepository.cs" />
     <Compile Include="IInfoRepository.cs" />

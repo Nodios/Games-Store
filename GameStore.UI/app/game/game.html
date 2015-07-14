@@ -148,16 +148,12 @@
             <br />
             <textarea ng-model="vm.review.Description" placeholder="type review here" class="form-control" rows="5"></textarea>
             <br />
-            <div class="input-group">
-                <div class="input-group-addon">Score</div>
-                <select class="form-control" ng-model="vm.review.Score">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
+
+            <div class="form-inline">
+                <div class="h5">Score: </div>
+                <rating ng-model="vm.rate" max="5" ng-click="vm.clickRate()" on-leave="vm.overStar = null"></rating>
             </div>
+
             <br />
             <div class="form-inline">
                 <button class="btn btn-primary" ng-click="vm.postReview(vm.review)">Submit review</button>
@@ -176,15 +172,9 @@
             <br />
             <textarea ng-model="vm.review.Description" placeholder="type review here" class="form-control" rows="5"></textarea>
             <br />
-            <div class="input-group">
-                <div class="input-group-addon">Score</div>
-                <select class="form-control" ng-model="vm.review.Score">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
+            <div class="form-inline">
+                <div class="h5">Score: </div>
+                <rating ng-model="vm.rate" max="5" ng-click="vm.clickRate()" on-leave="vm.overStar = null"></rating>
             </div>
             <br />
             <div class="form-inline">

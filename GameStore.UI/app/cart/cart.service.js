@@ -11,6 +11,18 @@
                          return $http.get(ROUTE_PREFIX.CART + "/" + userId);
                      },
 
+                     addOrder: function(order){
+
+                         var token = $window.localStorage.token;
+
+                         return $http({
+                             method: 'post',
+                             url: ROUTE_PREFIX.ORDER,
+                             headers: { 'Authorization': 'Bearer ' + token },
+                             data: order
+                         });
+                     },
+
                      deleteGame: function (game) {
 
                          var token = $window.localStorage.token;

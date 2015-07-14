@@ -84,21 +84,26 @@
         <form class="form-group">
             <div class="form-inline">
                 <label class="col-sm-4">Old password</label>
-                <input type="password" class="form-control" ng-model="vm.user.password" />
+                <input type="password" class="form-control" ng-model="vm.user.password" min="6" />
             </div>
             <br />
             <div class="form-inline">
                 <label class="col-sm-4">New password</label>
-                <input type="password" class="form-control" ng-model="vm.newPassword" />
+                <input type="password" class="form-control" ng-model="vm.newPassword" min="6" />
             </div>
             <br />
             <div class="form-inline">
                 <label class="col-sm-4">Confirm new password</label>
-                <input type="password" class="form-control" ng-model="vm.confirmNew"/>
+                <input type="password" class="form-control" ng-model="vm.confirmNew" min="6" />
             </div>
             <br />
 
             <button class="btn btn-sm btn-primary" ng-click="vm.confirmNewPassword(vm.user, vm.newPassword, vm.confirmNew)">Change</button>
+            <div class="alert alert-warning top-buffer" role="alert" ng-if="vm.showPasswordAlert">
+                <p> Password length should at least 6 charachters. Make sure that new password and confirm new password fields are same.</p>
+                <br />
+                <button class="btn btn-sm btn-warning" ng-click="vm.showPasswordAlert=false">Ok</button>
+            </div>
 
         </form>
     </div>

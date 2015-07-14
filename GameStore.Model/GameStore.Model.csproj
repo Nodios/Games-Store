@@ -68,6 +68,7 @@
     <Compile Include="Cart.cs" />
     <Compile Include="Comment.cs" />
     <Compile Include="GameImage.cs" />
+    <Compile Include="Order.cs" />
     <Compile Include="Publisher.cs" />
     <Compile Include="DIModule.cs" />
     <Compile Include="Game.cs" />

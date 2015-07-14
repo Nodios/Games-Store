@@ -42,6 +42,7 @@
     <Compile Include="ICartService.cs" />
     <Compile Include="IGameImageService.cs" />
     <Compile Include="IGamesService.cs" />
+    <Compile Include="IOrderService.cs" />
     <Compile Include="IPostService.cs" />
     <Compile Include="IPublisherService.cs" />
     <Compile Include="IReviewService.cs" />

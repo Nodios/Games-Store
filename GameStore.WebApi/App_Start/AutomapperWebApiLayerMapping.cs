@@ -37,6 +37,10 @@ namespace GameStore.WebApi.App_Start
             Mapper.CreateMap<IReview, ReviewModel>().ReverseMap();
             Mapper.CreateMap<Review,ReviewModel>().ReverseMap();
 
+            // Order
+            Mapper.CreateMap<IOrder, OrderModel>().ReverseMap();
+            Mapper.CreateMap<Order, OrderModel>().ReverseMap();
+
             // User controller
             Mapper.CreateMap<IUser, UserModel>().ReverseMap();
             Mapper.CreateMap<User, UserModel>().ReverseMap();

@@ -18,9 +18,8 @@
             PUBLISHER: "gamestore/api/publisher",
             POST: "gamestore/api/post",
             REVIEW: "gamestore/api/review",
+            ORDER: "gamestore/api/order",
             USER: "gamestore/api/user",
-
-
         });
 
 })(angular);

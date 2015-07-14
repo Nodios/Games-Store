@@ -36,6 +36,9 @@ namespace GameStore.Model
             AutoMapper.Mapper.CreateMap<ISupport, SupportEntity>().ReverseMap();
             AutoMapper.Mapper.CreateMap<SupportEntity, Support>().ReverseMap();
 
+            AutoMapper.Mapper.CreateMap<IOrder, OrderEntity>().ReverseMap();
+            AutoMapper.Mapper.CreateMap<OrderEntity, Order>().ReverseMap();
+
             AutoMapper.Mapper.CreateMap<IUser, UserEntity>().ReverseMap();
             AutoMapper.Mapper.CreateMap<UserEntity, User>().ReverseMap();
         }

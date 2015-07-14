@@ -215,7 +215,9 @@ namespace GameStore.Repository
                 }
 
                 if (passwordValid)
-                      result = uow.UpdateWithAddAsync<UserEntity>(Mapper.Map<UserEntity>(user));
+                    result = uow.UpdateWithAddAsync<UserEntity>(Mapper.Map<UserEntity>(user));
+                else
+                    throw new Exception("Invalid password");
 
                 await uow.CommitAsync();
                 return await Task.FromResult(Mapper.Map<Model.Common.IUser>(result.Result) as Model.Common.IUser);
@@ -250,6 +252,8 @@ namespace GameStore.Repository
 
                 if (passwordValid)
                     result = uow.UpdateWithAddAsync<UserEntity>(Mapper.Map<UserEntity>(user), u => u.Email, u => u.UserName);
+                else
+                    throw new Exception("Invalid password.");
 
                 await uow.CommitAsync();
                 return await Task.FromResult(Mapper.Map<Model.Common.IUser>(result.Result) as Model.Common.IUser);

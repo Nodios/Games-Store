@@ -16,6 +16,7 @@
                  // For password changes
                  vm.newPassword = "";
                  vm.confirmNew = "";
+                 vm.showPasswordAlert = false;
 
                  // Crate user and add data to it
                  vm.user;
@@ -65,7 +66,7 @@
                          notificationService.addNotification("User info changed", true);
 
                      }).error(function (data) {
-                         otificationService.addNotification(data, false);
+                         notificationService.addNotification(data, false);
                      });
                  };
 
@@ -90,7 +91,7 @@
                          });
                      }
                      else {
-                         alert("Password length should at least 6 charachters. Make sure that new password and confirm new password fields are same.");
+                         vm.showPasswordAlert = true;
                      }
                  }
 

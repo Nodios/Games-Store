@@ -16,6 +16,7 @@ namespace GameStore.Model.Common
         // One to many
         ICollection<IComment> Comments { get; set; }
         ICollection<IPost> Posts { get; set; }
-        ICollection<IReview> Reviews { get; set; }      
+        ICollection<IReview> Reviews { get; set; }
+        ICollection<IOrder> Orders { get; set; }
     }
 }

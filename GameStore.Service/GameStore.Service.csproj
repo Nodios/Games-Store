@@ -51,6 +51,7 @@
     <Compile Include="CartService.cs" />
     <Compile Include="GameImageService.cs" />
     <Compile Include="GamesService.cs" />
+    <Compile Include="OrderService.cs" />
     <Compile Include="PostService.cs" />
     <Compile Include="PublisherService.cs" />
     <Compile Include="DIModule.cs" />
