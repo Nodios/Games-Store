@@ -17,6 +17,7 @@ namespace GameStore.Repository.Common
         Task<int> AddAsync(IGame game);
         Task<int> DeleteAsync(IGame game);
         Task<int> DeleteAsync(Guid id);
+        Task<int> DeleteAsync(params Guid[] id);
 
     }
 }

@@ -11,7 +11,11 @@
                          return $http.get(ROUTE_PREFIX.CART + "/" + userId);
                      },
 
-                     addOrder: function(order){
+                     getUser: function(username){
+                         return $http.get(ROUTE_PREFIX.USER + "/" + username);
+                     },
+
+                     addOrder: function (order) {
 
                          var token = $window.localStorage.token;
 
@@ -33,8 +37,23 @@
                              headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' },
                              data: game
                          });
-                     }
+                     },
 
+                     deleteMultiple: function (arrayId) {
+
+                         var token = $window.localStorage.token;
+                         var toSend = "";
+                         for (var i = 0; i < arrayId.length; i++) {
+                             toSend += "&id=" + arrayId[i];
+                         };
+                         
+                         return $http({
+                             method: 'delete',
+                             url: ROUTE_PREFIX.GAME + "/deleteMultiple?",
+                             headers: { 'Authorization': 'Bearer ' + token, 'Content-Type':'application/json' /*'Content-Type': 'application/x-www-form-urlencoded'*/ },
+                             data: arrayId
+                         })
+                     }
                  }
              }]);
 

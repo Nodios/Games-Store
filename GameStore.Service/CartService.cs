@@ -1,6 +1,7 @@
 ﻿using GameStore.Model.Common;
 using GameStore.Repository.Common;
 using GameStore.Service.Common;
+using System;
 using System.Threading.Tasks;
 
 namespace GameStore.Service
@@ -37,6 +38,11 @@ namespace GameStore.Service
         public async Task<ICart> UpdateCartAsync(Model.Common.ICart cart, bool deletePreviousCart = false)
         {
             return await repository.UpdateCartAsync(cart, deletePreviousCart);
+        }
+
+        public async Task<int> Delete(Guid id)
+        {
+            return await repository.DeleteAsync(id);
         }
     }
 }

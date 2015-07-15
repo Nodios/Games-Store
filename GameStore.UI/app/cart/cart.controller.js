@@ -7,6 +7,7 @@
                  //#region Proporties
 
                  var vm = $scope.vm = {};
+
                  vm.games = "";
                  vm.total = 0;
                  vm.showTablesIfThereAreGames = false;
@@ -65,6 +66,10 @@
                      vm.showIfThereAreNoGames = false;
                      vm.showTablesIfThereAreGames = false;
                      vm.showOrderForm = true;
+
+                     cartService.getUser($window.localStorage.user).success(function (data) {
+                         vm.order.ContactEmail = data.Email;
+                     });
                  };
 
                  // Cancels order
@@ -75,16 +80,38 @@
 
                  // Place order
                  vm.addOrder = function (item) {
-                     
+
                      vm.order = item;
                      vm.order.Amount = vm.total;
                      vm.order.UserId = $window.localStorage.id;
                      vm.order.Games = vm.games;
 
+                     var success = false;
+
                      cartService.addOrder(vm.order).success(function (data) {
-                         notificationService.addNotification("Order placed. Please check e-mail to confirm order.", true);
+                         notificationService.addNotification("Order placed.", true);
+                         vm.sendGamesToRemove();
                      }).error(function (data) {
                          notificationService.addNotification(data, false);
+                     });
+
+                 };
+
+                 // Delete cart item
+                 vm.sendGamesToRemove = function () {
+
+                     // Add id's to send
+                     var idsToSend = [];
+                     for (var i = 0; i < vm.games.length; i++) {
+                         idsToSend.push(vm.games[i].Id);
+                     };
+
+                     cartService.deleteMultiple(idsToSend).success(function (data) {
+                         vm.showIfThereAreNoGames =true;
+                         vm.showOrderForm = false;
+                     }).error(function (data) {
+
+                         notificationService.addNotification("Error while trying to remove games from cart", false);
                      });
                  };
 

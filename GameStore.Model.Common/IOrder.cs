@@ -13,7 +13,7 @@ namespace GameStore.Model.Common
          string DeliveryAddress { get; set; }
          string ContactEmail { get; set; }
          string ContactPhone { get; set; }
-         DateTime OrderDate { get; set; }
+         string OrderDate { get; set; }
          double Amount { get; set; }
 
          IUser User { get; set; }

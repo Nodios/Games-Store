@@ -1,6 +1,7 @@
 ﻿using GameStore.DAL.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,8 @@ namespace GameStore.DAL.Mapping
         public OrderMap()
         {
             HasKey(o => o.Id);
+
+            Property(o => o.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
             HasRequired(o => o.Name);
             HasRequired(o => o.Surname);

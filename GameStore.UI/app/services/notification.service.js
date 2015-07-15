@@ -16,7 +16,7 @@
                     // Keep it for 2 sec then fade out
                     $timeout(function () {
                         jQuery("#notification").fadeOut(400);
-                    }, 1000, false);
+                    }, 1500, false);
                 };
 
                 return {

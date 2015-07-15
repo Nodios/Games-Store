@@ -40,32 +40,6 @@ namespace GameStore.WebApi.Controllers
             }
         }
 
-        //[Route("UpdateFromCart")]
-        //[Authorize]
-        //[HttpPut]
-        //public async Task<HttpResponseMessage> UpdateCart(CartModel model)
-        //{
-        //    try
-        //    {
-        //        // Change game id to cart
-        //        for (int i = 0; i < model.GamesInCart.Count; i++)
-        //        {
-        //            model.GamesInCart[i].IsInCart = true;
-        //        }
-        //        ICart result = await service.UpdateCartAsync(AutoMapper.Mapper.Map<ICart>(model), true);
-
-        //        if(result == null)
-        //            return Request.CreateResponse(HttpStatusCode.BadRequest, "error");
-        //        else
-        //            return Request.CreateResponse(HttpStatusCode.OK, AutoMapper.Mapper.Map<CartModel>(result));
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
-        //    }
-        //}
-
         [Authorize]
         [HttpPut]
         public async Task<HttpResponseMessage> Update(CartModel model)
@@ -89,8 +63,7 @@ namespace GameStore.WebApi.Controllers
 
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
-        }
-    
+        }  
     }
 
 }

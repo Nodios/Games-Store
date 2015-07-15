@@ -62,5 +62,10 @@ namespace GameStore.Service
         {
             return GamesRepository.DeleteAsync(id);
         }
+
+        public Task<int> DeleteAsync(params Guid[] id)
+        {
+            return GamesRepository.DeleteAsync(id);
+        }
     }
 }

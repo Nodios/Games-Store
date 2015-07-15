@@ -5,9 +5,20 @@ namespace GameStore.DAL.Models
 {
     public class OrderEntity : IDataEntity
     {
-        private DateTime dateTime;
+        private string dateTime;
+        private Guid id;
 
-        public Guid Id { get; set; }
+        public Guid Id
+        {
+            get { return id; }
+            set
+            {
+                if (value == Guid.Empty || value == null)
+                    id = Guid.NewGuid();
+                else
+                    id = value;
+            }
+        }
         public string UserId { get; set; }
 
         public string Name { get; set; }
@@ -15,13 +26,13 @@ namespace GameStore.DAL.Models
         public string DeliveryAddress { get; set; }
         public string ContactEmail { get; set; }
         public string ContactPhone { get; set; }
-        public DateTime OrderDate
+        public string OrderDate
         {
             get { return dateTime; }
             set
             {
                 if (value == null)
-                    dateTime = DateTime.Now;
+                    dateTime = DateTime.Now.ToString("s");
                 else
                     dateTime = value;
             }

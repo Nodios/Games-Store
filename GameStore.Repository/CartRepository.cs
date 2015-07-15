@@ -170,8 +170,7 @@ namespace GameStore.Repository
         {
             try
             {
-                return await this.DeleteAsync(Mapper.Map<ICart>
-                    (await repository.GetAsync<CartEntity>(id)));
+                return await repository.DeleteAsync<CartEntity>(id);
             }
             catch (Exception ex)
             {

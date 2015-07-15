@@ -62,7 +62,8 @@ namespace GameStore.Repository
             {
                 IUnitOfWork uow = repository.CreateUnitOfWork();
 
-                Task<OrderEntity> orderResult =  uow.AddAsync<OrderEntity>(Mapper.Map<OrderEntity>(order));
+                OrderEntity entity = Mapper.Map<OrderEntity>(order);
+                Task<OrderEntity> orderResult =  uow.AddAsync<OrderEntity>(entity);
                 await uow.CommitAsync();
 
                 return Mapper.Map<IOrder>(orderResult.Result);

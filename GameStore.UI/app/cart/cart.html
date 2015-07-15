@@ -47,32 +47,35 @@
 
         <!-- First part of form -->
         <form class="form-horizontal">
-            <label class="col-sm-4 control-label">Surname</label>
-            <div>
-                <input type="text" class="form-control" placeholder="Surname" ng-model="vm.order.Surname" />
+            <div class="form-group">
+                <label class="col-sm-4 control-label">Surname</label>
+                <div>
+                    <input type="text" class="form-control" placeholder="Surname" ng-model="vm.order.Surname" />
+                </div>
             </div>
-            <br />
-            <label class="col-sm-4 control-label">Name</label>
-            <div>
-                <input type="text" class="form-control" placeholder="Name" ng-model="vm.order.Name" />
+            <div class="form-group">
+                <label class="col-sm-4 control-label">Name</label>
+                <div>
+                    <input type="text" class="form-control" placeholder="Name" ng-model="vm.order.Name" />
+                </div>
             </div>
-            <br />
-            <div class="divider"></div>
-            <br />
-            <label class="col-sm-4 control-label">Address</label>
-            <div>
-                <input type="text" class="form-control" placeholder="Delivery address" ng-model="vm.order.DeliveryAddress" />
+            <div class="form-group">
+                <label class="col-sm-4 control-label">Address</label>
+                <div>
+                    <input type="text" class="form-control" placeholder="Delivery address" ng-model="vm.order.DeliveryAddress" />
+                </div>
             </div>
-            <br />
-            <label class="col-sm-4 control-label">Email</label>
-            <div>
-                <input type="email" class="form-control" placeholder="Contact mail" ng-model="vm.order.ContactEmail" />
+            <div class="form-group">
+                <label class="col-sm-4 control-label">Email</label>
+                <div>
+                    <input type="email" class="form-control" placeholder="Contact mail" ng-model="vm.order.ContactEmail" />
+                </div>
             </div>
-            <br />
-            <br />
-            <label class="col-sm-4 control-label">Price</label>
-            <div>
-                <input type="text" readonly class="form-control" ng-model="vm.total|currency" />
+            <div class="form-group">
+                <label class="col-sm-4 control-label">Price</label>
+                <div>
+                    <input type="text" readonly class="form-control" ng-model="vm.total" />
+                </div>
             </div>
             <br />
 

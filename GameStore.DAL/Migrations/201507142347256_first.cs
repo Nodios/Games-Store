@@ -58,7 +58,7 @@ namespace GameStore.DAL.Migrations
                         DeliveryAddress = c.String(),
                         ContactEmail = c.String(),
                         ContactPhone = c.String(),
-                        OrderDate = c.DateTime(nullable: false),
+                        OrderDate = c.String(),
                         Amount = c.Double(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)

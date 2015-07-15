@@ -14,7 +14,7 @@ namespace GameStore.Model
         public string DeliveryAddress { get; set; }
         public string ContactEmail { get; set; }
         public string ContactPhone { get; set; }
-        public DateTime OrderDate { get; set; }
+        public string OrderDate { get; set; }
         public double Amount { get; set; }
 
         public virtual IUser User { get; set; }

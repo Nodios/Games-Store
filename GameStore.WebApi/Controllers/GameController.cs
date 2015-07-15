@@ -108,6 +108,26 @@ namespace GameStore.WebApi.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
         }
+
+
+        [Authorize]
+        [HttpDelete]
+        [Route("DeleteMultiple")]
+        public async Task<HttpResponseMessage> Delete(Guid[] id)
+        {
+            try
+            {
+                int result = await GamesService.DeleteAsync(id);
+
+                return Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (Exception ex)
+            {
+
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
+
     }
 
 }

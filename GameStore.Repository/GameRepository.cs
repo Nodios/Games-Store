@@ -99,6 +99,8 @@ namespace GameStore.Repository
 
         #endregion
 
+        #region Update
+
         /// <summary>
         /// Update game
         /// </summary>
@@ -115,6 +117,10 @@ namespace GameStore.Repository
             }
         }
 
+        #endregion
+
+        #region Add
+
         /// <summary>
         /// Add game
         /// </summary>
@@ -130,6 +136,10 @@ namespace GameStore.Repository
                 throw ex;
             }
         }
+
+        #endregion
+
+        #region Delete 
 
         /// <summary>
         /// Delete game
@@ -161,7 +171,32 @@ namespace GameStore.Repository
 
                 throw ex;
             }
+        } 
+
+        /// <summary>
+        /// Delete async
+        /// </summary>
+        /// <param name="id">Id params</param>
+        public async Task<int> DeleteAsync(params Guid[] id)
+        {
+            try
+            {
+                IUnitOfWork uow = repository.CreateUnitOfWork();
+
+                foreach(Guid i in id)
+                {
+                    await uow.DeleteAsync<GameEntity>(i);
+                }
+
+                return await uow.CommitAsync();
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
         }
+        #endregion
 
     }
 }

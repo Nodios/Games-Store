@@ -13,5 +13,6 @@ namespace GameStore.Service.Common
         Task<IEnumerable<IGame>> GetRangeAsync(GameFilter filter = null);
         Task<IEnumerable<IGame>> GetRangeAsync(Guid publisherId);
         Task<int> DeleteAsync(Guid id);
+        Task<int> DeleteAsync(params Guid[] id);
     }
 }
