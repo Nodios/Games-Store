@@ -7,8 +7,6 @@ namespace GameStore.WebApi.Models
 {
     public class OrderModel
     {
-        private string dateTime;
-
         public Guid Id { get; set; }
         public string UserId { get; set; }
 

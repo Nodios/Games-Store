@@ -25,6 +25,7 @@ namespace GameStore.WebApi.Controllers
         }
 
         [HttpGet]
+        [Route("{userId}")]
         public async Task<HttpResponseMessage> Get(string userId)
         {
             try

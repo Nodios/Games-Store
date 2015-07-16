@@ -1,3 +1,25 @@
 ﻿<div ng-controller="OrderController">
-
+    <h4 class="page-header top-buffer">
+        Orders
+    </h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <td>#</td>
+                <td>Name</td>
+                <td>Delivery address</td>
+                <td>Contact mail</td>
+                <td>Total</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="order in vm.orders">
+                <td>{{$index}}</td>
+                <td>{{order.Surname}}, {{order.Name}}</td>
+                <td>{{order.DeliveryAddress}}</td>
+                <td>{{order.ContactEmail}}</td>
+                <td>{{order.Amount}}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>

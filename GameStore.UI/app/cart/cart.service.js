@@ -1,18 +1,18 @@
 ﻿(function (angular) {
 
     angular.module("mainModule").service("cartService",
-        ['$http', '$window','ROUTE_PREFIX',
-             function ($http, $window, ROUTE_PREFIX) {
+        ['$http', '$window','cns_route_prefix',
+             function ($http, $window, cns_route_prefix) {
 
                  return {
 
                      // gets cart and items
                      getCart: function (userId) {
-                         return $http.get(ROUTE_PREFIX.CART + "/" + userId);
+                         return $http.get(cns_route_prefix.cart + "/" + userId);
                      },
 
                      getUser: function(username){
-                         return $http.get(ROUTE_PREFIX.USER + "/" + username);
+                         return $http.get(cns_route_prefix.user + "/" + username);
                      },
 
                      addOrder: function (order) {
@@ -21,7 +21,7 @@
 
                          return $http({
                              method: 'post',
-                             url: ROUTE_PREFIX.ORDER,
+                             url: cns_route_prefix.order,
                              headers: { 'Authorization': 'Bearer ' + token },
                              data: order
                          });
@@ -33,7 +33,7 @@
 
                          return $http({
                              method: 'DELETE',
-                             url: ROUTE_PREFIX.GAME,
+                             url: cns_route_prefix.game,
                              headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' },
                              data: game
                          });
@@ -49,7 +49,7 @@
                          
                          return $http({
                              method: 'delete',
-                             url: ROUTE_PREFIX.GAME + "/deleteMultiple?",
+                             url: cns_route_prefix.game + "/deleteMultiple?",
                              headers: { 'Authorization': 'Bearer ' + token, 'Content-Type':'application/json' /*'Content-Type': 'application/x-www-form-urlencoded'*/ },
                              data: arrayId
                          })

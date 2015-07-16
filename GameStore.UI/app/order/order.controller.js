@@ -1,13 +1,14 @@
 ﻿(function (angular) {
 
     angular.module("mainModule").controller("OrderController",
-        ['orderService', '$window', 'notificationService',
-         function (orderService, $window,notificationService) {
+        ['orderService', '$window','$scope', 'notificationService',
+         function (orderService, $window, $scope,notificationService) {
 
              var vm = $scope.vm = this;
 
              //#region Proporites
 
+             vm.orders = "";
 
              //#endregion
 
@@ -16,8 +17,8 @@
 
              vm.getOrder = function () {
 
-                 orderService.getOrder($window.localStorage.user).success(function (data) {
-
+                 orderService.getOrders($window.localStorage.id).success(function (data) {
+                     vm.orders = data;
                  }).error(function () {
                      notificationService.addNotification("Couldn't find any orders.", false);
                  });
@@ -26,6 +27,8 @@
              //#endregion
 
              //#region To do after navigated to controller
+
+             vm.getOrder();
 
              //#endregion
         }

@@ -1,26 +1,26 @@
 ﻿(function (angular) {
 
-    angular.module("mainModule").constant("NAVIGATION_LINKS",
+    angular.module("mainModule").constant("cns_navigation_links",
         {
-            HOME: "#/",
-            ACCOUNT: "#/account",
-            CART: "#/cart",
-            GAME: "#/game",
-            FORUM: "#/forum",
-            ORDER: "#/order",
-            PUBLISHER: "#/publisher"
+            home: "#/",
+            account: "#/account",
+            cart: "#/cart",
+            game: "#/game",
+            forum: "#/forum",
+            order: "#/order",
+            publisher: "#/publisher"
         });
 
-    angular.module("mainModule").constant("ROUTE_PREFIX",
+    angular.module("mainModule").constant("cns_route_prefix",
         {
-            CART: "gamestore/api/cart",
-            GAME: "gamestore/api/game",
-            GAME_IMAGE: "gamestore/api/gameImage",
-            PUBLISHER: "gamestore/api/publisher",
-            POST: "gamestore/api/post",
-            REVIEW: "gamestore/api/review",
-            ORDER: "gamestore/api/order",
-            USER: "gamestore/api/user",
+            cart: "gamestore/api/cart",
+            game: "gamestore/api/game",
+            game_image: "gamestore/api/gameImage",
+            publisher: "gamestore/api/publisher",
+            post: "gamestore/api/post",
+            review: "gamestore/api/review",
+            order: "gamestore/api/order",
+            user: "gamestore/api/user",
         });
 
 })(angular);

@@ -42,7 +42,7 @@ namespace GameStore.Repository
             try
             {
                 ICollection<IOrder> orders = Mapper.Map<ICollection<IOrder>>
-                    (await repository.GetRangeAsync<IOrder>(c => c.UserId == userId));
+                    (await repository.GetRangeAsync<OrderEntity>(c => c.UserId == userId));
 
                 if (orders.Count == 0)
                     throw new Exception("Couldn't find any orders for user.");

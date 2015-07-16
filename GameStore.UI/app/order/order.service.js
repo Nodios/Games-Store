@@ -1,12 +1,19 @@
 ﻿
 (function (angular) {
 
-    angular.module("mainModule").service("orderService", ['ROUTE_PREFIX', '$http',
-    function (ROUTE_PREFIX, $http) {
+    angular.module("mainModule").service("orderService", ['cns_route_prefix', '$http', '$window',
+    function (cns_route_prefix, $http, $window) {
 
         return {
             getOrders: function (userId) {
-                return $http.get(ROUTE_PREFIX.ORDER + "/" + userId);
+
+                var token = $window.localStorage.token;
+
+                return $http({
+                    method: 'get',
+                    url: cns_route_prefix.order + "/" + userId,
+                    headers: { 'Authorization': 'Bearer ' + token }
+                }); 
             }
         }
     }
