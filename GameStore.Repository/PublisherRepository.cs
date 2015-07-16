@@ -66,7 +66,7 @@ namespace GameStore.Repository
         /// <summary>
         /// Get all
         /// </summary>
-        public async Task<IEnumerable<Model.Common.IPublisher>> GetRangeAsync(PublisherFilter filter = null)
+        public async Task<IEnumerable<Model.Common.IPublisher>> GetRangeAsync(GenericFilter filter = null)
         {
             try
             {

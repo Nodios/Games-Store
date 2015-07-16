@@ -35,7 +35,7 @@ namespace GameStore.Service
         /// <summary>
         /// Gets game by name
         /// </summary>
-        public Task<IEnumerable<IGame>> GetRangeAsync(string name, GameFilter filter)
+        public Task<IEnumerable<IGame>> GetRangeAsync(string name, GenericFilter filter)
         {
             return GamesRepository.GetRangeAsync(name, filter);
         }
@@ -43,7 +43,7 @@ namespace GameStore.Service
         /// <summary>
         /// Gets all games
         /// </summary>
-        public Task<IEnumerable<Model.Common.IGame>> GetRangeAsync(GameFilter filter = null)
+        public Task<IEnumerable<Model.Common.IGame>> GetRangeAsync(GenericFilter filter = null)
         {
             return GamesRepository.GetRangeAsync(filter); 
         }
@@ -53,7 +53,7 @@ namespace GameStore.Service
         /// </summary>
         /// <param name="publisherId">FK id</param>
         /// <returns>Collection of games</returns>
-        public Task<IEnumerable<Model.Common.IGame>> GetRangeAsync(Guid publisherId, GameFilter filter = null)
+        public Task<IEnumerable<Model.Common.IGame>> GetRangeAsync(Guid publisherId, GenericFilter filter = null)
         {
             return GamesRepository.GetRangeAsync(publisherId, filter);
         }

@@ -53,7 +53,7 @@ namespace GameStore.Service
         /// <summary>
         /// Returns collection of publishers
         /// </summary>
-        public virtual Task<IEnumerable<IPublisher>> GetRangeAsync(PublisherFilter filter = null)
+        public virtual Task<IEnumerable<IPublisher>> GetRangeAsync(GenericFilter filter = null)
         {
             return PublisherRepository.GetRangeAsync(filter);
         }

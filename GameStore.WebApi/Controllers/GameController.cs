@@ -28,7 +28,7 @@ namespace GameStore.WebApi.Controllers
         {
             try
             {
-                IEnumerable<IGame> result = await GamesService.GetRangeAsync(new GameFilter(pageNumber, pageSize));
+                IEnumerable<IGame> result = await GamesService.GetRangeAsync(new GenericFilter(pageNumber, pageSize));
                 if (result != null)
                     return Request.CreateResponse(HttpStatusCode.OK, Mapper.Map<IEnumerable<GameModel>>(result));
                 else
@@ -63,7 +63,7 @@ namespace GameStore.WebApi.Controllers
         {
             try
             {
-                GameFilter filter = new GameFilter(pageNumber, pageSize);
+                GenericFilter filter = new GenericFilter(pageNumber, pageSize);
                 IEnumerable<GameModel> result = Mapper.Map<IEnumerable<GameModel>>(await GamesService.GetRangeAsync(name, filter));
                 if (result != null)
                     return Request.CreateResponse(HttpStatusCode.OK, result);
@@ -88,12 +88,12 @@ namespace GameStore.WebApi.Controllers
         {
             try
             {
-                GameFilter filter;
+                GenericFilter filter;
 
                 if (pageNumber <= 0 && pageSize <= 0)
                     filter = null;
                 else
-                    filter = new GameFilter(pageNumber, pageSize);
+                    filter = new GenericFilter(pageNumber, pageSize);
                 
                 IEnumerable<IGame> result = await GamesService.GetRangeAsync(id, filter);
                 if (result != null)

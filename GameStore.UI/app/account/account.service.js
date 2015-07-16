@@ -18,7 +18,7 @@
 
                     return $http({
                         method: 'put',
-                        url: routePrefix.user + "/UpdateUserOrMail/",
+                        url: routePrefix.user + "/UpdateUserOrMail/" + user.Id,
                         headers: { 'Authorization': 'Bearer ' + token },
                         data: {
                             user: user,
@@ -33,10 +33,9 @@
 
                     return $http({
                         method: 'put',
-                        url: routePrefix.user + "/updatePassword/",
+                        url: routePrefix.user + "/updatePassword/" + userId,
                         headers: { 'Authorization': 'Bearer ' + token },
                         data: {
-                            userId: userId,
                             oldPassword: oldPassword,
                             newPassword: newPassword
                         }

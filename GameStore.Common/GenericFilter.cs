@@ -1,6 +1,9 @@
 ﻿
 namespace GameStore.Common
 {
+    /// <summary>
+    /// Class that provides filtering options
+    /// </summary>
     public class GenericFilter
     {
          #region Fields

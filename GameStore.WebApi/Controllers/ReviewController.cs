@@ -63,13 +63,14 @@ namespace GameStore.WebApi.Controllers
 
         [HttpPut]
         [Authorize]
-        public async Task<HttpResponseMessage> Update(ReviewModel model)
+        [Route("{id}")]
+        public async Task<HttpResponseMessage> Update(Guid id, ReviewModel model)
         {
             try
             {
                 ReviewModel result = AutoMapper.Mapper.Map<ReviewModel>(await service.UpdateAsync(AutoMapper.Mapper.Map<IReview>(model)));
                 if (result == null)
-                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Failed.");
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Error while updating review.");
                 else
                     return Request.CreateResponse(HttpStatusCode.OK, result);
             }

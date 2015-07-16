@@ -38,7 +38,7 @@ namespace GameStore.Service
         /// <param name="gameId">Game id</param>
         /// <param name="filter">Filter</param>
         /// <returns>Collection of posts</returns>
-        public Task<IEnumerable<Model.Common.IPost>> GetPosts(Guid gameId, PostFilter filter)
+        public Task<IEnumerable<Model.Common.IPost>> GetPosts(Guid gameId, GenericFilter filter)
         {
             return PostRepository.GetRangeAsync(gameId, filter);
         }

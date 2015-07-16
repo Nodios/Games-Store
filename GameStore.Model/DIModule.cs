@@ -1,7 +1,7 @@
 ﻿
 using GameStore.Model.Common;
 namespace GameStore.Model
-{
+{ 
     public class DIModule :Ninject.Modules.NinjectModule
     {
         public override void Load()

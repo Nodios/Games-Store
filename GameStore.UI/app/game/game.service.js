@@ -76,7 +76,7 @@
 
                         return $http({
                             method: 'put',
-                            url: routePrefix.review,
+                            url: routePrefix.review + "/" + review.Id,
                             headers: { 'Authorization': 'Bearer ' + token },
                             data: review
                         });

@@ -42,7 +42,7 @@ namespace GameStore.Repository
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public async Task<IEnumerable<IGame>> GetRangeAsync(string name, GameFilter filter)
+        public async Task<IEnumerable<IGame>> GetRangeAsync(string name, GenericFilter filter)
         {
             try
             {
@@ -61,12 +61,12 @@ namespace GameStore.Repository
         /// <summary>
         /// Get all where games are not in cart
         /// </summary>
-        public async Task<IEnumerable<Model.Common.IGame>> GetRangeAsync(GameFilter filter = null)
+        public async Task<IEnumerable<Model.Common.IGame>> GetRangeAsync(GenericFilter filter = null)
         {
             try
             {
                 if (filter == null)
-                    filter = new GameFilter(1, 5);
+                    filter = new GenericFilter(1, 5);
 
                 return Mapper.Map<IEnumerable<IGame>>(await
                     repository.Where<GameEntity>().Where(g => g.IsInCart == false)
@@ -87,7 +87,7 @@ namespace GameStore.Repository
         /// </summary>
         /// <param name="publisherId">FK</param>
         /// <returns>Collection of games that belong to publisher</returns>
-        public async Task<IEnumerable<IGame>> GetRangeAsync(Guid publisherId, GameFilter filter = null)
+        public async Task<IEnumerable<IGame>> GetRangeAsync(Guid publisherId, GenericFilter filter = null)
         {
             try
             {

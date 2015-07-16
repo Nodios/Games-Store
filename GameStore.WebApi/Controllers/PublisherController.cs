@@ -29,7 +29,7 @@ namespace GameStore.WebApi.Controllers
         {
             try
             {
-                IEnumerable<IPublisher> result = await PublisherService.GetRangeAsync(new PublisherFilter(pageNumber, pageSize));
+                IEnumerable<IPublisher> result = await PublisherService.GetRangeAsync(new GenericFilter(pageNumber, pageSize));
 
                 if (result != null)
                     return Request.CreateResponse(HttpStatusCode.OK, Mapper.Map<IEnumerable<PublisherModel>>(result));

@@ -11,6 +11,6 @@ namespace GameStore.Service.Common
         Task<IPublisher> GetAsync(Guid id);
         Task<IEnumerable<IPublisher>> GetRangeAsync(string name, GenericFilter filter);
         Task<ISupport> GetSupportAsync(Guid id);
-        Task<IEnumerable<IPublisher>> GetRangeAsync(PublisherFilter filter);
+        Task<IEnumerable<IPublisher>> GetRangeAsync(GenericFilter filter);
     }
 }

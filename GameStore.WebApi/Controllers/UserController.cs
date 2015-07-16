@@ -72,10 +72,10 @@ namespace GameStore.WebApi.Controllers
             }
         }
 
-        [Route("UpdateUserOrMail")]
+        [Route("UpdateUserOrMail/{id}")]
         [Authorize]
         [HttpPut]
-        public async Task<HttpResponseMessage> UpdateUsernameOrMail(ChangeUserModel model)
+        public async Task<HttpResponseMessage> UpdateUsernameOrMail(string id, ChangeUserModel model)
         {
             try
             {
@@ -95,14 +95,14 @@ namespace GameStore.WebApi.Controllers
             }
         }
 
-        [Route("UpdatePassword")]
+        [Route("UpdatePassword/{id}")]
         [Authorize]
         [HttpPut]
-        public async Task<HttpResponseMessage> UpdatePassword(ChangeUserPasswordModel model)
+        public async Task<HttpResponseMessage> UpdatePassword(string id,ChangeUserPasswordModel model)
         {
             try
             {
-                bool result = await userService.UpdatePasswordAsync(model.UserId, model.OldPassword, model.NewPassword);
+                bool result = await userService.UpdatePasswordAsync(id, model.OldPassword, model.NewPassword);
 
                 if (result)
                     return Request.CreateResponse(HttpStatusCode.OK, "Password updated.");
@@ -130,7 +130,6 @@ namespace GameStore.WebApi.Controllers
         /// </summary>
         public class ChangeUserPasswordModel
         {
-            public string UserId { get; set; }
             public string OldPassword { get; set; }
             public string NewPassword { get; set; }
         }

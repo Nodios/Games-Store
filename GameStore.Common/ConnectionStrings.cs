@@ -1,6 +1,9 @@
 ﻿
 namespace GameStore.Common
 {
+    /// <summary>
+    /// Provides database connection strings
+    /// </summary>
     public static class ConnectionStrings
     {
         public const string CONNECTION = "GamesStoreContext";

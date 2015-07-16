@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace GameStore.Model
 {
+    /// <summary>
+    /// Cart model
+    /// </summary>
     public class Cart : ICart
     {
         public string UserId { get; set; }

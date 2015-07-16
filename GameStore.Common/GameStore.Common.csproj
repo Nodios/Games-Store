@@ -41,12 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConnectionStrings.cs" />
-    <Compile Include="Enums.cs" />
-    <Compile Include="GameFilter.cs" />
     <Compile Include="GenericFilter.cs" />
-    <Compile Include="PostFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PublisherFilter.cs" />
     <Compile Include="Utilities.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

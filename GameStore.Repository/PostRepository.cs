@@ -39,7 +39,7 @@ namespace GameStore.Repository
         /// <summary>
         /// Get range async
         /// </summary>
-        public async Task<IEnumerable<IPost>> GetRangeAsync(Guid gameId,PostFilter filter)
+        public async Task<IEnumerable<IPost>> GetRangeAsync(Guid gameId,GenericFilter filter)
         {
             try
             {

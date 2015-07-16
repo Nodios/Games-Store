@@ -8,7 +8,7 @@ namespace GameStore.Service.Common
 {
     public interface IPostService
     {
-        Task<IEnumerable<IPost>> GetPosts(Guid gameId, PostFilter filter);
+        Task<IEnumerable<IPost>> GetPosts(Guid gameId, GenericFilter filter);
         Task<int> AddPost(IPost post);
         Task<int> DeletePost(Guid id);
         Task<int> DeletePost(IPost post);

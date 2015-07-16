@@ -9,16 +9,37 @@
              //#region Proporites
 
              vm.orders = "";
+             vm.pageNumber = 1;
+             var pageSize = 10;
 
              //#endregion
 
 
              //#region Methods
 
-             //TODO It sohuld pass pagenumber and pagesize
-             vm.getOrder = function () {
+             vm.next = function () {
 
-                 orderService.getOrders($window.localStorage.id).success(function (data) {
+                 vm.pageNumber++;
+                 getOrder();
+             };
+
+             vm.back = function () {
+
+                 vm.pageNumber--;
+
+                 if (vm.pageNumber < 1)
+                     vm.pageNumber = 1;
+
+                 getOrder();
+             }
+           
+             //#endregion
+
+             //#region Private methods
+
+             function getOrder() {
+
+                 orderService.getOrders($window.localStorage.id, vm.pageNumber, pageSize).success(function (data) {
                      vm.orders = data;
                  }).error(function () {
                      notificationService.addNotification("Couldn't find any orders.", false);
@@ -29,7 +50,7 @@
 
              //#region To do after navigated to controller
 
-             vm.getOrder();
+             getOrder();
 
              //#endregion
         }

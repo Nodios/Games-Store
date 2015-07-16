@@ -6,6 +6,9 @@ using System.Data.Entity.Infrastructure;
 using System.Threading.Tasks;
 namespace GameStore.DAL
 {
+    /// <summary>
+    /// Interface that provides method signatures for database context
+    /// </summary>
     public interface IGamesStoreContext : IDisposable
     {
         DbSet<CartEntity> Carts { get; set; }
@@ -16,7 +19,6 @@ namespace GameStore.DAL
         DbSet<PublisherEntity> Publishers { get; set; }
         DbSet<ReviewEntity> Reviews { get; set; }
         DbSet<SupportEntity> Support { get; set; }
-    //    DbSet<UserEntity> StoreUser { get; set; }
 
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
         DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
