@@ -4,7 +4,7 @@
         ['orderService', '$window','$scope', 'notificationService',
          function (orderService, $window, $scope,notificationService) {
 
-             var vm = $scope.vm = this;
+             var vm = $scope.vm = {};
 
              //#region Proporites
 
@@ -15,6 +15,7 @@
 
              //#region Methods
 
+             //TODO It sohuld pass pagenumber and pagesize
              vm.getOrder = function () {
 
                  orderService.getOrders($window.localStorage.id).success(function (data) {

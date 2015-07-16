@@ -45,9 +45,9 @@ namespace GameStore.Service
         /// <summary>
         /// Get by name
         /// </summary>
-        public virtual Task<IEnumerable<IPublisher>> GetRangeAsync(string name)
+        public virtual Task<IEnumerable<IPublisher>> GetRangeAsync(string name, GenericFilter filter)
         {
-            return PublisherRepository.GetRangeAsync(name);
+            return PublisherRepository.GetRangeAsync(name, filter);
         }
 
         /// <summary>

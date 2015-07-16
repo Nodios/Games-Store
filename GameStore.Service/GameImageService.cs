@@ -1,4 +1,5 @@
-﻿using GameStore.Model.Common;
+﻿using GameStore.Common;
+using GameStore.Model.Common;
 using GameStore.Repository.Common;
 using GameStore.Service.Common;
 using System;
@@ -16,9 +17,9 @@ namespace GameStore.Service
             this.repository = repository;
         }
 
-        public async Task<IEnumerable<IGameImage>> GetRangeAsync(Guid gameId)
+        public async Task<IEnumerable<IGameImage>> GetRangeAsync(Guid gameId, GenericFilter filter)
         {
-            return await repository.GetRangeAsync(gameId);
+            return await repository.GetRangeAsync(gameId, filter);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using GameStore.Common;
 using GameStore.Model.Common;
 using GameStore.Service.Common;
 using GameStore.WebApi.Models;
@@ -25,12 +26,18 @@ namespace GameStore.WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("{userId}")]
-        public async Task<HttpResponseMessage> Get(string userId)
+        [Route("{userId}/{pageNumber}/{pageSize}")]
+        public async Task<HttpResponseMessage> Get(string userId, int pageNumber, int pageSize)
         {
             try
             {
-                ICollection<OrderModel> result = Mapper.Map<ICollection<OrderModel>>( await service.GetAsync(userId));
+                if (pageNumber < 1 || pageSize < 1)
+                {
+                    pageSize = 1;
+                    pageNumber = 1;
+                }
+                GenericFilter filter = new GenericFilter(pageNumber, pageSize);
+                ICollection<OrderModel> result = Mapper.Map<ICollection<OrderModel>>( await service.GetAsync(userId, filter));
 
                 if (result == null)
                     return Request.CreateResponse(HttpStatusCode.BadRequest);

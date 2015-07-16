@@ -1,4 +1,5 @@
-﻿using GameStore.Model.Common;
+﻿using GameStore.Common;
+using GameStore.Model.Common;
 using GameStore.Repository.Common;
 using GameStore.Service.Common;
 using System;
@@ -18,9 +19,9 @@ namespace GameStore.Service
             this.repository = repository;
         }
 
-        public async Task<ICollection<IOrder>> GetAsync(string userId)
+        public async Task<ICollection<IOrder>> GetAsync(string userId, GenericFilter filter)
         {
-            return await repository.GetRangeAsync(userId);
+            return await repository.GetRangeAsync(userId, filter);
         }
 
         public async Task<Model.Common.IOrder> AddAsync(Model.Common.IOrder order)

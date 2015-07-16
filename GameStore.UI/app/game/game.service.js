@@ -1,8 +1,8 @@
 ﻿(function (angular) {
 
     angular.module("mainModule").service("gameService",
-        ['$http', '$window', 'cns_route_prefix' ,
-            function ($http, $window, cns_route_prefix) {
+        ['$http', '$window', 'routePrefix' ,
+            function ($http, $window, routePrefix) {
 
                 return {
 
@@ -10,32 +10,32 @@
 
                     // Get games collection
                     getGames: function (pageNumber, pageSize) {
-                        return $http.get(cns_route_prefix.game + "/" + pageNumber + "/" + pageSize);
+                        return $http.get(routePrefix.game + "/" + pageNumber + "/" + pageSize);
                     },
 
                     // Get game
                     getGame: function (id) {
-                        return $http.get(cns_route_prefix.game + "/getById/" + id);
+                        return $http.get(routePrefix.game + "/getById/" + id);
                     },
 
                     // Get game
-                    getGameByName: function (name) {
-                        return $http.get(cns_route_prefix.game + "/getByName/" + name);
+                    getGameByName: function (name, pageNumber, pageSize) {
+                        return $http.get(routePrefix.game + "/getByName/" + name + "/" + pageNumber + "/" + pageSize);
                     },
 
                     // Get collection that belongs to publisher
-                    getGamesByPublisherId: function (publisherId) {
-                        return $http.get(cns_route_prefix.game  + "/getRangeFromPublisherId/" + publisherId);
+                    getGamesByPublisherId: function (publisherId, pageNumber, pageSize) {
+                        return $http.get(routePrefix.game  + "/getRangeFromPublisherId/" + publisherId + "/" + pageNumber + "/" + pageSize);
                     },
 
                     // Get images that belong to game
-                    getImages: function (gameId) {
-                        return $http.get(cns_route_prefix.game_image + "/" + gameId);
+                    getImages: function (gameId, pageNumber, pageSize) {
+                        return $http.get(routePrefix.game_image + "/" + gameId + "/" + pageNumber + "/" + pageSize);
                     },
 
                     // Get ocllection of reviews that belong to game
                     getReviews: function (gameId, pageNumber, pageSize) {
-                        return $http.get(cns_route_prefix.review + "/" + gameId + "/" + pageNumber + "/" + pageSize);
+                        return $http.get(routePrefix.review + "/" + gameId + "/" + pageNumber + "/" + pageSize);
                     },
 
                     //#endregion
@@ -48,7 +48,7 @@
 
                         return $http({
                             method: 'post',
-                            url: cns_route_prefix.review,
+                            url: routePrefix.review,
                             headers: { 'Authorization': 'Bearer ' + token },
                             data: review
                         });
@@ -64,7 +64,7 @@
 
                         return $http({
                             method: 'put',
-                            url: cns_route_prefix.cart,
+                            url: routePrefix.cart,
                             headers: { 'Authorization': 'Bearer ' + token },
                             data: cart
                         });
@@ -76,7 +76,7 @@
 
                         return $http({
                             method: 'put',
-                            url: cns_route_prefix.review,
+                            url: routePrefix.review,
                             headers: { 'Authorization': 'Bearer ' + token },
                             data: review
                         });
@@ -92,7 +92,7 @@
 
                         return $http({
                             method: 'delete',
-                            url: cns_route_prefix.review,
+                            url: routePrefix.review,
                             headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' },
                             data: review
                         });

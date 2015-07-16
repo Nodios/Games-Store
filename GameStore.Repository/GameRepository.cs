@@ -20,7 +20,7 @@ namespace GameStore.Repository
             this.repository = repository;
         }
 
-        #region Add
+        #region Get
 
         /// <summary>
         /// Get by id
@@ -42,12 +42,15 @@ namespace GameStore.Repository
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public async Task<IEnumerable<IGame>> GetRangeAsync(string name)
+        public async Task<IEnumerable<IGame>> GetRangeAsync(string name, GameFilter filter)
         {
             try
             {
                 return Mapper.Map<IEnumerable<IGame>>(await repository.Where<GameEntity>()
-                    .Where(g => g.IsInCart == false && g.Name.Contains(name)).ToListAsync());
+                    .Where(g => g.IsInCart == false && g.Name.Contains(name))
+                    .OrderBy(g => g.Name)
+                    .Skip((filter.PageNumber * filter.PageSize) - filter.PageSize)
+                    .Take(filter.PageSize).ToListAsync());
             }
             catch (Exception ex)
             {
@@ -84,12 +87,23 @@ namespace GameStore.Repository
         /// </summary>
         /// <param name="publisherId">FK</param>
         /// <returns>Collection of games that belong to publisher</returns>
-        public async Task<IEnumerable<IGame>> GetRangeAsync(Guid publisherId)
+        public async Task<IEnumerable<IGame>> GetRangeAsync(Guid publisherId, GameFilter filter = null)
         {
             try
             {
-                return Mapper.Map<IEnumerable<IGame>>(await repository
-                    .GetRangeAsync<GameEntity>(g => g.PublisherId == publisherId && g.IsInCart == false));
+                if (filter != null)
+                {
+                    return Mapper.Map<IEnumerable<IGame>>(await repository
+                        .Where<GameEntity>().Where(g => g.PublisherId == publisherId && g.IsInCart == false)
+                        .OrderBy(g => g.Name)
+                        .Skip((filter.PageNumber * filter.PageSize) - filter.PageSize)
+                        .Take(filter.PageSize).ToListAsync());
+                }
+                else
+                {
+                    return Mapper.Map<IEnumerable<IGame>>(await repository
+                        .GetRangeAsync<GameEntity>(g => g.PublisherId == publisherId && g.IsInCart == false));
+                }
             }
             catch (Exception ex)
             {
@@ -139,7 +153,7 @@ namespace GameStore.Repository
 
         #endregion
 
-        #region Delete 
+        #region Delete
 
         /// <summary>
         /// Delete game
@@ -171,7 +185,7 @@ namespace GameStore.Repository
 
                 throw ex;
             }
-        } 
+        }
 
         /// <summary>
         /// Delete async
@@ -183,7 +197,7 @@ namespace GameStore.Repository
             {
                 IUnitOfWork uow = repository.CreateUnitOfWork();
 
-                foreach(Guid i in id)
+                foreach (Guid i in id)
                 {
                     await uow.DeleteAsync<GameEntity>(i);
                 }
@@ -192,7 +206,7 @@ namespace GameStore.Repository
             }
             catch (Exception ex)
             {
-                
+
                 throw ex;
             }
         }

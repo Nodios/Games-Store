@@ -58,12 +58,13 @@ namespace GameStore.WebApi.Controllers
             }
         }
 
-        [Route("getByName/{name}")]
-        public async Task<HttpResponseMessage> GetByName(string name)
+        [Route("getByName/{name}/{pageNumber}/{pageSize}")]
+        public async Task<HttpResponseMessage> GetByName(string name, int pageNumber, int pageSize)
         {
             try
             {
-                IEnumerable<GameModel> result = Mapper.Map<IEnumerable<GameModel>>(await GamesService.GetRangeAsync(name));
+                GameFilter filter = new GameFilter(pageNumber, pageSize);
+                IEnumerable<GameModel> result = Mapper.Map<IEnumerable<GameModel>>(await GamesService.GetRangeAsync(name, filter));
                 if (result != null)
                     return Request.CreateResponse(HttpStatusCode.OK, result);
                 else
@@ -75,12 +76,26 @@ namespace GameStore.WebApi.Controllers
             }
         }
 
-        [Route("getRangeFromPublisherId/{id}")]
-        public async Task<HttpResponseMessage> GetRangeFromPublisherId(Guid id)
+        /// <summary>
+        /// Gets collection of games 
+        /// </summary>
+        /// <param name="id">Guid publisher id</param>
+        /// <param name="pageNumber">int page number</param>
+        /// <param name="pageSize">int page size</param>
+        /// <returns>HttpResponse with filtered collection of GameModels</returns>
+        [Route("getRangeFromPublisherId/{id}/{pageNumber}/{pageSize}")]
+        public async Task<HttpResponseMessage> GetRangeFromPublisherId(Guid id, int pageNumber, int pageSize)
         {
             try
             {
-                IEnumerable<IGame> result = await GamesService.GetRangeAsync(id);
+                GameFilter filter;
+
+                if (pageNumber <= 0 && pageSize <= 0)
+                    filter = null;
+                else
+                    filter = new GameFilter(pageNumber, pageSize);
+                
+                IEnumerable<IGame> result = await GamesService.GetRangeAsync(id, filter);
                 if (result != null)
                     return Request.CreateResponse(HttpStatusCode.OK, Mapper.Map<IEnumerable<GameModel>>(result));
                 else

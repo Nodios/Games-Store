@@ -1,4 +1,5 @@
-﻿using GameStore.Service.Common;
+﻿using GameStore.Common;
+using GameStore.Service.Common;
 using GameStore.WebApi.Models;
 using System;
 using System.Collections.Generic;
@@ -19,13 +20,24 @@ namespace GameStore.WebApi.Controllers
             this.service = service;
         }
 
-        [Route("{gameId}")]
+        /// <summary>
+        /// Get collection of game images
+        /// </summary>
+        /// <returns>Resposne with collection of game images if found</returns>
+        [Route("{gameId}/{pageNumber}/{pageSize}")]
         [HttpGet]
-        public async Task<HttpResponseMessage> Get(Guid gameId)
+        public async Task<HttpResponseMessage> Get(Guid gameId, int pageNumber, int pageSize)
         {
             try
             {
-                IEnumerable<GameImageModel> result = AutoMapper.Mapper.Map<IEnumerable<GameImageModel>>(await service.GetRangeAsync(gameId));
+                if(pageSize <= 0 || pageNumber <= 0)
+                {
+                    pageNumber = 1;
+                    pageSize = 1;
+                }
+
+                GenericFilter filter = new GenericFilter(pageNumber, pageSize);
+                IEnumerable<GameImageModel> result = AutoMapper.Mapper.Map<IEnumerable<GameImageModel>>(await service.GetRangeAsync(gameId, filter));
 
                 return Request.CreateResponse(HttpStatusCode.OK, result);
             }

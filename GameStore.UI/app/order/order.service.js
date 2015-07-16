@@ -1,17 +1,17 @@
 ﻿
 (function (angular) {
 
-    angular.module("mainModule").service("orderService", ['cns_route_prefix', '$http', '$window',
-    function (cns_route_prefix, $http, $window) {
+    angular.module("mainModule").service("orderService", ['routePrefix', '$http', '$window',
+    function (routePrefix, $http, $window) {
 
         return {
-            getOrders: function (userId) {
+            getOrders: function (userId, pageNumber, pageSize) {
 
                 var token = $window.localStorage.token;
 
                 return $http({
                     method: 'get',
-                    url: cns_route_prefix.order + "/" + userId,
+                    url: routePrefix.order + "/" + userId + "/" + pageNumber + "/" + pageSize,
                     headers: { 'Authorization': 'Bearer ' + token }
                 }); 
             }

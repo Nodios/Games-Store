@@ -22,6 +22,7 @@
                vm.review = {};             //For adding review
                vm.userId;
                vm.gameImages;
+               var searchingByName = false;   
 
                vm.searchString = "";
                vm.showGamesTable = false;
@@ -47,21 +48,33 @@
 
                    // If there is text in search box
                    if (vm.searchString.length > 0) {
-                       gameService.getGameByName(vm.searchString).success(function (data) {
-                           vm.games = [];                                                      //empty array
-                           vm.games = data;
+
+                       // If previous search was not by name set page number to 1
+                       if (searchingByName === false)
                            vm.pageNumber = 1;
 
-                           // Show tables if there is data , otherwise alert not found
+                       // Set to true since now it's searching by name
+                       searchingByName = true;
+
+                       gameService.getGameByName(vm.searchString, vm.pageNumber, pageSize).success(function (data) {
+
+                           // Show tables if there is data , otherwise notify not found
+                           checkForDataAndPageNumber(data)
                            alertIfNotFound();
                        });
                    }
                    else {
-                       gameService.getGames(vm.pageNumber, pageSize).success(function (data) {
-                           vm.games = [];                                                    // emtpy array
-                           vm.games = data;
+                       // If previous search way by name set page number to 1
+                       if (searchingByName === true)
+                           vm.pageNumber = 1;
 
-                           // Show tables if there is data , otherwise alert not found
+                       // Set searchByName to false since it's not searching by name
+                       searchingByName = false;
+
+                       gameService.getGames(vm.pageNumber, pageSize).success(function (data) {
+
+                           // Show tables if there is data , otherwise notify not found
+                           checkForDataAndPageNumber(data)
                            alertIfNotFound();
                        });
                    }
@@ -87,7 +100,7 @@
                    vm.showGameDetails = true;          // show details table     
 
                    // Get images for detail
-                   gameService.getImages(vm.game.Id).success(function (data) {
+                   gameService.getImages(vm.game.Id, 1,1).success(function (data) {
                        vm.gameImages = data;
                    });
 
@@ -156,8 +169,10 @@
                            } else {
                                vm.reviews.push(data);
                            }
+
+                           notificationService.addNotification("Review added.", true);
                        }).error(function (data) {
-                           notificationService.addNotificationalert(data,false);
+                           notificationService.addNotificationalert("Unable to add new review.",false);
                        });
                    } else {
                        notificationService.addNotification("Please log in.", false);
@@ -189,15 +204,7 @@
                vm.nextInGamesList = function () {
                    vm.pageNumber++;
 
-                   gameService.getGames(vm.pageNumber, pageSize).success(function (data) {
-                       vm.games = [];                                                    // emtpy array
-
-                       if (data.length > 0)
-                           vm.games = data;
-                       else
-                           vm.pageNumber--;
-
-                   });
+                   vm.get();
                };
 
                // previous items in games list
@@ -207,24 +214,20 @@
                    if (vm.pageNumber < 1)
                        vm.pageNumber = 1;
 
-                   gameService.getGames(vm.pageNumber, pageSize).success(function (data) {
-                       vm.games = [];                                                    // emtpy array
-                       vm.games = data;
-                   });
+                   vm.get();
                };
 
-               //TODO IMPLEMENT
                // If delete review is clicked
                vm.deleteReview = function (review) {
                    gameService.deleteReview(review).success(function () {
+                       notificationService.addNotification("Review deleted", true);
                        vm.reviews.pop(review);
                        vm.Next();
                    }).error(function () {
-                       // Error handling
+                       notificationService.addNotification("Review delete operation failed", false);
                    });
                };
 
-               //TODO IMPLEMENT
                // edit review click
                vm.editReview = function (review) {
                    if ($window.localStorage.token.length > 0) {
@@ -235,14 +238,16 @@
                            return;
                        }
 
-
                        gameService.putReview(review).success(function (data) {
+
+                           notificationService.addNotification("Review edited", true);
 
                            // Remove old review ,and add new
                            vm.reviews.pop(review);
                            vm.reviews.push(data);
                        }).error(function (data) {
-                           //TODO error message
+                          
+                           notificationService.addNotification("Review edit operation failed.", false);
                        });
                    }
                    else {
@@ -260,26 +265,33 @@
                        vm.showGamesTable = true;
                    }
                    else {
-                       alert("Not found");
+                       notificationService.addNotification("No games found.", false);
                    }
+               };
+
+               // If there is data set vm.games, else decrease page number
+               function checkForDataAndPageNumber(data) {
+
+                   if (data.length > 0)
+                       vm.games = data;
+                   else
+                       vm.pageNumber--;
                };
 
                //#endregion
 
                //#region To handle on controller creation
 
-               // If there is paramater publisherId within route, used when navigated from other menus 
+               // If there is paramater publisherId within route ... used when navigated from other menus 
                if ($routeParams.publisherId != null) {
-                   gameService.getGamesByPublisherId($routeParams.publisherId).success(function (data) {
+                   gameService.getGamesByPublisherId($routeParams.publisherId, vm.pageNumber, 20).success(function (data) {
 
                        vm.games = data;
                        if (vm.games.length > 0)
                            vm.showGamesTable = true;
 
-                       // Sends data upwards to parent controller, navigation controller that is
-                       $scope.$emit('setGameLinkToActive', 'active');
                    }).error(function (data) {
-                       console.log(data);
+                       notificationService.addNotification(data, false);
                    });
                } else {
 

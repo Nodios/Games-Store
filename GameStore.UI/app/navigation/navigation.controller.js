@@ -3,8 +3,8 @@
 
 
     angular.module("mainModule").controller("NavigationController",
-        ['cns_navigation_links', 'notificationService', '$scope', '$window', '$controller', '$location', 'navigationMenuService',
-             function (cns_navigation_links, notificationService, $scope, $window, $controller, $location, navigationMenuService) {
+        ['navigationLinks', 'notificationService', '$scope', '$window', '$controller', '$location', 'navigationMenuService',
+             function (navigationLinks, notificationService, $scope, $window, $controller, $location, navigationMenuService) {
 
                  // Nav controller is first loaded controller and is alive all time 
                  $location.path("#/");  // redirect to home page every time when controller is created 
@@ -35,10 +35,10 @@
                  vm.authUser = { name: "Log in" };
 
                  // Drop down menu items for signed user
-                 vm.cart = { name: "Cart", link: cns_navigation_links.cart }
-                 vm.account = { name: "Account", link: cns_navigation_links.account };
-                 vm.order = { name: "Order", link: cns_navigation_links.order };
-                 vm.logout = { name: "Logout", link: cns_navigation_links.home };
+                 vm.cart = { name: "Cart", link: navigationLinks.cart }
+                 vm.account = { name: "Account", link: navigationLinks.account };
+                 vm.order = { name: "Order", link: navigationLinks.order };
+                 vm.logout = { name: "Logout", link: navigationLinks.home };
 
                  //#endregion
 

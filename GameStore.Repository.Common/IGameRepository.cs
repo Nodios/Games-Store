@@ -9,9 +9,9 @@ namespace GameStore.Repository.Common
     public interface IGameRepository 
     {
         Task<IGame> GetAsync(Guid id);
-        Task<IEnumerable<IGame>> GetRangeAsync(string name);
+        Task<IEnumerable<IGame>> GetRangeAsync(string name, GameFilter filter);
         Task<IEnumerable<IGame>> GetRangeAsync(GameFilter filter = null);
-        Task<IEnumerable<IGame>> GetRangeAsync(Guid publisherId);
+        Task<IEnumerable<IGame>> GetRangeAsync(Guid publisherId, GameFilter filter = null);
 
         Task<int> UpdateAsync(IGame game);
         Task<int> AddAsync(IGame game);

@@ -1,6 +1,6 @@
 ﻿(function (angular) {
 
-    angular.module("mainModule").constant("cns_navigation_links",
+    angular.module("mainModule").constant("navigationLinks",
         {
             home: "#/",
             account: "#/account",
@@ -11,7 +11,7 @@
             publisher: "#/publisher"
         });
 
-    angular.module("mainModule").constant("cns_route_prefix",
+    angular.module("mainModule").constant("routePrefix",
         {
             cart: "gamestore/api/cart",
             game: "gamestore/api/game",

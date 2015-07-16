@@ -1,8 +1,8 @@
 ﻿
 (function (angular) {
     angular.module("mainModule").controller("PublisherController",
-        ['$scope','$location', 'publisherService',
-    function ($scope, $location, publisherService) {
+        ['$scope','$location', 'publisherService','navigationMenuService',
+    function ($scope, $location, publisherService,navigationMenuService) {
 
 
         //#region Proporties
@@ -17,6 +17,7 @@
         vm.showSupportInfoTable = false;        // tables are hidden by default
         vm.pageNumber = 1;
         var pageSize = 5;
+        var searchingByName = false;
 
         //#endregion
 
@@ -24,22 +25,51 @@
 
         // Get Publishers
         vm.get = function () {
-
-            vm.showPublishersTable = true;      // show publisher table
+ 
             vm.showSupportInfoTable = false;    // hide support table
 
             // If there is search string get by search string, else get all
             if (vm.searchString.length > 0) {
-                publisherService.getPublishersByName(vm.searchString).success(function (data) {
+
+                // If prevoious seatch wasn't by name set page number ot 1
+                if (searchingByName === false)
+                    vm.pageNumber = 1;
+
+                // Now searching by name
+                searchingByName = true;
+
+                publisherService.getPublishersByName(vm.searchString, vm.pageNumber, pageSize).success(function (data) {
                     vm.publishers = data;
+
+                    // If there is no data
+                    if (data.length == 0)
+                        vm.pageNumber--;
+
+                    vm.showPublishersTable = true;      // show publisher table
+
                 }).error(function () {
                     vm.showPublishersTable = false;       // if there is error hide table
                 });
             }
             else {
+
+                // If previous search wasn't by name, set page number to 1
+                if (searchingByName === true)
+                    vm.pageNumber = 1;
+
+                searchingByName = false;
+
+
                 // Pass page number and page size 
                 publisherService.getPublishers(vm.pageNumber, pageSize).success(function (data) {
                     vm.publishers = data;
+
+                    // if there is no data
+                    if (data.length == 0)
+                        vm.pageNumber--;
+
+                    vm.showPublishersTable = true;      // show publisher table
+
                 }).error(function () {
                     vm.showPublishersTable = false;         // if there is error hide table
                 });;
@@ -51,7 +81,6 @@
 
             vm.publisher = item;
             vm.showPublishersTable = false;   // hide publishers table
-            vm.showSupportInfoTable = true;   // show support table
 
             // Get support info related to publisher
             publisherService.getSupport(id).success(function (data) {
@@ -75,6 +104,7 @@
 
         // Should redirect to games and get games that belong to publisher
         vm.showGames = function (publisherId) {
+            navigationMenuService.setMenuToActive(1);
             $location.path('/game/' + publisherId);
         };
 
@@ -82,13 +112,7 @@
 
             vm.pageNumber++;
 
-            publisherService.getPublishers(vm.pageNumber, pageSize).success(function (data) {
-
-                vm.publishers = data;
-
-                if (data.length == 0)
-                    vm.pageNumber--;
-            })
+            vm.get();
         };
 
         vm.back = function () {
@@ -97,9 +121,7 @@
             if (vm.pageNumber < 1)
                 vm.pageNumber = 1;
 
-            publisherService.getPublishers(vm.pageNumber, pageSize).success(function (data) {
-                vm.publishers = data;
-            })
+            vm.get();
         };
 
         //#endregion

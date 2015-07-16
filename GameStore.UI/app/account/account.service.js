@@ -1,14 +1,14 @@
 ﻿(function (angular) {
 
     angular.module("mainModule").service("userService",
-        ['$http', '$window', 'cns_route_prefix',
-            function ($http, $window, cns_route_prefix) {
+        ['$http', '$window', 'routePrefix',
+            function ($http, $window, routePrefix) {
 
 
             return {
 
                 getUserByUsername: function (username) {
-                    return $http.get(cns_route_prefix.user + "/" + username);
+                    return $http.get(routePrefix.user + "/" + username);
                 },
 
                 // Updates user username or email
@@ -18,7 +18,7 @@
 
                     return $http({
                         method: 'put',
-                        url: cns_route_prefix.user + "/UpdateUserOrMail/",
+                        url: routePrefix.user + "/UpdateUserOrMail/",
                         headers: { 'Authorization': 'Bearer ' + token },
                         data: {
                             user: user,
@@ -33,7 +33,7 @@
 
                     return $http({
                         method: 'put',
-                        url: cns_route_prefix.user + "/updatePassword/",
+                        url: routePrefix.user + "/updatePassword/",
                         headers: { 'Authorization': 'Bearer ' + token },
                         data: {
                             userId: userId,

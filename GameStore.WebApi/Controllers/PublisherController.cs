@@ -44,12 +44,19 @@ namespace GameStore.WebApi.Controllers
 
         //Get: api/Publisher/GetByName/Ea
         [HttpGet()]
-        [Route("getByName/{name}")]
-        public async Task<HttpResponseMessage> GetByName(string name)
+        [Route("getByName/{name}/{pageNumber}/{pageSize}")]
+        public async Task<HttpResponseMessage> GetByName(string name, int pageNumber, int pageSize)
         {
             try
             {
-                IEnumerable<IPublisher> result = await PublisherService.GetRangeAsync(name);
+                if(pageSize < 1 || pageNumber < 1)
+                {
+                    pageNumber = 1;
+                    pageSize = 1;
+                }
+
+                GenericFilter filter = new GenericFilter(pageNumber, pageSize);
+                IEnumerable<IPublisher> result = await PublisherService.GetRangeAsync(name, filter);
 
                 if (result != null)
                     return Request.CreateResponse(HttpStatusCode.OK, Mapper.Map<IEnumerable<PublisherModel>>(result));

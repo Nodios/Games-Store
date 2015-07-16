@@ -9,7 +9,7 @@ namespace GameStore.Repository.Common
     public interface IPublisherRepository
     {
         Task<IPublisher> GetAsync(Guid id);
-        Task<IEnumerable<IPublisher>> GetRangeAsync(string name);
+        Task<IEnumerable<IPublisher>> GetRangeAsync(string name, GenericFilter filter);
         Task<IEnumerable<IPublisher>> GetRangeAsync(PublisherFilter filter);
 
         Task<int> AddAsync(IPublisher company);

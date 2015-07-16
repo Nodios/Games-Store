@@ -35,9 +35,9 @@ namespace GameStore.Service
         /// <summary>
         /// Gets game by name
         /// </summary>
-        public Task<IEnumerable<IGame>> GetRangeAsync(string name)
+        public Task<IEnumerable<IGame>> GetRangeAsync(string name, GameFilter filter)
         {
-            return GamesRepository.GetRangeAsync(name);
+            return GamesRepository.GetRangeAsync(name, filter);
         }
 
         /// <summary>
@@ -53,9 +53,9 @@ namespace GameStore.Service
         /// </summary>
         /// <param name="publisherId">FK id</param>
         /// <returns>Collection of games</returns>
-        public Task<IEnumerable<Model.Common.IGame>> GetRangeAsync(Guid publisherId)
+        public Task<IEnumerable<Model.Common.IGame>> GetRangeAsync(Guid publisherId, GameFilter filter = null)
         {
-            return GamesRepository.GetRangeAsync(publisherId);
+            return GamesRepository.GetRangeAsync(publisherId, filter);
         }
 
         public Task<int> DeleteAsync(Guid id)

@@ -29,27 +29,7 @@ namespace GameStore.WebApi.Controllers
 
         #region Public methods
 
-        /*
-        [Route("{gameId}/{pageNumber}/{pageSize}")]
-        public async Task<HttpResponseMessage> Get(Guid gameId = new Guid(), int pageNumber = 0, int pageSize = 0)
-        {
-            try
-            {
-                IEnumerable<IPost> result = await PostService.GetPosts(gameId, new Common.PostFilter(pageNumber, pageSize));
-
-                if (result != null)
-                    return Request.CreateResponse(HttpStatusCode.OK, Mapper.Map<IEnumerable<PostModel>>(result));
-                else
-                    return Request.CreateResponse(HttpStatusCode.NotFound);
-
-            }
-            catch (Exception ex)
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
-            }
-        }
-        */
-
+       
         [Authorize]
         [HttpPost]
         public async Task<HttpResponseMessage> Insert(PostModel model)

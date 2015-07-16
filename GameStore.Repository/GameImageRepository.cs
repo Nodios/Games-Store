@@ -1,9 +1,12 @@
 ﻿using AutoMapper;
+using GameStore.Common;
 using GameStore.DAL.Models;
 using GameStore.Model.Common;
 using GameStore.Repository.Common;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace GameStore.Repository
@@ -30,11 +33,14 @@ namespace GameStore.Repository
             }
         }
 
-        public async Task<IEnumerable<Model.Common.IGameImage>> GetRangeAsync()
+        public async Task<IEnumerable<Model.Common.IGameImage>> GetRangeAsync(GenericFilter filter)
         {
             try
             {
-                return await repository.GetRangeAsync<IGameImage>();
+                return Mapper.Map<IEnumerable<IGameImage>>(await repository.Where<GameImageEntity>()
+                    .OrderBy(g => g.Id)
+                    .Skip((filter.PageNumber * filter.PageSize) - filter.PageSize)
+                    .Take(filter.PageSize).ToListAsync());
             }
             catch (Exception)
             {
@@ -43,11 +49,15 @@ namespace GameStore.Repository
             }
         }
 
-        public async Task<IEnumerable<IGameImage>> GetRangeAsync(Guid gameId)
+        public async Task<IEnumerable<IGameImage>> GetRangeAsync(Guid gameId, GenericFilter filter)
         {
             try
             {
-                return Mapper.Map<IEnumerable<IGameImage>>(await repository.GetRangeAsync<GameImageEntity>(g => g.GameId == gameId));
+                return Mapper.Map<IEnumerable<IGameImage>>(await repository.Where<GameImageEntity>()
+                    .Where(g => g.GameId == gameId)
+                   .OrderBy(g => g.Id)
+                   .Skip((filter.PageNumber * filter.PageSize) - filter.PageSize)
+                   .Take(filter.PageSize).ToListAsync());
             }
             catch (Exception)
             {

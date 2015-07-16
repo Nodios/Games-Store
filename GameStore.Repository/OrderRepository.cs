@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
+using GameStore.Common;
 using GameStore.DAL.Models;
 using GameStore.Model.Common;
 using GameStore.Repository.Common;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace GameStore.Repository
@@ -37,17 +38,16 @@ namespace GameStore.Repository
             }
         }
 
-        public async Task<ICollection<Model.Common.IOrder>> GetRangeAsync(string userId)
+        public async Task<ICollection<Model.Common.IOrder>> GetRangeAsync(string userId, GenericFilter filter)
         {
             try
             {
-                ICollection<IOrder> orders = Mapper.Map<ICollection<IOrder>>
-                    (await repository.GetRangeAsync<OrderEntity>(c => c.UserId == userId));
-
-                if (orders.Count == 0)
-                    throw new Exception("Couldn't find any orders for user.");
-
-                return orders;
+                return Mapper.Map<ICollection<IOrder>>(await repository.Where<OrderEntity>()
+                    .Where(c => c.UserId == userId)
+                    .OrderBy(c => c.Surname)
+                    .Skip((filter.PageNumber * filter.PageSize) - filter.PageSize)
+                    .Take(filter.PageSize).ToListAsync());
+            
             }
             catch (Exception ex)
             {

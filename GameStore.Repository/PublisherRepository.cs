@@ -45,12 +45,16 @@ namespace GameStore.Repository
         /// <summary>
         /// Get by name
         /// </summary>
-        public async Task<IEnumerable<IPublisher>> GetRangeAsync(string name)
+        public async Task<IEnumerable<IPublisher>> GetRangeAsync(string name, GenericFilter filter)
         {
             try
             {
-                return Mapper.Map<IEnumerable<IPublisher>>(await 
-                    repository.GetRangeAsync<PublisherEntity>(c => c.Name.Contains(name)));
+                return Mapper.Map<IEnumerable<IPublisher>>(await
+                    repository.Where<PublisherEntity>()
+                    .Where(c => c.Name.Contains(name))
+                    .OrderBy(u => u.Name)
+                    .Skip((filter.PageNumber * filter.PageSize) - filter.PageSize)
+                    .Take(filter.PageSize).ToListAsync());
             }
             catch (Exception ex)
             {
@@ -68,13 +72,13 @@ namespace GameStore.Repository
             {
                 if (filter != null)
                 {
-                    
-                        return Mapper.Map<IEnumerable<IPublisher>>(
-                            await repository.Where<PublisherEntity>()
-                            .OrderBy(u => u.Name)
-                            .Skip((filter.PageNumber * filter.PageSize) - filter.PageSize)
-                            .Take(filter.PageSize).ToListAsync());
-                      
+
+                    return Mapper.Map<IEnumerable<IPublisher>>(
+                        await repository.Where<PublisherEntity>()
+                        .OrderBy(u => u.Name)
+                        .Skip((filter.PageNumber * filter.PageSize) - filter.PageSize)
+                        .Take(filter.PageSize).ToListAsync());
+
                 }
                 else
                     return Mapper.Map<IEnumerable<IPublisher>>(await repository.GetRangeAsync<PublisherEntity>());
@@ -111,7 +115,7 @@ namespace GameStore.Repository
             {
                 return await repository.UpdateAsync<PublisherEntity>(Mapper.Map<PublisherEntity>(company));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -127,7 +131,7 @@ namespace GameStore.Repository
                 return await this.DeleteAsync(Mapper.Map<IPublisher>
                     (await repository.GetAsync<PublisherEntity>(id)));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -142,13 +146,13 @@ namespace GameStore.Repository
             {
                 return await repository.DeleteAsync<PublisherEntity>(Mapper.Map<PublisherEntity>(company));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                throw ex; 
+                throw ex;
             }
-        }  
+        }
 
         #endregion
-        
+
     }
 }

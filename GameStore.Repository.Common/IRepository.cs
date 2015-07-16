@@ -1,13 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace GameStore.Repository.Common
 {
+
+    /// <summary>
+    /// Interface with repository implementation methods
+    /// </summary>
     public interface IRepository
     {
+
         IUnitOfWork CreateUnitOfWork();
 
         Task<T> GetAsync<T>(Guid id) where T : class;
