@@ -20,6 +20,9 @@ namespace GameStore.Repository
             this.repository = repository;
         }
 
+        /// <summary>
+        /// Get order by id
+        /// </summary>
         public async Task<Model.Common.IOrder> GetAsync(Guid id)
         {
             try
@@ -38,6 +41,12 @@ namespace GameStore.Repository
             }
         }
 
+        /// <summary>
+        /// Get collection of orders that belong to user
+        /// </summary>
+        /// <param name="userId">User FK</param>
+        /// <param name="filter">Fitler options</param>
+        /// <returns>Collection of orders</returns>
         public async Task<ICollection<Model.Common.IOrder>> GetRangeAsync(string userId, GenericFilter filter)
         {
             try
@@ -56,6 +65,11 @@ namespace GameStore.Repository
             }
         }
 
+        /// <summary>
+        /// Add new order
+        /// </summary>
+        /// <param name="order">Order to add</param>
+        /// <returns>Added order</returns>
         public async Task<Model.Common.IOrder> AddAsync(Model.Common.IOrder order)
         {
             try
@@ -75,6 +89,9 @@ namespace GameStore.Repository
             }
         }
 
+        /// <summary>
+        /// Update order
+        /// </summary>
         public async Task<Model.Common.IOrder> UpdateAsync(Model.Common.IOrder order)
         {
             try
@@ -94,6 +111,9 @@ namespace GameStore.Repository
             }
         }
 
+        /// <summary>
+        /// Delete order
+        /// </summary>
         public async Task<int> DeleteAsync(Guid id)
         {
             try

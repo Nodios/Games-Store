@@ -3,6 +3,9 @@
 using System;
 namespace GameStore.DAL.Models
 {
+    /// <summary>
+    /// Database entity
+    /// </summary>
     public class ReviewEntity : IDataEntity
     {
         public Guid Id { get; set; }

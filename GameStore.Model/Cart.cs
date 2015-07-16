@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace GameStore.Model
 {
     /// <summary>
-    /// Cart model
+    /// Business logic model
     /// </summary>
     public class Cart : ICart
     {

@@ -3,6 +3,9 @@ using GameStore.Model.Common;
 using System;
 namespace GameStore.Model
 {
+    /// <summary>
+    /// Business logic model
+    /// </summary>
     public class Support : ISupport
     {
         public Guid Id { get; set; }

@@ -17,6 +17,12 @@ namespace GameStore.Service
             this.repository = repository;
         }
 
+        /// <summary>
+        /// Get images that belong to game
+        /// </summary>
+        /// <param name="gameId">GameId</param>
+        /// <param name="filter">Filter</param>
+        /// <returns>Collection of games</returns>
         public async Task<IEnumerable<IGameImage>> GetRangeAsync(Guid gameId, GenericFilter filter)
         {
             return await repository.GetRangeAsync(gameId, filter);

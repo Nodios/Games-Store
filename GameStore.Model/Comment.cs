@@ -3,6 +3,9 @@ using System;
 
 namespace GameStore.Model
 {
+    /// <summary>
+    /// Business logic model
+    /// </summary>
     public class Comment : IComment
     {
         public Guid Id { get; set; }

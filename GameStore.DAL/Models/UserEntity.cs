@@ -20,6 +20,7 @@ namespace GameStore.DAL.Models
             }
             set
             {
+                // Set to new guid only if string is empty or null
                 if (String.IsNullOrEmpty(value))
                     base.Id = Guid.NewGuid().ToString();
                 else

@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace GameStore.Model
 {
+    /// <summary>
+    /// Business logic model
+    /// </summary>
     public class Publisher : IPublisher
     {
         public Guid Id { get; set; }

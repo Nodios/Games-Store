@@ -192,6 +192,9 @@ namespace GameStore.Repository
 
         #region Other methods
 
+        /// <summary>
+        /// Save changes to database
+        /// </summary>
         public async Task<int> CommitAsync()
         {
             return await DbContext.SaveChangesAsync();

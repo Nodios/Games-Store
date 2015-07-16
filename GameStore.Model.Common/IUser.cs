@@ -2,6 +2,9 @@
 
 namespace GameStore.Model.Common
 {
+    /// <summary>
+    /// Interface for user
+    /// </summary>
     public interface IUser
     {
         string Id { get; set; }

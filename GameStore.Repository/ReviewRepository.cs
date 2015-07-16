@@ -58,7 +58,12 @@ namespace GameStore.Repository
             }
         }
 
-
+        /// <summary>
+        /// Get collection of reviews that belong to game
+        /// </summary>
+        /// <param name="gameId">game FK</param>
+        /// <param name="filter">filter option</param>
+        /// <returns>Collection of games</returns>
         public async Task<IEnumerable<IReview>> GetAsync(Guid gameId, GameStore.Common.GenericFilter filter)
         {
             try

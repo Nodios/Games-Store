@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace GameStore.DAL
 {
     /// <summary>
-    /// Interface that provides method signatures for database context
+    /// Provides method signatures for database context
     /// </summary>
     public interface IGamesStoreContext : IDisposable
     {

@@ -2,6 +2,9 @@
 using System;
 namespace GameStore.DAL.Models
 {
+    /// <summary>
+    /// Provides implementation that is shared between multiple entites
+    /// </summary>
     public abstract class PostsAndComments : IDataEntity
     {
         public Guid Id { get; set; }

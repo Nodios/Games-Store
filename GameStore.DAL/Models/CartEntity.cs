@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace GameStore.DAL.Models
 {
+    /// <summary>
+    /// Database entity
+    /// </summary>
     public class CartEntity 
     {
         // One to one, user id is also cart entity id

@@ -40,15 +40,16 @@ namespace GameStore.Repository
         /// <summary>
         /// Get by name, where games are not in cart
         /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
+        /// <param name="name">Part of name to search by</param>
+        /// <param name="filter">Filter options</param>
+        /// <returns>IEnumerable of Igame</returns>
         public async Task<IEnumerable<IGame>> GetRangeAsync(string name, GenericFilter filter)
         {
             try
             {
                 return Mapper.Map<IEnumerable<IGame>>(await repository.Where<GameEntity>()
                     .Where(g => g.IsInCart == false && g.Name.Contains(name))
-                    .OrderBy(g => g.Name)
+                    .OrderBy(g => g.Name.Contains(name) && g.IsInCart == false)
                     .Skip((filter.PageNumber * filter.PageSize) - filter.PageSize)
                     .Take(filter.PageSize).ToListAsync());
             }

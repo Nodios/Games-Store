@@ -4,6 +4,9 @@
 using System;
 namespace GameStore.DAL.Models
 {
+    /// <summary>
+    /// Database entity
+    /// </summary>
     public class InfoEntity : IDataEntity
     {
         public Guid Id { get; set; }

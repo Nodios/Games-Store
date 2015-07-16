@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace GameStore.DAL.Models
 {
+    /// <summary>
+    /// Database entity
+    /// </summary>
     public class PublisherEntity : IDataEntity
     {
         public Guid Id { get; set; }

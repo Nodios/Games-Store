@@ -3,6 +3,9 @@ using System;
 
 namespace GameStore.Model
 {
+    /// <summary>
+    /// Business logic model
+    /// </summary>
     public class GameImage : IGameImage
     {
         public Guid Id { get; set; }

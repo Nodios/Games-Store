@@ -58,11 +58,21 @@ namespace GameStore.Service
             return GamesRepository.GetRangeAsync(publisherId, filter);
         }
 
+        /// <summary>
+        /// Delete single game
+        /// </summary>
+        /// <param name="id">Id</param>
+        /// <returns>1 if success, 0 otherwise</returns>
         public Task<int> DeleteAsync(Guid id)
         {
             return GamesRepository.DeleteAsync(id);
         }
 
+        /// <summary>
+        /// Delete collection of games
+        /// </summary>
+        /// <param name="id">Id's for all games to delete</param>
+        /// <returns>1 if success, 0 otherwise</returns>
         public Task<int> DeleteAsync(params Guid[] id)
         {
             return GamesRepository.DeleteAsync(id);

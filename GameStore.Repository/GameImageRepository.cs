@@ -20,6 +20,9 @@ namespace GameStore.Repository
             this.repository = repository;
         }
 
+        /// <summary>
+        /// Get game image by id
+        /// </summary>
         public async Task<Model.Common.IGameImage> GetAsync(Guid id)
         {
             try
@@ -33,6 +36,11 @@ namespace GameStore.Repository
             }
         }
 
+        /// <summary>
+        /// Get collection of game images
+        /// </summary>
+        /// <param name="filter">Filter, which provides options for pagination</param>
+        /// <returns>GameImages collection</returns>
         public async Task<IEnumerable<Model.Common.IGameImage>> GetRangeAsync(GenericFilter filter)
         {
             try
@@ -49,6 +57,12 @@ namespace GameStore.Repository
             }
         }
 
+        /// <summary>
+        /// Get collection by fk
+        /// </summary>
+        /// <param name="gameId">Foreign key</param>
+        /// <param name="filter">Filtering options</param>
+        /// <returns>ICollection of IGameImage</returns>
         public async Task<IEnumerable<IGameImage>> GetRangeAsync(Guid gameId, GenericFilter filter)
         {
             try
@@ -66,6 +80,11 @@ namespace GameStore.Repository
             }
         }
 
+        /// <summary>
+        /// Add new game image to database
+        /// </summary>
+        /// <param name="gameImate">IGameImage to add</param>
+        /// <returns>1 is success, 0 otherwise</returns>
         public async Task<int> AddAsync(Model.Common.IGameImage gameImate)
         {
             try
@@ -79,6 +98,11 @@ namespace GameStore.Repository
             }
         }
 
+        /// <summary>
+        /// Update existing game image
+        /// </summary>
+        /// <param name="gameImage">Game image to update</param>
+        /// <returns>1 if success , 0 otherwise</returns>
         public async Task<int> UpdateAsync(Model.Common.IGameImage gameImage)
         {
             try
@@ -92,6 +116,11 @@ namespace GameStore.Repository
             }
         }
 
+        /// <summary>
+        /// Delete game image
+        /// </summary>
+        /// <param name="gameImage">Game image to delete</param>
+        /// <returns>1 if success , 0 otherwise</returns>
         public async Task<int> DeleteAsync(Model.Common.IGameImage gameImage)
         {
             try

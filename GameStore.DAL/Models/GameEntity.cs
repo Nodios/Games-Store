@@ -5,6 +5,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GameStore.DAL.Models
 {
+    /// <summary>
+    /// Database entity
+    /// </summary>
     public class GameEntity 
     {  
         public Guid Id { get; set; }

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace GameStore.Model
 {
     /// <summary>
-    /// Business logic model
+    /// Business logic model, inherits from identity user
     /// </summary>
     public class User : IdentityUser, IUser
     {

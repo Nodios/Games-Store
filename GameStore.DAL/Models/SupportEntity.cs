@@ -3,6 +3,9 @@
 using System;
 namespace GameStore.DAL.Models
 {
+    /// <summary>
+    /// Database entity
+    /// </summary>
     public class SupportEntity 
     {
         public Guid PublisherId { get; set; }

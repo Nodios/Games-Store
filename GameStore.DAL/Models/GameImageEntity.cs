@@ -2,6 +2,9 @@
 
 namespace GameStore.DAL.Models
 {
+    /// <summary>
+    /// Database entity
+    /// </summary>
     public class GameImageEntity : IDataEntity
     {
         public Guid Id { get; set; }
