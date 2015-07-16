@@ -7,6 +7,7 @@
             CART: "#/cart",
             GAME: "#/game",
             FORUM: "#/forum",
+            ORDER: "#/order",
             PUBLISHER: "#/publisher"
         });
 

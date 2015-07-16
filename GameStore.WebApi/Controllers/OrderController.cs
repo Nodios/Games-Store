@@ -13,7 +13,7 @@ using System.Web.Http;
 
 namespace GameStore.WebApi.Controllers
 {
-    [RoutePrefix("gamestore/api")]
+    [RoutePrefix("api/order")]
     [Authorize]
     public class OrderController : ApiController
     {

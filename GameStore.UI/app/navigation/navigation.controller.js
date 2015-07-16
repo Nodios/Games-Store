@@ -37,6 +37,7 @@
                  // Drop down menu items for signed user
                  vm.cart = { name: "Cart", link: NAVIGATION_LINKS.CART }
                  vm.account = { name: "Account", link: NAVIGATION_LINKS.ACCOUNT };
+                 vm.order = { name: "Order", link: NAVIGATION_LINKS.ORDER };
                  vm.logout = { name: "Logout", link: NAVIGATION_LINKS.HOME };
 
                  //#endregion

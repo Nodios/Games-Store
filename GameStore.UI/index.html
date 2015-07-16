@@ -36,6 +36,7 @@
                             <ul class="dropdown-menu pull-right">
                                 <li><a href="{{vm.cart.link}}">{{vm.cart.name}}</a></li>
                                 <li><a href="{{vm.account.link}}">{{vm.account.name}}</a></li>
+                                <li><a href="{{vm.order.link}}">{{vm.order.name}}</a></li>
                                 <li class="divider"></li>
                                 <li><a ng-click="vm.logoutClick()">{{vm.logout.name}}</a></li>
                             </ul>
@@ -104,6 +105,10 @@
     <!-- Cart -->
     <script src="app/cart/cart.controller.js"></script>
     <script src="app/cart/cart.service.js"></script>
+
+    <!-- Order -->
+    <script src="app/order/order.controller.js"></script>
+    <script src="app/order/order.service.js"></script>
     
 
 </body>

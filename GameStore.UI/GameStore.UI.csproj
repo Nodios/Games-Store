@@ -71,11 +71,12 @@
     <Content Include="app\modals\login\loginModal.controller.js" />
     <Content Include="app\modals\register\registerModal.controller.js" />
     <Content Include="app\modals\register\register.html" />
+    <Content Include="app\order\order.controller.js" />
+    <Content Include="app\order\order.html" />
+    <Content Include="app\order\order.service.js" />
     <Content Include="app\services\authService.service.js" />
-    <Content Include="app\services\deleteRouteProvider.js" />
     <Content Include="app\services\navigationMenu.service.js" />
     <Content Include="app\services\notification.service.js" />
-    <Content Include="app\services\putRouteProvider.service.js" />
     <Content Include="Content\bootstrap\alerts.less" />
     <Content Include="Content\bootstrap\badges.less" />
     <Content Include="Content\bootstrap\bootstrap.less" />
@@ -189,8 +190,6 @@
     <Content Include="app\publisher\publisher.controller.js" />
     <Content Include="app\publisher\publisher.html" />
     <Content Include="app\publisher\publisher.service.js" />
-    <Content Include="app\services\getRouteProvider.service.js" />
-    <Content Include="app\services\postRouteProvider.service.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />

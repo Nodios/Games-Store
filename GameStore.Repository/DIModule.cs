@@ -1,6 +1,11 @@
 ﻿using GameStore.DAL;
+using GameStore.DAL.Models;
 using GameStore.Repository.Common;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Ninject.Extensions.Factory;
+using Ninject;
+using Ninject.Parameters;
 
 namespace GameStore.Repository
 {
@@ -11,7 +16,6 @@ namespace GameStore.Repository
         /// </summary>
         public override void Load()
         {
-
             #region Bindings
 
             // Context, generic repo, unit of work
@@ -19,6 +23,14 @@ namespace GameStore.Repository
             Bind<IRepository>().To<Repository>();
             Bind<IUnitOfWork>().To<UnitOfWork>();
             Bind<IUnitOfWorkFactory>().ToFactory();
+
+            // Bind user store and manager
+            //Bind<IUserStore<UserEntity>>().To<UserStore<UserEntity>>().WithConstructorArgument(new GamesStoreContext());            
+            //Bind<UserManager<UserEntity>>().ToSelf();
+
+            Bind<UserManager<UserEntity>>().ToSelf().WithConstructorArgument(typeof(IUserStore<UserEntity>), new UserStore<UserEntity>(new GamesStoreContext()));
+            Bind<IUserManagerFactory>().ToFactory();
+;
 
             // Other repos
             Bind<ICartRepository>().To<CartRepository>();
