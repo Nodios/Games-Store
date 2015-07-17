@@ -2,7 +2,6 @@
 using GameStore.Service.Common;
 using GameStore.WebApi.Models;
 using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;

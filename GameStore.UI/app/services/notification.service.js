@@ -13,7 +13,7 @@
                     // fade in 
                     jQuery("#notification").fadeIn(400);
 
-                    // Keep it for 2 sec then fade out
+                    // Keep message for 1.5sec before fading out
                     $timeout(function () {
                         jQuery("#notification").fadeOut(400);
                     }, 1500, false);

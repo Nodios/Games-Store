@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
+using GameStore.Common;
 using GameStore.DAL.Models;
 using GameStore.Model.Common;
 using GameStore.Repository.Common;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace GameStore.Repository
@@ -26,6 +26,8 @@ namespace GameStore.Repository
         {
             this.repository = repository;
         }
+
+        #region GET
 
         /// <summary>
         /// Get topic  by id
@@ -61,10 +63,35 @@ namespace GameStore.Repository
             }
             catch (Exception ex)
             {
-                
+
                 throw ex;
             }
         }
+
+        /// <summary>
+        /// Get collection of topics
+        /// </summary>
+        /// <param name="filter">Filter with pagenumber and size</param>
+        /// <param name="search">Search string</param>
+        /// <returns>Topics collection</returns>
+        public async Task<ICollection<ITopic>> GetRangeAsync(GenericFilter filter, string search)
+        {
+            try
+            {
+                return Mapper.Map<ICollection<ITopic>>(await repository.Where<TopicEntity>()
+                    .Where(t => t.Title.Contains(search))
+                    .OrderBy(t => t.Title)
+                    .Skip((filter.PageNumber * filter.PageSize) - filter.PageSize)
+                    .Take(filter.PageSize).ToListAsync());
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        } 
+
+        #endregion
 
         /// <summary>
         /// Add new topic

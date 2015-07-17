@@ -4,22 +4,27 @@
     <div class="container">
 
         <!-- Create topic button -->
-        <button class="btn btn-success" ng-click="vm.showAddTopic=true">
+        <button ng-if="!vm.showAddTopic" class="btn btn-success" ng-click="vm.showAddTopicClick()">
             CREATE TOPIC
+        </button>
+
+        <!-- Cancel button -->
+        <button ng-if="vm.showAddTopic" class="btn btn-danger" ng-click="vm.showAddTopic=false">
+            CANCEL
         </button>
 
         <!-- Search bar-->
         <div class="pull-right">
             <div>
                 <input type="text" />
-                <button >Search</button>
+                <button class="btn">Search</button>
             </div>
         </div>
 
         <!-- Add topic form-->
-        <div ng-if="vm.showAddTopic">
-            <input type="text" class="form-control" placeholder="topic title" />
-            <button class="btn btn-primary">Add topic</button>
-        </div>
+        <form ng-if="vm.showAddTopic" class="top-buffer form-group">
+            <input type="text" class="form-control col-sm-4" placeholder="topic title" ng-model="vm.topicToAdd.Title" />
+            <input type="submit" class="btn btn-primary" value="Add topic" ng-click="vm.addTopic()"/>
+        </form>
     </div>
 </div>

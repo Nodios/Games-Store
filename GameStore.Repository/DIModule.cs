@@ -4,8 +4,6 @@ using GameStore.Repository.Common;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Ninject.Extensions.Factory;
-using Ninject;
-using Ninject.Parameters;
 
 namespace GameStore.Repository
 {

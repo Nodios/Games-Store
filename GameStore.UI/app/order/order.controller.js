@@ -1,59 +1,71 @@
 ﻿(function (angular) {
 
     angular.module("mainModule").controller("OrderController",
-        ['orderService', '$window','$scope', 'notificationService',
-         function (orderService, $window, $scope,notificationService) {
+        ['orderService', '$window', '$scope', 'notificationService', 'navigationMenuService',
+            function (orderService, $window, $scope, notificationService, navigationMenuService) {
 
-             var vm = $scope.vm = {};
+                var vm = $scope.vm = {};
 
-             //#region Proporites
+                //#region Proporites
 
-             vm.orders = "";
-             vm.pageNumber = 1;
-             vm.pageSize = 15;
+                vm.orders = "";
+                vm.pageNumber = 1;
+                vm.pageSize = 15;
+                vm.showOrders = false;
 
-             //#endregion
+                //#endregion
 
 
-             //#region Methods
+                //#region Methods
 
-             vm.next = function () {
+                vm.next = function () {
 
-                 vm.pageNumber++;
-                 getOrder();
-             };
+                    vm.pageNumber++;
+                    getOrder();
+                };
 
-             vm.back = function () {
+                vm.back = function () {
 
-                 vm.pageNumber--;
+                    vm.pageNumber--;
 
-                 if (vm.pageNumber < 1)
-                     vm.pageNumber = 1;
+                    if (vm.pageNumber < 1)
+                        vm.pageNumber = 1;
 
-                 getOrder();
-             }
-           
-             //#endregion
+                    getOrder();
+                }
 
-             //#region Private methods
+                vm.findGamesClick = function () {
+                    navigationMenuService.setMenuToActive(1);
+                };
 
-             function getOrder() {
+                //#endregion
 
-                 orderService.getOrders($window.localStorage.id, vm.pageNumber, vm.pageSize).success(function (data) {
-                     vm.orders = data;
-                 }).error(function () {
-                     notificationService.addNotification("Couldn't find any orders.", false);
-                 });
-             };
+                //#region Private methods
 
-             //#endregion
+                function getOrder() {
 
-             //#region To do after navigated to controller
+                    orderService.getOrders($window.localStorage.id, vm.pageNumber, vm.pageSize).success(function (data) {
+                        vm.orders = data;
 
-             getOrder();
+                        // If there are orders show table
+                        if (vm.orders.length > 0)
+                            vm.showOrders = true;
+                        else
+                            vm.showOrders = false;
 
-             //#endregion
-        }
-    ]);
+                    }).error(function () {
+                        notificationService.addNotification("Couldn't find any orders.", false);
+                    });
+                };
+
+                //#endregion
+
+                //#region To do after navigated to controller
+
+                getOrder();
+
+                //#endregion
+            }
+        ]);
 
 })(angular);

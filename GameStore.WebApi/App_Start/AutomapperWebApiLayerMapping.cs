@@ -41,6 +41,10 @@ namespace GameStore.WebApi.App_Start
             Mapper.CreateMap<IOrder, OrderModel>().ReverseMap();
             Mapper.CreateMap<Order, OrderModel>().ReverseMap();
 
+            // Topic
+            Mapper.CreateMap<ITopic, TopicModel>().ReverseMap();
+            Mapper.CreateMap<Topic, TopicModel>().ReverseMap();
+
             // User controller
             Mapper.CreateMap<IUser, UserModel>().ReverseMap();
             Mapper.CreateMap<User, UserModel>().ReverseMap();

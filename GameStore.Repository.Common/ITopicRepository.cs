@@ -2,8 +2,6 @@
 using GameStore.Model.Common;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace GameStore.Repository.Common
@@ -15,6 +13,7 @@ namespace GameStore.Repository.Common
     {
         Task<ITopic> GetAsync(Guid id);
         Task<ICollection<ITopic>> GetRangeAsync(GenericFilter filter);
+        Task<ICollection<ITopic>> GetRangeAsync(GenericFilter filter, string search);
         Task<int> AddAsync(ITopic topic);
         Task<int> UpdateAsync(ITopic topic);
         Task<int> DeleteAsync(Guid id);

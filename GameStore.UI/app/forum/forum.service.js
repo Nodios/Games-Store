@@ -5,15 +5,15 @@
             function ($http, routePrefix, $window) {
 
                 return {
-                    addForum: function (forum) {
+                    addTopic: function (topic) {
 
                         var token = $window.localStorage.token;
 
                         return $http({
                             method: 'post',
-                            url: routePrefix.forum,
+                            url: routePrefix.topic,
                             headers: { 'Authorization': 'Bearer ' + token },
-                            data: forum
+                            data: topic
                         });
                     }
                 }

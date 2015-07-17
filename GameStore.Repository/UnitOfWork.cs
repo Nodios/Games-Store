@@ -3,9 +3,9 @@ using GameStore.Repository.Common;
 using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using System.Linq;
 
 namespace GameStore.Repository
 {

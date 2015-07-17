@@ -5,10 +5,6 @@ using GameStore.Repository.Common;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Linq;
-using System.Data;
-using GameStore.DAL;
-using System.Data.Entity.Infrastructure;
 
 namespace GameStore.Repository
 {

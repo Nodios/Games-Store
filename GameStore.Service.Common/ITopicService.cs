@@ -13,6 +13,7 @@ namespace GameStore.Service.Common
     {
         Task<ITopic> GetAsync(Guid id);
         Task<ICollection<ITopic>> GetRangeAsync(GenericFilter filter);
+        Task<ICollection<ITopic>> GetRangeAsync(GenericFilter filter, string search);
         Task<int> AddAsync(ITopic topic);   
     }
 }

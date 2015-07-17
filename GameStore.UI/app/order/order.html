@@ -2,7 +2,9 @@
     <h4 class="page-header top-buffer">
         Orders
     </h4>
-    <table class="table">
+
+    <!-- Orders table -->
+    <table class="table" ng-show="vm.showOrders">
         <thead>
             <tr>
                 <td>#</td>
@@ -41,4 +43,9 @@
             </tr>
         </tfoot>
     </table>
+
+    <!-- Show if there are no orders -->
+    <h4 ng-show="!vm.showOrders" >
+        There aren't any orders.<a ng-href="#game" ng-click="vm.findGamesClick()"> Click to find games.</a>
+    </h4>
 </div>

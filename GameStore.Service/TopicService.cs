@@ -1,9 +1,9 @@
-﻿using GameStore.Repository.Common;
+﻿using GameStore.Common;
+using GameStore.Model.Common;
+using GameStore.Repository.Common;
 using GameStore.Service.Common;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace GameStore.Service
@@ -42,6 +42,17 @@ namespace GameStore.Service
         public async Task<ICollection<Model.Common.ITopic>> GetRangeAsync(GameStore.Common.GenericFilter filter)
         {
             return await repository.GetRangeAsync(filter);
+        }
+
+        /// <summary>
+        /// Get collection of topics
+        /// </summary>
+        /// <param name="filter">Filter options</param>
+        /// <param name="search">String to search by</param>
+        /// <returns>Topic colletion</returns>
+        public async Task<ICollection<ITopic>> GetRangeAsync(GenericFilter filter, string search)
+        {
+            return await repository.GetRangeAsync(filter, search);
         }
 
         /// <summary>
