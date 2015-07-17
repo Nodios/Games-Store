@@ -82,6 +82,7 @@
     <Compile Include="Repository.cs" />
     <Compile Include="ReviewRepository.cs" />
     <Compile Include="SupportRepository.cs" />
+    <Compile Include="TopicRepository.cs" />
     <Compile Include="UnitOfWork.cs" />
     <Compile Include="UserRepository.cs" />
   </ItemGroup>

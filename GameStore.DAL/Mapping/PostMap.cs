@@ -17,7 +17,7 @@ namespace GameStore.DAL.Mapping
 
             // Relationships
             HasMany(p => p.Comments).WithRequired(c => c.Post).HasForeignKey(c => c.PostId);
-            HasRequired(p => p.User).WithMany(u => u.Posts).HasForeignKey(p => p.UserId);
+            HasRequired(p => p.User).WithMany(u => u.Posts).HasForeignKey(p => p.UserId).WillCascadeOnDelete(false);
             HasRequired(p => p.Topic).WithMany(t => t.Posts).HasForeignKey(p => p.TopicId);
  
 

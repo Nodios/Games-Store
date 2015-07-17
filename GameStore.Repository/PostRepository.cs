@@ -39,13 +39,13 @@ namespace GameStore.Repository
         /// <summary>
         /// Get range async
         /// </summary>
-        public async Task<IEnumerable<IPost>> GetRangeAsync(Guid gameId,GenericFilter filter)
+        public async Task<IEnumerable<IPost>> GetRangeAsync(Guid topicId,GenericFilter filter)
         {
             try
             {
                 return Mapper.Map<IEnumerable<IPost>>(await 
                     repository.Where<PostEntity>()
-                    .Where(p => p.GameId == gameId)
+                    .Where(p => p.TopicId == topicId)
                     .OrderBy(p => p.VotesUp)
                     .Skip((filter.PageNumber * filter.PageSize) - filter.PageSize)
                     .Take(filter.PageSize).ToListAsync());

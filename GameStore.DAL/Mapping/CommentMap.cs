@@ -14,7 +14,7 @@ namespace GameStore.DAL.Mapping
             Property(c => c.Description).IsRequired().HasMaxLength(1000);
             Property(c => c.UserName).IsRequired();
 
-            HasRequired(c => c.User).WithMany(u => u.Comments).HasForeignKey(c => c.UserId);
+            HasRequired(c => c.User).WithMany(u => u.Comments).HasForeignKey(c => c.UserId).WillCascadeOnDelete(false);
             HasRequired(c => c.Post).WithMany(p => p.Comments).HasForeignKey(c => c.PostId);
         }
     }

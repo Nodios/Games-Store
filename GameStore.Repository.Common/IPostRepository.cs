@@ -12,7 +12,7 @@ namespace GameStore.Repository.Common
     public interface IPostRepository
     {
         Task<IPost> GetAsync(Guid id);
-        Task<IEnumerable<IPost>> GetRangeAsync(Guid gameId,GenericFilter GenericFilter);
+        Task<IEnumerable<IPost>> GetRangeAsync(Guid topicId,GenericFilter GenericFilter);
         Task<int> UpdateAsync(IPost post);
         Task<int> AddAsync(IPost post);
         Task<int> DeleteAsync(Guid id);

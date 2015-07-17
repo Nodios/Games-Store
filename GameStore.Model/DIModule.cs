@@ -16,6 +16,7 @@ namespace GameStore.Model
             Bind<IReview>().To<Review>();
             Bind<ISupport>().To<Support>();
             Bind<IUser>().To<User>();
+            Bind<ITopic>().To<Topic>();
            
         }
     }

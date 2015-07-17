@@ -1,4 +1,3 @@
-
 namespace GameStore.DAL.Migrations
 {
     using GameStore.Common;
@@ -384,7 +383,6 @@ namespace GameStore.DAL.Migrations
         }
     }
 }
-
 
 
 

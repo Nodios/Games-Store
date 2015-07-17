@@ -1,3 +1,25 @@
 ﻿<div ng-controller="ForumController">
+    <h4 class="page-header">Discussion forum</h4>
 
+    <div class="container">
+
+        <!-- Create topic button -->
+        <button class="btn btn-success" ng-click="vm.showAddTopic=true">
+            CREATE TOPIC
+        </button>
+
+        <!-- Search bar-->
+        <div class="pull-right">
+            <div>
+                <input type="text" />
+                <button >Search</button>
+            </div>
+        </div>
+
+        <!-- Add topic form-->
+        <div ng-if="vm.showAddTopic">
+            <input type="text" class="form-control" placeholder="topic title" />
+            <button class="btn btn-primary">Add topic</button>
+        </div>
+    </div>
 </div>

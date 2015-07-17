@@ -3,7 +3,9 @@ using System;
 
 namespace GameStore.WebApi.Models
 {
-
+    /// <summary>
+    /// User model
+    /// </summary>
     public class UserModel : IdentityUser
     {
         public UserModel()

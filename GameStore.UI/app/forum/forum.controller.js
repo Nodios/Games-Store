@@ -4,6 +4,9 @@
         ['$scope',
             function ($scope) {
 
+                var vm = $scope.vm = {};
+
+                vm.showAddTopic = false;
             }
         ]);
 

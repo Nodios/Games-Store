@@ -1,8 +1,9 @@
 namespace GameStore.DAL.Migrations
 {
+    using System;
     using System.Data.Entity.Migrations;
     
-    public partial class first : DbMigration
+    public partial class firs : DbMigration
     {
         public override void Up()
         {
@@ -104,33 +105,51 @@ namespace GameStore.DAL.Migrations
                     {
                         Id = c.Guid(nullable: false, identity: true),
                         PostId = c.Guid(nullable: false),
+                        UserId = c.String(nullable: false, maxLength: 128),
                         VotesUp = c.Int(nullable: false),
                         VotesDown = c.Int(nullable: false),
-                        Description = c.String(nullable: false),
-                        UserEntity_Id = c.String(maxLength: 128),
+                        Description = c.String(nullable: false, maxLength: 1000),
+                        UserName = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.PostEntities", t => t.PostId, cascadeDelete: true)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserEntity_Id)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId)
                 .Index(t => t.PostId)
-                .Index(t => t.UserEntity_Id);
+                .Index(t => t.UserId);
             
             CreateTable(
                 "dbo.PostEntities",
                 c => new
                     {
                         Id = c.Guid(nullable: false, identity: true),
-                        Author = c.String(nullable: false),
-                        GameId = c.Guid(nullable: false),
-                        UserId = c.String(maxLength: 128),
+                        TopicId = c.Guid(nullable: false),
+                        Title = c.String(nullable: false, maxLength: 100),
+                        UserId = c.String(nullable: false, maxLength: 128),
                         VotesUp = c.Int(nullable: false),
                         VotesDown = c.Int(nullable: false),
                         Description = c.String(nullable: false, maxLength: 1000),
+                        UserName = c.String(nullable: false),
+                        GameEntity_Id = c.Guid(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.GameEntities", t => t.GameId, cascadeDelete: true)
+                .ForeignKey("dbo.TopicEntities", t => t.TopicId, cascadeDelete: true)
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId)
-                .Index(t => t.GameId)
+                .ForeignKey("dbo.GameEntities", t => t.GameEntity_Id)
+                .Index(t => t.TopicId)
+                .Index(t => t.UserId)
+                .Index(t => t.GameEntity_Id);
+            
+            CreateTable(
+                "dbo.TopicEntities",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false, identity: true),
+                        UserId = c.String(nullable: false, maxLength: 128),
+                        Title = c.String(nullable: false, maxLength: 100),
+                        UserName = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
             
             CreateTable(
@@ -260,16 +279,18 @@ namespace GameStore.DAL.Migrations
             DropForeignKey("dbo.CartEntityGameEntities", "CartEntity_UserId", "dbo.CartEntities");
             DropForeignKey("dbo.GameEntities", "PublisherId", "dbo.PublisherEntities");
             DropForeignKey("dbo.SupportEntities", "PublisherId", "dbo.PublisherEntities");
+            DropForeignKey("dbo.PostEntities", "GameEntity_Id", "dbo.GameEntities");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.ReviewEntities", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.ReviewEntities", "GameId", "dbo.GameEntities");
             DropForeignKey("dbo.OrderEntities", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.InfoEntities", "User_Id", "dbo.AspNetUsers");
-            DropForeignKey("dbo.CommentEntities", "UserEntity_Id", "dbo.AspNetUsers");
-            DropForeignKey("dbo.PostEntities", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.PostEntities", "GameId", "dbo.GameEntities");
+            DropForeignKey("dbo.CommentEntities", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.CommentEntities", "PostId", "dbo.PostEntities");
+            DropForeignKey("dbo.PostEntities", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.PostEntities", "TopicId", "dbo.TopicEntities");
+            DropForeignKey("dbo.TopicEntities", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.CartEntities", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.OrderEntityGameEntities", "GameEntity_Id", "dbo.GameEntities");
@@ -288,9 +309,11 @@ namespace GameStore.DAL.Migrations
             DropIndex("dbo.ReviewEntities", new[] { "GameId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.InfoEntities", new[] { "User_Id" });
+            DropIndex("dbo.TopicEntities", new[] { "UserId" });
+            DropIndex("dbo.PostEntities", new[] { "GameEntity_Id" });
             DropIndex("dbo.PostEntities", new[] { "UserId" });
-            DropIndex("dbo.PostEntities", new[] { "GameId" });
-            DropIndex("dbo.CommentEntities", new[] { "UserEntity_Id" });
+            DropIndex("dbo.PostEntities", new[] { "TopicId" });
+            DropIndex("dbo.CommentEntities", new[] { "UserId" });
             DropIndex("dbo.CommentEntities", new[] { "PostId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
@@ -308,6 +331,7 @@ namespace GameStore.DAL.Migrations
             DropTable("dbo.ReviewEntities");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.InfoEntities");
+            DropTable("dbo.TopicEntities");
             DropTable("dbo.PostEntities");
             DropTable("dbo.CommentEntities");
             DropTable("dbo.AspNetUserClaims");

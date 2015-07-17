@@ -18,6 +18,7 @@ namespace GameStore.Service
             Bind<IUserService>().To<UserService>();
             Bind<IOrderService>().To<OrderService>();
             Bind<IGameImageService>().To<GameImageService>();
+            Bind<ITopicService>().To<TopicService>();
         }
     }
 }

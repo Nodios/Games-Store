@@ -65,6 +65,7 @@
     <Compile Include="IRepository.cs" />
     <Compile Include="IReviewRepository.cs" />
     <Compile Include="ISupportRepository.cs" />
+    <Compile Include="ITopicRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="IUnitOfWorkFactory.cs" />
     <Compile Include="IUserRepository.cs" />

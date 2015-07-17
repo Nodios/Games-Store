@@ -17,7 +17,8 @@
             .when('/game/:publisherId', { templateUrl: 'app/game/game.html', controller: 'GameController', controllerAs: 'vm'})
             .when('/account', { templateUrl: 'app/account/account.html', controller: 'AccountController', controllerAs: 'vm' })
             .when('/cart', { templateUrl: 'app/cart/cart.html', controller: 'CartController', controllerAs: 'vm' })
-            .when('/order', { templateUrl: 'app/order/order.html', controller: 'OrderController', controllerAs: 'vm'})
+            .when('/order', { templateUrl: 'app/order/order.html', controller: 'OrderController', controllerAs: 'vm' })
+            .when('/forum', {templateUrl: 'app/forum/forum.html', controller: 'ForumController', controllerAs: 'vm'})
             .otherwise({ redirectTo: '/' });
     }
 
