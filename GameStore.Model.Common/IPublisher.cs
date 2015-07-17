@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace GameStore.Model.Common
 {
+    /// <summary>
+    /// Interface for publisher
+    /// </summary>
     public interface IPublisher
     {
         Guid Id { get; set; }

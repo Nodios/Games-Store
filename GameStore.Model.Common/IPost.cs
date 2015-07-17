@@ -3,15 +3,16 @@ using System.Collections.Generic;
 
 namespace GameStore.Model.Common
 {
+    /// <summary>
+    /// Interface for post
+    /// </summary>
     public interface IPost : IPostAndComment
     {
-        Guid GameId { get; set; }
-        string UserId { get; set; }
+        Guid TopicId { get; set; }
 
-        string Author { get; set; }
+        string Title { get; set; }
 
-        IGame Game { get; set; }
-        IUser User { get; set; }
+        ITopic Topic { get; set; }
 
         // One to many, post can have many comments
         ICollection<IComment> Comments { get; set; }

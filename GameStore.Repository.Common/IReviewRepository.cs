@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace GameStore.Repository.Common
 {
+    /// <summary>
+    /// Defines method signatures for review repository
+    /// </summary>
     public interface IReviewRepository
     {
         Task<IReview> GetAsync(Guid id);

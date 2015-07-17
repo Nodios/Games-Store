@@ -14,12 +14,31 @@
         </thead>
         <tbody>
             <tr ng-repeat="order in vm.orders">
-                <td>{{$index}}</td>
+                <td>{{order.Id}}</td>
                 <td>{{order.Surname}}, {{order.Name}}</td>
                 <td>{{order.DeliveryAddress}}</td>
                 <td>{{order.ContactEmail}}</td>
-                <td>{{order.Amount}}</td>
+                <td>{{order.Amount |currency}}</td>
             </tr>
         </tbody>
+        <tfoot>
+            <tr>
+                <td>
+                    <button ng-if="vm.pageNumber !== 1" class="btn btn-sm btn-warning" ng-click="vm.back()">
+                        <span class="glyphicon glyphicon-menu-left"></span>
+                        Back
+                    </button>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <button ng-if="vm.games.length === vm.pageSize" class="btn btn-sm btn-warning pull-right" ng-click="vm.next()">
+                        Next
+                        <span class="glyphicon glyphicon-menu-right  col-sm-offset-1"></span>
+                    </button>
+                </td>
+            </tr>
+        </tfoot>
     </table>
 </div>

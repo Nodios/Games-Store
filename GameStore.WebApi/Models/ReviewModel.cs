@@ -2,6 +2,9 @@
 
 namespace GameStore.WebApi.Models
 {
+    /// <summary>
+    /// Review model 
+    /// </summary>
     public class ReviewModel
     {
         public Guid Id { get; set; }

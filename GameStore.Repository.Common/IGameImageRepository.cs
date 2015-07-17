@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace GameStore.Repository.Common
 {
+    /// <summary>
+    /// Defines method signatures for game image repository
+    /// </summary>
     public interface IGameImageRepository
     {
         Task<IGameImage> GetAsync(Guid id);

@@ -8,13 +8,14 @@ namespace GameStore.DAL.Mapping
     {
         public CommentMap()
         {
-           // HasKey(c => c.Id);
-
+            HasKey(c => c.Id);
 
             Property(c => c.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            Property(c => c.Description).IsRequired();
-            Property(c => c.VotesDown);
-            Property(c => c.VotesUp);           
+            Property(c => c.Description).IsRequired().HasMaxLength(1000);
+            Property(c => c.UserName).IsRequired();
+
+            HasRequired(c => c.User).WithMany(u => u.Comments).HasForeignKey(c => c.UserId);
+            HasRequired(c => c.Post).WithMany(p => p.Comments).HasForeignKey(c => c.PostId);
         }
     }
 }

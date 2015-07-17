@@ -23,7 +23,12 @@ namespace GameStore.WebApi.Controllers
             PublisherService = service;
         }
 
-        // GET: api/Publisher
+        /// <summary>
+        /// Get collection of publishers
+        /// </summary>
+        /// <param name="pageNumber">Page number</param>
+        /// <param name="pageSize">Size of collection</param>
+        /// <returns>Response message with publisher collection</returns>
         [Route("{pageNumber}/{pageSize}")]
         public async Task<HttpResponseMessage> Get(int pageNumber = 0, int pageSize = 0)
         {
@@ -42,7 +47,13 @@ namespace GameStore.WebApi.Controllers
             }
         }
 
-        //Get: api/Publisher/GetByName/Ea
+        /// <summary>
+        /// Get publisher collection by part of name
+        /// </summary>
+        /// <param name="name">Full name or part of name</param>
+        /// <param name="pageNumber">Page number</para>
+        /// <param name="pageSize">Size of collection</param>
+        /// <returns>Response message with collection of publishers</returns>
         [HttpGet()]
         [Route("getByName/{name}/{pageNumber}/{pageSize}")]
         public async Task<HttpResponseMessage> GetByName(string name, int pageNumber, int pageSize)
@@ -69,6 +80,11 @@ namespace GameStore.WebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Gets support fo publisher
+        /// </summary>
+        /// <param name="id">Publisher id</param>
+        /// <returns>Response message with support object</returns>
         [HttpGet()]
         [Route("GetSupport/{id}")]
         public async Task<HttpResponseMessage> GetSupport(Guid id)

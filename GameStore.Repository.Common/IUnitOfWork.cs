@@ -4,6 +4,9 @@ using System.Threading.Tasks;
 
 namespace GameStore.Repository.Common
 {
+    /// <summary>
+    /// Defines method signatures for unit of work 
+    /// </summary>
     public interface IUnitOfWork : IDisposable
     {
         Task<T> AddAsync<T>(T entity) where T : class;

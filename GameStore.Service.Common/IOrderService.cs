@@ -2,12 +2,13 @@
 using GameStore.Model.Common;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace GameStore.Service.Common
 {
+    /// <summary>
+    /// Defines method signatures for order service
+    /// </summary>
     public interface IOrderService
     {
         Task<ICollection<IOrder>> GetAsync(string userId, GenericFilter filter);

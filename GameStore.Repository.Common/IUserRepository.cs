@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace GameStore.Repository.Common
 {
+    /// <summary>
+    /// Defines method signatures for user repository
+    /// </summary>
     public interface IUserRepository
     {
         // Get

@@ -50,6 +50,7 @@
     <Compile Include="IPostAndComment.cs" />
     <Compile Include="IReview.cs" />
     <Compile Include="ISupport.cs" />
+    <Compile Include="ITopic.cs" />
     <Compile Include="IUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

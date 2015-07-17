@@ -21,6 +21,13 @@ namespace GameStore.WebApi.Controllers
             this.service = service;
         }
 
+        /// <summary>
+        /// Get collection of reviews, belonging to a game
+        /// </summary>
+        /// <param name="GameId">Game id to search by</param>
+        /// <param name="pageNumber">Page number</param>
+        /// <param name="pageSize">Size of collection</param>
+        /// <returns>Response message with collection of reviews</returns>
         [HttpGet]
         [Route("{gameId}/{pageNumber}/{pageSize}")]
         public async Task<HttpResponseMessage> Get(Guid GameId, int pageNumber, int pageSize)
@@ -42,6 +49,10 @@ namespace GameStore.WebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Add new review
+        /// </summary>
+        /// <returns>Model</returns>
         [HttpPost]
         [Authorize]
         public async Task<HttpResponseMessage> Insert(ReviewModel model)
@@ -61,6 +72,12 @@ namespace GameStore.WebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Update review
+        /// </summary>
+        /// <param name="id">Review id</param>
+        /// <param name="model">Updated review</param>
+        /// <returns>Updated review</returns>
         [HttpPut]
         [Authorize]
         [Route("{id}")]
@@ -81,13 +98,17 @@ namespace GameStore.WebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Delete review
+        /// </summary>
         [HttpDelete]
         [Authorize]
-        public async Task<HttpResponseMessage> Delete(ReviewModel model)
+        [Route("{id}")]
+        public async Task<HttpResponseMessage> Delete(Guid id)
         {
             try
             {
-                int result = await service.DeleteAsync(model.Id);
+                int result = await service.DeleteAsync(id);
                 if (result == 0)
                     return Request.CreateResponse(HttpStatusCode.BadRequest, "Failed.");
                 else

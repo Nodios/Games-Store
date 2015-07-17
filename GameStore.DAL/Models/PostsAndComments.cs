@@ -8,8 +8,14 @@ namespace GameStore.DAL.Models
     public abstract class PostsAndComments : IDataEntity
     {
         public Guid Id { get; set; }
+        public string UserId { get; set; }
+
         public int VotesUp { get; set; }
         public int VotesDown { get; set; }
         public string Description { get; set; }
+        public string UserName { get; set; }
+
+        // Post and comments belong to one user
+        public UserEntity User { get; set; }
     }
 }

@@ -2,6 +2,9 @@
 using System;
 namespace GameStore.Model.Common
 {
+    /// <summary>
+    /// Interface for review
+    /// </summary>
     public interface IReview
     {
         Guid Id { get; set; }

@@ -86,15 +86,14 @@
 
                     //#region DELETE
 
-                    deleteReview: function (review) {
+                    deleteReview: function (id) {
 
                         var token = $window.localStorage.token;
 
                         return $http({
                             method: 'delete',
-                            url: routePrefix.review,
-                            headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' },
-                            data: review
+                            url: routePrefix.review + "/" + id,
+                            headers: { 'Authorization': 'Bearer ' + token }
                         });
                     }
 

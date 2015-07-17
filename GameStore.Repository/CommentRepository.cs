@@ -63,6 +63,10 @@ namespace GameStore.Repository
             }
         }
 
+        /// <summary>
+        /// Update comment
+        /// </summary>
+        /// <param name="comment">IComment</param>
         public async Task<int> UpdateAsync(Model.Common.IComment comment)
         {
             try
@@ -75,6 +79,11 @@ namespace GameStore.Repository
             }
         }
 
+        /// <summary>
+        /// Delete 
+        /// </summary>
+        /// <param name="comment">Icomment</param>
+        /// <returns>1 if succuess, 0 otherwise</returns>
         public async Task<int> DeleteAsync(Model.Common.IComment comment)
         {
             try
@@ -87,6 +96,9 @@ namespace GameStore.Repository
             }
         }
 
+        /// <summary>
+        /// Delete comment entity by id
+        /// </summary>
         public async Task<int> DeleteAsync(Guid id)
         {
             try

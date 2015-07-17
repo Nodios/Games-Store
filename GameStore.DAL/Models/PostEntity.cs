@@ -8,14 +8,16 @@ namespace GameStore.DAL.Models
     /// Database entity
     /// </summary>
     public class PostEntity : PostsAndComments
-    {
-        public string Author { get; set; }
+    {    
+        /// <summary>
+        /// Fk to topic
+        /// </summary>
+        public Guid TopicId { get; set; }
 
-        public Guid GameId { get; set; }
-        public string UserId { get; set; }
+        public string Title { get; set; }
 
-        public virtual GameEntity Game { get; set; }
-        public virtual UserEntity User { get; set; }
+        // Post can have only one topic
+        public virtual TopicEntity Topic { get; set; }
 
         // One to many, post can have many comments
         public virtual ICollection<CommentEntity> Comments { get; set; }

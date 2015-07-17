@@ -1,5 +1,4 @@
 ﻿
-using Microsoft.AspNet.Identity;
 namespace GameStore.Repository.Common
 {
     /// <summary>

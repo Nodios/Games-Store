@@ -49,7 +49,7 @@ namespace GameStore.Repository
             {
                 return Mapper.Map<IEnumerable<IGame>>(await repository.Where<GameEntity>()
                     .Where(g => g.IsInCart == false && g.Name.Contains(name))
-                    .OrderBy(g => g.Name.Contains(name) && g.IsInCart == false)
+                    .OrderBy(g => g.Name)
                     .Skip((filter.PageNumber * filter.PageSize) - filter.PageSize)
                     .Take(filter.PageSize).ToListAsync());
             }
@@ -84,7 +84,7 @@ namespace GameStore.Repository
         }
 
         /// <summary>
-        /// Get games from publisher
+        /// Get games from publisher, where games are not in cart
         /// </summary>
         /// <param name="publisherId">FK</param>
         /// <returns>Collection of games that belong to publisher</returns>

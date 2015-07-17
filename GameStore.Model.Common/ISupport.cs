@@ -2,6 +2,9 @@
 using System;
 namespace GameStore.Model.Common
 {
+    /// <summary>
+    /// Interface for support
+    /// </summary>
     public interface ISupport
     {
         Guid Id { get; set; }

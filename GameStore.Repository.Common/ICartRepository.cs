@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace GameStore.Repository.Common
 {
+    /// <summary>
+    /// Defines method signatures for cart repository
+    /// </summary>
     public interface ICartRepository
     {
         Task<ICart> GetAsync(string userId);

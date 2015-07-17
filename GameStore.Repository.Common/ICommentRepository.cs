@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace GameStore.Repository.Common
 {
+    /// <summary>
+    /// Defines method signatures for comment repository
+    /// </summary>
     public interface ICommentRepository
     {
         Task<IComment> GetAsync(Guid id);

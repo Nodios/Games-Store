@@ -69,6 +69,7 @@
     <Compile Include="Mapping\PostMap.cs" />
     <Compile Include="Mapping\ReviewMap.cs" />
     <Compile Include="Mapping\SupportMap.cs" />
+    <Compile Include="Mapping\TopicMap.cs" />
     <Compile Include="Mapping\UserMap.cs" />
     <Compile Include="Migrations\201507142347256_first.cs" />
     <Compile Include="Migrations\201507142347256_first.Designer.cs">
@@ -87,6 +88,7 @@
     <Compile Include="Models\PostsAndComments.cs" />
     <Compile Include="Models\ReviewEntity.cs" />
     <Compile Include="Models\SupportEntity.cs" />
+    <Compile Include="Models\TopicEntity.cs" />
     <Compile Include="Models\UserEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

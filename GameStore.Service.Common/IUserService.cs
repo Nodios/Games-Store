@@ -3,6 +3,9 @@ using System.Threading.Tasks;
 
 namespace GameStore.Service.Common
 {
+    /// <summary>
+    /// Defines method signatures for user service
+    /// </summary>
     public interface IUserService
     {
         Task<IUser> FindAsync(string username);

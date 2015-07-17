@@ -2,6 +2,9 @@
 
 namespace GameStore.Model.Common
 {
+    /// <summary>
+    /// Interface for user info implementation
+    /// </summary>
     public interface IInfo
     {
         Guid Id { get; set; }

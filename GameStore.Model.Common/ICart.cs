@@ -2,6 +2,9 @@
 
 namespace GameStore.Model.Common
 {
+    /// <summary>
+    /// Interface for cart
+    /// </summary>
     public interface ICart
     {
         string UserId { get; set; }

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace GameStore.Service.Common
 {
+    /// <summary>
+    /// Defines method signatures for post service
+    /// </summary>
     public interface IPostService
     {
         Task<IEnumerable<IPost>> GetPosts(Guid gameId, GenericFilter filter);

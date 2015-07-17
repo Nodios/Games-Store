@@ -4,6 +4,9 @@ using System.Threading.Tasks;
 
 namespace GameStore.Repository.Common
 {
+    /// <summary>
+    /// Defines method signatures for info repository
+    /// </summary>
     public interface IInfoRepository
     {
         Task<IInfo> GetAsync(Guid id);

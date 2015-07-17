@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace GameStore.Model.Common
 {
+    /// <summary>
+    /// Interface for game 
+    /// </summary>
     public interface IGame
     {
         Guid Id { get; set; }

@@ -20,6 +20,11 @@ namespace GameStore.WebApi.Controllers
             this.service = service;
         }
 
+        /// <summary>
+        /// Get response that return cart model
+        /// </summary>
+        /// <param name="userId">User id to search by</param>
+        /// <returns>Cart model on success</returns>
         [HttpGet]
         [Route("{userId}")]
         public async Task<HttpResponseMessage> Get(string userId)
@@ -40,6 +45,12 @@ namespace GameStore.WebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Update cart 
+        /// </summary>
+        /// <param name="id">Cart id</param>
+        /// <param name="model">Cart to update</param>
+        /// <returns>Resposne message</returns>
         [Authorize]
         [HttpPut]
         [Route("Update")]

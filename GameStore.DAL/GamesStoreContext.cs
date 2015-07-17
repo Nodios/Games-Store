@@ -44,6 +44,7 @@ namespace GameStore.DAL
         public DbSet<PostEntity> Posts { get; set; }
         public DbSet<ReviewEntity> Reviews { get; set; }
         public DbSet<SupportEntity> Support { get; set; }
+        public DbSet<TopicEntity> Topics { get; set; }
        
         #endregion
 
@@ -64,6 +65,7 @@ namespace GameStore.DAL
             modelBuilder.Configurations.Add(new ReviewMap());
             modelBuilder.Configurations.Add(new SupportMap());
             modelBuilder.Configurations.Add(new UserMap());
+            modelBuilder.Configurations.Add(new TopicMap());
 
             modelBuilder.Conventions.Add<ManyToManyCascadeDeleteConvention>();
 

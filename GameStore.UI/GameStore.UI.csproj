@@ -65,6 +65,9 @@
     <Content Include="app\cart\cart.service.js" />
     <Content Include="app\constants\navigation.constants.js" />
     <Content Include="app\filters\password.filter.js" />
+    <Content Include="app\forum\forum.controller.js" />
+    <Content Include="app\forum\forum.html" />
+    <Content Include="app\forum\forum.service.js" />
     <Content Include="app\home\home.controller.js" />
     <Content Include="app\home\home.html" />
     <Content Include="app\modals\login\login.html" />

@@ -22,6 +22,10 @@ namespace GameStore.WebApi.Controllers
             GamesService = gamesService;
         }
 
+        /// <summary>
+        /// Get collection of games
+        /// </summary>
+        /// <returns>Response message with collection of games on success</returns>
         [Route("{pageNumber}/{pageSize}")]
         [HttpGet]
         public async Task<HttpResponseMessage> Get(int pageNumber = 0, int pageSize = 0)
@@ -40,6 +44,11 @@ namespace GameStore.WebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Get game by id
+        /// </summary>
+        /// <param name="id">Id to search by</param>
+        /// <returns>response message with game</returns>
         [Route("getbyid/{id}")]
         [HttpGet]
         public async Task<HttpResponseMessage> GetById(Guid id)
@@ -58,6 +67,13 @@ namespace GameStore.WebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Gets collection of games by part of name
+        /// </summary>
+        /// <param name="name">String to searh by</param>
+        /// <param name="pageNumber">Page number</param>
+        /// <param name="pageSize">Page size, number of times to get</param>
+        /// <returns>Response message with collection of games </returns>
         [Route("getByName/{name}/{pageNumber}/{pageSize}")]
         public async Task<HttpResponseMessage> GetByName(string name, int pageNumber, int pageSize)
         {
@@ -107,24 +123,13 @@ namespace GameStore.WebApi.Controllers
             }
         }
 
-        [Authorize]
-        [HttpDelete]
-        public async Task<HttpResponseMessage> Delete(GameModel game)
-        {
-            try
-            {
-                int result = await GamesService.DeleteAsync(game.Id);
+       
 
-                return Request.CreateResponse(HttpStatusCode.OK, result);
-            }
-            catch (Exception ex)
-            {
-
-                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
-            }
-        }
-
-
+        /// <summary>
+        /// Deletes collection of games
+        /// </summary>
+        /// <param name="id">Collection of id's</param>
+        /// <returns>Resposne message</returns>
         [Authorize]
         [HttpDelete]
         [Route("DeleteMultiple")]

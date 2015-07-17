@@ -219,7 +219,7 @@
 
                // If delete review is clicked
                vm.deleteReview = function (review) {
-                   gameService.deleteReview(review).success(function () {
+                   gameService.deleteReview(review.Id).success(function () {
                        notificationService.addNotification("Review deleted", true);
                        vm.reviews.pop(review);
                        vm.Next();

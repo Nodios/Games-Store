@@ -4,6 +4,9 @@ using System;
 using System.Threading.Tasks;
 namespace GameStore.Service.Common
 {
+    /// <summary>
+    /// Defines method signatures for cart service
+    /// </summary>
     public interface ICartService
     {
         Task<ICart> GetAsync(string userId);

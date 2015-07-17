@@ -10,7 +10,7 @@
 
              vm.orders = "";
              vm.pageNumber = 1;
-             var pageSize = 10;
+             vm.pageSize = 15;
 
              //#endregion
 
@@ -39,7 +39,7 @@
 
              function getOrder() {
 
-                 orderService.getOrders($window.localStorage.id, vm.pageNumber, pageSize).success(function (data) {
+                 orderService.getOrders($window.localStorage.id, vm.pageNumber, vm.pageSize).success(function (data) {
                      vm.orders = data;
                  }).error(function () {
                      notificationService.addNotification("Couldn't find any orders.", false);
