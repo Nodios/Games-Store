@@ -1,8 +1,9 @@
 namespace GameStore.DAL.Migrations
 {
+    using System;
     using System.Data.Entity.Migrations;
     
-    public partial class firs : DbMigration
+    public partial class first : DbMigration
     {
         public override void Up()
         {
@@ -107,6 +108,7 @@ namespace GameStore.DAL.Migrations
                         UserId = c.String(nullable: false, maxLength: 128),
                         VotesUp = c.Int(nullable: false),
                         VotesDown = c.Int(nullable: false),
+                        Date = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
                         Description = c.String(nullable: false, maxLength: 1000),
                         UserName = c.String(nullable: false),
                     })
@@ -122,10 +124,10 @@ namespace GameStore.DAL.Migrations
                     {
                         Id = c.Guid(nullable: false, identity: true),
                         TopicId = c.Guid(nullable: false),
-                        Title = c.String(nullable: false, maxLength: 100),
                         UserId = c.String(nullable: false, maxLength: 128),
                         VotesUp = c.Int(nullable: false),
                         VotesDown = c.Int(nullable: false),
+                        Date = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
                         Description = c.String(nullable: false, maxLength: 1000),
                         UserName = c.String(nullable: false),
                         GameEntity_Id = c.Guid(),

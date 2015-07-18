@@ -11,9 +11,9 @@ namespace GameStore.DAL.Mapping
             HasKey(p => p.Id);
 
             Property(p => p.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            Property(p => p.Title).IsRequired().HasMaxLength(100);
-            Property(p => p.Description).IsRequired().HasMaxLength(1000);
+            Property(p => p.Description).IsRequired();
             Property(p => p.UserName).IsRequired();
+            Property(p => p.Date).HasColumnType("datetime2");
 
             // Relationships
             HasMany(p => p.Comments).WithRequired(c => c.Post).HasForeignKey(c => c.PostId);

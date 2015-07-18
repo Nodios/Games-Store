@@ -52,7 +52,7 @@ namespace GameStore.WebApi.Controllers
         /// <returns>Resposne message</returns>
         [Authorize]
         [HttpPut]
-        [Route("Update")]
+        [Route("Update/{id}")]
         public async Task<HttpResponseMessage> Update(string id, CartModel model)
         {
             try

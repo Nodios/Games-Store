@@ -58,6 +58,7 @@
 
     <script src="Scripts/jquery-1.10.2.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/moment.min.js"></script>   <!-- Library for filtering dates -->
 
     <!-- Angular and dependencies -->
     <script src="Scripts/angular.min.js"></script>
@@ -79,7 +80,8 @@
 
     <!-- Filters -->
     <script src="app/filters/password.filter.js"></script>
-
+    <script src="app/filters/fromNow.filter.js"></script>
+    
     <!-- Navigation -->
     <script src="app/navigation/navigation.controller.js"></script>
 
@@ -107,8 +109,12 @@
     <script src="app/order/order.service.js"></script>
 
     <!-- Forum -->
-    <script src="http://localhost:51229/app/forum/forum.controller.js"></script>   
-    <script src="http://localhost:51229/app/forum/forum.service.js"></script>
+    <script src="app/forum/forum.controller.js"></script>   
+    <script src="app/forum/forum.service.js"></script>
+
+    <!-- Topic -->
+    <script src="app/topic/topic.controller.js"></script>
+    <script src="app/topic/topic.service.js"></script>
 
 </body>
 </html>

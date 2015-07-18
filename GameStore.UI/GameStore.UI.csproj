@@ -64,6 +64,7 @@
     <Content Include="app\cart\cart.html" />
     <Content Include="app\cart\cart.service.js" />
     <Content Include="app\constants\navigation.constants.js" />
+    <Content Include="app\filters\fromNow.filter.js" />
     <Content Include="app\filters\password.filter.js" />
     <Content Include="app\forum\forum.controller.js" />
     <Content Include="app\forum\forum.html" />
@@ -80,6 +81,9 @@
     <Content Include="app\services\authService.service.js" />
     <Content Include="app\services\navigationMenu.service.js" />
     <Content Include="app\services\notification.service.js" />
+    <Content Include="app\topic\topic.controller.js" />
+    <Content Include="app\topic\topic.html" />
+    <Content Include="app\topic\topic.service.js" />
     <Content Include="Content\bootstrap\alerts.less" />
     <Content Include="Content\bootstrap\badges.less" />
     <Content Include="Content\bootstrap\bootstrap.less" />
@@ -175,6 +179,7 @@
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\ui-bootstrap-tpls-0.13.0.min.js" />
     <Content Include="Scripts\version.json" />
     <None Include="Web.Debug.config">

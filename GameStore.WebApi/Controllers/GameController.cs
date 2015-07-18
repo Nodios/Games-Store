@@ -22,6 +22,8 @@ namespace GameStore.WebApi.Controllers
             GamesService = gamesService;
         }
 
+        #region Get
+
         /// <summary>
         /// Get collection of games
         /// </summary>
@@ -110,7 +112,7 @@ namespace GameStore.WebApi.Controllers
                     filter = null;
                 else
                     filter = new GenericFilter(pageNumber, pageSize);
-                
+
                 IEnumerable<IGame> result = await GamesService.GetRangeAsync(id, filter);
                 if (result != null)
                     return Request.CreateResponse(HttpStatusCode.OK, Mapper.Map<IEnumerable<GameModel>>(result));
@@ -121,9 +123,34 @@ namespace GameStore.WebApi.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
-        }
+        } 
 
-       
+        #endregion
+
+        #region Delete 
+
+        /// <summary>
+        /// Deletes game
+        /// </summary>
+        /// <param name="id">id</param>
+        /// <returns>Resposne message</returns>
+        [Authorize]
+        [HttpDelete]
+        [Route("Delete/{id}")]
+        public async Task<HttpResponseMessage> Delete(Guid id)
+        {
+            try
+            {
+                int result = await GamesService.DeleteAsync(id);
+
+                return Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (Exception ex)
+            {
+
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
 
         /// <summary>
         /// Deletes collection of games
@@ -146,7 +173,9 @@ namespace GameStore.WebApi.Controllers
 
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
-        }
+        } 
+
+        #endregion
 
     }
 

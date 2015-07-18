@@ -71,9 +71,9 @@
     <Compile Include="Mapping\SupportMap.cs" />
     <Compile Include="Mapping\TopicMap.cs" />
     <Compile Include="Mapping\UserMap.cs" />
-    <Compile Include="Migrations\201507172015428_firs.cs" />
-    <Compile Include="Migrations\201507172015428_firs.Designer.cs">
-      <DependentUpon>201507172015428_firs.cs</DependentUpon>
+    <Compile Include="Migrations\201507181714501_first.cs" />
+    <Compile Include="Migrations\201507181714501_first.Designer.cs">
+      <DependentUpon>201507181714501_first.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CartEntity.cs" />
@@ -103,8 +103,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201507172015428_firs.resx">
-      <DependentUpon>201507172015428_firs.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201507181714501_first.resx">
+      <DependentUpon>201507181714501_first.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -7000,6 +7000,9 @@ address {
   padding: 9px;
   border-radius: 3px;
 }
+.big-top-buffer {
+  margin-top: 60px;
+}
 .top-buffer {
   margin-top: 20px;
 }
@@ -7008,6 +7011,15 @@ address {
 }
 .right-buffer {
   margin-right: 20px;
+}
+.no-margins {
+  margin: 0 0 0 0;
+}
+.no-bottom-margin {
+  margin-bottom: 0px;
+}
+.no-resize {
+  resize: none;
 }
 .absolute {
   position: fixed;

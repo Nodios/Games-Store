@@ -1,17 +1,28 @@
 ﻿
 using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 namespace GameStore.DAL.Models
 {
     /// <summary>
     /// Provides implementation that is shared between multiple entites
     /// </summary>
-    public abstract class PostsAndComments : IDataEntity
+    public class PostsAndComments : IDataEntity
     {
+        public PostsAndComments()
+        {
+            if (Id == null)
+                Id = Guid.NewGuid();
+        }
+
         public Guid Id { get; set; }
         public string UserId { get; set; }
 
         public int VotesUp { get; set; }
         public int VotesDown { get; set; }
+        public DateTime Date { get; set; }
+
+        [StringLength(1000,MinimumLength=10)]
         public string Description { get; set; }
         public string UserName { get; set; }
 

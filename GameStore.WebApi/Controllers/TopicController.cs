@@ -26,6 +26,34 @@ namespace GameStore.WebApi.Controllers
             this.service = service;
         }
 
+        #region Get 
+
+        /// <summary>
+        /// Get by id
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns>Resposne with topic</returns>
+        [Route("getById/{id}")]
+        [HttpGet]
+        public async Task<HttpResponseMessage> Get(Guid id)
+        {
+            try
+            {
+                TopicModel result = Mapper.Map<TopicModel>(await service.GetAsync(id));
+
+                if (result == null)
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Error while getting topic.");
+
+                return Request.CreateResponse(HttpStatusCode.OK, result);
+
+            }
+            catch (Exception ex)
+            {
+
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
+
         /// <summary>
         /// Get topics
         /// </summary>
@@ -57,6 +85,34 @@ namespace GameStore.WebApi.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
         }
+
+        [Route("GetByName/{search}/{pageNumber}/{pageSize}")]
+        [HttpGet]
+        public async Task<HttpResponseMessage> Get(string search, int pageNumber, int pageSize)
+        {
+            try
+            {
+                if (pageNumber < 1 || pageSize < 1)
+                {
+                    pageSize = 1;
+                    pageNumber = 1;
+                }
+
+                GenericFilter filter = new GenericFilter(pageNumber, pageSize);
+
+                ICollection<TopicModel> result = Mapper.Map<ICollection<TopicModel>>(await service.GetRangeAsync(filter, search));
+
+                return Request.CreateResponse(HttpStatusCode.OK, result);
+
+            }
+            catch (Exception ex)
+            {
+
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        } 
+
+        #endregion
 
         /// <summary>
         /// Insert new topic

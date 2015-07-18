@@ -1,0 +1,21 @@
+﻿<div ng-controller="TopicController">
+    <h4 class="page-header">{{vm.topicTitle}}</h4>
+
+    <!-- Posts -->
+    <div class=" col-sm-push-2 col-sm-8">
+        <div class="top-buffer" ng-repeat="post in vm.posts">
+            <div class="page-header text-primary">{{post.UserName}} . {{post.Date | fromNow }}</div>
+            <pre> {{post.Description}}    </pre>
+        </div>
+    </div>
+
+
+    <!-- New post -->
+    <div class="col-sm-push-2 col-sm-8">
+        <div class="panel panel-success no-bottom-margin">
+            <div class="panel-heading">New post</div>
+        </div>
+        <textarea rows="6" class="form-control no-resize" ng-model="vm.postDescription" />
+        <button class="btn btn-success" ng-click="vm.addNewPost(vm.postDescription)">Add post</button>
+    </div>
+</div>

@@ -16,8 +16,8 @@
         <!-- Search bar-->
         <div class="pull-right">
             <div>
-                <input type="text" />
-                <button class="btn">Search</button>
+                <input type="text" ng-model="vm.searchString" />
+                <button class="btn" ng-click="vm.get()">Search</button>
             </div>
         </div>
 
@@ -26,5 +26,24 @@
             <input type="text" class="form-control col-sm-4" placeholder="topic title" ng-model="vm.topicToAdd.Title" />
             <input type="submit" class="btn btn-primary" value="Add topic" ng-click="vm.addTopic()"/>
         </form>
+
+        <!-- Topic table -->
+        <table class="big-top-buffer table table-bordered" ng-if="vm.showTable">
+            <thead>
+                <tr>
+                    <td></td>
+                    <td><strong>Subject</strong></td>
+                    <td><strong>Author</strong></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="topic in vm.topics">
+                    <td>{{$index + 1}}.</td>
+                    <td><a ng-click="vm.goToTopic(topic)">{{topic.Title}}</a></td>
+                    <td>By {{topic.UserName}}</td>
+                </tr>
+                
+            </tbody>
+        </table>
     </div>
 </div>

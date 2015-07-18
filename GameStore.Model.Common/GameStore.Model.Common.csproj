@@ -47,7 +47,6 @@
     <Compile Include="IGame.cs" />
     <Compile Include="IInfo.cs" />
     <Compile Include="IPost.cs" />
-    <Compile Include="IPostAndComment.cs" />
     <Compile Include="IReview.cs" />
     <Compile Include="ISupport.cs" />
     <Compile Include="ITopic.cs" />

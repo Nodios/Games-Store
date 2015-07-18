@@ -32,25 +32,20 @@
                          var token = $window.localStorage.token;
 
                          return $http({
-                             method: 'DELETE',
-                             url: routePrefix.game,
+                             method: 'delete',
+                             url: routePrefix.game + "/delete/" + game.Id,
                              headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' },
-                             data: game
                          });
                      },
 
                      deleteMultiple: function (arrayId) {
 
                          var token = $window.localStorage.token;
-                         var toSend = "";
-                         for (var i = 0; i < arrayId.length; i++) {
-                             toSend += "&id=" + arrayId[i];
-                         };
-                         
+                 
                          return $http({
                              method: 'delete',
                              url: routePrefix.game + "/deleteMultiple?",
-                             headers: { 'Authorization': 'Bearer ' + token, 'Content-Type':'application/json' /*'Content-Type': 'application/x-www-form-urlencoded'*/ },
+                             headers: { 'Authorization': 'Bearer ' + token, 'Content-Type':'application/json' },
                              data: arrayId
                          })
                      }

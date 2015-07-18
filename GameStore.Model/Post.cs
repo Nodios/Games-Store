@@ -15,9 +15,9 @@ namespace GameStore.Model
 
         public int VotesUp { get; set; }
         public int VotesDown { get; set; }
-        public string Title { get; set; }
         public string Description { get; set; }
         public string UserName { get; set; }
+        public DateTime Date { get; set; }
 
         public IUser User { get; set; }
         public ITopic Topic { get; set; }

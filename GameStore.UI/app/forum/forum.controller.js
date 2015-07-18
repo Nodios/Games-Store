@@ -1,19 +1,26 @@
 ﻿(function (angular) {
 
     angular.module("mainModule").controller("ForumController",
-        ['$scope', 'forumService', '$window', 'notificationService',
-            function ($scope, forumService, $window, notificationService) {
+        ['$scope', 'forumService', '$window', 'notificationService', '$location',
+            function ($scope, forumService, $window, notificationService, $location) {
 
                 var vm = $scope.vm = {};
 
                 //#region Proporties
 
                 vm.showAddTopic = false;
+                vm.searchString = "";
+                vm.pageNumber = 1;
+                vm.showTable = false;
+
+                var pageSize = 15;
+
                 vm.topicToAdd = {
                     Title: "",
                     UserName: "",
                     UserId: ""
                 };
+                vm.topics = [];
 
                 //#endregion
 
@@ -31,6 +38,34 @@
                     vm.showAddTopic = true;
                 }
 
+                // Get topics
+                vm.get = function () {
+
+                    if (vm.searchString.length > 0) {
+
+                        forumService.getTopicsBySearch(vm.searchString, vm.pageNumber, pageSize).success(function (data) {
+                            vm.topics = data;
+
+                            if (vm.topics.length > 0)
+                                vm.showTable = true;
+                        }).error(function (data) {
+
+                        });
+                    }
+                    else {
+
+                        forumService.getTopics(vm.pageNumber, pageSize).success(function (data) {
+                            vm.topics = data;
+
+                            if (vm.topics.length > 0)
+                                vm.showTable = true;
+                        }).error(function (data) {
+
+                        });
+                    }
+                };
+
+                // Add new topic
                 vm.addTopic = function () {
 
                     // Add values to topic proporties
@@ -51,7 +86,17 @@
                     });
                 }
 
+                // Navigates to topic page with topic title as parameter
+                vm.goToTopic = function (topic) {
+                    $location.path('/topic/' + topic.Title + "/" + topic.Id);
+                }
                 //#endregion
+
+                //#region Do on controller creation
+
+                vm.get();
+
+                //#endregion$
 
             }
         ]);

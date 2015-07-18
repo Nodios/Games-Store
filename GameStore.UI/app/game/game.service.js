@@ -64,7 +64,7 @@
 
                         return $http({
                             method: 'put',
-                            url: routePrefix.cart,
+                            url: routePrefix.cart + "/update/"+ $window.localStorage.id,
                             headers: { 'Authorization': 'Bearer ' + token },
                             data: cart
                         });
