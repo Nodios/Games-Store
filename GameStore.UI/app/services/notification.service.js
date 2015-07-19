@@ -9,38 +9,51 @@
                     msg: ""
                 };
 
-                function animateOnValueChange() {
+                function animateOnValueChange(time) {
                     // fade in 
                     jQuery("#notification").fadeIn(400);
 
-                    // Keep message for 1.5sec before fading out
+                    // Keep message for amount of time before fading out
                     $timeout(function () {
                         jQuery("#notification").fadeOut(400);
-                    }, 1500, false);
+                    }, time, false);
                 };
 
                 return {
 
-                    returnNotification: function(){
+                    returnNotification: function () {
                         return notification;
                     },
 
                     addNotification: function (message, success) {
 
-                        // If true add alert success, if false add alert 
-                        if (success == true)
-                        {
+                        // If true add alert success, if false add alert danger
+                        if (success == true) {
                             notification.cls = "alert alert-success";
                             notification.msg = message;
-                            animateOnValueChange();
+                            animateOnValueChange(1500);
                         }
-                        else if (success == false)
-                        {
+                        else if (success == false) {
                             notification.cls = "alert alert-danger";
                             notification.msg = message;
-                            animateOnValueChange();
+                            animateOnValueChange(1500);
                         };
-                    }
+                    },
+
+                    addLongNotificationfunction: function (message, success) {
+
+                        // If true add alert success, if false add alert danger
+                        if (success == true) {
+                            notification.cls = "alert alert-success";
+                            notification.msg = message;
+                            animateOnValueChange(2500);
+                        }
+                        else if (success == false) {
+                            notification.cls = "alert alert-danger";
+                            notification.msg = message;
+                            animateOnValueChange(2500);
+                        };
+                    },
 
                 };
             }]);

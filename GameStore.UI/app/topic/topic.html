@@ -1,5 +1,10 @@
 ﻿<div ng-controller="TopicController">
+  
     <h4 class="page-header">{{vm.topicTitle}}</h4>
+    <ol class="breadcrumb">
+        <li><a href="#/forum">Discussion forum</a></li>
+        <li><a>{{vm.topicTitle}}</a></li>
+    </ol>
 
     <!-- Posts -->
     <div class=" col-sm-push-2 col-sm-8">

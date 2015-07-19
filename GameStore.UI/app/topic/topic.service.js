@@ -6,13 +6,16 @@
 
                 return {
 
-                    getPostsById: function (id, pageNumber, pageSize) {
-                       return  $http.get(routePrefix.post + "/" + id + "/" + pageNumber + "/" + pageSize);
+                    getPostsByTopicId: function (topicId, pageNumber, pageSize) {
+                        return  $http.get(routePrefix.post + "/" + topicIdid + "/" + pageNumber + "/" + pageSize);
+                    },
+
+                    getCommentsByPostId: function(postId, pageNumber, pageSize){
+                        return $http.get(routePrefix.comment + "/" + postId + "/" + pageNumber + "/" + pageSize)
                     },
 
                     addNewPost: function (post) {
 
-                        console.log(post);
                         var token = $window.localStorage.token;
 
                         return $http({
@@ -21,6 +24,18 @@
                             headers: { 'Authorization': 'Bearer ' + token },
                             data: post
                         });
+                    },
+
+                    addNewComment: function (comment) {
+
+                        var token = $window.localStorage.token;
+
+                        return $http({
+                            method: 'post',
+                            url: routePrefix.comment + "/insert",
+                            headers: { 'Authorization': 'Bearer ' + token },
+                            data: comment
+                        })
                     }
                 }
             }

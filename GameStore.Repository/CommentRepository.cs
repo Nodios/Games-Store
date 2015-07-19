@@ -1,9 +1,12 @@
 ﻿using AutoMapper;
+using GameStore.Common;
 using GameStore.DAL.Models;
 using GameStore.Model.Common;
 using GameStore.Repository.Common;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace GameStore.Repository
@@ -41,6 +44,34 @@ namespace GameStore.Repository
             try
             {
                 return Mapper.Map<IEnumerable<IComment>>(await repository.GetRangeAsync<CommentEntity>());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Get comments that belong to post
+        /// </summary>
+        /// <param name="postId">Post Fk</param>
+        /// <param name="filter">Filter options</param>
+        /// <returns>Collection of comments</returns>
+        public async Task<IEnumerable<IComment>> GetRangeAsync(Guid postId, GenericFilter filter)
+        {
+            try
+            {
+                if (filter == null)
+                    filter = new GenericFilter(1, 5);
+
+
+                return Mapper.Map<IEnumerable<IComment>>(await
+                    repository.Where<CommentEntity>()
+                    .Where(c => c.PostId == postId)
+                    .OrderBy(p => p.VotesUp)
+                    .Skip((filter.PageNumber * filter.PageSize) - filter.PageSize)
+                    .Take(filter.PageSize).ToListAsync());
+
             }
             catch (Exception ex)
             {

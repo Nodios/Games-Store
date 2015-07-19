@@ -40,6 +40,7 @@
                     // Request
                     topicService.addNewPost(post).success(function(data){
                         notificationService.addNotification("Post added.", true);
+                        vm.postDescription = "";
                         getPosts();
                     }).error(function(data){
                         notificationService.addNotification("Error while adding post.", false);
@@ -53,7 +54,7 @@
                 // Gets posts
                 function getPosts() {
 
-                    topicService.getPostsById(topicId, vm.pageNumber, pageSize).success(function (data) {
+                    topicService.getPostsByTopicId(topicId, vm.pageNumber, pageSize).success(function (data) {
                         vm.posts = data;
 
                     }).error(function (data) {

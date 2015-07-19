@@ -12,6 +12,7 @@ namespace GameStore.Service
         {
             Bind<IPublisherService>().To<PublisherService>();
             Bind<ICartService>().To<CartService>();
+            Bind<ICommentService>().To<CommentService>();
             Bind<IGamesService>().To<GamesService>();
             Bind<IPostService>().To<PostService>();
             Bind<IReviewService>().To<ReviewService>();
@@ -19,6 +20,7 @@ namespace GameStore.Service
             Bind<IOrderService>().To<OrderService>();
             Bind<IGameImageService>().To<GameImageService>();
             Bind<ITopicService>().To<TopicService>();
+            
         }
     }
 }

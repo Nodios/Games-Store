@@ -49,6 +49,9 @@ namespace GameStore.Repository
         {
             try
             {
+                if (filter == null)
+                    filter = new GenericFilter(1, 5);
+
                 return Mapper.Map<IEnumerable<IPublisher>>(await
                     repository.Where<PublisherEntity>()
                     .Where(c => c.Name.Contains(name))

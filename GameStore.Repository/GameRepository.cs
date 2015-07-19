@@ -47,6 +47,9 @@ namespace GameStore.Repository
         {
             try
             {
+                if (filter == null)
+                    filter = new GenericFilter(1, 5);
+
                 return Mapper.Map<IEnumerable<IGame>>(await repository.Where<GameEntity>()
                     .Where(g => g.IsInCart == false && g.Name.Contains(name))
                     .OrderBy(g => g.Name)

@@ -51,6 +51,9 @@ namespace GameStore.Repository
         {
             try
             {
+                if (filter == null)
+                    filter = new GenericFilter(1, 5);
+
                 return Mapper.Map<ICollection<IOrder>>(await repository.Where<OrderEntity>()
                     .Where(c => c.UserId == userId)
                     .OrderBy(c => c.Surname)

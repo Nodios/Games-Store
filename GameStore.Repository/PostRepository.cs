@@ -43,6 +43,9 @@ namespace GameStore.Repository
         {
             try
             {
+                if (filter == null)
+                    filter = new GenericFilter(1, 5);
+
                 return Mapper.Map<IEnumerable<IPost>>(await 
                     repository.Where<PostEntity>()
                     .Where(p => p.TopicId == topicId)

@@ -45,6 +45,9 @@ namespace GameStore.Repository
         {
             try
             {
+                if (filter == null)
+                    filter = new GenericFilter(1, 5);
+
                 return Mapper.Map<IEnumerable<IGameImage>>(await repository.Where<GameImageEntity>()
                     .OrderBy(g => g.Id)
                     .Skip((filter.PageNumber * filter.PageSize) - filter.PageSize)
@@ -67,6 +70,9 @@ namespace GameStore.Repository
         {
             try
             {
+                if (filter == null)
+                    filter = new GenericFilter(1, 5);
+
                 return Mapper.Map<IEnumerable<IGameImage>>(await repository.Where<GameImageEntity>()
                     .Where(g => g.GameId == gameId)
                    .OrderBy(g => g.Id)

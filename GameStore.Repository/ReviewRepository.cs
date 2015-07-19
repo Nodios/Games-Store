@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using GameStore.Common;
 using GameStore.DAL.Models;
 using GameStore.Model.Common;
 using GameStore.Repository.Common;
@@ -68,10 +69,8 @@ namespace GameStore.Repository
         {
             try
             {
-                if(filter == null)
-                {
-                    throw new ArgumentNullException("No filter argument.");
-                }
+                if (filter == null)
+                    filter = new GenericFilter(1, 5);
 
                 return Mapper.Map<IEnumerable<IReview>>(await repository.Where<ReviewEntity>()
                     .Where(g => g.GameId == gameId)

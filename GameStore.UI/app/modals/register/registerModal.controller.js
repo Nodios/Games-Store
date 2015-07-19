@@ -2,8 +2,8 @@
 (function (angular) {
 
     angular.module("mainModule").controller('ModalRegisterController',
-        ['$scope', '$modal', '$log', 'authService',
-            function ($scope, $modal, $log, authService) {
+        ['$scope', '$modal', '$log', 'authService', 'notificationService', '$window',
+            function ($scope, $modal, $log, authService, notificationService, $window) {
 
                 var vm = $scope.vm = {};
 
@@ -56,13 +56,13 @@
                     if (pass === confirmPass && pass.length >= 6) {
 
                         authService.saveRegistration(item, pass).success(function (data, status, header, config) {
-
+                            notificationService.addNotification("Registration successful.", true);
                         }).error(function (data, status, header, config) {
-                            alert(data);
+                            $window.alert(data);
                         });
                     }
                     else {
-                        alert("Please check your password fields.");
+                        notificationService.addNotifciation("Please check your password fields.", false);
                     }
 
 

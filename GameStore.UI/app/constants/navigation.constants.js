@@ -14,6 +14,7 @@
     angular.module("mainModule").constant("routePrefix",
         {
             cart: "gamestore/api/cart",
+            comment: "gamestore/api/comment",
             topic: "gamestore/api/topic",
             game: "gamestore/api/game",
             game_image: "gamestore/api/gameImage",

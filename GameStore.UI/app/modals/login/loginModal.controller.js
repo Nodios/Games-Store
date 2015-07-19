@@ -30,7 +30,7 @@
                     login(userToLogin);
 
                 }, function () {
-                    $log.info('Modal dismissed at: ' + new Date());
+                  //  $log.info('Modal dismissed at: ' + new Date());
                 });
             };
 
@@ -39,13 +39,13 @@
             var login = function (user) {
                 console.log(user);
                 authService.login(user).success(function (data, status, header, config) {
-                    console.log(data);
+
                     $window.localStorage.user = data.username;
                     $window.localStorage.token = data.access_token;
                     $window.localStorage.id = data.id;
 
                 }).error(function (data, status, header, config) {
-                    alert(data.error + " : " + data.error_description);
+                    notificationService.addLongNotification(data.error + " : " + data.error_description, false);
                 });
             }
     }]);
@@ -61,7 +61,6 @@
         ['$scope', '$modalInstance', 'injectUserInfo',
              function ($scope, $modalInstance, injectUserInfo) {
 
-            var vm = this;
             $scope.userInfo = injectUserInfo;
 
             // For cancel button

@@ -31,7 +31,7 @@
             // If there is search string get by search string, else get all
             if (vm.searchString.length > 0) {
 
-                // If prevoious seatch wasn't by name set page number ot 1
+                // If prevoious seatch wasn't by name set page number to 1
                 if (searchingByName === false)
                     vm.pageNumber = 1;
 
@@ -43,7 +43,7 @@
 
                     // If there is no data
                     if (data.length == 0)
-                        vm.pageNumber--;
+                        vm.pageNumber = 1;
 
                     vm.showPublishersTable = true;      // show publisher table
 

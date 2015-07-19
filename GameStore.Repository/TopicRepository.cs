@@ -56,6 +56,9 @@ namespace GameStore.Repository
         {
             try
             {
+                if (filter == null)
+                    filter = new GenericFilter(1, 5);
+
                 return Mapper.Map<ICollection<ITopic>>(await repository.Where<TopicEntity>()
                     .OrderBy(t => t.Title)
                     .Skip((filter.PageNumber * filter.PageSize) - filter.PageSize)
@@ -78,6 +81,9 @@ namespace GameStore.Repository
         {
             try
             {
+                if (filter == null)
+                    filter = new GenericFilter(1, 5);
+
                 return Mapper.Map<ICollection<ITopic>>(await repository.Where<TopicEntity>()
                     .Where(t => t.Title.Contains(search))
                     .OrderBy(t => t.Title)
