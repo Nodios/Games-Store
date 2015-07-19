@@ -40,7 +40,7 @@
                         };
                     },
 
-                    addLongNotificationfunction: function (message, success) {
+                    addLongNotification: function (message, success) {
 
                         // If true add alert success, if false add alert danger
                         if (success == true) {

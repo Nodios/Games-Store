@@ -1,8 +1,8 @@
 ﻿(function (angular) {
 
     angular.module("mainModule").controller("ModalLoginController",
-        ['$scope', '$window', '$modal', '$log', 'authService',
-             function ($scope, $window, $modal,$log, authService) {
+        ['$scope', '$window', '$modal', '$log', 'authService','notificationService',
+             function ($scope, $window, $modal, $log, authService, notificationService) {
 
             var vm = $scope.vm = {};
 

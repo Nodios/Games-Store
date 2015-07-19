@@ -76,16 +76,18 @@
                  // Sets menu name if user is signed in
                  function setMenuUser() {
 
-                     // Sets up log in menu item to user name if there is user signed in , else just says log in
-                     if ($window.localStorage.token.length > 0) {
-                         vm.loggedIn = true;
-                         vm.loggedOut = false;
-                         vm.user = $window.localStorage.user + " ";
-                     }
-                     else {
-                         vm.loggedIn = false;
-                         vm.loggedOut = true;
-                     }
+                     if ($window.localStorage.token !== undefined) {
+                         // Sets up log in menu item to user name if there is user signed in , else just says log in
+                         if ($window.localStorage.token.length > 0) {
+                             vm.loggedIn = true;
+                             vm.loggedOut = false;
+                             vm.user = $window.localStorage.user + " ";
+                         }
+                         else {
+                             vm.loggedIn = false;
+                             vm.loggedOut = true;
+                         }
+                     };
                  };
 
                  //#endregion

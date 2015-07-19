@@ -12,7 +12,7 @@ using System.Web.Http;
 
 namespace GameStore.WebApi.Controllers
 {
-    [RoutePrefix("gamestore/api")]
+    [RoutePrefix("api/comment")]
     public class CommentController : ApiController
     {
         ICommentService service;

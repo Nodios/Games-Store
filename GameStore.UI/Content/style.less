@@ -98,15 +98,19 @@
 }
 
 .no-bottom-margin{
-    margin-bottom:0px;
+    margin-bottom:0;
 }
-
 
 //HELPERS 
 .no-resize{
     resize:none;
 }
 
+.light-gray-background{
+    background-color:lightgray;
+    padding-left:20px;
+    padding-bottom:0;
+}
 // Absolut
 .absolute{
     position: fixed;
@@ -114,8 +118,16 @@
     left: 0;
 }
 
+// HTML Elements
+
 body {
     background-color: @bodyBackgroundColor;
+}
+
+pre{
+    background-color:white;
+    border:none;
+    margin:0 0 0 0;
 }
 
 // NAVIGATION

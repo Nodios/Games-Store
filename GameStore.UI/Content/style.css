@@ -7016,10 +7016,15 @@ address {
   margin: 0 0 0 0;
 }
 .no-bottom-margin {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 .no-resize {
   resize: none;
+}
+.light-gray-background {
+  background-color: lightgray;
+  padding-left: 20px;
+  padding-bottom: 0;
 }
 .absolute {
   position: fixed;
@@ -7028,6 +7033,11 @@ address {
 }
 body {
   background-color: white;
+}
+pre {
+  background-color: white;
+  border: none;
+  margin: 0 0 0 0;
 }
 .navigation {
   position: relative;

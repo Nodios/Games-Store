@@ -7,7 +7,7 @@
                 return {
 
                     getPostsByTopicId: function (topicId, pageNumber, pageSize) {
-                        return  $http.get(routePrefix.post + "/" + topicIdid + "/" + pageNumber + "/" + pageSize);
+                        return  $http.get(routePrefix.post + "/" + topicId + "/" + pageNumber + "/" + pageSize);
                     },
 
                     getCommentsByPostId: function(postId, pageNumber, pageSize){

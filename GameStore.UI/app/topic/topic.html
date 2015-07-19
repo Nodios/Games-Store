@@ -1,22 +1,48 @@
 ﻿<div ng-controller="TopicController">
-  
+
     <h4 class="page-header">{{vm.topicTitle}}</h4>
     <ol class="breadcrumb">
         <li><a href="#/forum">Discussion forum</a></li>
         <li><a>{{vm.topicTitle}}</a></li>
     </ol>
 
+    <h4><a ng-click="vm.goToAddNewPost()">Add new post</a></h4>
+
     <!-- Posts -->
     <div class=" col-sm-push-2 col-sm-8">
+
+        <!-- Loop  -->
         <div class="top-buffer" ng-repeat="post in vm.posts">
-            <div class="page-header text-primary">{{post.UserName}} . {{post.Date | fromNow }}</div>
+
+            <!-- Post -->
+            <div class="page-header text-primary big-top-buffer">
+                <strong>{{post.UserName}} - {{post.Date | fromNow }}</strong>
+                <a class="pull-right" ng-if="vm.showEditPostAnchor[$index]">EDIT</a>
+            </div>
             <pre> {{post.Description}}    </pre>
+            <a class="bottom-buffer" ng-click="vm.getComments(post,$index, 15)">show comments</a>
+            <a class="pull-right bottom-buffer" ng-click="vm.showAddComment($index)">+ comment</a>
+
+
+            <!-- Add coment -->
+            <div class="col-sm-offset-1 top-buffer" ng-show="vm.showAddCommentFormOnPost[$index] === true">
+                <textarea rows="3" class="form-control no-resize" ng-model="vm.commentDescription" />
+                <button class="btn btn-info" ng-click="vm.addNewComment(vm.commentDescription, post, $index)">Reply to {{post.UserName}}</button>
+            </div>
+
+            <!-- Show replies ... comments -->
+            <div ng-repeat="comment in post.comments" class="col-sm-offset-1">
+                <p class="page-header light-gray-background no-bottom-margin">{{comment.UserName}} replied - {{comment.Date | fromNow }}</p>
+                <pre>{{comment.Description}}</pre>
+
+            </div>
         </div>
     </div>
 
 
+    <!-- Posts end here-->
     <!-- New post -->
-    <div class="col-sm-push-2 col-sm-8">
+    <div class="col-sm-push-2 col-sm-8 big-top-buffer" id="add-post-id">
         <div class="panel panel-success no-bottom-margin">
             <div class="panel-heading">New post</div>
         </div>
