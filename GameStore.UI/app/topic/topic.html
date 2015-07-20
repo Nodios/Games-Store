@@ -12,38 +12,52 @@
     <div class=" col-sm-push-2 col-sm-8">
 
         <!-- Loop  -->
-        <div class="top-buffer" ng-repeat="post in vm.posts">
+        <div class="top-buffer" ng-repeat="(i,post) in vm.posts">
 
             <!-- Post -->
             <div class="page-header text-primary big-top-buffer">
                 <strong>{{post.UserName}} - {{post.Date | fromNow }}</strong>
-                <button class="btn btn-sm btn-info pull-right" ng-if="vm.showEditDeletePostButtons[$index]" ng-click="vm.goToEditNewPost(post)">EDIT</button>
-                <button class="btn btn-sm btn-danger pull-right" ng-if="vm.showEditDeletePostButtons[$index]" ng-click="vm.deletePost(post)">DELETE</button>
+
+                <!-- Edit and delete buttons on post -->
+                <button class="btn btn-sm btn-info pull-right" ng-if="vm.showEditDeletePostButtons[i]" ng-click="vm.goToEditNewPost(post)">EDIT</button>
+                <button class="btn btn-sm btn-danger pull-right right-buffer" ng-if="vm.showEditDeletePostButtons[i]" ng-click="vm.deletePost(post)">DELETE</button>
             </div>
+
             <pre> {{post.Description}}    </pre>
-            <a class="bottom-buffer" ng-click="vm.getComments(post,$index, 15)">show comments</a>
-            <a class="pull-right bottom-buffer" ng-click="vm.showAddComment($index)">+ comment</a>
-            
+            <a class="bottom-buffer" ng-click="vm.getComments(post.Id,i, 5)">show comments</a>
+            <a class="pull-right bottom-buffer" ng-click="vm.showAddComment(i)">+ comment</a>
+
             <!-- Add coment -->
-            <div class="col-sm-offset-1 top-buffer" ng-show="vm.showAddCommentFormOnPost[$index] === true">
+            <div class="col-sm-offset-1 top-buffer" ng-show="vm.showAddCommentFormOnPost[i] === true">
                 <textarea rows="3" class="form-control no-resize" ng-model="vm.commentDescription" />
-                <button class="btn btn-info" ng-click="vm.addNewComment(vm.commentDescription, post, $index)">Reply to {{post.UserName}}</button>
+                <button class="btn btn-success" ng-click="vm.addNewComment(vm.commentDescription, post,i)">Reply to {{post.UserName}}</button>
+            </div>
+
+            <!-- Edit comment -->
+            <div class="col-sm-offset-1 top-buffer" ng-show="vm.showEditCommentFormOnPost[i] === true">
+                <textarea rows="3" class="form-control no-resize" ng-model="vm.commentDescription" />
+                <button class="btn btn-info" ng-click="vm.editComment(i, 5)">Edit reply - to {{post.UserName}}</button>
             </div>
 
             <!-- Show replies ... comments -->
-            <div ng-repeat="comment in post.comments" class="col-sm-offset-1">
-                <p class="page-header light-gray-background no-bottom-margin">{{comment.UserName}} replied - {{comment.Date | fromNow }}</p>
-                <pre>{{comment.Description}}</pre>
+            <div ng-repeat="(j,comment) in post.comments" class="col-sm-offset-1">
+                <p class="page-header light-gray-background no-bottom-margin">
+                    {{comment.UserName}} replied - {{comment.Date | fromNow }}
 
+                    <!-- Every post should have showEditDeleteCommentButtons options array with true in order to show it , or false to hide it -->
+                    <a class="pull-right" ng-if="post.showEditDeleteCommentButtons[j]" ng-click="vm.showEditComment(i, comment)">EDIT</button>
+                        <a class=" pull-right right-buffer" ng-if="post.showEditDeleteCommentButtons[j]" ng-click="vm.deleteComment(comment, i, 15)">DELETE</a>
+                </p>
+                <pre>{{comment.Description}}</pre>
             </div>
+            <a class="col-sm-offset-1" ng-if="post.comments.length == 5" ng-click="vm.getComments(post.Id,i, 100)">Show more</a>
         </div>
     </div>
 
 
     <!-- Posts end here-->
-
     <!-- New post -->
-    <div class="col-sm-push-2 col-sm-8 big-top-buffer" id="add-post-id" ng-show="!vm.showEditPost">
+    <div class="col-sm-push-2 col-sm-8 big-top-buffer" id="add-post-id" ng-show="vm.showAddPost">
         <div class="panel panel-success no-bottom-margin">
             <div class="panel-heading">New post</div>
         </div>
@@ -61,4 +75,14 @@
         <button class="btn btn-danger" ng-click="vm.closeEditForm()">Cancel</button>
     </div>
 
+    <div class="col-sm-push-2 col-sm-8 big-top-buffer">
+        <button ng-if="vm.paginationPrevious" class="btn btn-sm btn-warning" ng-click="vm.pageNumberDecrease();">
+            <span class="glyphicon glyphicon-menu-left"></span>
+            Back
+        </button>
+        <button ng-if="vm.paginationNext" class="btn btn-sm btn-warning pull-right" ng-click="vm.pageNumberIncrease();">
+            Next
+            <span class="glyphicon glyphicon-menu-right  col-sm-offset-1"></span>
+        </button>
+    </div>
 </div>

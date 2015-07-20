@@ -10,5 +10,7 @@ namespace GameStore.Service.Common
     {
         Task<IEnumerable<IComment>> GetRangeAsync(Guid postId, GenericFilter filter);
         Task<int> AddAsync(IComment comment);
+        Task<int> UpdateAsync(IComment comment);
+        Task<int> DeleteAsync(Guid id);
     }
 }

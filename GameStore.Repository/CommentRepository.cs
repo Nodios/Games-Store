@@ -134,8 +134,7 @@ namespace GameStore.Repository
         {
             try
             {
-                return await this.DeleteAsync
-                    (Mapper.Map<IComment>(await repository.GetAsync<CommentEntity>(id)));
+                return await repository.DeleteAsync<CommentEntity>(id);
             }
             catch (Exception ex)
             {

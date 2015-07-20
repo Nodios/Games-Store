@@ -62,6 +62,7 @@ namespace GameStore.WebApi.Controllers
         /// </summary>
         [Authorize]
         [HttpPost]
+        [Route("Insert")]
         public async Task<HttpResponseMessage> Insert(CommentModel model)
         {
             try
@@ -71,6 +72,55 @@ namespace GameStore.WebApi.Controllers
                     return Request.CreateResponse(HttpStatusCode.Created, model);
                 else
                     return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Update comment
+        /// </summary>
+        /// <param name="id">Comment id</param>
+        /// <param name="model">Model to upadte</param>
+        /// <returns>Http response</returns>
+        [Authorize]
+        [HttpPut]
+        [Route("Update/{id}")]
+        public async Task<HttpResponseMessage> Update(Guid id, CommentModel model)
+        {
+            try
+            {
+                int result = await service.UpdateAsync(Mapper.Map<IComment>(model));
+                if (result >= 1)
+                    return Request.CreateResponse(HttpStatusCode.OK, model);
+                else
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Error while trying to edit comment.");
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Delete comment
+        /// </summary>
+        /// <param name="id">Comment id</param>
+        /// <returns>Http response</returns>
+        [Authorize]
+        [HttpDelete]
+        [Route("Delete/{id}")]
+        public async Task<HttpResponseMessage> Update(Guid id)
+        {
+            try
+            {
+                int result = await service.DeleteAsync(id);
+                if (result >= 1)
+                    return Request.CreateResponse(HttpStatusCode.OK, "Comment removed.");
+                else
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Error while trying to delete comment.");
             }
             catch (Exception ex)
             {
