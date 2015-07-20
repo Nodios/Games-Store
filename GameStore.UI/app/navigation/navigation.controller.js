@@ -3,8 +3,8 @@
 
 
     angular.module("mainModule").controller("NavigationController",
-        ['navigationLinks', 'notificationService', '$scope', '$window', '$controller', '$location', 'navigationMenuService',
-             function (navigationLinks, notificationService, $scope, $window, $controller, $location, navigationMenuService) {
+        ['navigationLinks', 'notificationService', '$scope', '$window', '$controller', '$location', 'navigationMenuService', '$route',
+             function (navigationLinks, notificationService, $scope, $window, $controller, $location, navigationMenuService, $route) {
 
                  // Nav controller is first loaded controller and is alive all time 
                  $location.path("#/");  // redirect to home page every time when controller is created 
@@ -65,8 +65,7 @@
                      $window.localStorage.token = "";
                      $window.localStorage.id = "";
                      vm.user = "Log in";
-                     var hash = $location.path();
-                     console.log(hash);
+                     $route.reload();
                  };
 
                  //#endregion

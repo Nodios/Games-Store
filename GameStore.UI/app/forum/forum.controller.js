@@ -77,6 +77,8 @@
                         if (data > 0) {
                             notificationService.addNotification("Topic created", true);
                             vm.showAddTopic = false;
+                            vm.searchString = "";
+                            vm.get();
                         }
                         else
                             notificationService.addNotification("Error while creating topic.", false);

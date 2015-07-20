@@ -51,14 +51,14 @@
 
                 // Private functions
                 // Used to register user
-                var register = function (item, pass, confirmPass) {
+                function register(item, pass, confirmPass) {
 
                     if (pass === confirmPass && pass.length >= 6) {
 
                         authService.saveRegistration(item, pass).success(function (data, status, header, config) {
                             notificationService.addNotification("Registration successful.", true);
                         }).error(function (data, status, header, config) {
-                            $window.alert(data);
+                            notificationService.addLongNotifciation(data, false);
                         });
                     }
                     else {

@@ -19,7 +19,7 @@
             .when('/cart', { templateUrl: 'app/cart/cart.html', controller: 'CartController', controllerAs: 'vm' })
             .when('/order', { templateUrl: 'app/order/order.html', controller: 'OrderController', controllerAs: 'vm' })
             .when('/forum', { templateUrl: 'app/forum/forum.html', controller: 'ForumController', controllerAs: 'vm' })
-            .when('/topic/:topicTitle/:topicId', {templateUrl: 'app/topic/topic.html', controller: 'TopicController', controllerAs: 'vm'})
+            .when('/topic/:topicTitle/:topicId', {templateUrl: 'app/topic/topic.html', controller: 'TopicController', controllerAs: 'vm', reloadOnSearch:false})
             .otherwise({ redirectTo: '/' });
     }
 

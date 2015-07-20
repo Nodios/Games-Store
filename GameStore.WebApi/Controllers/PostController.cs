@@ -30,8 +30,7 @@ namespace GameStore.WebApi.Controllers
 
         #endregion
 
-        #region Public methods
-
+        //gamestore/api/id/pagenumber/pagesize
         [HttpGet]
         [Route("{id}/{pageNumber}/{pageSize}")]
         public async Task<HttpResponseMessage> Get(Guid id, int pageNumber, int pageSize)
@@ -64,6 +63,7 @@ namespace GameStore.WebApi.Controllers
         /// </summary>
         [Authorize]
         [HttpPost]
+        [Route("Insert")]
         public async Task<HttpResponseMessage> Insert(PostModel model)
         {
             try
@@ -80,7 +80,55 @@ namespace GameStore.WebApi.Controllers
             }
         }
 
-        #endregion
+        /// <summary>
+        /// Update post
+        /// </summary>
+        /// <param name="id">Post id</param>
+        /// <param name="model">Model to update</param>
+        /// <returns>Response message</returns>
+        [Authorize]
+        [HttpPut]
+        [Route("Update/{id}")]
+        public async Task<HttpResponseMessage> Update(Guid id, PostModel model)
+        {
+            try
+            {
+                int result = await PostService.UpdatePost(Mapper.Map<IPost>(model));
+                if (result >= 1)
+                    return Request.CreateResponse(HttpStatusCode.Created, "Post updated");
+                else
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "No post to update");
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Delete post
+        /// </summary>
+        /// <param name="id">Post id</param>
+        /// <returns>Http response</returns>
+        [HttpDelete]
+        [Authorize]
+        [Route("Delete/{id}")]
+        public async Task<HttpResponseMessage> Delete(Guid id)
+        {
+            try
+            {
+                int result = await PostService.DeletePost(id);
+                if (result == 0)
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Delete operation failed.");
+                else
+                    return Request.CreateResponse(HttpStatusCode.OK, "Review deleted");
+            }
+            catch (Exception ex)
+            {
+
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
 
     }
 

@@ -68,7 +68,7 @@ namespace GameStore.Repository
                 return Mapper.Map<IEnumerable<IComment>>(await
                     repository.Where<CommentEntity>()
                     .Where(c => c.PostId == postId)
-                    .OrderBy(p => p.VotesUp)
+                    .OrderByDescending(p => p.Date)
                     .Skip((filter.PageNumber * filter.PageSize) - filter.PageSize)
                     .Take(filter.PageSize).ToListAsync());
 

@@ -36,6 +36,28 @@
                             headers: { 'Authorization': 'Bearer ' + token },
                             data: comment
                         })
+                    },
+
+                    editPost: function (postId, post) {
+
+                        var token = $window.localStorage.token;
+
+                        return $http({
+                            method: 'put',
+                            url : routePrefix.post + "/update/" + postId,
+                            headers: { 'Authorization' : 'Bearer ' + token },
+                            data:post
+                        });
+                    },
+
+                    deletePost: function (id) {
+
+                        var token = $window.localStorage.token;
+
+                        return $http.delete(routePrefix.post + "/delete/" + id, 
+                            {
+                                headers: { 'Authorization': 'Bearer ' + token }
+                            });
                     }
                 }
             }

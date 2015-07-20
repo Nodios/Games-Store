@@ -1,8 +1,8 @@
 ﻿(function (angular) {
 
     angular.module("mainModule").controller("ModalLoginController",
-        ['$scope', '$window', '$modal', '$log', 'authService','notificationService',
-             function ($scope, $window, $modal, $log, authService, notificationService) {
+        ['$scope', '$window', '$modal', '$log', 'authService','notificationService', '$route',
+             function ($scope, $window, $modal, $log, authService, notificationService, $route) {
 
             var vm = $scope.vm = {};
 
@@ -37,12 +37,13 @@
             // PRIVATE
             // used to log in user
             var login = function (user) {
-                console.log(user);
+               
                 authService.login(user).success(function (data, status, header, config) {
 
                     $window.localStorage.user = data.username;
                     $window.localStorage.token = data.access_token;
                     $window.localStorage.id = data.id;
+                    $route.reload();
 
                 }).error(function (data, status, header, config) {
                     notificationService.addLongNotification(data.error + " : " + data.error_description, false);

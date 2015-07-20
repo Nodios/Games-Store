@@ -49,9 +49,10 @@ namespace GameStore.Repository
                 return Mapper.Map<IEnumerable<IPost>>(await 
                     repository.Where<PostEntity>()
                     .Where(p => p.TopicId == topicId)
-                    .OrderBy(p => p.VotesUp)
+                    .OrderByDescending(p => p.Date)
                     .Skip((filter.PageNumber * filter.PageSize) - filter.PageSize)
-                    .Take(filter.PageSize).ToListAsync());
+                    .Take(filter.PageSize)
+                    .ToListAsync());
                     
             }
             catch(Exception ex)
@@ -100,7 +101,7 @@ namespace GameStore.Repository
         {
             try
             {
-                return await this.DeleteAsync(Mapper.Map<IPost>(await repository.GetAsync<PostEntity>(id)));
+                return await repository.DeleteAsync<PostEntity>(id);
             }
             catch (Exception ex)
             {

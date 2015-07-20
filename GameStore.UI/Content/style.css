@@ -7484,12 +7484,13 @@ fieldset[disabled] .gameView button {
 .gameView button.active {
   background-image: none;
 }
+/*
 .modal-open {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  float: left !important;
-}
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    .pull-left;
+}*/
 .modal-style {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
