@@ -71,6 +71,7 @@
     <Content Include="app\forum\forum.service.js" />
     <Content Include="app\home\home.controller.js" />
     <Content Include="app\home\home.html" />
+    <Content Include="app\home\home.service.js" />
     <Content Include="app\modals\login\login.html" />
     <Content Include="app\modals\login\loginModal.controller.js" />
     <Content Include="app\modals\register\registerModal.controller.js" />

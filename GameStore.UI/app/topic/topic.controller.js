@@ -315,8 +315,6 @@
                                 vm.showEditDeletePostButtons.push(false);
 
                         }
-
-                        console.log(vm.showEditDeletePostButtons);
                     }
                 }
 

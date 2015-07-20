@@ -182,7 +182,7 @@
                // Add game to car
                vm.addToCart = function () {
 
-                   if ($window.localStorage.token.length > 0) {
+                   if ($window.localStorage.token &&  $window.localStorage.token.length > 0) {
                        var cart = {
                            userId: $window.localStorage.id,
                            gamesInCart: []
@@ -196,7 +196,7 @@
                        });
                    }
                    else {
-                       //TODO add tool top or pop up for log in
+                       notificationService.addLongNotification("Please log in to add to cart.", false);
                    }
                }
 

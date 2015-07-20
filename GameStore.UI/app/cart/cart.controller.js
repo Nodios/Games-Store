@@ -1,8 +1,8 @@
 ﻿(function (angular) {
 
     angular.module("mainModule").controller("CartController", [
-        '$scope', '$window', '$route', 'cartService', 'notificationService',
-             function ($scope, $window, $route, cartService, notificationService) {
+        '$scope', '$window', '$route', 'cartService', 'notificationService','navigationMenuService',
+             function ($scope, $window, $route, cartService, notificationService, navigationMenuService) {
 
                  //#region Proporties
 
@@ -113,6 +113,10 @@
 
                          notificationService.addNotification("Error while trying to remove games from cart", false);
                      });
+                 };
+
+                 vm.findGamesClick = function () {
+                     navigationMenuService.setMenuToActive(1);
                  };
 
                  //#endregion

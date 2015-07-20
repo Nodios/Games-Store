@@ -37,7 +37,7 @@
 
     <!-- Show if there are no games in cart -->
     <div ng-if="vm.showIfThereAreNoGames">
-        <h4 class="h4">Cart is empty ! <a href="#game">Click to find games.</a> </h4>
+        <h4 class="h4">Cart is empty ! <a ng-href="#game" ng-click="vm.findGamesClick()">Click to find games.</a> </h4>
     </div>
 
 

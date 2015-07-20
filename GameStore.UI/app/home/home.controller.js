@@ -1,12 +1,16 @@
 ﻿(function (angular) {
 
-    angular.module("mainModule").controller("HomeController", ['$scope',
-        function ($scope) {
+    angular.module("mainModule").controller("HomeController", ['$scope','homeService', 'notificationService','navigationMenuService',
+        function ($scope, homeService, notificationService, navigationMenuService) {
+
+            var vm = $scope.vm = {};
+
+            //#region Variables 
 
             // TODO 
-            $scope.myInterval = 5000; 
+            vm.myInterval = 5000; 
 
-            $scope.slides = [
+            vm.slides = [
             {
                 image: '../../images/menu1.jpg',
                 text: 'Dirt',
@@ -22,6 +26,28 @@
                 text: 'Portal',
                 description: "If you're good at something, never do it for free."
             }];
+
+            vm.games = [];
+
+            //#endregion
+
+            //#region Methods
+
+            vm.findGamesClick = function () {
+                navigationMenuService.setMenuToActive(1);
+            };
+
+            //#endregion
+
+            //#region Private functions
+
+          
+            //#endregion
+
+            //#region Do on controller creation
+
+            //#endregion
+
         }
     ]);
 
