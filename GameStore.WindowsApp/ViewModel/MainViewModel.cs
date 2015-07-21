@@ -3,8 +3,10 @@ using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
-using GameStore.WindowsApp.Common;
 using GameStore.WindowsApp.Model;
+using GameStore.WindowsApp.Service.Common;
+using System.ServiceModel.Channels;
+using Windows.UI.Popups;
 
 namespace GameStore.WindowsApp.ViewModel
 {
@@ -24,9 +26,13 @@ namespace GameStore.WindowsApp.ViewModel
         private readonly IDataService _dataService;
         private readonly INavigationService _navigationService;
 
+        private readonly IGamesService gamesService;
+
         private RelayCommand _navigateCommand;
+        private RelayCommand getGame;
         private string _originalTitle;
         private string _welcomeTitle = string.Empty;
+        private Game game;
 
         /// <summary>
         /// Gets the NavigateCommand.
@@ -37,10 +43,19 @@ namespace GameStore.WindowsApp.ViewModel
             {
                 return _navigateCommand
                        ?? (_navigateCommand = new RelayCommand(
-                           () => _navigationService.NavigateTo(ViewModelLocator.SecondPageKey)));
+                           () => _navigationService.NavigateTo(ViewModelLocator.GamesPageKey)));
+
+
             }
         }
 
+        public RelayCommand GetGame
+        {
+            get
+            {
+                return getGame ?? (getGame = new RelayCommand(Get));
+            }
+        }
         /// <summary>
         /// Gets the WelcomeTitle property.
         /// Changes to that property's value raise the PropertyChanged event. 
@@ -63,10 +78,14 @@ namespace GameStore.WindowsApp.ViewModel
         /// </summary>
         public MainViewModel(
             IDataService dataService,
-            INavigationService navigationService)
+            INavigationService navigationService, IGamesService gamesService)
         {
             _dataService = dataService;
             _navigationService = navigationService;
+
+            // For testing
+            this.gamesService = gamesService;
+
             Initialize();
         }
 
@@ -98,6 +117,28 @@ namespace GameStore.WindowsApp.ViewModel
             catch (Exception ex)
             {
                 // Report error here
+            }
+        }
+
+        private async void Get()
+        {
+            try
+            {
+                var v = await gamesService.GetAsync(Guid.Parse("02a4269e-702d-e511-89a8-689423c58a9c"));
+                Game = v;
+            }
+            catch (Exception ex)
+            {
+                MessageDialog msg = new MessageDialog(ex.Message);
+            }
+        }
+
+        public Game Game
+        {
+            get { return game; }
+            set
+            {
+                Set(() => this.Game, ref game, value);
             }
         }
     }

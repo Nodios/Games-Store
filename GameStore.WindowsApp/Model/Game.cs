@@ -1,10 +1,11 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight;
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace GameStore.WindowsApp.Model
 {
-    public class Game : INotifyPropertyChanged
+    public class Game : ObservableObject
     {
         #region Fields
 
@@ -13,10 +14,10 @@ namespace GameStore.WindowsApp.Model
         private string name;
         private string description;
         private string osSupport;
-        private float reviewScore;
+        private float? reviewScore;
         private string genre;
         private double price;
-        private bool isInCart; 
+        private bool isInCart;
 
         #endregion
 
@@ -26,109 +27,58 @@ namespace GameStore.WindowsApp.Model
         public Guid Id
         {
             get { return id; }
-            set 
-            { 
-                id = value;
-                NotifyPropertyChanged();
-            }
+            set { id = value; }
         }
 
         public Guid PublisherId
         {
             get { return publisherId; }
-            set
-            {
-                publisherId = value;
-                NotifyPropertyChanged();
-            }
+            set { publisherId = value; }
         }
 
         public string Name
         {
             get { return name; }
-            set 
-            { 
-                name = value;
-                NotifyPropertyChanged();
-            }
+            set { name = value; }
         }
 
         public string Description
         {
             get { return description; }
-            set 
-            { 
-                description = value;
-                NotifyPropertyChanged();
-            }
+            set { description = value; }
         }
 
         public string OsSupport
         {
             get { return osSupport; }
-            set
-            { 
-                osSupport = value;
-                NotifyPropertyChanged();
-            }
+            set { osSupport = value; }
         }
 
-        public float ReviewScore
+        public float? ReviewScore
         {
             get { return reviewScore; }
-            set 
-            {
-                reviewScore = value;
-                NotifyPropertyChanged();
-            }
+            set { reviewScore = value; }
         }
 
         public string Genre
         {
             get { return genre; }
-            set
-            { 
-                genre = value;
-                NotifyPropertyChanged();
-            }
+            set { genre = value; }
         }
 
         public double Price
         {
             get { return price; }
-            set 
-            { 
-                price = value;
-                NotifyPropertyChanged();
-            }
+            set { price = value; }
         }
 
         public bool IsInCart
         {
             get { return isInCart; }
-            set 
-            { 
-                isInCart = value;
-                NotifyPropertyChanged();           
-            }
-        } 
-
-        #endregion
-
-        #region Notify property changed implementation
-
-        /// <summary>
-        /// Property changed event handler
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        // Notify that property is changed, called by set accessors
-        public void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            set { Set(() => this.IsInCart, ref isInCart, value); }
         }
 
         #endregion
+       
     }
 }

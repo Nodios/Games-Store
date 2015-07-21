@@ -16,6 +16,9 @@ using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.ServiceLocation;
 using GameStore.WindowsApp.Design;
 using GameStore.WindowsApp.Model;
+using GameStore.WindowsApp.Service.Common;
+using GameStore.WindowsApp.Service;
+using GameStore.WindowsApp.Views;
 
 namespace GameStore.WindowsApp.ViewModel
 {
@@ -29,6 +32,7 @@ namespace GameStore.WindowsApp.ViewModel
     public class ViewModelLocator
     {
         public const string SecondPageKey = "SecondPage";
+        public const string GamesPageKey = "GamesPage";
 
         /// <summary>
         /// Gets the Main property.
@@ -44,6 +48,20 @@ namespace GameStore.WindowsApp.ViewModel
             }
         }
 
+        [SuppressMessage("Microsoft.Performance",
+            "CA1822:MarkMembersAsStatic",
+            Justification = "This non-static member is needed for data binding purposes.")]
+        public GamesViewModel Games
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<GamesViewModel>();
+            }
+        }
+
+        /// <summary>
+        /// Register all services here 
+        /// </summary>
         static ViewModelLocator()
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
@@ -51,18 +69,28 @@ namespace GameStore.WindowsApp.ViewModel
             if (ViewModelBase.IsInDesignModeStatic)
             {
                 SimpleIoc.Default.Register<IDataService, DesignDataService>();
+
+                // My services
+                SimpleIoc.Default.Register<IGamesService, GamesService>();
             }
             else
             {
                 SimpleIoc.Default.Register<IDataService, DataService>();
+
+                // My services
+                SimpleIoc.Default.Register<IGamesService, GamesService>();
             }
 
+            // Configure navigation service pages here
             var nav = new NavigationService();
             nav.Configure(ViewModelLocator.SecondPageKey, typeof(SecondPage));
+            nav.Configure(ViewModelLocator.GamesPageKey, typeof(GamesPage));
             SimpleIoc.Default.Register<INavigationService>(() => nav);
 
+            // Register view models
             SimpleIoc.Default.Register<IDialogService, DialogService>();
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<GamesViewModel>();
         }
 
         /// <summary>

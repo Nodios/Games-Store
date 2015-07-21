@@ -1,48 +1,52 @@
-﻿using System.Collections.Generic;
+﻿using GalaSoft.MvvmLight;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace GameStore.WindowsApp.Model
 {
-    public class Cart : INotifyPropertyChanged
+    public class Cart : ObservableObject
     {
-        private string userId;
-        private ICollection<Game> gamesInCart;
+        public string UserId { get; set; }
+        public virtual IList<Game> GamesInCart { get; set; }
 
-        public string UserId
-        {
-            get { return this.userId; }
-            set
-            {
-                this.userId = value;
-                NotifyPropertyChanged();
-            }
-        }
+        //private string userId;
+        //private ICollection<Game> gamesInCart;
 
-        public ICollection<Game> GamesInCart
-        {
-            get { return this.gamesInCart; }
-            set
-            {
-                this.gamesInCart = value;
-                NotifyPropertyChanged();
-            }
-        }
+        //public string UserId
+        //{
+        //    get { return this.userId; }
+        //    set
+        //    {
+        //        this.userId = value;
+        //        NotifyPropertyChanged();
+        //    }
+        //}
 
-        #region Notify property changed implementation
+        //public ICollection<Game> GamesInCart
+        //{
+        //    get { return this.gamesInCart; }
+        //    set
+        //    {
+        //        this.gamesInCart = value;
+        //        NotifyPropertyChanged();
+        //    }
+        //}
 
-        /// <summary>
-        /// Property changed event handler
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
+        //#region Notify property changed implementation
 
-        // Notify that property is changed, called by set accessors
-        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
+        ///// <summary>
+        ///// Property changed event handler
+        ///// </summary>
+        //public event PropertyChangedEventHandler PropertyChanged;
 
-        #endregion
+        //// Notify that property is changed, called by set accessors
+        //private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        //{
+        //    if (PropertyChanged != null)
+        //        PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        //}
+
+        //#endregion
     }
 }

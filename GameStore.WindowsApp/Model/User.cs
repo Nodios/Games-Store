@@ -1,68 +1,75 @@
-﻿using System.ComponentModel;
+﻿using GalaSoft.MvvmLight;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace GameStore.WindowsApp.Model
 {
-    public class User : INotifyPropertyChanged
+    public class User : ObservableObject
     {
-        #region Fields
+        public string Id { get; set; }
+        public string UserName { get; set; }
+        public string PasswordHash { get; set; }
+        public string Email { get; set; }
+        public Cart Cart { get; set; }
 
-        private string id;
-        private string userName;
-        private string passwordHash;
-        private string email;
-        private Cart cart; 
+        //#region Fields
 
-        #endregion
+        //private string id;
+        //private string userName;
+        //private string passwordHash;
+        //private string email;
+        //private Cart cart; 
 
-        #region Proporties
+        //#endregion
 
-        public string Id
-        {
-            get { return id; }
-            set { id = value; }
-        }
+        //#region Proporties
 
-        public string UserName
-        {
-            get { return userName; }
-            set { userName = value; }
-        }
+        //public string Id
+        //{
+        //    get { return id; }
+        //    set { id = value; }
+        //}
 
-        public string PasswordHash
-        {
-            get { return passwordHash; }
-            set { passwordHash = value; }
-        }
+        //public string UserName
+        //{
+        //    get { return userName; }
+        //    set { userName = value; }
+        //}
 
-        public string Email
-        {
-            get { return email; }
-            set { email = value; }
-        }
+        //public string PasswordHash
+        //{
+        //    get { return passwordHash; }
+        //    set { passwordHash = value; }
+        //}
 
-        public Cart Cart
-        {
-            get { return cart; }
-            set { cart = value; }
-        } 
+        //public string Email
+        //{
+        //    get { return email; }
+        //    set { email = value; }
+        //}
 
-        #endregion
+        //public Cart Cart
+        //{
+        //    get { return cart; }
+        //    set { cart = value; }
+        //} 
 
-        #region Notify property changed implementation
+        //#endregion
 
-        /// <summary>
-        /// Property changed event handler
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
+        //#region Notify property changed implementation
 
-        // Notify that property is changed, called by set accessors
-        public void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
+        ///// <summary>
+        ///// Property changed event handler
+        ///// </summary>
+        //public event PropertyChangedEventHandler PropertyChanged;
 
-        #endregion
+        //// Notify that property is changed, called by set accessors
+        //public void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        //{
+        //    if (PropertyChanged != null)
+        //        PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        //}
+
+        //#endregion
     }
 }

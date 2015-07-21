@@ -237,7 +237,7 @@
 
         <TextBlock x:Name="WelcomeTextBlock"
                    FontSize="56"
-                   Text="{Binding WelcomeTitle}"
+                   Text="{Binding Game.Name}"
                    Grid.Row="1"
                    VerticalAlignment="Top"
                    HorizontalAlignment="Left"
@@ -246,14 +246,6 @@
                    TextAlignment="Center"
                    FontWeight="Light"
                    TextWrapping="WrapWholeWords" />
-
-        <local:TestUserControl x:Name="Bottom"
-                               HorizontalAlignment="Left"
-                               Height="100"
-                               VerticalAlignment="Bottom"
-                               Width="790"
-                               Grid.Row="1"
-                               Margin="120,0,0,80" />
 
         <Button Content="Second page"
                 x:Name="NextPageButton"

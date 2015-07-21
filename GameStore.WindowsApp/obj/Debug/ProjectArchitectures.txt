@@ -1,0 +1,1 @@
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\GameStore.WindowsApp.csproj;neutral
