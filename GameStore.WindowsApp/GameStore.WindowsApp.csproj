@@ -108,6 +108,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\DisplayOrientationsHelper.cs" />
+    <Compile Include="Common\ImageConverter.cs" />
     <Compile Include="Common\NavigationHelper.cs" />
     <Compile Include="Common\ObservableDictionary.cs" />
     <Compile Include="Common\OrientationStateControlBehavior.cs" />
@@ -117,6 +118,7 @@
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="Common\UserControlBase.cs" />
+    <Compile Include="Common\VisibilityConverter.cs" />
     <Compile Include="Model\Cart.cs" />
     <Compile Include="Model\Comment.cs" />
     <Compile Include="Model\Game.cs" />
@@ -136,7 +138,9 @@
     </Compile>
     <Compile Include="Common\OrientationStateBehavior.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service.Common\IGameImageService.cs" />
     <Compile Include="Service.Common\IGamesService.cs" />
+    <Compile Include="Service\GameImageService.cs" />
     <Compile Include="Service\GamesService.cs" />
     <Compile Include="TestUserControl.xaml.cs">
       <DependentUpon>TestUserControl.xaml</DependentUpon>

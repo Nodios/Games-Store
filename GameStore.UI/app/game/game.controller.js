@@ -50,7 +50,7 @@
                    if (vm.searchString.length > 0) {
 
                        // If previous search was not by name set page number to 1
-                       if (searchingByName === false)
+                       if (!searchingByName)
                            vm.pageNumber = 1;
 
                        // Set to true since now it's searching by name
@@ -65,7 +65,7 @@
                    }
                    else {
                        // If previous search way by name set page number to 1
-                       if (searchingByName === true)
+                       if (searchingByName)
                            vm.pageNumber = 1;
 
                        // Set searchByName to false since it's not searching by name
@@ -274,8 +274,12 @@
 
                    if (data.length > 0)
                        vm.games = data;
-                   else
+                   else {
                        vm.pageNumber--;
+
+                       if (vm.pageNumber < 1)
+                           vm.pageNumber = 1;
+                   }
                };
 
                //#endregion

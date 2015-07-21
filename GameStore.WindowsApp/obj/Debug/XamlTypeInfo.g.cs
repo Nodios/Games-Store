@@ -124,7 +124,7 @@ namespace GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[22];
+            _typeNameTable = new string[29];
             _typeNameTable[0] = "GameStore.WindowsApp.ViewModel.ViewModelLocator";
             _typeNameTable[1] = "Object";
             _typeNameTable[2] = "GameStore.WindowsApp.ViewModel.MainViewModel";
@@ -146,9 +146,16 @@ namespace GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo
             _typeNameTable[18] = "GameStore.WindowsApp.SecondPage";
             _typeNameTable[19] = "GameStore.WindowsApp.MainPage";
             _typeNameTable[20] = "GameStore.WindowsApp.TestUserControl";
-            _typeNameTable[21] = "GameStore.WindowsApp.Views.GamesPage";
+            _typeNameTable[21] = "GameStore.WindowsApp.Common.VisibilityConverter";
+            _typeNameTable[22] = "GameStore.WindowsApp.Common.ImageConverter";
+            _typeNameTable[23] = "Microsoft.Xaml.Interactions.Core.EventTriggerBehavior";
+            _typeNameTable[24] = "Microsoft.Xaml.Interactivity.ActionCollection";
+            _typeNameTable[25] = "Microsoft.Xaml.Interactions.Core.InvokeCommandAction";
+            _typeNameTable[26] = "System.Windows.Input.ICommand";
+            _typeNameTable[27] = "Windows.UI.Xaml.Data.IValueConverter";
+            _typeNameTable[28] = "GameStore.WindowsApp.Views.GamesPage";
 
-            _typeTable = new global::System.Type[22];
+            _typeTable = new global::System.Type[29];
             _typeTable[0] = typeof(global::GameStore.WindowsApp.ViewModel.ViewModelLocator);
             _typeTable[1] = typeof(global::System.Object);
             _typeTable[2] = typeof(global::GameStore.WindowsApp.ViewModel.MainViewModel);
@@ -170,7 +177,14 @@ namespace GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo
             _typeTable[18] = typeof(global::GameStore.WindowsApp.SecondPage);
             _typeTable[19] = typeof(global::GameStore.WindowsApp.MainPage);
             _typeTable[20] = typeof(global::GameStore.WindowsApp.TestUserControl);
-            _typeTable[21] = typeof(global::GameStore.WindowsApp.Views.GamesPage);
+            _typeTable[21] = typeof(global::GameStore.WindowsApp.Common.VisibilityConverter);
+            _typeTable[22] = typeof(global::GameStore.WindowsApp.Common.ImageConverter);
+            _typeTable[23] = typeof(global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior);
+            _typeTable[24] = typeof(global::Microsoft.Xaml.Interactivity.ActionCollection);
+            _typeTable[25] = typeof(global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction);
+            _typeTable[26] = typeof(global::System.Windows.Input.ICommand);
+            _typeTable[27] = typeof(global::Windows.UI.Xaml.Data.IValueConverter);
+            _typeTable[28] = typeof(global::GameStore.WindowsApp.Views.GamesPage);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -213,8 +227,19 @@ namespace GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo
         private object Activate_18_SecondPage() { return new global::GameStore.WindowsApp.SecondPage(); }
         private object Activate_19_MainPage() { return new global::GameStore.WindowsApp.MainPage(); }
         private object Activate_20_TestUserControl() { return new global::GameStore.WindowsApp.TestUserControl(); }
-        private object Activate_21_GamesPage() { return new global::GameStore.WindowsApp.Views.GamesPage(); }
+        private object Activate_21_VisibilityConverter() { return new global::GameStore.WindowsApp.Common.VisibilityConverter(); }
+        private object Activate_22_ImageConverter() { return new global::GameStore.WindowsApp.Common.ImageConverter(); }
+        private object Activate_23_EventTriggerBehavior() { return new global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior(); }
+        private object Activate_24_ActionCollection() { return new global::Microsoft.Xaml.Interactivity.ActionCollection(); }
+        private object Activate_25_InvokeCommandAction() { return new global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction(); }
+        private object Activate_28_GamesPage() { return new global::GameStore.WindowsApp.Views.GamesPage(); }
         private void VectorAdd_12_BehaviorCollection(object instance, object item)
+        {
+            var collection = (global::System.Collections.Generic.ICollection<global::Windows.UI.Xaml.DependencyObject>)instance;
+            var newItem = (global::Windows.UI.Xaml.DependencyObject)item;
+            collection.Add(newItem);
+        }
+        private void VectorAdd_24_ActionCollection(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Windows.UI.Xaml.DependencyObject>)instance;
             var newItem = (global::Windows.UI.Xaml.DependencyObject)item;
@@ -363,9 +388,62 @@ namespace GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 21:   //  GameStore.WindowsApp.Views.GamesPage
+            case 21:   //  GameStore.WindowsApp.Common.VisibilityConverter
+                userType = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.Activator = Activate_21_VisibilityConverter;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 22:   //  GameStore.WindowsApp.Common.ImageConverter
+                userType = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.Activator = Activate_22_ImageConverter;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 23:   //  Microsoft.Xaml.Interactions.Core.EventTriggerBehavior
+                userType = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObject"));
+                userType.Activator = Activate_23_EventTriggerBehavior;
+                userType.SetContentPropertyName("Microsoft.Xaml.Interactions.Core.EventTriggerBehavior.Actions");
+                userType.AddMemberName("Actions");
+                userType.AddMemberName("EventName");
+                userType.AddMemberName("SourceObject");
+                userType.AddMemberName("AssociatedObject");
+                xamlType = userType;
+                break;
+
+            case 24:   //  Microsoft.Xaml.Interactivity.ActionCollection
+                userType = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObjectCollection"));
+                userType.CollectionAdd = VectorAdd_24_ActionCollection;
+                userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 25:   //  Microsoft.Xaml.Interactions.Core.InvokeCommandAction
+                userType = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObject"));
+                userType.Activator = Activate_25_InvokeCommandAction;
+                userType.AddMemberName("Command");
+                userType.AddMemberName("CommandParameter");
+                userType.AddMemberName("InputConverter");
+                userType.AddMemberName("InputConverterParameter");
+                userType.AddMemberName("InputConverterLanguage");
+                xamlType = userType;
+                break;
+
+            case 26:   //  System.Windows.Input.ICommand
+                userType = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlUserType(this, typeName, type, null);
+                userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 27:   //  Windows.UI.Xaml.Data.IValueConverter
+                xamlType = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 28:   //  GameStore.WindowsApp.Views.GamesPage
                 userType = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_21_GamesPage;
+                userType.Activator = Activate_28_GamesPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -467,6 +545,86 @@ namespace GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo
             var that = (global::GameStore.WindowsApp.MainPage)instance;
             return that.Vm;
         }
+        private object get_12_EventTriggerBehavior_Actions(object instance)
+        {
+            var that = (global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior)instance;
+            return that.Actions;
+        }
+        private object get_13_EventTriggerBehavior_EventName(object instance)
+        {
+            var that = (global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior)instance;
+            return that.EventName;
+        }
+        private void set_13_EventTriggerBehavior_EventName(object instance, object Value)
+        {
+            var that = (global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior)instance;
+            that.EventName = (global::System.String)Value;
+        }
+        private object get_14_EventTriggerBehavior_SourceObject(object instance)
+        {
+            var that = (global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior)instance;
+            return that.SourceObject;
+        }
+        private void set_14_EventTriggerBehavior_SourceObject(object instance, object Value)
+        {
+            var that = (global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior)instance;
+            that.SourceObject = (global::System.Object)Value;
+        }
+        private object get_15_EventTriggerBehavior_AssociatedObject(object instance)
+        {
+            var that = (global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior)instance;
+            return that.AssociatedObject;
+        }
+        private object get_16_InvokeCommandAction_Command(object instance)
+        {
+            var that = (global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction)instance;
+            return that.Command;
+        }
+        private void set_16_InvokeCommandAction_Command(object instance, object Value)
+        {
+            var that = (global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction)instance;
+            that.Command = (global::System.Windows.Input.ICommand)Value;
+        }
+        private object get_17_InvokeCommandAction_CommandParameter(object instance)
+        {
+            var that = (global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction)instance;
+            return that.CommandParameter;
+        }
+        private void set_17_InvokeCommandAction_CommandParameter(object instance, object Value)
+        {
+            var that = (global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction)instance;
+            that.CommandParameter = (global::System.Object)Value;
+        }
+        private object get_18_InvokeCommandAction_InputConverter(object instance)
+        {
+            var that = (global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction)instance;
+            return that.InputConverter;
+        }
+        private void set_18_InvokeCommandAction_InputConverter(object instance, object Value)
+        {
+            var that = (global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction)instance;
+            that.InputConverter = (global::Windows.UI.Xaml.Data.IValueConverter)Value;
+        }
+        private object get_19_InvokeCommandAction_InputConverterParameter(object instance)
+        {
+            var that = (global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction)instance;
+            return that.InputConverterParameter;
+        }
+        private void set_19_InvokeCommandAction_InputConverterParameter(object instance, object Value)
+        {
+            var that = (global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction)instance;
+            that.InputConverterParameter = (global::System.Object)Value;
+        }
+        private object get_20_InvokeCommandAction_InputConverterLanguage(object instance)
+        {
+            var that = (global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction)instance;
+            return that.InputConverterLanguage;
+        }
+        private void set_20_InvokeCommandAction_InputConverterLanguage(object instance, object Value)
+        {
+            var that = (global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction)instance;
+            that.InputConverterLanguage = (global::System.String)Value;
+        }
 
         private global::Windows.UI.Xaml.Markup.IXamlMember CreateXamlMember(string longMemberName)
         {
@@ -554,6 +712,68 @@ namespace GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo
                 xamlMember = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlMember(this, "Vm", "GameStore.WindowsApp.ViewModel.MainViewModel");
                 xamlMember.Getter = get_11_MainPage_Vm;
                 xamlMember.SetIsReadOnly();
+                break;
+            case "Microsoft.Xaml.Interactions.Core.EventTriggerBehavior.Actions":
+                userType = (global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Xaml.Interactions.Core.EventTriggerBehavior");
+                xamlMember = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlMember(this, "Actions", "Microsoft.Xaml.Interactivity.ActionCollection");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_12_EventTriggerBehavior_Actions;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "Microsoft.Xaml.Interactions.Core.EventTriggerBehavior.EventName":
+                userType = (global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Xaml.Interactions.Core.EventTriggerBehavior");
+                xamlMember = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlMember(this, "EventName", "String");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_13_EventTriggerBehavior_EventName;
+                xamlMember.Setter = set_13_EventTriggerBehavior_EventName;
+                break;
+            case "Microsoft.Xaml.Interactions.Core.EventTriggerBehavior.SourceObject":
+                userType = (global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Xaml.Interactions.Core.EventTriggerBehavior");
+                xamlMember = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlMember(this, "SourceObject", "Object");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_14_EventTriggerBehavior_SourceObject;
+                xamlMember.Setter = set_14_EventTriggerBehavior_SourceObject;
+                break;
+            case "Microsoft.Xaml.Interactions.Core.EventTriggerBehavior.AssociatedObject":
+                userType = (global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Xaml.Interactions.Core.EventTriggerBehavior");
+                xamlMember = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlMember(this, "AssociatedObject", "Windows.UI.Xaml.DependencyObject");
+                xamlMember.Getter = get_15_EventTriggerBehavior_AssociatedObject;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "Microsoft.Xaml.Interactions.Core.InvokeCommandAction.Command":
+                userType = (global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Xaml.Interactions.Core.InvokeCommandAction");
+                xamlMember = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlMember(this, "Command", "System.Windows.Input.ICommand");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_16_InvokeCommandAction_Command;
+                xamlMember.Setter = set_16_InvokeCommandAction_Command;
+                break;
+            case "Microsoft.Xaml.Interactions.Core.InvokeCommandAction.CommandParameter":
+                userType = (global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Xaml.Interactions.Core.InvokeCommandAction");
+                xamlMember = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlMember(this, "CommandParameter", "Object");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_17_InvokeCommandAction_CommandParameter;
+                xamlMember.Setter = set_17_InvokeCommandAction_CommandParameter;
+                break;
+            case "Microsoft.Xaml.Interactions.Core.InvokeCommandAction.InputConverter":
+                userType = (global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Xaml.Interactions.Core.InvokeCommandAction");
+                xamlMember = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlMember(this, "InputConverter", "Windows.UI.Xaml.Data.IValueConverter");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_18_InvokeCommandAction_InputConverter;
+                xamlMember.Setter = set_18_InvokeCommandAction_InputConverter;
+                break;
+            case "Microsoft.Xaml.Interactions.Core.InvokeCommandAction.InputConverterParameter":
+                userType = (global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Xaml.Interactions.Core.InvokeCommandAction");
+                xamlMember = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlMember(this, "InputConverterParameter", "Object");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_19_InvokeCommandAction_InputConverterParameter;
+                xamlMember.Setter = set_19_InvokeCommandAction_InputConverterParameter;
+                break;
+            case "Microsoft.Xaml.Interactions.Core.InvokeCommandAction.InputConverterLanguage":
+                userType = (global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Xaml.Interactions.Core.InvokeCommandAction");
+                xamlMember = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlMember(this, "InputConverterLanguage", "String");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_20_InvokeCommandAction_InputConverterLanguage;
+                xamlMember.Setter = set_20_InvokeCommandAction_InputConverterLanguage;
                 break;
             }
             return xamlMember;

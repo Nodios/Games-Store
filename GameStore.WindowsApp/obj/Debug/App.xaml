@@ -15,6 +15,18 @@
 
         <vm:ViewModelLocator x:Key="Locator"
                              d:IsDataSource="True" />
+
+        <!-- Navigatio button styles -->
+        <Style TargetType="Button" BasedOn="{StaticResource TextBlockButtonStyle}" x:Key="NavigationButtonStyle">
+            <Setter Property="FontSize" Value="36"></Setter>
+            <Setter Property="Margin" Value="0 0 120 0"></Setter>
+            <Setter Property="FontWeight" Value="Light"></Setter>
+        </Style>
+
+        <SolidColorBrush x:Key="ListViewItemSelectedPointerOverBackgroundThemeBrush" Color="Transparent" />
+        <SolidColorBrush x:Key="ListViewItemSelectedPointerOverBorderThemeBrush" Color="Transparent"  />
+        <SolidColorBrush x:Key="ListViewItemSelectedBackgroundThemeBrush" Color="LightGray" />
+        
     </Application.Resources>
 </Application>
 

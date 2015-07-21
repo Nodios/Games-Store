@@ -73,11 +73,13 @@ namespace GameStore.WindowsApp.ViewModel
             {
                 // My services
                 SimpleIoc.Default.Register<IGamesService, GamesService>();
+                SimpleIoc.Default.Register<IGameImageService, GameImageService>();
             }
             else
             {
                 // My services
                 SimpleIoc.Default.Register<IGamesService, GamesService>();
+                SimpleIoc.Default.Register<IGameImageService, GameImageService>();
             }
 
             // Configure navigation service pages here

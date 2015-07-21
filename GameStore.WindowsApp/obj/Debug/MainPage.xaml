@@ -26,10 +26,19 @@
 
     <!-- Main layout , guidelines : https://msdn.microsoft.com/en-us/library/windows/apps/hh872191.aspx -->
     <Grid Background="{ThemeResource AppBarBackgroundThemeBrush}">
+        
+        <!-- Transitions -->
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <RowDefinition Height="100"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="120" />
@@ -40,12 +49,13 @@
     <!-- Title -->
         <TextBlock Style="{StaticResource HeaderTextBlockStyle}"
                    Text="{Binding Title}"
-                   Grid.Row="1"
-                   Grid.Column="2"/>
-        <StackPanel Grid.Column="2" Grid.Row="2" Orientation="Horizontal">
-            <TextBlock Style="{StaticResource SubheaderTextBlockStyle}" Text="Games"/>
-            <TextBlock Style="{StaticResource SubheaderTextBlockStyle}" Text="Publishers"/>
-            <TextBlock Style="{StaticResource SubheaderTextBlockStyle}" Text="Account"/>
+                   VerticalAlignment="Bottom"
+                   Grid.Row="0"
+                   Grid.Column="1"/>
+        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Bottom">
+            <Button Style="{StaticResource NavigationButtonStyle}" Command="{Binding NavigateToGamesPageCommand}">Games</Button>
+            <Button Style="{StaticResource NavigationButtonStyle}">Publishers</Button>
+            <Button Style="{StaticResource NavigationButtonStyle}">Account</Button>
         </StackPanel>
         
     </Grid>

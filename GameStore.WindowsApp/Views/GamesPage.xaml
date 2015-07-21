@@ -8,10 +8,13 @@
     xmlns:common="using:GameStore.WindowsApp.Common"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     mc:Ignorable="d">
 
     <Page.Resources>
-
+        <common:VisibilityConverter x:Key="VisibilityConverter" />
+        <common:ImageConverter x:Key="ImageConverter"/>
     </Page.Resources>
 
     <!--
@@ -25,24 +28,134 @@
                 <EntranceThemeTransition/>
             </TransitionCollection>
         </Grid.ChildrenTransitions>
+
         <Grid.RowDefinitions>
-            <RowDefinition Height="140"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+
         <!-- Back button and page title -->
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="120"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Button x:Name="backButton" Margin="39,59,39,0" Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"
+        <!-- Back button -->
+        <Button x:Name="backButton" Margin="39,59,39,0" Command="{Binding GoBack}"
                         Style="{StaticResource NavigationBackButtonNormalStyle}"
                         VerticalAlignment="Top"
                         AutomationProperties.Name="Back"
                         AutomationProperties.AutomationId="BackButton"
                         AutomationProperties.ItemType="Navigation Button"/>
-            <StackPanel Orientation="Horizontal" Grid.Column="1"/>
+        <StackPanel Orientation="Horizontal" Grid.Column="1"/>
+
+        <!-- Title -->
+        <TextBlock Style="{StaticResource HeaderTextBlockStyle}" 
+                       Text="{Binding Title}"
+                       VerticalAlignment="Bottom"
+                       Grid.Row="0"
+                       Grid.Column="1"/>
+
+        <!-- Search box -->
+        <SearchBox PlaceholderText="search by name" 
+                       VerticalAlignment="Bottom"
+                       Grid.Row="1" Grid.Column="1"
+                       HorizontalAlignment="Left"
+                      QueryText="{Binding SearchString, Mode=TwoWay}"
+                        Width="300">
+
+            <!-- Bindt event to command -->
+            <interactivity:Interaction.Behaviors>
+                <core:EventTriggerBehavior EventName="QuerySubmitted">
+                    <core:InvokeCommandAction Command="{Binding GetGames}" />
+                </core:EventTriggerBehavior>
+            </interactivity:Interaction.Behaviors>
+        </SearchBox>
+
+        <!-- Details view , body view -->
+        <Grid Grid.Column="1" Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="320"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- List view of games -->
+            <ListView
+                x:Name="gamesListId"
+                TabIndex="1"
+                Grid.Row="2"
+                Margin="0 80 0 0"
+                ItemsSource="{Binding GamesCollection, Mode=TwoWay}" 
+                SelectedItem="{Binding Game, Mode=TwoWay}"
+                RequestedTheme="Light">
+
+                <!-- Commands for list -->
+                <interactivity:Interaction.Behaviors>
+                    <core:EventTriggerBehavior EventName="SelectionChanged">
+                        <core:InvokeCommandAction Command="{Binding GetGame}" CommandParameter="{Binding Game.Id}" />
+                    </core:EventTriggerBehavior>
+                </interactivity:Interaction.Behaviors>
+
+                <!-- Item template -->
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="6">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="1"
+                                          Text="{Binding Name}" 
+                                          Style="{StaticResource TitleTextBlockStyle}" 
+                                          TextWrapping="NoWrap" MaxHeight="40" 
+                                          VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Grid Grid.Column="2" Visibility="{Binding GameDetailsVisible, Converter={StaticResource VisibilityConverter}}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.8*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Row="1" Orientation="Vertical">
+                    <TextBlock Style="{StaticResource SubheaderTextBlockStyle}" Margin="20 20 0 0">
+                        <Run Text="{Binding Game.Name}"/>
+                    </TextBlock>
+                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" Margin="20 5 0 0">
+                        <Run Text="Price: "/>
+                        <Run Text="{Binding Game.Price}"/>
+                    </TextBlock>
+                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" Margin="20 5 0 0">
+                        <Run Text="Available for: "/>
+                        <Run Text="{Binding Game.OsSupport}"/>
+                    </TextBlock>
+                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" Margin="20 5 0 0">
+                        <Run Text="Genre : "/>
+                        <Run Text="{Binding Game.Genre}"/>
+                    </TextBlock>
+                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" Margin="20 5 0 0" Text="Description: "/>
+                    <TextBlock Style="{StaticResource BodyTextBlockStyle}" Margin="20 5 0 0" Text="{Binding Game.Description}"/>
+                    <Button Margin="40 30 0 0" Background="Transparent" BorderBrush="Black" BorderThickness="2">Add to cart</Button>
+                </StackPanel>
+                
+                <!-- Image part -->
+                
+                <Image Width="256" Height="256" Grid.Row="1" Grid.Column="1"
+                       VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50 20 0 0"
+                       Source="{Binding GameImage.Content, Converter={StaticResource ImageConverter}}"></Image>
+                
+             
+            </Grid>
         </Grid>
     </Grid>
+
 </Page>

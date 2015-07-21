@@ -77,3 +77,4 @@ C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Resources\
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Resources\CommonResources.g.cs
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\Resources\CommonResources.xbf
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Resources\CommonResources.xaml
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Resources\CommonResources.xbf

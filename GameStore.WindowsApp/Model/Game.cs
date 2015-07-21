@@ -18,6 +18,7 @@ namespace GameStore.WindowsApp.Model
         private string genre;
         private double price;
         private bool isInCart;
+        private GameImage gameImage;
 
         #endregion
 
@@ -76,6 +77,12 @@ namespace GameStore.WindowsApp.Model
         {
             get { return isInCart; }
             set { Set(() => this.IsInCart, ref isInCart, value); }
+        }
+
+        public GameImage GameImage
+        {
+            get { return gameImage; }
+            set { Set(() => this.GameImage, ref gameImage, value); }
         }
 
         #endregion
