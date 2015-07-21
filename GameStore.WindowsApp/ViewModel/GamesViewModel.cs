@@ -16,31 +16,44 @@ namespace GameStore.WindowsApp.ViewModel
     {
         #region Fields
 
+        // Fields for one way binding proporties
         private readonly string title;
 
+        // Fields for two way binding proporties
         private string searchString;
         private ObservableCollection<Game> gamesCollection;
 
-        private INavigationService navigation;
-        private IGamesService gamesService;
+        // Services
+        private readonly INavigationService navigation;
+        private readonly IGamesService gamesService;
 
+        // Commands
         private RelayCommand getGamesCommand;
 
         #endregion
 
         #region Proporties
 
+        /// <summary>
+        /// Gets title for page
+        /// </summary>
         public string Title
         {
             get { return title; }
         }
 
+        /// <summary>
+        /// Search string for filtering games
+        /// </summary>
         public string SearchString
         {
             get { return searchString; }
             set { Set(() => this.SearchString, ref searchString, value); }
         }
 
+        /// <summary>
+        /// Observable collection of games
+        /// </summary>
         public ObservableCollection<Game> GamesCollection
         {
             get { return gamesCollection; }
@@ -51,6 +64,9 @@ namespace GameStore.WindowsApp.ViewModel
 
         #region Constructor
 
+        /// <summary>
+        /// Initializes new instance of GamesViewModel
+        /// </summary>
         public GamesViewModel(INavigationService navigation, IGamesService gamesService)
         {
             this.navigation = navigation;
@@ -65,6 +81,9 @@ namespace GameStore.WindowsApp.ViewModel
 
         #region Commands
 
+        /// <summary>
+        /// Command that invokes getGames() method
+        /// </summary>
         public RelayCommand GetGames
         {
             get
@@ -75,8 +94,15 @@ namespace GameStore.WindowsApp.ViewModel
 
         #endregion
 
-        #region Methods
+        #region Public methods
+        
+        #endregion
 
+        #region Private Methods
+
+        /// <summary>
+        /// Fills game collection based on various search options
+        /// </summary>
         private async void getGames()
         {
             try

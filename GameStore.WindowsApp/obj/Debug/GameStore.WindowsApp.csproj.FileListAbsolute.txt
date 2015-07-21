@@ -73,3 +73,7 @@ C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Views\Game
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Views\GamesPage.g.cs
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Views\GamesPage.xaml
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Views\GamesPage.xbf
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Resources\CommonResources.g.i.cs
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Resources\CommonResources.g.cs
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\Resources\CommonResources.xbf
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Resources\CommonResources.xaml

@@ -4,19 +4,20 @@
     <RootPropertyPathName Name="NavigationHelper" />
     <RootPropertyPathName Name="GoBackCommand" />
     <RootPropertyPathName Name="Main" />
-    <RootPropertyPathName Name="NavigateCommand" />
-    <RootPropertyPathName Name="Game" />
-    <RootPropertyPathName Name="Name" />
-    <RootPropertyPathName Name="Games" />
-    <RootPropertyPathName Name="GetGames" />
     <RootPropertyPathName Name="Title" />
+    <RootPropertyPathName Name="Games" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
     <RootType FullName="Windows.UI.Xaml.Application">
+      <RootProperty Name="RequestedTheme" />
       <RootProperty Name="Resources" />
     </RootType>
     <RootType FullName="System.String" />
     <RootType FullName="GameStore.WindowsApp.ViewModel.ViewModelLocator" />
+    <RootType FullName="Windows.UI.Xaml.ResourceDictionary">
+      <RootProperty Name="MergedDictionaries" />
+      <RootProperty Name="Source" />
+    </RootType>
     <RootType FullName="GameStore.WindowsApp.Common.PageBase">
       <RootProperty Name="Resources" />
       <RootProperty Name="Content" />
@@ -25,10 +26,6 @@
     <RootType FullName="Microsoft.Xaml.Interactivity.Interaction">
       <RootMethod Name="GetBehaviors" />
       <RootMethod Name="SetBehaviors" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.ResourceDictionary">
-      <RootProperty Name="MergedDictionaries" />
-      <RootProperty Name="Source" />
     </RootType>
     <RootType FullName="GameStore.WindowsApp.Common.OrientationStateBehavior">
       <RootProperty Name="PortraitFlippedStateName" />
@@ -93,10 +90,6 @@
       <RootProperty Name="Style" />
       <RootProperty Name="Margin" />
       <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="Content" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="Height" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Automation.AutomationProperties">
       <RootMethod Name="GetName" />
@@ -113,21 +106,17 @@
       <RootProperty Name="TextWrapping" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Margin" />
-      <RootProperty Name="FontSize" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="FontFamily" />
-      <RootProperty Name="TextAlignment" />
-      <RootProperty Name="FontWeight" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Data.Binding">
       <RootProperty Name="ElementName" />
       <RootProperty Name="Source" />
     </RootType>
     <RootType FullName="GameStore.WindowsApp.SecondPage" />
-    <RootType FullName="Windows.UI.Xaml.VerticalAlignment" />
-    <RootType FullName="Windows.UI.Xaml.HorizontalAlignment" />
-    <RootType FullName="System.Int32" />
-    <RootType FullName="System.Double" />
+    <RootType FullName="Microsoft.Xaml.Tools.DirectUI.ProxyTypes.ThemeResourceExtension" />
+    <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
+      <RootProperty Name="Orientation" />
+      <RootProperty Name="Children" />
+    </RootType>
     <RootType FullName="GameStore.WindowsApp.MainPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.UserControl">
       <RootProperty Name="Content" />
@@ -145,18 +134,8 @@
       <RootProperty Name="Resources" />
       <RootProperty Name="Content" />
     </RootType>
-    <RootType FullName="Microsoft.Xaml.Tools.DirectUI.ProxyTypes.ThemeResourceExtension" />
     <RootType FullName="Windows.UI.Xaml.Media.Animation.TransitionCollection" />
     <RootType FullName="Windows.UI.Xaml.Media.Animation.EntranceThemeTransition" />
-    <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
-      <RootProperty Name="Orientation" />
-      <RootProperty Name="Children" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="Margin" />
-    </RootType>
     <RootType FullName="GameStore.WindowsApp.Views.GamesPage" />
   </Roots.RootTypes>
 </Roots>

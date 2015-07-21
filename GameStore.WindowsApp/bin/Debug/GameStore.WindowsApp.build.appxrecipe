@@ -59,6 +59,9 @@
     <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\Resources\CommonResources.xbf">
+      <PackagePath>Resources\CommonResources.xbf</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\SecondPage.xbf">
       <PackagePath>SecondPage.xbf</PackagePath>
     </AppxPackagedFile>

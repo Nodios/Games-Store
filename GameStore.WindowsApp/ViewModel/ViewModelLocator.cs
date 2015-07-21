@@ -14,7 +14,6 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.ServiceLocation;
-using GameStore.WindowsApp.Design;
 using GameStore.WindowsApp.Model;
 using GameStore.WindowsApp.Service.Common;
 using GameStore.WindowsApp.Service;
@@ -31,8 +30,12 @@ namespace GameStore.WindowsApp.ViewModel
     /// </summary>
     public class ViewModelLocator
     {
+        #region Fields
+
         public const string SecondPageKey = "SecondPage";
-        public const string GamesPageKey = "GamesPage";
+        public const string GamesPageKey = "GamesPage"; 
+
+        #endregion
 
         /// <summary>
         /// Gets the Main property.
@@ -68,15 +71,11 @@ namespace GameStore.WindowsApp.ViewModel
 
             if (ViewModelBase.IsInDesignModeStatic)
             {
-                SimpleIoc.Default.Register<IDataService, DesignDataService>();
-
                 // My services
                 SimpleIoc.Default.Register<IGamesService, GamesService>();
             }
             else
             {
-                SimpleIoc.Default.Register<IDataService, DataService>();
-
                 // My services
                 SimpleIoc.Default.Register<IGamesService, GamesService>();
             }

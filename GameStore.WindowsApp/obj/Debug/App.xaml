@@ -5,12 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 			 xmlns:ignore="http://www.ignore.com"
              mc:Ignorable="d ignore"
-             xmlns:vm="using:GameStore.WindowsApp.ViewModel">
+             xmlns:vm="using:GameStore.WindowsApp.ViewModel"
+             RequestedTheme="Light">
 
     <Application.Resources>
         <!-- Application-specific resources -->
 
-        <x:String x:Key="AppName">GameStore.WindowsApp</x:String>
+        <x:String x:Key="AppName">Games Store</x:String>
 
         <vm:ViewModelLocator x:Key="Locator"
                              d:IsDataSource="True" />

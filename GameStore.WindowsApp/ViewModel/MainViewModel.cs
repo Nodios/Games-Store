@@ -18,76 +18,62 @@ namespace GameStore.WindowsApp.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
-        /// <summary>
-        /// The <see cref="WelcomeTitle" /> property's name.
-        /// </summary>
-        public const string WelcomeTitlePropertyName = "WelcomeTitle";
+        #region Fields
 
-        private readonly IDataService _dataService;
-        private readonly INavigationService _navigationService;
+        private readonly string title;
 
-        private readonly IGamesService gamesService;
+        private readonly INavigationService navigationService;
 
-        private RelayCommand _navigateCommand;
-        private RelayCommand getGame;
-        private string _originalTitle;
-        private string _welcomeTitle = string.Empty;
-        private Game game;
+        private RelayCommand navigateToGamesPageCommand; 
+
+        #endregion
+
+        #region Proporties
 
         /// <summary>
-        /// Gets the NavigateCommand.
+        /// Gets title for view model
         /// </summary>
-        public RelayCommand NavigateCommand
+        public string Title
         {
-            get
-            {
-                return _navigateCommand
-                       ?? (_navigateCommand = new RelayCommand(
-                           () => _navigationService.NavigateTo(ViewModelLocator.GamesPageKey)));
-
-
-            }
+            get { return title; }
         }
 
-        public RelayCommand GetGame
-        {
-            get
-            {
-                return getGame ?? (getGame = new RelayCommand(Get));
-            }
-        }
-        /// <summary>
-        /// Gets the WelcomeTitle property.
-        /// Changes to that property's value raise the PropertyChanged event. 
-        /// </summary>
-        public string WelcomeTitle
-        {
-            get
-            {
-                return _welcomeTitle;
-            }
+        #endregion
 
-            set
-            {
-                Set(ref _welcomeTitle, value);
-            }
-        }
+        #region Constructor
 
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
-        public MainViewModel(
-            IDataService dataService,
-            INavigationService navigationService, IGamesService gamesService)
+        public MainViewModel(INavigationService navigationService)
         {
-            _dataService = dataService;
-            _navigationService = navigationService;
+            title = "Games Store";
 
-            // For testing
-            this.gamesService = gamesService;
+            this.navigationService = navigationService;
+        } 
 
-            Initialize();
+        #endregion
+
+        #region Commands
+
+        /// <summary>
+        /// Navigates to Games page
+        /// </summary>
+        public RelayCommand NavigateToGamesPageCommand
+        {
+            get
+            {
+                return navigateToGamesPageCommand
+                       ?? (navigateToGamesPageCommand = new RelayCommand(
+                           () => navigationService.NavigateTo(ViewModelLocator.GamesPageKey)));
+
+
+            }
         }
+
+        #endregion
+
+        #region Public methods
 
         ////public override void Cleanup()
         ////{
@@ -95,51 +81,18 @@ namespace GameStore.WindowsApp.ViewModel
 
         ////    base.Cleanup();
         ////}
+
         public void Load(DateTime lastVisit)
         {
-            if (lastVisit > DateTime.MinValue)
-            {
-                WelcomeTitle = string.Format(
-                    "{0} (last visit on the {1})",
-                    _originalTitle,
-                    lastVisit);
-            }
-        }
 
-        private async Task Initialize()
-        {
-            try
-            {
-                var item = await _dataService.GetData();
-                _originalTitle = item.Title;
-                WelcomeTitle = item.Title;
-            }
-            catch (Exception ex)
-            {
-                // Report error here
-            }
-        }
+        } 
 
-        private async void Get()
-        {
-            try
-            {
-                var v = await gamesService.GetAsync(Guid.Parse("02a4269e-702d-e511-89a8-689423c58a9c"));
-                Game = v;
-            }
-            catch (Exception ex)
-            {
-                MessageDialog msg = new MessageDialog(ex.Message);
-            }
-        }
+        #endregion
 
-        public Game Game
-        {
-            get { return game; }
-            set
-            {
-                Set(() => this.Game, ref game, value);
-            }
-        }
+        #region Private methods
+
+
+
+        #endregion
     }
 }
