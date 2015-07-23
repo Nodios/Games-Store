@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using System;
 
 namespace GameStore.WindowsApp.Model
 {
@@ -7,6 +8,7 @@ namespace GameStore.WindowsApp.Model
         #region Fields
 
         private string id;
+        private string access_token;
         private string userName;
         private string passwordHash;
         private string email;
@@ -19,13 +21,31 @@ namespace GameStore.WindowsApp.Model
         public string Id
         {
             get { return id; }
-            set { id = value; }
+            set
+            {
+                if (String.IsNullOrEmpty(id))
+                    id = value;
+            }
+        }
+
+        public string Access_token
+        {
+            get { return access_token; }
+            set
+            {
+                if (String.IsNullOrEmpty(access_token))
+                    access_token = value;
+            }
         }
 
         public string UserName
         {
             get { return userName; }
-            set { userName = value; }
+            set
+            {
+                if (String.IsNullOrEmpty(userName))
+                    userName = value;
+            }
         }
 
         /// <summary>

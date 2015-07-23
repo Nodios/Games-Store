@@ -14,9 +14,12 @@
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Skins/MainSkin.xaml" />
+                <ResourceDictionary Source="Skins/MainSkin.xaml" />        
             </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
+            
+            <!-- Set converters here-->
+            <common:VisibilityConverter x:Key="VisibilityConverter"></common:VisibilityConverter>
+        </ResourceDictionary>    
     </Page.Resources>
 
     <interactivity:Interaction.Behaviors>
@@ -26,14 +29,14 @@
 
     <!-- Main layout , guidelines : https://msdn.microsoft.com/en-us/library/windows/apps/hh872191.aspx -->
     <Grid Background="{ThemeResource AppBarBackgroundThemeBrush}">
-        
+
         <!-- Transitions -->
         <Grid.ChildrenTransitions>
             <TransitionCollection>
                 <EntranceThemeTransition/>
             </TransitionCollection>
         </Grid.ChildrenTransitions>
-        
+
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <RowDefinition Height="100"/>
@@ -44,20 +47,52 @@
             <ColumnDefinition Width="120" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-    
-    
-    <!-- Title -->
+
+
+        <!-- Title -->
         <TextBlock Style="{StaticResource HeaderTextBlockStyle}"
                    Text="{Binding Title}"
                    VerticalAlignment="Bottom"
                    Grid.Row="0"
                    Grid.Column="1"/>
-        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Bottom">
-            <Button Style="{StaticResource NavigationButtonStyle}" Command="{Binding NavigateToGamesPageCommand}">Games</Button>
+        
+        <!-- Menu buttons --> 
+        <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Vertical" Margin="0 0 0 50" VerticalAlignment="Center" HorizontalAlignment="Left">
+            <Button Style="{StaticResource NavigationButtonStyle}" Command="{Binding NavigateToGamesPageCommand}">Game</Button>
             <Button Style="{StaticResource NavigationButtonStyle}" Command="{Binding LoginCommand}">Publishers</Button>
-            <Button Style="{StaticResource NavigationButtonStyle}">Account</Button>
+            <Button Style="{StaticResource NavigationButtonStyle}">Info</Button>
         </StackPanel>
         
+        <!-- Account buttons -->
+        <StackPanel Grid.Column="1" Grid.Row="1" Margin="0 30 0 0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Visibility="{Binding RegisterAndLoginButtonVisibility,Converter={StaticResource VisibilityConverter },Mode=TwoWay}">
+            <Button Style="{StaticResource AccountButtonStyle}" Command="{Binding ShowLoginFormCommand}">Login</Button>
+            <Button Style="{StaticResource AccountButtonStyle}">Sign up</Button>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Grid.Row="1" Margin="0 30 0 0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Visibility="{Binding UserLoggedinButtonVisibility,Converter={StaticResource VisibilityConverter },Mode=TwoWay}">
+            <TextBlock Style="{StaticResource HeaderTextBlockStyle}">Hi</TextBlock>
+            <Button Style="{StaticResource AccountButtonStyle}" Content="{Binding UserName, Mode=TwoWay}"></Button>              
+        </StackPanel>
+        <Popup>
+            <!-- TODO Implement user menu options -->
+        </Popup>
+
+        <Grid Height="469" Grid.Row="2" Grid.Column="1">
+                <!-- Login panel -->
+            <StackPanel Orientation="Vertical" 
+                        HorizontalAlignment="Right" VerticalAlignment="Center" 
+                        Width="300" 
+                        Visibility="{Binding LoginFormVisibility, Converter={StaticResource VisibilityConverter},Mode=TwoWay}">
+                <TextBlock Style="{StaticResource SubheaderTextBlockStyle}" VerticalAlignment="Center"  Width="200">Login</TextBlock>
+                <TextBox  Width="200" PlaceholderText="Username" Margin="0 20 0 0" Text="{Binding UserName,Mode=TwoWay}"/>
+                <PasswordBox Width="200" PlaceholderText="Password" Margin="0 20 0 0" Password="{Binding Password, Mode=TwoWay}"/>
+                <Button Content="Login" HorizontalAlignment="Center"      
+                        Width="200" Margin="0 20 0 0" Style="{StaticResource AppButtonStyle}"
+                        Command="{Binding LoginCommand}"/>
+            </StackPanel>
+        </Grid>
+
     </Grid>
     
 </common:PageBase>
+

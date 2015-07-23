@@ -1,8 +1,11 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
+using GameStore.WindowsApp.Model;
 using GameStore.WindowsApp.Service.Common;
 using System;
+using System.Threading.Tasks;
+using Windows.Storage;
 
 namespace GameStore.WindowsApp.ViewModel
 {
@@ -18,11 +21,23 @@ namespace GameStore.WindowsApp.ViewModel
 
         private readonly string title;
 
+     
+
+        private string userName;
+        private string password;
+        private User user;
+        private bool registerAndLoginButtonVisibility;
+        private bool userLoggedInButtonVisibility;
+        public bool loginFormVisibility;
+
         private readonly INavigationService navigationService;
         private readonly IUserService userService;
 
         private RelayCommand navigateToGamesPageCommand;
         private RelayCommand loginCommand;
+        private RelayCommand showLoginFormCommand;
+
+        ApplicationDataContainer settings = ApplicationData.Current.LocalSettings;
 
         #endregion
 
@@ -34,6 +49,60 @@ namespace GameStore.WindowsApp.ViewModel
         public string Title
         {
             get { return title; }
+        }
+
+        /// <summary>
+        /// Two way
+        /// </summary>
+        public bool RegisterAndLoginButtonVisibility
+        {
+            get { return registerAndLoginButtonVisibility; }
+            set { Set(() => this.RegisterAndLoginButtonVisibility, ref registerAndLoginButtonVisibility, value); }
+        }
+
+        /// <summary>
+        /// Two way
+        /// </summary>
+        public bool UserLoggedinButtonVisibility
+        {
+            get { return userLoggedInButtonVisibility; }
+            set { Set(() => this.UserLoggedinButtonVisibility, ref userLoggedInButtonVisibility, value); }
+        }
+
+        /// <summary>
+        /// Gets and sets visibilty of login form
+        /// </summary>
+        public bool LoginFormVisibility
+        {
+            get { return loginFormVisibility; }
+            set { Set(() => this.LoginFormVisibility, ref loginFormVisibility, value); }
+        }
+
+        /// <summary>
+        /// Gets and sets username, two way binding
+        /// </summary>
+        public string UserName
+        {
+            get { return userName; }
+            set { Set(() => this.UserName, ref userName, value); }
+        }
+
+        /// <summary>
+        /// Gets and sets password, two way binding
+        /// </summary>
+        public string Password
+        {
+            get { return password; }
+            set { Set(() => this.Password, ref password, value); }
+        }
+
+        /// <summary>
+        /// Gets and sets user, two way binding
+        /// </summary>
+        public User User
+        {
+            get { return user; }
+            set { Set(() => this.User, ref user, value); }
         }
 
         #endregion
@@ -49,11 +118,29 @@ namespace GameStore.WindowsApp.ViewModel
 
             this.navigationService = navigationService;
             this.userService = userService;
+
+            registerAndLoginButtonVisibility = true;
+            userLoggedInButtonVisibility = false;
+            loginFormVisibility = false;
         }
 
         #endregion
 
         #region Commands
+
+
+        public RelayCommand ShowLoginFormCommand
+        {
+            get
+            {
+                return showLoginFormCommand
+                    ?? (showLoginFormCommand = new RelayCommand(
+                        () =>
+                        {
+                            LoginFormVisibility = true;
+                        }));
+            }
+        }
 
         /// <summary>
         /// Navigates to Games page
@@ -69,16 +156,15 @@ namespace GameStore.WindowsApp.ViewModel
 
             }
         }
-
+   
+        /// <summary>
+        /// Login command
+        /// </summary>
         public RelayCommand LoginCommand
         {
             get
             {
-                return loginCommand ?? (loginCommand = new RelayCommand(
-                    () =>
-                    {
-                        userService.FindAsync("luka712", "112233");
-                    }));
+                return loginCommand ?? (loginCommand = new RelayCommand(async() => User = await login()));                
             }
         }
 
@@ -86,23 +172,43 @@ namespace GameStore.WindowsApp.ViewModel
 
         #region Public methods
 
-        ////public override void Cleanup()
-        ////{
-        ////    // Clean up if needed
-
-        ////    base.Cleanup();
-        ////}
-
         public void Load(DateTime lastVisit)
         {
 
         }
 
+
         #endregion
 
         #region Private methods
 
+        /// <summary>
+        /// User login
+        /// </summary>
+        private async Task<User> login()
+        {
+            try
+            {
+               User result = await userService.FindAsync(userName, password);
+               UserName = GameStore.WindowsApp.Common.UserInfo.Username;     
 
+
+               if (!String.IsNullOrEmpty(userName))
+               {
+                   RegisterAndLoginButtonVisibility = false;
+                   UserLoggedinButtonVisibility = true;
+                   LoginFormVisibility = false;                
+               }
+
+               return result;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
 
         #endregion
     }

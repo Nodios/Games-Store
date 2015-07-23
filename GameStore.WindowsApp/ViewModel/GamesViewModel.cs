@@ -134,7 +134,7 @@ namespace GameStore.WindowsApp.ViewModel
 
             gamesCollection = new ObservableCollection<Game>();
 
-            title = "Find games";
+            title = "Find games";            
             GameDetailsVisible = false;
             PreviousButtonVisible = false;
             GoForwardButtonVisible = false;

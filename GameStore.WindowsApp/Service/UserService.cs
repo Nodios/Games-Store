@@ -1,11 +1,14 @@
-﻿using GameStore.WindowsApp.Model;
+﻿using GameStore.WindowsApp.Common;
+using GameStore.WindowsApp.Model;
 using GameStore.WindowsApp.Service.Common;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using Windows.Storage;
 
 
 namespace GameStore.WindowsApp.Service
@@ -14,6 +17,7 @@ namespace GameStore.WindowsApp.Service
     {
         private HttpClient client;
         private readonly string url;
+        ApplicationDataContainer localSettings;
 
         public UserService()
         {
@@ -47,6 +51,10 @@ namespace GameStore.WindowsApp.Service
 
                 User user = JsonConvert.DeserializeObject<User>(jsonString);
 
+                UserInfo.Id = user.Id;
+                UserInfo.Token = user.Access_token;
+                UserInfo.Username = user.UserName;
+
                 return user;
 
             }
@@ -71,5 +79,8 @@ namespace GameStore.WindowsApp.Service
         {
             throw new NotImplementedException();
         }
+
+        class AuthResponseEntity
+        { }
     }
 }

@@ -118,6 +118,7 @@
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="Common\UserControlBase.cs" />
+    <Compile Include="Common\UserInfo.cs" />
     <Compile Include="Common\VisibilityConverter.cs" />
     <Compile Include="Model\Cart.cs" />
     <Compile Include="Model\Comment.cs" />
