@@ -12,7 +12,7 @@ namespace GameStore.WebApi.Controllers
     [RoutePrefix("api/cart")]
     public class CartController : ApiController
     {
-        ICartService service;
+        private readonly ICartService service;
 
         public CartController(ICartService service)
         {

@@ -7,6 +7,7 @@
     <RootPropertyPathName Name="NavigationHelper" />
     <RootPropertyPathName Name="GoBackCommand" />
     <RootPropertyPathName Name="Main" />
+    <RootPropertyPathName Name="LoginCommand" />
     <RootPropertyPathName Name="NavigateToGamesPageCommand" />
     <RootPropertyPathName Name="Title" />
     <RootPropertyPathName Name="Games" />
@@ -19,9 +20,13 @@
     <RootPropertyPathName Name="OsSupport" />
     <RootPropertyPathName Name="Price" />
     <RootPropertyPathName Name="Name" />
+    <RootPropertyPathName Name="ForwardInList" />
+    <RootPropertyPathName Name="GoForwardButtonVisible" />
     <RootPropertyPathName Name="GamesCollection" />
     <RootPropertyPathName Name="GetGame" />
     <RootPropertyPathName Name="Id" />
+    <RootPropertyPathName Name="BackInList" />
+    <RootPropertyPathName Name="PreviousButtonVisible" />
     <RootPropertyPathName Name="SearchString" />
     <RootPropertyPathName Name="GetGames" />
     <RootPropertyPathName Name="GoBack" />
@@ -39,13 +44,14 @@
       <RootProperty Name="Margin" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Content" />
-      <RootProperty Name="Background" />
-      <RootProperty Name="BorderBrush" />
-      <RootProperty Name="BorderThickness" />
+      <RootProperty Name="Visibility" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Control">
       <RootProperty Name="FontSize" />
       <RootProperty Name="FontWeight" />
+      <RootProperty Name="Background" />
+      <RootProperty Name="BorderBrush" />
+      <RootProperty Name="BorderThickness" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.FrameworkElement">
       <RootProperty Name="Margin" />
@@ -53,27 +59,11 @@
     <RootType FullName="Windows.UI.Xaml.Media.SolidColorBrush">
       <RootProperty Name="Color" />
     </RootType>
-    <RootType FullName="Microsoft.Xaml.Tools.DirectUI.ProxyTypes.StaticResourceExtension" />
     <RootType FullName="Windows.UI.Xaml.Setter">
       <RootProperty Name="Property" />
       <RootProperty Name="Value" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.ResourceDictionary">
-      <RootProperty Name="MergedDictionaries" />
-      <RootProperty Name="Source" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
-      <RootProperty Name="Foreground" />
-      <RootProperty Name="Text" />
-      <RootProperty Name="Style" />
-      <RootProperty Name="IsHitTestVisible" />
-      <RootProperty Name="TextWrapping" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="Inlines" />
-      <RootProperty Name="MaxHeight" />
-      <RootProperty Name="HorizontalAlignment" />
-    </RootType>
+    <RootType FullName="Microsoft.Xaml.Tools.DirectUI.ProxyTypes.StaticResourceExtension" />
     <RootType FullName="GameStore.WindowsApp.Common.PageBase">
       <RootProperty Name="Resources" />
       <RootProperty Name="Content" />
@@ -82,6 +72,10 @@
     <RootType FullName="Microsoft.Xaml.Interactivity.Interaction">
       <RootMethod Name="GetBehaviors" />
       <RootMethod Name="SetBehaviors" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.ResourceDictionary">
+      <RootProperty Name="MergedDictionaries" />
+      <RootProperty Name="Source" />
     </RootType>
     <RootType FullName="GameStore.WindowsApp.Common.OrientationStateBehavior">
       <RootProperty Name="PortraitFlippedStateName" />
@@ -149,6 +143,17 @@
       <RootMethod Name="SetAutomationId" />
       <RootMethod Name="GetItemType" />
       <RootMethod Name="SetItemType" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
+      <RootProperty Name="Text" />
+      <RootProperty Name="Style" />
+      <RootProperty Name="IsHitTestVisible" />
+      <RootProperty Name="TextWrapping" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Inlines" />
+      <RootProperty Name="MaxHeight" />
+      <RootProperty Name="HorizontalAlignment" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Data.Binding">
       <RootProperty Name="ElementName" />

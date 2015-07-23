@@ -15,7 +15,7 @@ namespace GameStore.WebApi.Controllers
     [RoutePrefix("api/game")]
     public class GameController : ApiController
     {
-        private IGamesService GamesService;
+        private readonly  IGamesService GamesService;
 
         public GameController(IGamesService gamesService)
         {

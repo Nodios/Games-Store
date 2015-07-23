@@ -13,7 +13,7 @@ namespace GameStore.Repository
 {
     public class OrderRepository : IOrderRepository
     {
-        IRepository repository;
+        private readonly IRepository repository;
 
         public OrderRepository(IRepository repository)
         {
@@ -36,7 +36,7 @@ namespace GameStore.Repository
             }
             catch (Exception ex)
             {
-                
+
                 throw ex;
             }
         }
@@ -59,11 +59,11 @@ namespace GameStore.Repository
                     .OrderBy(c => c.Surname)
                     .Skip((filter.PageNumber * filter.PageSize) - filter.PageSize)
                     .Take(filter.PageSize).ToListAsync());
-            
+
             }
             catch (Exception ex)
             {
-                
+
                 throw ex;
             }
         }
@@ -80,14 +80,14 @@ namespace GameStore.Repository
                 IUnitOfWork uow = repository.CreateUnitOfWork();
 
                 OrderEntity entity = Mapper.Map<OrderEntity>(order);
-                Task<OrderEntity> orderResult =  uow.AddAsync<OrderEntity>(entity);
+                Task<OrderEntity> orderResult = uow.AddAsync<OrderEntity>(entity);
                 await uow.CommitAsync();
 
                 return Mapper.Map<IOrder>(orderResult.Result);
             }
             catch (Exception ex)
             {
-                
+
                 throw ex;
             }
         }
@@ -127,7 +127,7 @@ namespace GameStore.Repository
             }
             catch (Exception ex)
             {
-                
+
                 throw ex;
             }
         }

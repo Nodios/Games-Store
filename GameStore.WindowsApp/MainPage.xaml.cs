@@ -1,5 +1,5 @@
-﻿using System;
-using GameStore.WindowsApp.ViewModel;
+﻿using GameStore.WindowsApp.ViewModel;
+using System;
 
 namespace GameStore.WindowsApp
 {

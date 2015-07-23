@@ -13,7 +13,7 @@ namespace GameStore.WebApi.Controllers
     [RoutePrefix("api/User")]
     public class UserController : ApiController
     {
-        private IUserService userService;
+        private readonly IUserService userService;
         private UserModel userForValidation;
 
         public UserController(IUserService userService)

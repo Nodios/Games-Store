@@ -9,7 +9,7 @@ namespace GameStore.Repository
 {
     public class InfoRepository : IInfoRepository
     {
-        private IRepository repository;
+        private readonly IRepository repository;
 
         public InfoRepository(IRepository repository)
         {

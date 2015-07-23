@@ -9,15 +9,14 @@
   DataContext="{Binding Source={StaticResource Locator}, Path=ViewModelName}"
 */
 
-using System.Diagnostics.CodeAnalysis;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Views;
-using Microsoft.Practices.ServiceLocation;
-using GameStore.WindowsApp.Model;
-using GameStore.WindowsApp.Service.Common;
 using GameStore.WindowsApp.Service;
+using GameStore.WindowsApp.Service.Common;
 using GameStore.WindowsApp.Views;
+using Microsoft.Practices.ServiceLocation;
+using System.Diagnostics.CodeAnalysis;
 
 namespace GameStore.WindowsApp.ViewModel
 {
@@ -74,12 +73,14 @@ namespace GameStore.WindowsApp.ViewModel
                 // My services
                 SimpleIoc.Default.Register<IGamesService, GamesService>();
                 SimpleIoc.Default.Register<IGameImageService, GameImageService>();
+                SimpleIoc.Default.Register<IUserService, UserService>();
             }
             else
             {
                 // My services
                 SimpleIoc.Default.Register<IGamesService, GamesService>();
                 SimpleIoc.Default.Register<IGameImageService, GameImageService>();
+                SimpleIoc.Default.Register<IUserService, UserService>();
             }
 
             // Configure navigation service pages here

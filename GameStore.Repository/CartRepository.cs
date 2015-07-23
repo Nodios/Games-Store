@@ -13,7 +13,7 @@ namespace GameStore.Repository
     /// </summary>
     public class CartRepository : ICartRepository
     {
-        private IRepository repository;
+        private readonly IRepository repository;
 
         #region Constructors
 

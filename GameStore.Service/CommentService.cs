@@ -11,7 +11,7 @@ namespace GameStore.Service
     /// </summary>
     public class CommentService : ICommentService
     {
-        ICommentRepository repository;
+        private readonly ICommentRepository repository;
 
         /// <summary>
         /// The constructor

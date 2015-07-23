@@ -13,7 +13,7 @@ namespace GameStore.Repository
 {
     public class GameImageRepository : IGameImageRepository
     {
-        IRepository repository;
+        private readonly IRepository repository;
 
         public GameImageRepository(IRepository repository)
         {

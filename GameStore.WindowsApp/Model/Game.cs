@@ -1,7 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
 using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 
 namespace GameStore.WindowsApp.Model
 {
@@ -73,12 +71,18 @@ namespace GameStore.WindowsApp.Model
             set { price = value; }
         }
 
+        /// <summary>
+        /// Implements notify property changed
+        /// </summary>
         public bool IsInCart
         {
             get { return isInCart; }
             set { Set(() => this.IsInCart, ref isInCart, value); }
         }
 
+        /// <summary>
+        /// Implements notify property changed
+        /// </summary>
         public GameImage GameImage
         {
             get { return gameImage; }

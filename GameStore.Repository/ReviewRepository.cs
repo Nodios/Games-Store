@@ -15,7 +15,7 @@ namespace GameStore.Repository
     {
         #region Fields and contructor
 
-        private IRepository repository;
+        private readonly IRepository repository;
 
         /// <summary>
         /// Constructor

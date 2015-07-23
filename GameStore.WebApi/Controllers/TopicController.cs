@@ -15,7 +15,7 @@ namespace GameStore.WebApi.Controllers
     [RoutePrefix("api/topic")]
     public class TopicController : ApiController
     {
-        private ITopicService service;
+        private readonly ITopicService service;
 
         /// <summary>
         /// Constructor

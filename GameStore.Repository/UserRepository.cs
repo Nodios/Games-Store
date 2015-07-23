@@ -12,8 +12,8 @@ namespace GameStore.Repository
 {
     public class UserRepository : IUserRepository, IUserManagerFactory
     {
-        private IRepository repository;
-        private IUserManagerFactory userManagerFactory;
+        private readonly IRepository repository;
+        private readonly IUserManagerFactory userManagerFactory;
 
         /// <summary>
         /// Constructor

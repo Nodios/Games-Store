@@ -13,7 +13,7 @@ namespace GameStore.WebApi.Controllers
     [RoutePrefix("api/gameImage")]
     public class GameImageController : ApiController
     {
-        IGameImageService service;
+       private readonly IGameImageService service;
 
         public GameImageController(IGameImageService service)
         {

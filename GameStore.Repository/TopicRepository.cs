@@ -16,7 +16,7 @@ namespace GameStore.Repository
     /// </summary>
     public class TopicRepository : ITopicRepository
     {
-        private IRepository repository;
+        private readonly IRepository repository;
 
         /// <summary>
         /// The constructor

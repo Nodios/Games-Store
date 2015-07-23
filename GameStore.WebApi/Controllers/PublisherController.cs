@@ -15,7 +15,7 @@ namespace GameStore.WebApi.Controllers
     [RoutePrefix("api/Publisher")]
     public class PublisherController : ApiController
     {
-        private IPublisherService PublisherService;
+        private readonly IPublisherService PublisherService;
 
         public PublisherController(IPublisherService service)
             :base()

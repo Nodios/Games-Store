@@ -1,8 +1,8 @@
-﻿using Windows.Graphics.Display;
+﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Threading;
+using Windows.Graphics.Display;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Threading;
 
 namespace GameStore.WindowsApp.Common
 {

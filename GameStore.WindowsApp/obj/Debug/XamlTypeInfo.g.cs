@@ -1102,3 +1102,4 @@ namespace GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo
 }
 
 
+

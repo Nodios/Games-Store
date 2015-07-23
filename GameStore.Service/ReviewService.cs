@@ -9,7 +9,7 @@ namespace GameStore.Service
 {
     public class ReviewService : IReviewService
     {
-        IReviewRepository repository;
+        private readonly IReviewRepository repository;
 
         public ReviewService(IReviewRepository repository)
         {

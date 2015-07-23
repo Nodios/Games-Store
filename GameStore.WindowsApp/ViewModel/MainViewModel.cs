@@ -1,12 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
-using GameStore.WindowsApp.Model;
 using GameStore.WindowsApp.Service.Common;
-using System.ServiceModel.Channels;
-using Windows.UI.Popups;
+using System;
 
 namespace GameStore.WindowsApp.ViewModel
 {
@@ -23,8 +19,10 @@ namespace GameStore.WindowsApp.ViewModel
         private readonly string title;
 
         private readonly INavigationService navigationService;
+        private readonly IUserService userService;
 
-        private RelayCommand navigateToGamesPageCommand; 
+        private RelayCommand navigateToGamesPageCommand;
+        private RelayCommand loginCommand;
 
         #endregion
 
@@ -45,12 +43,13 @@ namespace GameStore.WindowsApp.ViewModel
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
-        public MainViewModel(INavigationService navigationService)
+        public MainViewModel(INavigationService navigationService, IUserService userService)
         {
             title = "Games Store";
 
             this.navigationService = navigationService;
-        } 
+            this.userService = userService;
+        }
 
         #endregion
 
@@ -71,6 +70,18 @@ namespace GameStore.WindowsApp.ViewModel
             }
         }
 
+        public RelayCommand LoginCommand
+        {
+            get
+            {
+                return loginCommand ?? (loginCommand = new RelayCommand(
+                    () =>
+                    {
+                        userService.FindAsync("luka712", "112233");
+                    }));
+            }
+        }
+
         #endregion
 
         #region Public methods
@@ -85,7 +96,7 @@ namespace GameStore.WindowsApp.ViewModel
         public void Load(DateTime lastVisit)
         {
 
-        } 
+        }
 
         #endregion
 

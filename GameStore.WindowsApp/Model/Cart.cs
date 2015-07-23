@@ -1,7 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 
 namespace GameStore.WindowsApp.Model
 {

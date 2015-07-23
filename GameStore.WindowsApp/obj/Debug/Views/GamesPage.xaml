@@ -82,11 +82,16 @@
             </Grid.ColumnDefinitions>
 
             <!-- List view of games -->
+            <Button Content="&lt; Go back" Grid.Row="2" 
+                    VerticalAlignment="Top"  Margin="0 60 0 0"
+                    Style="{StaticResource AppButtonStyle}"
+                    Command="{Binding BackInList}"
+                    Visibility="{Binding PreviousButtonVisible, Converter={StaticResource VisibilityConverter}, Mode=OneWay}"/>
             <ListView
                 x:Name="gamesListId"
                 TabIndex="1"
                 Grid.Row="2"
-                Margin="0 80 0 0"
+                Margin="0 120 0 0"
                 ItemsSource="{Binding GamesCollection, Mode=TwoWay}" 
                 SelectedItem="{Binding Game, Mode=TwoWay}"
                 RequestedTheme="Light">
@@ -109,13 +114,20 @@
                             <TextBlock Grid.Column="1"
                                           Text="{Binding Name}" 
                                           Style="{StaticResource TitleTextBlockStyle}" 
-                                          TextWrapping="NoWrap" MaxHeight="40" 
+                                          TextWrapping="NoWrap" MaxHeight="40"                                  
                                           VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <Button Content="See more >" Grid.Row="2"
+                    Margin="0 0 0 140" VerticalAlignment="Bottom" 
+                    Style="{StaticResource AppButtonStyle}"
+                    Command="{Binding ForwardInList}"
+                    Visibility="{Binding GoForwardButtonVisible, Converter={StaticResource VisibilityConverter},Mode=TwoWay}"
+                    />
 
+            <!-- Game Details -->
             <Grid Grid.Column="2" Visibility="{Binding GameDetailsVisible, Converter={StaticResource VisibilityConverter}}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"/>
@@ -144,16 +156,18 @@
                     </TextBlock>
                     <TextBlock Style="{StaticResource TitleTextBlockStyle}" Margin="20 5 0 0" Text="Description: "/>
                     <TextBlock Style="{StaticResource BodyTextBlockStyle}" Margin="20 5 0 0" Text="{Binding Game.Description}"/>
-                    <Button Margin="40 30 0 0" Background="Transparent" BorderBrush="Black" BorderThickness="2">Add to cart</Button>
+                    <Button Margin="40 30 0 0" 
+                            Style="{StaticResource AppButtonStyle}"
+                            >Add to cart</Button>
                 </StackPanel>
-                
+
                 <!-- Image part -->
-                
+
                 <Image Width="256" Height="256" Grid.Row="1" Grid.Column="1"
                        VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50 20 0 0"
                        Source="{Binding GameImage.Content, Converter={StaticResource ImageConverter}}"></Image>
-                
-             
+
+
             </Grid>
         </Grid>
     </Grid>

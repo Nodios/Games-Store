@@ -9,9 +9,16 @@ using System.Collections.ObjectModel;
 
 namespace GameStore.WindowsApp.ViewModel
 {
+    public enum GameSearchType { ByName, EmptySearch};
+
     public class GamesViewModel : ViewModelBase
     {
         #region Fields
+
+        // Local fields, without proprites
+        private int pageNumber = 1;
+        private const int MAX_NUMBER_OF_ITEMS_ON_PAGE = 5;
+        private GameSearchType searchType = GameSearchType.EmptySearch;
 
         // Fields for one way binding proporties
         private readonly string title;
@@ -19,6 +26,8 @@ namespace GameStore.WindowsApp.ViewModel
         // Fields for two way binding proporties
         private string searchString = "";
         private bool gameDetailsVisible;
+        private bool goForwardButtonVisible;
+        private bool previousButtonVisible;
         private Game game;
         private GameImage gameImage;
         private ObservableCollection<Game> gamesCollection;
@@ -32,6 +41,8 @@ namespace GameStore.WindowsApp.ViewModel
         private RelayCommand<Guid> getGameCommand;
         private RelayCommand getGamesCommand;
         private RelayCommand goBack;
+        private RelayCommand backInList;
+        private RelayCommand forwardInList;
 
         #endregion
 
@@ -61,6 +72,24 @@ namespace GameStore.WindowsApp.ViewModel
         {
             get { return gameDetailsVisible; }
             set { Set(() => this.GameDetailsVisible, ref gameDetailsVisible, value); }
+        }
+
+        /// <summary>
+        /// Used to set visibility of previous button
+        /// </summary>
+        public bool PreviousButtonVisible
+        {
+            get { return previousButtonVisible; }
+            set { Set(() => this.PreviousButtonVisible, ref previousButtonVisible, value); }
+        }
+
+        /// <summary>
+        /// Used to set visibilte of search for more button
+        /// </summary>
+        public bool GoForwardButtonVisible
+        {
+            get { return goForwardButtonVisible; }
+            set { Set(() => this.GoForwardButtonVisible, ref goForwardButtonVisible, value); }
         }
 
         /// <summary>
@@ -106,7 +135,9 @@ namespace GameStore.WindowsApp.ViewModel
             gamesCollection = new ObservableCollection<Game>();
 
             title = "Find games";
-            gameDetailsVisible = false;
+            GameDetailsVisible = false;
+            PreviousButtonVisible = false;
+            GoForwardButtonVisible = false;
         }
 
         #endregion
@@ -142,14 +173,56 @@ namespace GameStore.WindowsApp.ViewModel
         {
             get
             {
-                return goBack = new RelayCommand(navigation.GoBack);
+                return goBack ?? (goBack = new RelayCommand(() =>
+                    {
+                        pageNumber = 1;
+                        searchString = "";
+                        navigation.GoBack();
+                    }));
             }
         }
 
+        /// <summary>
+        /// Click on go back in list
+        /// </summary>
+        public RelayCommand BackInList
+        {
+            get
+            {
+                return backInList ?? (backInList =
+                    new RelayCommand(() =>
+                        {
+                            pageNumber--;
+
+                            if (pageNumber < 1)
+                                pageNumber = 1;
+
+                            getGames();
+                            sizeAndPageNumberChecks();
+                        }));
+            }
+        }
+
+        /// <summary>
+        /// Click on go forward in list
+        /// </summary>
+        public RelayCommand ForwardInList
+        {
+            get
+            {
+                return forwardInList ?? (forwardInList =
+                    new RelayCommand(() =>
+                        {
+                            pageNumber++;
+                            getGames();
+                            sizeAndPageNumberChecks();
+                       }));
+            }
+        }
         #endregion
 
         #region Public methods
-        
+
         #endregion
 
         #region Private Methods
@@ -163,7 +236,16 @@ namespace GameStore.WindowsApp.ViewModel
             {
                 if (String.IsNullOrEmpty(searchString))
                 {
-                    IEnumerable<Game> games = await gamesService.GetRangeAsync(new Utilities.GenericFilter(1, 5));
+                    // Check if previous search way by name and sets page number and search type 
+                    if(searchType == GameSearchType.ByName)
+                    {
+                        pageNumber = 1;
+                        searchType = GameSearchType.EmptySearch;
+                    }
+
+
+                    IEnumerable<Game> games = await gamesService.GetRangeAsync(
+                        new Utilities.GenericFilter(pageNumber, MAX_NUMBER_OF_ITEMS_ON_PAGE));
 
                     // Game should be set to null, before clearing game list , since it's selected item in games list
                     Game = null;
@@ -173,7 +255,15 @@ namespace GameStore.WindowsApp.ViewModel
                 }
                 else
                 {
-                    IEnumerable<Game> games = await gamesService.GetRangeAsync(searchString, new Utilities.GenericFilter(1, 5));
+                    // Checks if previous search way empty search and sets page number and search type
+                    if(searchType == GameSearchType.EmptySearch)
+                    {
+                        pageNumber = 1;
+                        searchType = GameSearchType.ByName;
+                    }
+
+                    IEnumerable<Game> games = await gamesService.GetRangeAsync(searchString,
+                        new Utilities.GenericFilter(pageNumber, MAX_NUMBER_OF_ITEMS_ON_PAGE));
 
                     // Game should be set to null, before clearing game list , since it's selected item in games list
                     Game = null;
@@ -181,12 +271,14 @@ namespace GameStore.WindowsApp.ViewModel
                     foreach (Game game in games)
                         gamesCollection.Add(game);
                 }
+
+                sizeAndPageNumberChecks();
             }
-            
+
             catch (Exception ex)
             {
                 // TODO implement string so that UI can have alert box with exception
-                throw;
+                throw ex;
             }
         }
 
@@ -207,13 +299,29 @@ namespace GameStore.WindowsApp.ViewModel
                 if (Game != null)
                     GameDetailsVisible = true;
                 else
-                    gameDetailsVisible = false;
+                    GameDetailsVisible = false;
             }
             catch (Exception ex)
             {
-                
+
                 throw ex;
             }
+        }
+
+        private void sizeAndPageNumberChecks()
+        {
+            // GO FORWARD CHECKS
+            if (gamesCollection.Count >= MAX_NUMBER_OF_ITEMS_ON_PAGE)
+                GoForwardButtonVisible = true;
+            else
+                GoForwardButtonVisible = false;
+
+            // GO BACK CHECKS
+            if (pageNumber > 1)
+                PreviousButtonVisible = true;
+            else
+                PreviousButtonVisible = false;
+
         }
 
         #endregion

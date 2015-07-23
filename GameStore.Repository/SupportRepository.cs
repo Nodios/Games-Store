@@ -10,7 +10,7 @@ namespace GameStore.Repository
 {
     public class SupportRepository : ISupportRepository
     {
-        IRepository repository;
+        private readonly IRepository repository;
 
         public SupportRepository(IRepository repository)
         {
@@ -28,7 +28,7 @@ namespace GameStore.Repository
             }
             catch (Exception ex)
             {
-                
+
                 throw ex;
             }
         }
@@ -61,7 +61,7 @@ namespace GameStore.Repository
             }
             catch (Exception ex)
             {
-                
+
                 throw ex;
             }
         }
@@ -78,7 +78,7 @@ namespace GameStore.Repository
             }
             catch (Exception ex)
             {
-                
+
                 throw ex;
             }
         }
@@ -95,7 +95,7 @@ namespace GameStore.Repository
             }
             catch (Exception ex)
             {
-                
+
                 throw ex;
             }
         }
@@ -112,7 +112,7 @@ namespace GameStore.Repository
             }
             catch (Exception ex)
             {
-                
+
                 throw ex;
             }
         }

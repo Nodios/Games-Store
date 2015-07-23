@@ -54,7 +54,7 @@
                    Grid.Column="1"/>
         <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Bottom">
             <Button Style="{StaticResource NavigationButtonStyle}" Command="{Binding NavigateToGamesPageCommand}">Games</Button>
-            <Button Style="{StaticResource NavigationButtonStyle}">Publishers</Button>
+            <Button Style="{StaticResource NavigationButtonStyle}" Command="{Binding LoginCommand}">Publishers</Button>
             <Button Style="{StaticResource NavigationButtonStyle}">Account</Button>
         </StackPanel>
         

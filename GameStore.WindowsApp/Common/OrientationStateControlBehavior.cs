@@ -1,8 +1,8 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Messaging;
+using Microsoft.Xaml.Interactivity;
+using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using GalaSoft.MvvmLight.Messaging;
-using Microsoft.Xaml.Interactivity;
 
 namespace GameStore.WindowsApp.Common
 {

@@ -1,7 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
 using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 
 namespace GameStore.WindowsApp.Model
 {
@@ -29,14 +27,13 @@ namespace GameStore.WindowsApp.Model
             set { gameId = value; }
         }
 
+        /// <summary>
+        /// Implements notify property changed
+        /// </summary>
         public byte[] Content
         {
             get { return content; }
-            set
-            {
-                content = value;
-                Set(() => this.Content, ref content, value);
-            }
+            set { Set(() => this.Content, ref content, value); }
         }
 
         #endregion

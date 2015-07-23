@@ -17,7 +17,7 @@ namespace GameStore.WebApi.Controllers
     [Authorize]
     public class OrderController : ApiController
     {
-        private IOrderService service;
+        private readonly IOrderService service;
 
         public OrderController(IOrderService service)
         {

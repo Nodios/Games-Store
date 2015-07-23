@@ -10,7 +10,7 @@ namespace GameStore.Service
 {
     public class GameImageService : IGameImageService
     {
-        IGameImageRepository repository;
+        private readonly IGameImageRepository repository;
 
         public GameImageService(IGameImageRepository repository)
         {

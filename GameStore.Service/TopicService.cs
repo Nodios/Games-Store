@@ -13,7 +13,7 @@ namespace GameStore.Service
     /// </summary>
     public class TopicService : ITopicService
     {
-        ITopicRepository repository;
+        private readonly ITopicRepository repository;
 
         /// <summary>
         /// Constructor

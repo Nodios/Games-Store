@@ -8,11 +8,11 @@ namespace GameStore.Service
 {
     public class UserService : IUserService
     {
-        public IUserRepository UserRepository { get; private set; }
+        private readonly IUserRepository userRepository;
 
         public UserService(IUserRepository userRepo)
         {
-            UserRepository = userRepo;
+            userRepository = userRepo;
         }
 
         /// <summary>
@@ -22,7 +22,7 @@ namespace GameStore.Service
         {
             try
             {
-                return await UserRepository.GetAsync(username);
+                return await userRepository.GetAsync(username);
             }
             catch (Exception ex)
             {
@@ -41,7 +41,7 @@ namespace GameStore.Service
         {
             try
             {
-                return await UserRepository.GetAsync(username, password);
+                return await userRepository.GetAsync(username, password);
             }
             catch (Exception ex)
             {
@@ -57,7 +57,7 @@ namespace GameStore.Service
         {
             try
             {
-                return await UserRepository.RegisterUser(user, password);      
+                return await userRepository.RegisterUser(user, password);      
             }
             catch (Exception ex)
             {
@@ -74,7 +74,7 @@ namespace GameStore.Service
         /// <returns>Updated user</returns>
         public async Task<IUser> UpdateEmailOrUsernameAsync(IUser user, string password)
         {
-            return await UserRepository.UpdateUserEmailOrUsernameAsync(user, password);
+            return await userRepository.UpdateUserEmailOrUsernameAsync(user, password);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace GameStore.Service
         /// <returns>True if success, false otherwise</returns>
         public async Task<bool> UpdatePasswordAsync(string userId, string oldPassword, string newPassword)
         {
-            return await UserRepository.UpdateUserPasswordAsync(userId, oldPassword, newPassword);
+            return await userRepository.UpdateUserPasswordAsync(userId, oldPassword, newPassword);
         }
     }
 }

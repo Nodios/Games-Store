@@ -1,13 +1,11 @@
-﻿using GameStore.WindowsApp.Service.Common;
+﻿using GameStore.WindowsApp.Model;
+using GameStore.WindowsApp.Service.Common;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
-using System.Net.Http;
-using GameStore.WindowsApp.Model;
-using Newtonsoft.Json;
 
 
 namespace GameStore.WindowsApp.Service

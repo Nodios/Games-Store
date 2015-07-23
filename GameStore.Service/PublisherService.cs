@@ -10,8 +10,8 @@ namespace GameStore.Service
 {
     public class PublisherService : IPublisherService
     {
-        public IPublisherRepository PublisherRepository { get; private set; }
-        public ISupportRepository SupportRepository { get; private set; }
+        private readonly IPublisherRepository publisherRepository;
+        private readonly ISupportRepository supportRepository;
 
         /// <summary>
         /// Constructor
@@ -22,8 +22,8 @@ namespace GameStore.Service
             if (publisherRepository == null ||supportRepository == null)
                 throw new ArgumentNullException();
 
-            PublisherRepository = publisherRepository;
-            SupportRepository = supportRepository;
+            this.publisherRepository = publisherRepository;
+            this.supportRepository = supportRepository;
         }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace GameStore.Service
         /// </summary>
         public virtual Task<IPublisher> GetAsync(Guid id)
         {
-            return PublisherRepository.GetAsync(id);
+            return publisherRepository.GetAsync(id);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace GameStore.Service
         /// </summary>
         public virtual Task<ISupport> GetSupportAsync(Guid id)
         {
-            return SupportRepository.GetAsync(id);
+            return supportRepository.GetAsync(id);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace GameStore.Service
         /// </summary>
         public virtual Task<IEnumerable<IPublisher>> GetRangeAsync(string name, GenericFilter filter)
         {
-            return PublisherRepository.GetRangeAsync(name, filter);
+            return publisherRepository.GetRangeAsync(name, filter);
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace GameStore.Service
         /// </summary>
         public virtual Task<IEnumerable<IPublisher>> GetRangeAsync(GenericFilter filter = null)
         {
-            return PublisherRepository.GetRangeAsync(filter);
+            return publisherRepository.GetRangeAsync(filter);
         }
     }
 }

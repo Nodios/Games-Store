@@ -8,7 +8,7 @@ namespace GameStore.Service
 {
     public class CartService : ICartService
     {
-        ICartRepository repository;
+        private readonly ICartRepository repository;
 
         public CartService(ICartRepository repository)
         {

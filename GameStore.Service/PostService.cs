@@ -9,14 +9,8 @@ namespace GameStore.Service
 {
     public class PostService : IPostService
     {
-        #region Proporties
-
-        /// <summary>
-        /// Gets post repository
-        /// </summary>
-        public IPostRepository PostRepository { get; private set; } 
-
-        #endregion
+ 
+        public readonly IPostRepository postRepository;
 
         #region Constructors
 
@@ -25,7 +19,7 @@ namespace GameStore.Service
             if (repository == null)
                 throw new ArgumentNullException("repository cannot be null");
 
-            PostRepository = repository;
+            postRepository = repository;
         }
 
         #endregion
@@ -40,7 +34,7 @@ namespace GameStore.Service
         /// <returns>Collection of posts</returns>
         public Task<IEnumerable<Model.Common.IPost>> GetPosts(Guid gameId, GenericFilter filter)
         {
-            return PostRepository.GetRangeAsync(gameId, filter);
+            return postRepository.GetRangeAsync(gameId, filter);
         }
 
         /// <summary>
@@ -48,7 +42,7 @@ namespace GameStore.Service
         /// </summary>
         public Task<int> AddPost(Model.Common.IPost post)
         {
-            return PostRepository.AddAsync(post);
+            return postRepository.AddAsync(post);
         }
 
         /// <summary>
@@ -56,7 +50,7 @@ namespace GameStore.Service
         /// </summary>
         public Task<int> DeletePost(Model.Common.IPost post)
         {
-            return PostRepository.DeleteAsync(post);
+            return postRepository.DeleteAsync(post);
         }
 
         /// <summary>
@@ -64,7 +58,7 @@ namespace GameStore.Service
         /// </summary>
         public Task<int> DeletePost(Guid id)
         {
-            return PostRepository.DeleteAsync(id);
+            return postRepository.DeleteAsync(id);
         }
 
         /// <summary>
@@ -72,7 +66,7 @@ namespace GameStore.Service
         /// </summary>
         public Task<int> UpdatePost(Model.Common.IPost post)
         {
-            return PostRepository.UpdateAsync(post);
+            return postRepository.UpdateAsync(post);
         } 
 
         #endregion

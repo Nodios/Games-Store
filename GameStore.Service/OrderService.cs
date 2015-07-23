@@ -10,7 +10,7 @@ namespace GameStore.Service
 {
     public class OrderService : IOrderService
     {
-        IOrderRepository repository;
+        private readonly IOrderRepository repository;
 
         public OrderService(IOrderRepository repository)
         {

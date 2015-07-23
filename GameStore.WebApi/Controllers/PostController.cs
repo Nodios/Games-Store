@@ -16,7 +16,7 @@ namespace GameStore.WebApi.Controllers
     [RoutePrefix("api/post")]
     public class PostController : ApiController
     {
-        private IPostService PostService;
+        private readonly IPostService PostService;
 
         #region Constructor
 

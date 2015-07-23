@@ -13,7 +13,7 @@ namespace GameStore.Repository
 {
     public class CommentRepository : ICommentRepository
     {
-        private IRepository repository;
+        private readonly IRepository repository;
 
         public CommentRepository(IRepository repository)
         {

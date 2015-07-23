@@ -15,7 +15,7 @@ namespace GameStore.WebApi.Controllers
     [RoutePrefix("api/comment")]
     public class CommentController : ApiController
     {
-        ICommentService service;
+        private readonly ICommentService service;
 
         public CommentController(ICommentService service)
         {

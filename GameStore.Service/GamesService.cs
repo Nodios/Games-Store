@@ -10,15 +10,12 @@ namespace GameStore.Service
 {
     public class GamesService : IGamesService
     {
-        /// <summary>
-        /// Get games repository
-        /// </summary>
-        public IGameRepository GamesRepository { get; private set; }
+        private readonly IGameRepository gamesRepository;
 
         public GamesService(IGameRepository repository)
         {
-            GamesRepository = repository;
-            if (GamesRepository == null)
+            gamesRepository = repository;
+            if (gamesRepository == null)
                 throw new ArgumentNullException("Argument cannot be null and should be of type IGamesRepository");
 
 
@@ -29,7 +26,7 @@ namespace GameStore.Service
         /// </summary>
         public Task<Model.Common.IGame> GetAsync(Guid id)
         {
-            return GamesRepository.GetAsync(id);
+            return gamesRepository.GetAsync(id);
         }
 
         /// <summary>
@@ -37,7 +34,7 @@ namespace GameStore.Service
         /// </summary>
         public Task<IEnumerable<IGame>> GetRangeAsync(string name, GenericFilter filter)
         {
-            return GamesRepository.GetRangeAsync(name, filter);
+            return gamesRepository.GetRangeAsync(name, filter);
         }
 
         /// <summary>
@@ -45,7 +42,7 @@ namespace GameStore.Service
         /// </summary>
         public Task<IEnumerable<Model.Common.IGame>> GetRangeAsync(GenericFilter filter = null)
         {
-            return GamesRepository.GetRangeAsync(filter); 
+            return gamesRepository.GetRangeAsync(filter); 
         }
 
         /// <summary>
@@ -55,7 +52,7 @@ namespace GameStore.Service
         /// <returns>Collection of games</returns>
         public Task<IEnumerable<Model.Common.IGame>> GetRangeAsync(Guid publisherId, GenericFilter filter = null)
         {
-            return GamesRepository.GetRangeAsync(publisherId, filter);
+            return gamesRepository.GetRangeAsync(publisherId, filter);
         }
 
         /// <summary>
@@ -65,7 +62,7 @@ namespace GameStore.Service
         /// <returns>1 if success, 0 otherwise</returns>
         public Task<int> DeleteAsync(Guid id)
         {
-            return GamesRepository.DeleteAsync(id);
+            return gamesRepository.DeleteAsync(id);
         }
 
         /// <summary>
@@ -75,7 +72,7 @@ namespace GameStore.Service
         /// <returns>1 if success, 0 otherwise</returns>
         public Task<int> DeleteAsync(params Guid[] id)
         {
-            return GamesRepository.DeleteAsync(id);
+            return gamesRepository.DeleteAsync(id);
         }
     }
 }

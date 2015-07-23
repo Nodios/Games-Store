@@ -13,7 +13,7 @@ namespace GameStore.Repository
 {
     public class PostRepository : IPostRepository
     {
-        private IRepository repository;
+        private readonly IRepository repository;
 
         public PostRepository(IRepository repository)
         {

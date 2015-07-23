@@ -14,7 +14,7 @@ namespace GameStore.WebApi.Controllers
     [RoutePrefix("api/Review")]
     public class ReviewController : ApiController
     {
-        IReviewService service;
+        private readonly IReviewService service;
 
         public ReviewController(IReviewService service)
         {
