@@ -7,8 +7,11 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
+using Windows.Data.Json;
 using Windows.Storage;
+
 
 
 namespace GameStore.WindowsApp.Service
@@ -17,7 +20,6 @@ namespace GameStore.WindowsApp.Service
     {
         private HttpClient client;
         private readonly string url;
-        ApplicationDataContainer localSettings;
 
         public UserService()
         {
@@ -34,7 +36,7 @@ namespace GameStore.WindowsApp.Service
         public async Task<Model.User> FindAsync(string username, string password)
         {
             try
-            {             
+            {
                 // Add data to form
                 List<KeyValuePair<string, string>> values = new List<KeyValuePair<string, string>>()
                 {
@@ -65,9 +67,33 @@ namespace GameStore.WindowsApp.Service
             }
         }
 
-        public Task<bool> RegisterUser(Model.User user, string password)
+        /// <summary>
+        /// Register new user
+        /// </summary>
+        /// <param name="user">User to register</param>
+        /// <param name="password">password</param>
+        /// <returns>Bool on success</returns>
+        public async Task<bool> RegisterUser(Model.User user, string password)
         {
-            throw new NotImplementedException();
+            try
+            {
+                UserEntityToSend toSend = new UserEntityToSend(user, password);
+
+                string jsonContent = JsonConvert.SerializeObject(toSend);
+
+                HttpResponseMessage response = await client.PostAsync(url + "register", new StringContent(jsonContent, Encoding.UTF8, "application/json"));
+
+                if (response.IsSuccessStatusCode)
+                    return true;
+                else
+                    return false;
+
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
         }
 
         public Task<Model.User> UpdateEmailOrUsernameAsync(Model.User user, string password)
@@ -80,7 +106,28 @@ namespace GameStore.WindowsApp.Service
             throw new NotImplementedException();
         }
 
-        class AuthResponseEntity
-        { }
+        class UserEntityToSend
+        {
+            private User user;
+            private string password;
+
+            public UserEntityToSend(User user, string password)
+            {
+                this.user = user;
+                this.password = password;
+            }
+
+            public string Password
+            {
+                get { return password; }
+            }
+
+            public User User
+            {
+                get { return user; }
+            }
+
+
+        }
     }
 }

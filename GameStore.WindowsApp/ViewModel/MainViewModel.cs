@@ -7,6 +7,7 @@ using System;
 using System.Threading.Tasks;
 using Windows.Storage;
 
+
 namespace GameStore.WindowsApp.ViewModel
 {
     /// <summary>
@@ -23,19 +24,24 @@ namespace GameStore.WindowsApp.ViewModel
 
      
 
-        private string userName;
-        private string password;
+        private string loginUserName;
+        private string loginPassword;
+        private string checkRegisterFormPassword;
         private User user;
+        private User userToRegister;
         private bool registerAndLoginButtonVisibility;
         private bool userLoggedInButtonVisibility;
-        public bool loginFormVisibility;
+        private bool loginFormVisibility;
+        private bool registerFormVisibility;
 
         private readonly INavigationService navigationService;
         private readonly IUserService userService;
 
         private RelayCommand navigateToGamesPageCommand;
         private RelayCommand loginCommand;
+        private RelayCommand registerCommand;
         private RelayCommand showLoginFormCommand;
+        private RelayCommand showRegisterFormCommand;
 
         ApplicationDataContainer settings = ApplicationData.Current.LocalSettings;
 
@@ -79,21 +85,40 @@ namespace GameStore.WindowsApp.ViewModel
         }
 
         /// <summary>
+        /// Gets and sets register form visibility
+        /// </summary>
+        public bool RegisterFormVisibility
+        {
+            get { return registerFormVisibility; }
+            set { Set(() => this.RegisterFormVisibility, ref registerFormVisibility, value); }
+        }
+
+        /// <summary>
         /// Gets and sets username, two way binding
         /// </summary>
-        public string UserName
+        public string LoginUserName
         {
-            get { return userName; }
-            set { Set(() => this.UserName, ref userName, value); }
+            get { return loginUserName; }
+            set { Set(() => this.LoginUserName, ref loginUserName, value); }
         }
 
         /// <summary>
         /// Gets and sets password, two way binding
         /// </summary>
-        public string Password
+        public string LoginPassword
         {
-            get { return password; }
-            set { Set(() => this.Password, ref password, value); }
+            get { return loginPassword; }
+            set { Set(() => this.LoginPassword, ref loginPassword, value); }
+        }
+
+        /// <summary>
+        /// Password user for register form password check
+        /// </summary>
+        public string CheckRegisterFormPassword
+        {
+            get { return checkRegisterFormPassword; }
+            set { Set(() => this.CheckRegisterFormPassword, ref checkRegisterFormPassword, value); }
+            
         }
 
         /// <summary>
@@ -103,6 +128,15 @@ namespace GameStore.WindowsApp.ViewModel
         {
             get { return user; }
             set { Set(() => this.User, ref user, value); }
+        }
+
+        /// <summary>
+        /// Gets and sets user to register
+        /// </summary>
+        public User UserToRegister
+        {
+            get { return userToRegister; }
+            set { Set(() => this.UserToRegister, ref userToRegister, value); }
         }
 
         #endregion
@@ -122,13 +156,17 @@ namespace GameStore.WindowsApp.ViewModel
             registerAndLoginButtonVisibility = true;
             userLoggedInButtonVisibility = false;
             loginFormVisibility = false;
+
+            userToRegister = userToRegister ?? (userToRegister = new User() { });
         }
 
         #endregion
 
         #region Commands
 
-
+        /// <summary>
+        /// Shows login form
+        /// </summary>
         public RelayCommand ShowLoginFormCommand
         {
             get
@@ -137,8 +175,27 @@ namespace GameStore.WindowsApp.ViewModel
                     ?? (showLoginFormCommand = new RelayCommand(
                         () =>
                         {
+                            RegisterFormVisibility = false;
                             LoginFormVisibility = true;
                         }));
+            }
+        }
+
+        /// <summary>
+        /// Shows register form
+        /// </summary>
+        public RelayCommand ShowRegisterFormCommand
+        {
+            get
+            {
+                if (showRegisterFormCommand != null)
+                    return showRegisterFormCommand;
+                else
+                    return showRegisterFormCommand = new RelayCommand(() =>
+                        {
+                            LoginFormVisibility = false;
+                            RegisterFormVisibility = true;
+                        });
             }
         }
 
@@ -164,7 +221,40 @@ namespace GameStore.WindowsApp.ViewModel
         {
             get
             {
-                return loginCommand ?? (loginCommand = new RelayCommand(async() => User = await login()));                
+                return loginCommand ?? (loginCommand = new RelayCommand(async() =>
+                    {
+                        try
+                        {
+                            User = await login();
+                        }
+                        catch (Exception ex)
+                        {
+                            // TODO create notification service for erros
+                            throw ex;
+                        }
+                    }
+                        ));                
+            }
+        }
+
+        /// <summary>
+        /// Register command
+        /// </summary>
+        public RelayCommand RegisterCommand
+        {
+            get
+            {
+                return registerCommand ?? (registerCommand = new RelayCommand(async () => 
+                    {
+                        try
+                        {
+                           await register();
+                        }
+                        catch (Exception ex)
+                        {
+                            throw ex;
+                        }
+                    }));
             }
         }
 
@@ -189,15 +279,17 @@ namespace GameStore.WindowsApp.ViewModel
         {
             try
             {
-               User result = await userService.FindAsync(userName, password);
-               UserName = GameStore.WindowsApp.Common.UserInfo.Username;     
+               User result = await userService.FindAsync(loginUserName, loginPassword);
+               LoginUserName = GameStore.WindowsApp.Common.UserInfo.Username;     
 
 
-               if (!String.IsNullOrEmpty(userName))
+               if (!String.IsNullOrEmpty(loginUserName))
                {
-                   RegisterAndLoginButtonVisibility = false;
                    UserLoggedinButtonVisibility = true;
-                   LoginFormVisibility = false;                
+
+                   LoginFormVisibility = false;
+                   RegisterFormVisibility = false;
+                   RegisterAndLoginButtonVisibility = false;
                }
 
                return result;
@@ -208,6 +300,41 @@ namespace GameStore.WindowsApp.ViewModel
                 throw ex;
             }
 
+        }
+
+        /// <summary>
+        /// User do register user
+        /// </summary>
+        private async Task<bool> register()
+        {
+            try
+            {
+                bool result;
+                UserToRegister = null;
+                // Chekc if password is same
+                if (CheckRegisterFormPassword == UserToRegister.PasswordHash)
+                {
+                    result = await userService.RegisterUser(UserToRegister, UserToRegister.PasswordHash);
+
+                    if (result)
+                    {
+                        LoginFormVisibility = false;
+                        RegisterFormVisibility = false;
+                    }
+                }
+                else
+                {
+                    // TODO Show invalid password message
+                    result = false;
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
         }
 
         #endregion

@@ -26,7 +26,7 @@
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\GameStore.WindowsApp.exe">
       <PackagePath>GameStore.WindowsApp.exe</PackagePath>
-      <Modified>2015-07-23T22:28:18.107</Modified>
+      <Modified>2015-07-24T20:10:35.930</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\BehaviorsXamlSDKManaged\12.0\References\CommonConfiguration\Neutral\Microsoft.Xaml.Interactions.dll">
       <PackagePath>Microsoft.Xaml.Interactions.dll</PackagePath>
@@ -78,7 +78,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2015-07-23T22:17:14.889</Modified>
+      <Modified>2015-07-24T20:10:32.874</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\SecondPage.xbf">
       <PackagePath>SecondPage.xbf</PackagePath>
@@ -86,7 +86,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2015-07-23T22:17:14.915</Modified>
+      <Modified>2015-07-24T20:10:32.923</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\Skins\MainSkin.xbf">
       <PackagePath>Skins\MainSkin.xbf</PackagePath>
@@ -102,11 +102,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\GameStore.WindowsApp.xr.xml">
       <PackagePath>GameStore.WindowsApp.xr.xml</PackagePath>
-      <Modified>2015-07-23T21:41:19.699</Modified>
+      <Modified>2015-07-24T20:10:32.066</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2015-07-23T22:28:27.681</Modified>
+      <Modified>2015-07-24T19:57:48.402</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

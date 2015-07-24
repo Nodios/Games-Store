@@ -66,15 +66,24 @@
         <!-- Account buttons -->
         <StackPanel Grid.Column="1" Grid.Row="1" Margin="0 30 0 0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Visibility="{Binding RegisterAndLoginButtonVisibility,Converter={StaticResource VisibilityConverter },Mode=TwoWay}">
             <Button Style="{StaticResource AccountButtonStyle}" Command="{Binding ShowLoginFormCommand}">Login</Button>
-            <Button Style="{StaticResource AccountButtonStyle}">Sign up</Button>
+            <Button Style="{StaticResource AccountButtonStyle}" Command="{Binding ShowRegisterFormCommand}">Sign up</Button>
         </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="1" Margin="0 30 0 0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Visibility="{Binding UserLoggedinButtonVisibility,Converter={StaticResource VisibilityConverter },Mode=TwoWay}">
-            <TextBlock Style="{StaticResource HeaderTextBlockStyle}">Hi</TextBlock>
-            <Button Style="{StaticResource AccountButtonStyle}" Content="{Binding UserName, Mode=TwoWay}"></Button>              
+            <TextBlock FontWeight="Normal" FontSize="24" VerticalAlignment="Bottom" Margin="0 0 5 0">Hi, </TextBlock>
+            <Button Style="{StaticResource AccountButtonStyle}" Content="{Binding User.UserName, Mode=TwoWay}"></Button>              
         </StackPanel>
-        <Popup>
+        
+        <!-- user drop menu , cart, orderds, logout -->
+        <Popup Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" IsOpen="True" Width="100" Height="100" > 
             <!-- TODO Implement user menu options -->
+            <Grid Background="White" Width="100">
+                <StackPanel Orientation="Vertical">
+                    <Button Style="{StaticResource UserDropMenuStyle}">Cart</Button>
+                    <Button Style="{StaticResource UserDropMenuStyle}">Orders</Button>
+                    <Button Style="{StaticResource UserDropMenuStyle}">Logout</Button>
+                </StackPanel>
+            </Grid>
         </Popup>
 
         <Grid Height="469" Grid.Row="2" Grid.Column="1">
@@ -84,11 +93,26 @@
                         Width="300" 
                         Visibility="{Binding LoginFormVisibility, Converter={StaticResource VisibilityConverter},Mode=TwoWay}">
                 <TextBlock Style="{StaticResource SubheaderTextBlockStyle}" VerticalAlignment="Center"  Width="200">Login</TextBlock>
-                <TextBox  Width="200" PlaceholderText="Username" Margin="0 20 0 0" Text="{Binding UserName,Mode=TwoWay}"/>
-                <PasswordBox Width="200" PlaceholderText="Password" Margin="0 20 0 0" Password="{Binding Password, Mode=TwoWay}"/>
+                <TextBox  Width="200" PlaceholderText="Username" Margin="0 20 0 0" Text="{Binding LoginUserName,Mode=TwoWay}"/>
+                <PasswordBox Width="200" PlaceholderText="Password" Margin="0 20 0 0" Password="{Binding LoginPassword, Mode=TwoWay}"/>
                 <Button Content="Login" HorizontalAlignment="Center"      
                         Width="200" Margin="0 20 0 0" Style="{StaticResource AppButtonStyle}"
                         Command="{Binding LoginCommand}"/>
+            </StackPanel>
+
+            <!-- Registration form -->
+            <StackPanel  Orientation="Vertical" 
+                        HorizontalAlignment="Right" VerticalAlignment="Center" 
+                        Width="300"
+                         Visibility="{Binding RegisterFormVisibility, Converter={StaticResource VisibilityConverter}}">
+                <TextBlock Style="{StaticResource SubheaderTextBlockStyle}" VerticalAlignment="Center" Width="200">Register</TextBlock>
+                <TextBox  Width="200" PlaceholderText="Username" Margin="0 20 0 0" Text="{Binding UserToRegister.UserName,Mode=TwoWay}"/>
+                <TextBox  Width="200" PlaceholderText="Email" Margin="0 20 0 0" Text="{Binding UserToRegister.Email,Mode=TwoWay}"/>
+                <PasswordBox Width="200" PlaceholderText="Password" Margin="0 20 0 0" Password="{Binding UserToRegister.PasswordHash, Mode=TwoWay}"/>
+                <PasswordBox Width="200" PlaceholderText="Password" Margin="0 20 0 0" Password="{Binding CheckRegisterFormPassword, Mode=TwoWay}"/>
+                <Button Content="Sign up" HorizontalAlignment="Center" Width="200"
+                        Margin="0 20 0 0" Style="{StaticResource AppButtonStyle}"
+                        Command="{Binding RegisterCommand}"/>
             </StackPanel>
         </Grid>
 

@@ -7,12 +7,21 @@
     <RootPropertyPathName Name="NavigationHelper" />
     <RootPropertyPathName Name="GoBackCommand" />
     <RootPropertyPathName Name="Main" />
+    <RootPropertyPathName Name="RegisterFormVisibility" />
+    <RootPropertyPathName Name="RegisterCommand" />
+    <RootPropertyPathName Name="CheckRegisterFormPassword" />
+    <RootPropertyPathName Name="UserToRegister" />
+    <RootPropertyPathName Name="PasswordHash" />
+    <RootPropertyPathName Name="Email" />
+    <RootPropertyPathName Name="UserName" />
     <RootPropertyPathName Name="LoginFormVisibility" />
     <RootPropertyPathName Name="LoginCommand" />
-    <RootPropertyPathName Name="Password" />
-    <RootPropertyPathName Name="UserName" />
+    <RootPropertyPathName Name="LoginPassword" />
+    <RootPropertyPathName Name="LoginUserName" />
     <RootPropertyPathName Name="UserLoggedinButtonVisibility" />
+    <RootPropertyPathName Name="User" />
     <RootPropertyPathName Name="RegisterAndLoginButtonVisibility" />
+    <RootPropertyPathName Name="ShowRegisterFormCommand" />
     <RootPropertyPathName Name="ShowLoginFormCommand" />
     <RootPropertyPathName Name="NavigateToGamesPageCommand" />
     <RootPropertyPathName Name="Title" />
@@ -63,6 +72,7 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.FrameworkElement">
       <RootProperty Name="Margin" />
+      <RootProperty Name="HorizontalAlignment" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.SolidColorBrush">
       <RootProperty Name="Color" />
@@ -95,6 +105,7 @@
       <RootProperty Name="ColumnDefinitions" />
       <RootProperty Name="ChildrenTransitions" />
       <RootProperty Name="Height" />
+      <RootProperty Name="Width" />
       <RootProperty Name="Visibility" />
       <RootProperty Name="Margin" />
       <RootMethod Name="GetColumn" />
@@ -162,6 +173,8 @@
       <RootProperty Name="Margin" />
       <RootProperty Name="Width" />
       <RootProperty Name="Inlines" />
+      <RootProperty Name="FontWeight" />
+      <RootProperty Name="FontSize" />
       <RootProperty Name="MaxHeight" />
       <RootProperty Name="HorizontalAlignment" />
     </RootType>
@@ -185,7 +198,14 @@
       <RootProperty Name="Visibility" />
       <RootProperty Name="Width" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.Primitives.Popup" />
+    <RootType FullName="Windows.UI.Xaml.Controls.Primitives.Popup">
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="IsOpen" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="Child" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
       <RootProperty Name="Width" />
       <RootProperty Name="PlaceholderText" />

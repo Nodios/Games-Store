@@ -29,6 +29,13 @@
             <Setter Property="FontSize" Value="24"></Setter>
             <Setter Property="FontWeight" Value="Normal"></Setter>
         </Style>
+        
+        <!-- User drop menu style -->
+        <Style TargetType="Button" BasedOn="{StaticResource AccountButtonStyle}" x:Key="UserDropMenuStyle">
+            <Setter Property="Margin" Value="0 20 0 0"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+        </Style>
 
         <!-- Colors for various list options -->
         <SolidColorBrush x:Key="ListViewItemSelectedPointerOverBackgroundThemeBrush" Color="Transparent" />

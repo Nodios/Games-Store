@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight.Threading;
 using System;
+using System.Diagnostics;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
@@ -21,7 +22,21 @@ namespace GameStore.WindowsApp
         {
             InitializeComponent();
             Suspending += OnSuspending;
+
+            // Event subscriber for unhandled events
+            UnhandledException += new UnhandledExceptionEventHandler(unhandledException);
         }
+
+        // Invoked when unhandled event occurs
+        static void unhandledException(object sender, UnhandledExceptionEventArgs args)
+        {
+            //TODO create some sort of notification service for unhandled exceptions
+
+            Exception e = (Exception)args.Exception;
+            Debug.WriteLine("MyHandler caught : " + e.Message);
+        }
+
+      
 
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points

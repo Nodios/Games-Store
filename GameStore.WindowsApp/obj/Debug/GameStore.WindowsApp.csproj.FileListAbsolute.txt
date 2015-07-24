@@ -73,11 +73,3 @@ C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Views\Game
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Views\GamesPage.g.cs
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Views\GamesPage.xaml
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Views\GamesPage.xbf
-C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Microsoft.Practices.ServiceLocation\layout.resfiles
-C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Microsoft.Practices.ServiceLocation\layout.resfiles.intermediate
-C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Microsoft.Practices.ServiceLocation\Resources.resfiles
-C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Microsoft.Practices.ServiceLocation\Resources.resfiles.intermediate
-C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Microsoft.Practices.ServiceLocation\pri.resfiles
-C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Microsoft.Practices.ServiceLocation\pri.resfiles.intermediate
-C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Microsoft.Practices.ServiceLocation\priconfig.xml
-C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Microsoft.Practices.ServiceLocation\priconfig.xml.intermediate
