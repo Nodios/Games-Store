@@ -1,8 +1,10 @@
 ﻿using GalaSoft.MvvmLight.Threading;
+using GameStore.WindowsApp.Common;
 using System;
 using System.Diagnostics;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -14,12 +16,19 @@ namespace GameStore.WindowsApp
     /// </summary>
     sealed partial class App : Application
     {
+        // About PAGE STATES : https://msdn.microsoft.com/en-us/library/windows/apps/hh986968.aspx
+
+        private readonly bool saveToCloud;
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
         public App()
         {
+            // If false saves user data locally
+            saveToCloud = false;
+
             InitializeComponent();
             Suspending += OnSuspending;
 
@@ -43,7 +52,7 @@ namespace GameStore.WindowsApp
         /// will be used such as when the application is launched to open a specific file.
         /// </summary>
         /// <param name="e">Details about the launch request and process.</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+        protected async override void OnLaunched(LaunchActivatedEventArgs e)
         {
 
 #if DEBUG
@@ -68,7 +77,25 @@ namespace GameStore.WindowsApp
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
-                    //TODO: Load state from previously suspended application
+                    // Load state from previously suspended application
+                    ApplicationDataContainer dataContainer;
+
+                    if (!saveToCloud)
+                    {
+                        dataContainer = ApplicationData.Current.LocalSettings;
+
+                        if(dataContainer.Values.ContainsKey("username"))
+                            UserInfo.Username = dataContainer.Values["username"].ToString();
+                    }
+                    else
+                    {
+                        dataContainer = ApplicationData.Current.RoamingSettings;
+
+                        if (dataContainer.Values.ContainsKey("username"))
+                            UserInfo.Username = dataContainer.Values["username"].ToString();
+                    }
+
+                    await SuspensionManager.RestoreAsync();
                 }
 
                 // Place the frame in the current Window
@@ -104,11 +131,28 @@ namespace GameStore.WindowsApp
         /// </summary>
         /// <param name="sender">The source of the suspend request.</param>
         /// <param name="e">Details about the suspend request.</param>
-        private void OnSuspending(object sender, SuspendingEventArgs e)
+        private async void OnSuspending(object sender, SuspendingEventArgs e)
         {
+            ApplicationDataContainer dataContainer;
+
+            // Save to local setting or cloud
+            if (!saveToCloud)
+            {
+                dataContainer = ApplicationData.Current.LocalSettings;
+                dataContainer.Values["username"] = UserInfo.Username;
+            }
+            else
+            {
+                dataContainer = ApplicationData.Current.RoamingSettings;
+                dataContainer.Values["username"] = UserInfo.Username;
+            }
+
             var deferral = e.SuspendingOperation.GetDeferral();
-            //TODO: Save application state and stop any background activity
+            // Save application state and stop any background activity
+            await SuspensionManager.SaveAsync();
             deferral.Complete();
+
+
         }
     }
 }

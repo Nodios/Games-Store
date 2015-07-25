@@ -3,6 +3,7 @@
                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                  xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+                 xmlns:core="using:Microsoft.Xaml.Interactions.Core"
                  xmlns:common="using:GameStore.WindowsApp.Common"
                  xmlns:local="using:GameStore.WindowsApp"
                  xmlns:ignore="http://www.ignore.com"
@@ -71,20 +72,20 @@
 
         <StackPanel Grid.Column="1" Grid.Row="1" Margin="0 30 0 0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Visibility="{Binding UserLoggedinButtonVisibility,Converter={StaticResource VisibilityConverter },Mode=TwoWay}">
             <TextBlock FontWeight="Normal" FontSize="24" VerticalAlignment="Bottom" Margin="0 0 5 0">Hi, </TextBlock>
-            <Button Style="{StaticResource AccountButtonStyle}" Content="{Binding User.UserName, Mode=TwoWay}"></Button>              
+            <Button  Content="{Binding User.UserName, Mode=TwoWay}" Style="{StaticResource AccountButtonStyle}" Command="{Binding ShowUserOptionsMenuCommand }" />
         </StackPanel>
         
-        <!-- user drop menu , cart, orderds, logout -->
-        <Popup Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" IsOpen="True" Width="100" Height="100" > 
+       
+            
             <!-- TODO Implement user menu options -->
-            <Grid Background="White" Width="100">
-                <StackPanel Orientation="Vertical">
-                    <Button Style="{StaticResource UserDropMenuStyle}">Cart</Button>
-                    <Button Style="{StaticResource UserDropMenuStyle}">Orders</Button>
-                    <Button Style="{StaticResource UserDropMenuStyle}">Logout</Button>
-                </StackPanel>
-            </Grid>
-        </Popup>
+        <Grid Width="150"  Grid.Row="2"  Grid.Column="1" VerticalAlignment="Top"  HorizontalAlignment="Right" Height="200" Visibility="{Binding ShowUserSubMenu, Converter={StaticResource VisibilityConverter}}">
+            <StackPanel Orientation="Vertical">
+                <Button Style="{StaticResource UserDropMenuStyle}" Margin="0 10 0 0">Cart</Button>
+                <Button Style="{StaticResource UserDropMenuStyle}">Orders</Button>
+                <Button Style="{StaticResource UserDropMenuStyle}" Command="{Binding LogoutCommand}">Logout</Button>
+                <Button Style="{StaticResource UserDropMenuStyle}" Command="{Binding CloseUserOptionsCommand}">Close</Button>
+            </StackPanel>
+        </Grid>
 
         <Grid Height="469" Grid.Row="2" Grid.Column="1">
                 <!-- Login panel -->

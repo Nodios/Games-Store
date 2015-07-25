@@ -1,11 +1,13 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
+
 using GameStore.WindowsApp.Model;
 using GameStore.WindowsApp.Service.Common;
 using System;
 using System.Threading.Tasks;
 using Windows.Storage;
+using Windows.UI.Popups;
 
 
 namespace GameStore.WindowsApp.ViewModel
@@ -22,7 +24,7 @@ namespace GameStore.WindowsApp.ViewModel
 
         private readonly string title;
 
-     
+
 
         private string loginUserName;
         private string loginPassword;
@@ -33,6 +35,7 @@ namespace GameStore.WindowsApp.ViewModel
         private bool userLoggedInButtonVisibility;
         private bool loginFormVisibility;
         private bool registerFormVisibility;
+        private bool showUserSubMenu;
 
         private readonly INavigationService navigationService;
         private readonly IUserService userService;
@@ -42,6 +45,9 @@ namespace GameStore.WindowsApp.ViewModel
         private RelayCommand registerCommand;
         private RelayCommand showLoginFormCommand;
         private RelayCommand showRegisterFormCommand;
+        private RelayCommand showUserMenuOptionCommand;
+        private RelayCommand closeUserOptionCommand;
+        private RelayCommand logoutCommand;
 
         ApplicationDataContainer settings = ApplicationData.Current.LocalSettings;
 
@@ -94,6 +100,15 @@ namespace GameStore.WindowsApp.ViewModel
         }
 
         /// <summary>
+        /// gets and sets user menu options, with cart, orders ....
+        /// </summary>
+        public bool ShowUserSubMenu
+        {
+            get { return showUserSubMenu; }
+            set { Set(() => this.ShowUserSubMenu, ref showUserSubMenu, value); }
+        }
+
+        /// <summary>
         /// Gets and sets username, two way binding
         /// </summary>
         public string LoginUserName
@@ -118,7 +133,7 @@ namespace GameStore.WindowsApp.ViewModel
         {
             get { return checkRegisterFormPassword; }
             set { Set(() => this.CheckRegisterFormPassword, ref checkRegisterFormPassword, value); }
-            
+
         }
 
         /// <summary>
@@ -156,7 +171,11 @@ namespace GameStore.WindowsApp.ViewModel
             registerAndLoginButtonVisibility = true;
             userLoggedInButtonVisibility = false;
             loginFormVisibility = false;
+            showUserSubMenu = false;
 
+            this.LoginUserName = GameStore.WindowsApp.Common.UserInfo.Username;
+
+            // if user to register is null , create new one
             userToRegister = userToRegister ?? (userToRegister = new User() { });
         }
 
@@ -177,6 +196,7 @@ namespace GameStore.WindowsApp.ViewModel
                         {
                             RegisterFormVisibility = false;
                             LoginFormVisibility = true;
+                            ShowUserSubMenu = false;
                         }));
             }
         }
@@ -195,8 +215,33 @@ namespace GameStore.WindowsApp.ViewModel
                         {
                             LoginFormVisibility = false;
                             RegisterFormVisibility = true;
+                            ShowUserSubMenu = false;
                         });
             }
+        }
+
+        /// <summary>
+        /// Shows user options menu
+        /// </summary>
+        public RelayCommand ShowUserOptionsMenuCommand
+        {
+            get
+            {
+                return showUserMenuOptionCommand ?? (showUserMenuOptionCommand = new RelayCommand(() =>
+                {
+                    LoginFormVisibility = false;
+                    RegisterFormVisibility = false;
+                    ShowUserSubMenu = true;
+                }));
+            }
+        }
+
+        /// <summary>
+        /// Close pop up
+        /// </summary>
+        public RelayCommand CloseUserOptionsCommand
+        {
+            get { return closeUserOptionCommand ?? (closeUserOptionCommand = new RelayCommand(() => ShowUserSubMenu = false)); }
         }
 
         /// <summary>
@@ -213,7 +258,7 @@ namespace GameStore.WindowsApp.ViewModel
 
             }
         }
-   
+
         /// <summary>
         /// Login command
         /// </summary>
@@ -221,7 +266,7 @@ namespace GameStore.WindowsApp.ViewModel
         {
             get
             {
-                return loginCommand ?? (loginCommand = new RelayCommand(async() =>
+                return loginCommand ?? (loginCommand = new RelayCommand(async () =>
                     {
                         try
                         {
@@ -229,13 +274,15 @@ namespace GameStore.WindowsApp.ViewModel
                         }
                         catch (Exception ex)
                         {
-                            // TODO create notification service for erros
-                            throw ex;
+                            MessageDialog dialog = new MessageDialog(ex.Message);
+
+                            dialog.Commands.Add(new UICommand("OK"));
                         }
                     }
-                        ));                
+                        ));
             }
         }
+
 
         /// <summary>
         /// Register command
@@ -244,17 +291,55 @@ namespace GameStore.WindowsApp.ViewModel
         {
             get
             {
-                return registerCommand ?? (registerCommand = new RelayCommand(async () => 
+                return registerCommand ?? (registerCommand = new RelayCommand(async() =>
                     {
+                       MessageDialog messagedialog = null;
+
                         try
                         {
-                           await register();
+                            bool result = await register();
+
+                            if (result == false)
+                                throw new Exception("Register error. Username could be taken.");
                         }
                         catch (Exception ex)
                         {
-                            throw ex;
+                            // Message dialog - shows errors
+                            messagedialog = new MessageDialog(ex.Message);
+
+
+                            messagedialog.Commands.Add(new UICommand("Try again", 
+                                new UICommandInvokedHandler((IUICommand uiCommand) => { this.RegisterCommand.Execute(null); })));
+
+                            messagedialog.Commands.Add(new UICommand("Cancel"));
+
+                            
                         }
+
+                        if(messagedialog != null)
+                           await messagedialog.ShowAsync();
                     }));
+            }
+        }
+
+        /// <summary>
+        /// Logout command
+        /// </summary>
+        public RelayCommand LogoutCommand
+        {
+            get
+            {
+                return logoutCommand ?? (logoutCommand = new RelayCommand(() =>
+                {
+                    UserLoggedinButtonVisibility = false;
+                    RegisterAndLoginButtonVisibility = true;
+                    LoginUserName = "";
+                    User = null;
+                    ShowUserSubMenu = false;
+                    GameStore.WindowsApp.Common.UserInfo.Id = "";
+                    GameStore.WindowsApp.Common.UserInfo.Token = "";
+                    GameStore.WindowsApp.Common.UserInfo.Username = "";
+                }));
             }
         }
 
@@ -279,20 +364,20 @@ namespace GameStore.WindowsApp.ViewModel
         {
             try
             {
-               User result = await userService.FindAsync(loginUserName, loginPassword);
-               LoginUserName = GameStore.WindowsApp.Common.UserInfo.Username;     
+                User result = await userService.FindAsync(loginUserName, loginPassword);
+                GameStore.WindowsApp.Common.UserInfo.Username = loginUserName;
 
 
-               if (!String.IsNullOrEmpty(loginUserName))
-               {
-                   UserLoggedinButtonVisibility = true;
+                if (!String.IsNullOrEmpty(loginUserName))
+                {
+                    UserLoggedinButtonVisibility = true;
 
-                   LoginFormVisibility = false;
-                   RegisterFormVisibility = false;
-                   RegisterAndLoginButtonVisibility = false;
-               }
+                    LoginFormVisibility = false;
+                    RegisterFormVisibility = false;
+                    RegisterAndLoginButtonVisibility = false;
+                }
 
-               return result;
+                return result;
             }
             catch (Exception ex)
             {
@@ -310,7 +395,7 @@ namespace GameStore.WindowsApp.ViewModel
             try
             {
                 bool result;
-                UserToRegister = null;
+
                 // Chekc if password is same
                 if (CheckRegisterFormPassword == UserToRegister.PasswordHash)
                 {
@@ -332,7 +417,7 @@ namespace GameStore.WindowsApp.ViewModel
             }
             catch (Exception ex)
             {
-                
+
                 throw ex;
             }
         }

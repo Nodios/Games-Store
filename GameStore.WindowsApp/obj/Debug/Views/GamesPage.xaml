@@ -22,7 +22,7 @@
         * Row 0 contains the back button and page title
         * Row 1 contains the rest of the page layout
     -->
-    <Grid Background="{StaticResource WindowsSkyBlueLight}">
+    <Grid Background="{ThemeResource AppBarBackgroundThemeBrush}">
         <Grid.ChildrenTransitions>
             <TransitionCollection>
                 <EntranceThemeTransition/>
@@ -84,7 +84,7 @@
             <!-- List view of games -->
             <Button Content="&lt; Go back" Grid.Row="2" 
                     VerticalAlignment="Top"  Margin="0 60 0 0"
-                    Style="{StaticResource AppButtonStyle}"
+                    
                     Command="{Binding BackInList}"
                     Visibility="{Binding PreviousButtonVisible, Converter={StaticResource VisibilityConverter}, Mode=OneWay}"/>
             <ListView
@@ -93,8 +93,7 @@
                 Grid.Row="2"
                 Margin="0 120 0 0"
                 ItemsSource="{Binding GamesCollection, Mode=TwoWay}" 
-                SelectedItem="{Binding Game, Mode=TwoWay}"
-                RequestedTheme="Dark">
+                SelectedItem="{Binding Game, Mode=TwoWay}">
 
                 <!-- Commands for list -->
                 <interactivity:Interaction.Behaviors>
