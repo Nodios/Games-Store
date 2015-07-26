@@ -28,9 +28,11 @@ namespace GameStore.WindowsApp.ViewModel
         private bool gameDetailsVisible;
         private bool goForwardButtonVisible;
         private bool previousButtonVisible;
+        private bool showUserSubMenu;
         private Game game;
         private GameImage gameImage;
         private ObservableCollection<Game> gamesCollection;
+        private User user;
 
         // Services
         private readonly INavigationService navigation;
@@ -39,10 +41,12 @@ namespace GameStore.WindowsApp.ViewModel
 
         // Commands
         private RelayCommand<Guid> getGameCommand;
+        private RelayCommand mainpageCommand;
         private RelayCommand getGamesCommand;
         private RelayCommand goBack;
         private RelayCommand backInList;
         private RelayCommand forwardInList;
+        private RelayCommand showUserOptionsMenuCommand;
 
         #endregion
 
@@ -119,6 +123,52 @@ namespace GameStore.WindowsApp.ViewModel
             set { Set(() => this.GamesCollection, ref gamesCollection, value); }
         }
 
+        /// <summary>
+        /// Shows logged in menu if user is logged in
+        /// </summary>
+        public bool ShowUserLogged
+        {
+            get 
+            {
+                if (String.IsNullOrEmpty(WindowsApp.Common.UserInfo.Username))
+                    return false;
+                else
+                    return true;
+
+            }
+        }
+
+        /// <summary>
+        /// User submenu, with cart, order navigation proporties
+        /// </summary>
+        public bool ShowUserSubMenu
+        {
+            get { return showUserSubMenu; }
+            set { Set(()=> this.ShowUserSubMenu, ref showUserSubMenu, value);}
+        }
+
+        /// <summary>
+        /// User
+        /// </summary>
+        public User User
+        {
+            get 
+            {
+
+                if (!String.IsNullOrEmpty(GameStore.WindowsApp.Common.UserInfo.Username))
+                {
+                    user = new User()
+                    {
+                        Id = GameStore.WindowsApp.Common.UserInfo.Id,
+                        Access_token = GameStore.WindowsApp.Common.UserInfo.Token,
+                        UserName = GameStore.WindowsApp.Common.UserInfo.Username
+                    };
+                }
+
+                return user;
+            }
+        }
+
         #endregion
 
         #region Constructor
@@ -137,7 +187,7 @@ namespace GameStore.WindowsApp.ViewModel
             title = "Find games";            
             GameDetailsVisible = false;
             PreviousButtonVisible = false;
-            GoForwardButtonVisible = false;
+            GoForwardButtonVisible = false;                     
         }
 
         #endregion
@@ -183,6 +233,17 @@ namespace GameStore.WindowsApp.ViewModel
         }
 
         /// <summary>
+        /// Redirects user to main page
+        /// </summary>
+        public RelayCommand MainpageCommand
+        {
+            get
+            {
+                return mainpageCommand ?? (mainpageCommand = new RelayCommand(() => navigation.NavigateTo(ViewModelLocator.MAIN_PAGE_KEY)));
+            }
+        }
+
+        /// <summary>
         /// Click on go back in list
         /// </summary>
         public RelayCommand BackInList
@@ -218,6 +279,11 @@ namespace GameStore.WindowsApp.ViewModel
                             sizeAndPageNumberChecks();
                        }));
             }
+        }
+
+        public RelayCommand ShowUserOptionsMenuCommand
+        {
+            get { return showUserOptionsMenuCommand ?? (showUserOptionsMenuCommand = new RelayCommand(()=> ShowUserSubMenu = true)); }
         }
         #endregion
 

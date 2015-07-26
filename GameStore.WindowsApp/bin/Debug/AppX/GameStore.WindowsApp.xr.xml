@@ -4,6 +4,12 @@
     <RootInterface FullName="Windows.UI.Xaml.Data.IValueConverter" />
   </Roots.Interfaces>
   <Roots.PropertyPathNames>
+    <RootPropertyPathName Name="ShowRegisterFormCommand" />
+    <RootPropertyPathName Name="ShowLoginFormCommand" />
+    <RootPropertyPathName Name="LogoutCommand" />
+    <RootPropertyPathName Name="User" />
+    <RootPropertyPathName Name="UserName" />
+    <RootPropertyPathName Name="ShowUserOptionsMenuCommand" />
     <RootPropertyPathName Name="NavigationHelper" />
     <RootPropertyPathName Name="GoBackCommand" />
     <RootPropertyPathName Name="Main" />
@@ -13,20 +19,13 @@
     <RootPropertyPathName Name="UserToRegister" />
     <RootPropertyPathName Name="PasswordHash" />
     <RootPropertyPathName Name="Email" />
-    <RootPropertyPathName Name="UserName" />
     <RootPropertyPathName Name="LoginFormVisibility" />
     <RootPropertyPathName Name="LoginCommand" />
     <RootPropertyPathName Name="LoginPassword" />
     <RootPropertyPathName Name="LoginUserName" />
     <RootPropertyPathName Name="ShowUserSubMenu" />
-    <RootPropertyPathName Name="CloseUserOptionsCommand" />
-    <RootPropertyPathName Name="LogoutCommand" />
     <RootPropertyPathName Name="UserLoggedinButtonVisibility" />
-    <RootPropertyPathName Name="User" />
-    <RootPropertyPathName Name="ShowUserOptionsMenuCommand" />
     <RootPropertyPathName Name="RegisterAndLoginButtonVisibility" />
-    <RootPropertyPathName Name="ShowRegisterFormCommand" />
-    <RootPropertyPathName Name="ShowLoginFormCommand" />
     <RootPropertyPathName Name="NavigateToGamesPageCommand" />
     <RootPropertyPathName Name="Title" />
     <RootPropertyPathName Name="Games" />
@@ -46,6 +45,8 @@
     <RootPropertyPathName Name="Id" />
     <RootPropertyPathName Name="BackInList" />
     <RootPropertyPathName Name="PreviousButtonVisible" />
+    <RootPropertyPathName Name="ShowUserLogged" />
+    <RootPropertyPathName Name="MainpageCommand" />
     <RootPropertyPathName Name="SearchString" />
     <RootPropertyPathName Name="GetGames" />
     <RootPropertyPathName Name="GoBack" />
@@ -58,11 +59,11 @@
     <RootType FullName="System.String" />
     <RootType FullName="GameStore.WindowsApp.ViewModel.ViewModelLocator" />
     <RootType FullName="Windows.UI.Xaml.Controls.Button">
-      <RootProperty Name="Command" />
       <RootProperty Name="Style" />
+      <RootProperty Name="Command" />
+      <RootProperty Name="Content" />
       <RootProperty Name="Margin" />
       <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="Content" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Width" />
       <RootProperty Name="Visibility" />
@@ -87,6 +88,68 @@
       <RootProperty Name="Value" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.Tools.DirectUI.ProxyTypes.StaticResourceExtension" />
+    <RootType FullName="Windows.UI.Xaml.Controls.UserControl">
+      <RootProperty Name="Content" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Grid">
+      <RootProperty Name="Children" />
+      <RootProperty Name="Background" />
+      <RootProperty Name="RowDefinitions" />
+      <RootProperty Name="ColumnDefinitions" />
+      <RootProperty Name="ChildrenTransitions" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="Margin" />
+      <RootMethod Name="GetColumn" />
+      <RootMethod Name="SetColumn" />
+      <RootMethod Name="GetRow" />
+      <RootMethod Name="SetRow" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Orientation" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Children" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="Visibility" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Data.Binding">
+      <RootProperty Name="Mode" />
+      <RootProperty Name="ElementName" />
+      <RootProperty Name="Source" />
+      <RootProperty Name="Converter" />
+    </RootType>
+    <RootType FullName="GameStore.WindowsApp.Custom_controls.Login">
+      <RootProperty Name="Visibility" />
+    </RootType>
+    <RootType FullName="GameStore.WindowsApp.Custom_controls.MenuOptions">
+      <RootProperty Name="Width" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="Visibility" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
+      <RootProperty Name="FontWeight" />
+      <RootProperty Name="FontSize" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Inlines" />
+      <RootProperty Name="Text" />
+      <RootProperty Name="Style" />
+      <RootProperty Name="IsHitTestVisible" />
+      <RootProperty Name="TextWrapping" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="MaxHeight" />
+      <RootProperty Name="HorizontalAlignment" />
+    </RootType>
+    <RootType FullName="GameStore.WindowsApp.Custom_controls.UserLogged">
+      <RootProperty Name="Visibility" />
+    </RootType>
     <RootType FullName="GameStore.WindowsApp.Common.PageBase">
       <RootProperty Name="Resources" />
       <RootProperty Name="Content" />
@@ -102,23 +165,6 @@
     </RootType>
     <RootType FullName="GameStore.WindowsApp.Common.OrientationStateBehavior">
       <RootProperty Name="PortraitFlippedStateName" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.Grid">
-      <RootProperty Name="Background" />
-      <RootProperty Name="RowDefinitions" />
-      <RootProperty Name="Children" />
-      <RootProperty Name="ColumnDefinitions" />
-      <RootProperty Name="ChildrenTransitions" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Height" />
-      <RootProperty Name="Visibility" />
-      <RootProperty Name="Margin" />
-      <RootMethod Name="GetColumn" />
-      <RootMethod Name="SetColumn" />
-      <RootMethod Name="GetRow" />
-      <RootMethod Name="SetRow" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.VisualStateManager">
       <RootMethod Name="GetVisualStateGroups" />
@@ -171,40 +217,11 @@
       <RootMethod Name="GetItemType" />
       <RootMethod Name="SetItemType" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
-      <RootProperty Name="Text" />
-      <RootProperty Name="Style" />
-      <RootProperty Name="IsHitTestVisible" />
-      <RootProperty Name="TextWrapping" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="Inlines" />
-      <RootProperty Name="FontWeight" />
-      <RootProperty Name="FontSize" />
-      <RootProperty Name="MaxHeight" />
-      <RootProperty Name="HorizontalAlignment" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Data.Binding">
-      <RootProperty Name="ElementName" />
-      <RootProperty Name="Source" />
-      <RootProperty Name="Converter" />
-      <RootProperty Name="Mode" />
-    </RootType>
     <RootType FullName="GameStore.WindowsApp.SecondPage" />
     <RootType FullName="GameStore.WindowsApp.Common.VisibilityConverter" />
     <RootType FullName="Microsoft.Xaml.Tools.DirectUI.ProxyTypes.ThemeResourceExtension" />
     <RootType FullName="Windows.UI.Xaml.Media.Animation.TransitionCollection" />
     <RootType FullName="Windows.UI.Xaml.Media.Animation.EntranceThemeTransition" />
-    <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
-      <RootProperty Name="Orientation" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Children" />
-      <RootProperty Name="Visibility" />
-      <RootProperty Name="Width" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
       <RootProperty Name="Width" />
       <RootProperty Name="PlaceholderText" />
@@ -218,9 +235,6 @@
       <RootProperty Name="Password" />
     </RootType>
     <RootType FullName="GameStore.WindowsApp.MainPage" />
-    <RootType FullName="Windows.UI.Xaml.Controls.UserControl">
-      <RootProperty Name="Content" />
-    </RootType>
     <RootType FullName="GameStore.WindowsApp.Common.OrientationStateControlBehavior">
       <RootProperty Name="PortraitFlippedStateName" />
     </RootType>
@@ -235,6 +249,7 @@
       <RootProperty Name="Content" />
     </RootType>
     <RootType FullName="GameStore.WindowsApp.Common.ImageConverter" />
+    <RootType FullName="GameStore.WindowsApp.Common.VisibilityConverterReverse" />
     <RootType FullName="Windows.UI.Xaml.Controls.SearchBox">
       <RootProperty Name="PlaceholderText" />
       <RootProperty Name="VerticalAlignment" />

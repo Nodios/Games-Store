@@ -73,3 +73,26 @@ C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Views\Game
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Views\GamesPage.g.cs
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Views\GamesPage.xaml
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Views\GamesPage.xbf
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\Custom controls\Login.xbf
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\Custom controls\MenuOptions.xbf
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\Custom controls\UserLogged.xbf
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Custom controls\Login.g.i.cs
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Custom controls\Login.g.cs
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Custom controls\MenuOptions.g.i.cs
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Custom controls\MenuOptions.g.cs
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Custom controls\UserLogged.g.i.cs
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Custom controls\UserLogged.g.cs
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Custom controls\MenuOptions.xaml
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Custom controls\MenuOptions.xbf
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Custom controls\Login.xaml
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Custom controls\UserLogged.xaml
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Custom controls\Login.xbf
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Custom controls\UserLogged.xbf
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Microsoft.Practices.ServiceLocation\layout.resfiles
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Microsoft.Practices.ServiceLocation\layout.resfiles.intermediate
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Microsoft.Practices.ServiceLocation\Resources.resfiles
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Microsoft.Practices.ServiceLocation\Resources.resfiles.intermediate
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Microsoft.Practices.ServiceLocation\pri.resfiles
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Microsoft.Practices.ServiceLocation\pri.resfiles.intermediate
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Microsoft.Practices.ServiceLocation\priconfig.xml
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Microsoft.Practices.ServiceLocation\priconfig.xml.intermediate

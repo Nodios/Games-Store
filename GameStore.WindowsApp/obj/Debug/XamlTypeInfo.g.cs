@@ -124,67 +124,75 @@ namespace GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[29];
+            _typeNameTable = new string[33];
             _typeNameTable[0] = "GameStore.WindowsApp.ViewModel.ViewModelLocator";
             _typeNameTable[1] = "Object";
             _typeNameTable[2] = "GameStore.WindowsApp.ViewModel.MainViewModel";
             _typeNameTable[3] = "GalaSoft.MvvmLight.ViewModelBase";
             _typeNameTable[4] = "GalaSoft.MvvmLight.ObservableObject";
             _typeNameTable[5] = "GameStore.WindowsApp.ViewModel.GamesViewModel";
-            _typeNameTable[6] = "GameStore.WindowsApp.Common.PageBase";
-            _typeNameTable[7] = "Windows.UI.Xaml.Controls.Page";
-            _typeNameTable[8] = "Windows.UI.Xaml.Controls.UserControl";
-            _typeNameTable[9] = "GameStore.WindowsApp.Common.NavigationHelper";
-            _typeNameTable[10] = "Windows.UI.Xaml.DependencyObject";
-            _typeNameTable[11] = "Microsoft.Xaml.Interactivity.Interaction";
-            _typeNameTable[12] = "Microsoft.Xaml.Interactivity.BehaviorCollection";
-            _typeNameTable[13] = "Windows.UI.Xaml.DependencyObjectCollection";
-            _typeNameTable[14] = "GameStore.WindowsApp.Common.OrientationStateBehavior";
-            _typeNameTable[15] = "GameStore.WindowsApp.Common.OrientationStateControlBehavior";
-            _typeNameTable[16] = "String";
-            _typeNameTable[17] = "Double";
-            _typeNameTable[18] = "GameStore.WindowsApp.SecondPage";
-            _typeNameTable[19] = "GameStore.WindowsApp.Common.VisibilityConverter";
-            _typeNameTable[20] = "GameStore.WindowsApp.MainPage";
-            _typeNameTable[21] = "GameStore.WindowsApp.TestUserControl";
-            _typeNameTable[22] = "GameStore.WindowsApp.Common.ImageConverter";
-            _typeNameTable[23] = "Microsoft.Xaml.Interactions.Core.EventTriggerBehavior";
-            _typeNameTable[24] = "Microsoft.Xaml.Interactivity.ActionCollection";
-            _typeNameTable[25] = "Microsoft.Xaml.Interactions.Core.InvokeCommandAction";
-            _typeNameTable[26] = "System.Windows.Input.ICommand";
-            _typeNameTable[27] = "Windows.UI.Xaml.Data.IValueConverter";
-            _typeNameTable[28] = "GameStore.WindowsApp.Views.GamesPage";
+            _typeNameTable[6] = "GameStore.WindowsApp.Custom_controls.Login";
+            _typeNameTable[7] = "Windows.UI.Xaml.Controls.UserControl";
+            _typeNameTable[8] = "GameStore.WindowsApp.Custom_controls.MenuOptions";
+            _typeNameTable[9] = "GameStore.WindowsApp.Custom_controls.UserLogged";
+            _typeNameTable[10] = "GameStore.WindowsApp.Common.PageBase";
+            _typeNameTable[11] = "Windows.UI.Xaml.Controls.Page";
+            _typeNameTable[12] = "GameStore.WindowsApp.Common.NavigationHelper";
+            _typeNameTable[13] = "Windows.UI.Xaml.DependencyObject";
+            _typeNameTable[14] = "Microsoft.Xaml.Interactivity.Interaction";
+            _typeNameTable[15] = "Microsoft.Xaml.Interactivity.BehaviorCollection";
+            _typeNameTable[16] = "Windows.UI.Xaml.DependencyObjectCollection";
+            _typeNameTable[17] = "GameStore.WindowsApp.Common.OrientationStateBehavior";
+            _typeNameTable[18] = "GameStore.WindowsApp.Common.OrientationStateControlBehavior";
+            _typeNameTable[19] = "String";
+            _typeNameTable[20] = "Double";
+            _typeNameTable[21] = "GameStore.WindowsApp.SecondPage";
+            _typeNameTable[22] = "GameStore.WindowsApp.Common.VisibilityConverter";
+            _typeNameTable[23] = "GameStore.WindowsApp.MainPage";
+            _typeNameTable[24] = "GameStore.WindowsApp.TestUserControl";
+            _typeNameTable[25] = "GameStore.WindowsApp.Common.ImageConverter";
+            _typeNameTable[26] = "GameStore.WindowsApp.Common.VisibilityConverterReverse";
+            _typeNameTable[27] = "Microsoft.Xaml.Interactions.Core.EventTriggerBehavior";
+            _typeNameTable[28] = "Microsoft.Xaml.Interactivity.ActionCollection";
+            _typeNameTable[29] = "Microsoft.Xaml.Interactions.Core.InvokeCommandAction";
+            _typeNameTable[30] = "System.Windows.Input.ICommand";
+            _typeNameTable[31] = "Windows.UI.Xaml.Data.IValueConverter";
+            _typeNameTable[32] = "GameStore.WindowsApp.Views.GamesPage";
 
-            _typeTable = new global::System.Type[29];
+            _typeTable = new global::System.Type[33];
             _typeTable[0] = typeof(global::GameStore.WindowsApp.ViewModel.ViewModelLocator);
             _typeTable[1] = typeof(global::System.Object);
             _typeTable[2] = typeof(global::GameStore.WindowsApp.ViewModel.MainViewModel);
             _typeTable[3] = typeof(global::GalaSoft.MvvmLight.ViewModelBase);
             _typeTable[4] = typeof(global::GalaSoft.MvvmLight.ObservableObject);
             _typeTable[5] = typeof(global::GameStore.WindowsApp.ViewModel.GamesViewModel);
-            _typeTable[6] = typeof(global::GameStore.WindowsApp.Common.PageBase);
-            _typeTable[7] = typeof(global::Windows.UI.Xaml.Controls.Page);
-            _typeTable[8] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
-            _typeTable[9] = typeof(global::GameStore.WindowsApp.Common.NavigationHelper);
-            _typeTable[10] = typeof(global::Windows.UI.Xaml.DependencyObject);
-            _typeTable[11] = typeof(global::Microsoft.Xaml.Interactivity.Interaction);
-            _typeTable[12] = typeof(global::Microsoft.Xaml.Interactivity.BehaviorCollection);
-            _typeTable[13] = typeof(global::Windows.UI.Xaml.DependencyObjectCollection);
-            _typeTable[14] = typeof(global::GameStore.WindowsApp.Common.OrientationStateBehavior);
-            _typeTable[15] = typeof(global::GameStore.WindowsApp.Common.OrientationStateControlBehavior);
-            _typeTable[16] = typeof(global::System.String);
-            _typeTable[17] = typeof(global::System.Double);
-            _typeTable[18] = typeof(global::GameStore.WindowsApp.SecondPage);
-            _typeTable[19] = typeof(global::GameStore.WindowsApp.Common.VisibilityConverter);
-            _typeTable[20] = typeof(global::GameStore.WindowsApp.MainPage);
-            _typeTable[21] = typeof(global::GameStore.WindowsApp.TestUserControl);
-            _typeTable[22] = typeof(global::GameStore.WindowsApp.Common.ImageConverter);
-            _typeTable[23] = typeof(global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior);
-            _typeTable[24] = typeof(global::Microsoft.Xaml.Interactivity.ActionCollection);
-            _typeTable[25] = typeof(global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction);
-            _typeTable[26] = typeof(global::System.Windows.Input.ICommand);
-            _typeTable[27] = typeof(global::Windows.UI.Xaml.Data.IValueConverter);
-            _typeTable[28] = typeof(global::GameStore.WindowsApp.Views.GamesPage);
+            _typeTable[6] = typeof(global::GameStore.WindowsApp.Custom_controls.Login);
+            _typeTable[7] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
+            _typeTable[8] = typeof(global::GameStore.WindowsApp.Custom_controls.MenuOptions);
+            _typeTable[9] = typeof(global::GameStore.WindowsApp.Custom_controls.UserLogged);
+            _typeTable[10] = typeof(global::GameStore.WindowsApp.Common.PageBase);
+            _typeTable[11] = typeof(global::Windows.UI.Xaml.Controls.Page);
+            _typeTable[12] = typeof(global::GameStore.WindowsApp.Common.NavigationHelper);
+            _typeTable[13] = typeof(global::Windows.UI.Xaml.DependencyObject);
+            _typeTable[14] = typeof(global::Microsoft.Xaml.Interactivity.Interaction);
+            _typeTable[15] = typeof(global::Microsoft.Xaml.Interactivity.BehaviorCollection);
+            _typeTable[16] = typeof(global::Windows.UI.Xaml.DependencyObjectCollection);
+            _typeTable[17] = typeof(global::GameStore.WindowsApp.Common.OrientationStateBehavior);
+            _typeTable[18] = typeof(global::GameStore.WindowsApp.Common.OrientationStateControlBehavior);
+            _typeTable[19] = typeof(global::System.String);
+            _typeTable[20] = typeof(global::System.Double);
+            _typeTable[21] = typeof(global::GameStore.WindowsApp.SecondPage);
+            _typeTable[22] = typeof(global::GameStore.WindowsApp.Common.VisibilityConverter);
+            _typeTable[23] = typeof(global::GameStore.WindowsApp.MainPage);
+            _typeTable[24] = typeof(global::GameStore.WindowsApp.TestUserControl);
+            _typeTable[25] = typeof(global::GameStore.WindowsApp.Common.ImageConverter);
+            _typeTable[26] = typeof(global::GameStore.WindowsApp.Common.VisibilityConverterReverse);
+            _typeTable[27] = typeof(global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior);
+            _typeTable[28] = typeof(global::Microsoft.Xaml.Interactivity.ActionCollection);
+            _typeTable[29] = typeof(global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction);
+            _typeTable[30] = typeof(global::System.Windows.Input.ICommand);
+            _typeTable[31] = typeof(global::Windows.UI.Xaml.Data.IValueConverter);
+            _typeTable[32] = typeof(global::GameStore.WindowsApp.Views.GamesPage);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -221,25 +229,29 @@ namespace GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo
 
         private object Activate_0_ViewModelLocator() { return new global::GameStore.WindowsApp.ViewModel.ViewModelLocator(); }
         private object Activate_4_ObservableObject() { return new global::GalaSoft.MvvmLight.ObservableObject(); }
-        private object Activate_12_BehaviorCollection() { return new global::Microsoft.Xaml.Interactivity.BehaviorCollection(); }
-        private object Activate_14_OrientationStateBehavior() { return new global::GameStore.WindowsApp.Common.OrientationStateBehavior(); }
-        private object Activate_15_OrientationStateControlBehavior() { return new global::GameStore.WindowsApp.Common.OrientationStateControlBehavior(); }
-        private object Activate_18_SecondPage() { return new global::GameStore.WindowsApp.SecondPage(); }
-        private object Activate_19_VisibilityConverter() { return new global::GameStore.WindowsApp.Common.VisibilityConverter(); }
-        private object Activate_20_MainPage() { return new global::GameStore.WindowsApp.MainPage(); }
-        private object Activate_21_TestUserControl() { return new global::GameStore.WindowsApp.TestUserControl(); }
-        private object Activate_22_ImageConverter() { return new global::GameStore.WindowsApp.Common.ImageConverter(); }
-        private object Activate_23_EventTriggerBehavior() { return new global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior(); }
-        private object Activate_24_ActionCollection() { return new global::Microsoft.Xaml.Interactivity.ActionCollection(); }
-        private object Activate_25_InvokeCommandAction() { return new global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction(); }
-        private object Activate_28_GamesPage() { return new global::GameStore.WindowsApp.Views.GamesPage(); }
-        private void VectorAdd_12_BehaviorCollection(object instance, object item)
+        private object Activate_6_Login() { return new global::GameStore.WindowsApp.Custom_controls.Login(); }
+        private object Activate_8_MenuOptions() { return new global::GameStore.WindowsApp.Custom_controls.MenuOptions(); }
+        private object Activate_9_UserLogged() { return new global::GameStore.WindowsApp.Custom_controls.UserLogged(); }
+        private object Activate_15_BehaviorCollection() { return new global::Microsoft.Xaml.Interactivity.BehaviorCollection(); }
+        private object Activate_17_OrientationStateBehavior() { return new global::GameStore.WindowsApp.Common.OrientationStateBehavior(); }
+        private object Activate_18_OrientationStateControlBehavior() { return new global::GameStore.WindowsApp.Common.OrientationStateControlBehavior(); }
+        private object Activate_21_SecondPage() { return new global::GameStore.WindowsApp.SecondPage(); }
+        private object Activate_22_VisibilityConverter() { return new global::GameStore.WindowsApp.Common.VisibilityConverter(); }
+        private object Activate_23_MainPage() { return new global::GameStore.WindowsApp.MainPage(); }
+        private object Activate_24_TestUserControl() { return new global::GameStore.WindowsApp.TestUserControl(); }
+        private object Activate_25_ImageConverter() { return new global::GameStore.WindowsApp.Common.ImageConverter(); }
+        private object Activate_26_VisibilityConverterReverse() { return new global::GameStore.WindowsApp.Common.VisibilityConverterReverse(); }
+        private object Activate_27_EventTriggerBehavior() { return new global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior(); }
+        private object Activate_28_ActionCollection() { return new global::Microsoft.Xaml.Interactivity.ActionCollection(); }
+        private object Activate_29_InvokeCommandAction() { return new global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction(); }
+        private object Activate_32_GamesPage() { return new global::GameStore.WindowsApp.Views.GamesPage(); }
+        private void VectorAdd_15_BehaviorCollection(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Windows.UI.Xaml.DependencyObject>)instance;
             var newItem = (global::Windows.UI.Xaml.DependencyObject)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_24_ActionCollection(object instance, object item)
+        private void VectorAdd_28_ActionCollection(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Windows.UI.Xaml.DependencyObject>)instance;
             var newItem = (global::Windows.UI.Xaml.DependencyObject)item;
@@ -294,60 +306,81 @@ namespace GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 6:   //  GameStore.WindowsApp.Common.PageBase
+            case 6:   //  GameStore.WindowsApp.Custom_controls.Login
+                userType = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.UserControl"));
+                userType.Activator = Activate_6_Login;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 7:   //  Windows.UI.Xaml.Controls.UserControl
+                xamlType = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 8:   //  GameStore.WindowsApp.Custom_controls.MenuOptions
+                userType = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.UserControl"));
+                userType.Activator = Activate_8_MenuOptions;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 9:   //  GameStore.WindowsApp.Custom_controls.UserLogged
+                userType = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.UserControl"));
+                userType.Activator = Activate_9_UserLogged;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 10:   //  GameStore.WindowsApp.Common.PageBase
                 userType = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
                 userType.AddMemberName("NavigationHelper");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 7:   //  Windows.UI.Xaml.Controls.Page
+            case 11:   //  Windows.UI.Xaml.Controls.Page
                 xamlType = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 8:   //  Windows.UI.Xaml.Controls.UserControl
-                xamlType = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlSystemBaseType(typeName, type);
-                break;
-
-            case 9:   //  GameStore.WindowsApp.Common.NavigationHelper
+            case 12:   //  GameStore.WindowsApp.Common.NavigationHelper
                 userType = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObject"));
                 userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 10:   //  Windows.UI.Xaml.DependencyObject
+            case 13:   //  Windows.UI.Xaml.DependencyObject
                 xamlType = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 11:   //  Microsoft.Xaml.Interactivity.Interaction
+            case 14:   //  Microsoft.Xaml.Interactivity.Interaction
                 userType = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.AddMemberName("Behaviors");
                 xamlType = userType;
                 break;
 
-            case 12:   //  Microsoft.Xaml.Interactivity.BehaviorCollection
+            case 15:   //  Microsoft.Xaml.Interactivity.BehaviorCollection
                 userType = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObjectCollection"));
-                userType.CollectionAdd = VectorAdd_12_BehaviorCollection;
+                userType.CollectionAdd = VectorAdd_15_BehaviorCollection;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 13:   //  Windows.UI.Xaml.DependencyObjectCollection
+            case 16:   //  Windows.UI.Xaml.DependencyObjectCollection
                 xamlType = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 14:   //  GameStore.WindowsApp.Common.OrientationStateBehavior
+            case 17:   //  GameStore.WindowsApp.Common.OrientationStateBehavior
                 userType = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("GameStore.WindowsApp.Common.OrientationStateControlBehavior"));
-                userType.Activator = Activate_14_OrientationStateBehavior;
+                userType.Activator = Activate_17_OrientationStateBehavior;
                 userType.AddMemberName("SnapViewMaximumWidth");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 15:   //  GameStore.WindowsApp.Common.OrientationStateControlBehavior
+            case 18:   //  GameStore.WindowsApp.Common.OrientationStateControlBehavior
                 userType = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObject"));
-                userType.Activator = Activate_15_OrientationStateControlBehavior;
+                userType.Activator = Activate_18_OrientationStateControlBehavior;
                 userType.AddMemberName("PortraitFlippedStateName");
                 userType.AddMemberName("LandscapeFlippedStateName");
                 userType.AddMemberName("LandscapeStateName");
@@ -358,53 +391,60 @@ namespace GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 16:   //  String
+            case 19:   //  String
                 xamlType = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 17:   //  Double
+            case 20:   //  Double
                 xamlType = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 18:   //  GameStore.WindowsApp.SecondPage
+            case 21:   //  GameStore.WindowsApp.SecondPage
                 userType = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("GameStore.WindowsApp.Common.PageBase"));
-                userType.Activator = Activate_18_SecondPage;
+                userType.Activator = Activate_21_SecondPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 19:   //  GameStore.WindowsApp.Common.VisibilityConverter
+            case 22:   //  GameStore.WindowsApp.Common.VisibilityConverter
                 userType = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_19_VisibilityConverter;
+                userType.Activator = Activate_22_VisibilityConverter;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 20:   //  GameStore.WindowsApp.MainPage
+            case 23:   //  GameStore.WindowsApp.MainPage
                 userType = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("GameStore.WindowsApp.Common.PageBase"));
-                userType.Activator = Activate_20_MainPage;
+                userType.Activator = Activate_23_MainPage;
                 userType.AddMemberName("Vm");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 21:   //  GameStore.WindowsApp.TestUserControl
+            case 24:   //  GameStore.WindowsApp.TestUserControl
                 userType = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_21_TestUserControl;
+                userType.Activator = Activate_24_TestUserControl;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 22:   //  GameStore.WindowsApp.Common.ImageConverter
+            case 25:   //  GameStore.WindowsApp.Common.ImageConverter
                 userType = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_22_ImageConverter;
+                userType.Activator = Activate_25_ImageConverter;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 23:   //  Microsoft.Xaml.Interactions.Core.EventTriggerBehavior
+            case 26:   //  GameStore.WindowsApp.Common.VisibilityConverterReverse
+                userType = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.Activator = Activate_26_VisibilityConverterReverse;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 27:   //  Microsoft.Xaml.Interactions.Core.EventTriggerBehavior
                 userType = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObject"));
-                userType.Activator = Activate_23_EventTriggerBehavior;
+                userType.Activator = Activate_27_EventTriggerBehavior;
                 userType.SetContentPropertyName("Microsoft.Xaml.Interactions.Core.EventTriggerBehavior.Actions");
                 userType.AddMemberName("Actions");
                 userType.AddMemberName("EventName");
@@ -413,16 +453,16 @@ namespace GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 24:   //  Microsoft.Xaml.Interactivity.ActionCollection
+            case 28:   //  Microsoft.Xaml.Interactivity.ActionCollection
                 userType = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObjectCollection"));
-                userType.CollectionAdd = VectorAdd_24_ActionCollection;
+                userType.CollectionAdd = VectorAdd_28_ActionCollection;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 25:   //  Microsoft.Xaml.Interactions.Core.InvokeCommandAction
+            case 29:   //  Microsoft.Xaml.Interactions.Core.InvokeCommandAction
                 userType = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObject"));
-                userType.Activator = Activate_25_InvokeCommandAction;
+                userType.Activator = Activate_29_InvokeCommandAction;
                 userType.AddMemberName("Command");
                 userType.AddMemberName("CommandParameter");
                 userType.AddMemberName("InputConverter");
@@ -431,19 +471,19 @@ namespace GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 26:   //  System.Windows.Input.ICommand
+            case 30:   //  System.Windows.Input.ICommand
                 userType = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlUserType(this, typeName, type, null);
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 27:   //  Windows.UI.Xaml.Data.IValueConverter
+            case 31:   //  Windows.UI.Xaml.Data.IValueConverter
                 xamlType = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 28:   //  GameStore.WindowsApp.Views.GamesPage
+            case 32:   //  GameStore.WindowsApp.Views.GamesPage
                 userType = new global::GameStore.WindowsApp.GameStore_WindowsApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_28_GamesPage;
+                userType.Activator = Activate_32_GamesPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;

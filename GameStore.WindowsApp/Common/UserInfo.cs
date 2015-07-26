@@ -1,5 +1,4 @@
-﻿
-namespace GameStore.WindowsApp.Common
+﻿namespace GameStore.WindowsApp.Common
 {
     internal static class UserInfo
     {

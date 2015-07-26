@@ -10,11 +10,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:customControls="using:GameStore.WindowsApp.Custom_controls"
     mc:Ignorable="d">
 
     <Page.Resources>
         <common:VisibilityConverter x:Key="VisibilityConverter" />
         <common:ImageConverter x:Key="ImageConverter"/>
+        <common:VisibilityConverterReverse x:Key="VisibilityConverterReverse" />
     </Page.Resources>
 
     <!--
@@ -73,6 +75,14 @@
                 </core:EventTriggerBehavior>
             </interactivity:Interaction.Behaviors>
         </SearchBox>
+
+        <!-- User log -->
+        <Grid Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" Margin="0 0 30 0">
+            <customControls:UserLogged  Visibility="{Binding ShowUserLogged, Converter={StaticResource VisibilityConverter}}" />
+            <Button Margin="0 30 0 0" Visibility="{Binding ShowUserLogged, Converter={StaticResource VisibilityConverterReverse}}" HorizontalAlignment="Right"  Style="{StaticResource AccountButtonStyle}" Command="{Binding MainpageCommand}">Login</Button>      
+        </Grid>
+        <customControls:MenuOptions Width="150"  Grid.Row="2"  Grid.Column="1" VerticalAlignment="Top"  HorizontalAlignment="Right" Height="200" Visibility="{Binding ShowUserSubMenu, Converter={StaticResource VisibilityConverter}}" />
+
 
         <!-- Details view , body view -->
         <Grid Grid.Column="1" Grid.Row="2">

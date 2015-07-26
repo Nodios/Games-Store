@@ -20,13 +20,13 @@
     <AppXManifest Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-07-23T21:06:05.340</Modified>
+      <Modified>2015-07-26T20:56:59.154</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\GameStore.WindowsApp.exe">
       <PackagePath>GameStore.WindowsApp.exe</PackagePath>
-      <Modified>2015-07-25T15:07:54.187</Modified>
+      <Modified>2015-07-26T21:20:00.760</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\BehaviorsXamlSDKManaged\12.0\References\CommonConfiguration\Neutral\Microsoft.Xaml.Interactions.dll">
       <PackagePath>Microsoft.Xaml.Interactions.dll</PackagePath>
@@ -80,13 +80,25 @@
       <PackagePath>App.xbf</PackagePath>
       <Modified>2015-07-25T14:20:33.394</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\Custom controls\Login.xbf">
+      <PackagePath>Custom controls\Login.xbf</PackagePath>
+      <Modified>2015-07-26T21:20:00.290</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\Custom controls\MenuOptions.xbf">
+      <PackagePath>Custom controls\MenuOptions.xbf</PackagePath>
+      <Modified>2015-07-26T21:20:00.295</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\Custom controls\UserLogged.xbf">
+      <PackagePath>Custom controls\UserLogged.xbf</PackagePath>
+      <Modified>2015-07-26T21:20:00.300</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\SecondPage.xbf">
       <PackagePath>SecondPage.xbf</PackagePath>
       <Modified>2015-07-20T20:16:54.094</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2015-07-25T14:20:33.403</Modified>
+      <Modified>2015-07-26T21:20:00.305</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\Skins\MainSkin.xbf">
       <PackagePath>Skins\MainSkin.xbf</PackagePath>
@@ -98,15 +110,15 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\Views\GamesPage.xbf">
       <PackagePath>Views\GamesPage.xbf</PackagePath>
-      <Modified>2015-07-25T15:07:52.909</Modified>
+      <Modified>2015-07-26T21:20:00.309</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\GameStore.WindowsApp.xr.xml">
       <PackagePath>GameStore.WindowsApp.xr.xml</PackagePath>
-      <Modified>2015-07-25T15:07:51.923</Modified>
+      <Modified>2015-07-26T21:20:00.241</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2015-07-25T15:04:53.156</Modified>
+      <Modified>2015-07-26T21:20:01.446</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

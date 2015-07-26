@@ -7,6 +7,7 @@
                  xmlns:common="using:GameStore.WindowsApp.Common"
                  xmlns:local="using:GameStore.WindowsApp"
                  xmlns:ignore="http://www.ignore.com"
+                 xmlns:customControls="using:GameStore.WindowsApp.Custom_controls"
                  x:Name="PageRoot"
                  x:Class="GameStore.WindowsApp.MainPage"
                  mc:Ignorable="d ignore"
@@ -20,6 +21,7 @@
             
             <!-- Set converters here-->
             <common:VisibilityConverter x:Key="VisibilityConverter"></common:VisibilityConverter>
+            
         </ResourceDictionary>    
     </Page.Resources>
 
@@ -48,8 +50,6 @@
             <ColumnDefinition Width="120" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-
-
         <!-- Title -->
         <TextBlock Style="{StaticResource HeaderTextBlockStyle}"
                    Text="{Binding Title}"
@@ -65,26 +65,15 @@
         </StackPanel>
         
         <!-- Account buttons -->
-        <StackPanel Grid.Column="1" Grid.Row="1" Margin="0 30 0 0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Visibility="{Binding RegisterAndLoginButtonVisibility,Converter={StaticResource VisibilityConverter },Mode=TwoWay}">
-            <Button Style="{StaticResource AccountButtonStyle}" Command="{Binding ShowLoginFormCommand}">Login</Button>
-            <Button Style="{StaticResource AccountButtonStyle}" Command="{Binding ShowRegisterFormCommand}">Sign up</Button>
-        </StackPanel>
-
-        <StackPanel Grid.Column="1" Grid.Row="1" Margin="0 30 0 0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Visibility="{Binding UserLoggedinButtonVisibility,Converter={StaticResource VisibilityConverter },Mode=TwoWay}">
-            <TextBlock FontWeight="Normal" FontSize="24" VerticalAlignment="Bottom" Margin="0 0 5 0">Hi, </TextBlock>
-            <Button  Content="{Binding User.UserName, Mode=TwoWay}" Style="{StaticResource AccountButtonStyle}" Command="{Binding ShowUserOptionsMenuCommand }" />
-        </StackPanel>
-        
        
-            
-            <!-- TODO Implement user menu options -->
+        <Grid Grid.Row="1" Grid.Column="1">
+        <customControls:Login Visibility="{Binding RegisterAndLoginButtonVisibility,Converter={StaticResource VisibilityConverter },Mode=TwoWay}"></customControls:Login>
+            <customControls:UserLogged Visibility="{Binding UserLoggedinButtonVisibility,Converter={StaticResource VisibilityConverter },Mode=TwoWay}"></customControls:UserLogged>        
+        </Grid>
+                  
+        <!-- TODO Implement user menu options -->
         <Grid Width="150"  Grid.Row="2"  Grid.Column="1" VerticalAlignment="Top"  HorizontalAlignment="Right" Height="200" Visibility="{Binding ShowUserSubMenu, Converter={StaticResource VisibilityConverter}}">
-            <StackPanel Orientation="Vertical">
-                <Button Style="{StaticResource UserDropMenuStyle}" Margin="0 10 0 0">Cart</Button>
-                <Button Style="{StaticResource UserDropMenuStyle}">Orders</Button>
-                <Button Style="{StaticResource UserDropMenuStyle}" Command="{Binding LogoutCommand}">Logout</Button>
-                <Button Style="{StaticResource UserDropMenuStyle}" Command="{Binding CloseUserOptionsCommand}">Close</Button>
-            </StackPanel>
+            <customControls:MenuOptions></customControls:MenuOptions>
         </Grid>
 
         <Grid Height="469" Grid.Row="2" Grid.Column="1">

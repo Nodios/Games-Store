@@ -3,6 +3,9 @@ Assets\SmallLogo.scale-100.png
 Assets\SplashScreen.scale-100.png
 Assets\StoreLogo.scale-100.png
 App.xbf
+Custom controls\Login.xbf
+Custom controls\MenuOptions.xbf
+Custom controls\UserLogged.xbf
 GameStore.WindowsApp.xr.xml
 MainPage.xbf
 SecondPage.xbf

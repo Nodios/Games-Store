@@ -24,8 +24,6 @@ namespace GameStore.WindowsApp.ViewModel
 
         private readonly string title;
 
-
-
         private string loginUserName;
         private string loginPassword;
         private string checkRegisterFormPassword;
@@ -253,7 +251,7 @@ namespace GameStore.WindowsApp.ViewModel
             {
                 return navigateToGamesPageCommand
                        ?? (navigateToGamesPageCommand = new RelayCommand(
-                           () => navigationService.NavigateTo(ViewModelLocator.GamesPageKey)));
+                           () => navigationService.NavigateTo(ViewModelLocator.GAMES_PAGE_KEY, this.User)));
 
 
             }

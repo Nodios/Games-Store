@@ -31,8 +31,9 @@ namespace GameStore.WindowsApp.ViewModel
     {
         #region Fields
 
-        public const string SecondPageKey = "SecondPage";
-        public const string GamesPageKey = "GamesPage"; 
+        public const string SECOND_PAGE_KEY = "SecondPage";
+        public const string GAMES_PAGE_KEY = "GamesPage";
+        public const string MAIN_PAGE_KEY = "MainPage";
 
         #endregion
 
@@ -85,8 +86,9 @@ namespace GameStore.WindowsApp.ViewModel
 
             // Configure navigation service pages here
             var nav = new NavigationService();
-            nav.Configure(ViewModelLocator.SecondPageKey, typeof(SecondPage));
-            nav.Configure(ViewModelLocator.GamesPageKey, typeof(GamesPage));
+            nav.Configure(ViewModelLocator.SECOND_PAGE_KEY, typeof(SecondPage));
+            nav.Configure(ViewModelLocator.GAMES_PAGE_KEY, typeof(GamesPage));
+            nav.Configure(ViewModelLocator.MAIN_PAGE_KEY, typeof(MainPage));
             SimpleIoc.Default.Register<INavigationService>(() => nav);
 
             // Register view models
