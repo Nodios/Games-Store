@@ -25,10 +25,5 @@ namespace GameStore.WindowsApp.Custom_controls
             this.InitializeComponent();
         }
 
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            thisControl.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-        }
     }
 }

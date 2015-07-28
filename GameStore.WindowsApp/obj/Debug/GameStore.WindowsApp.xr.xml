@@ -6,6 +6,7 @@
   <Roots.PropertyPathNames>
     <RootPropertyPathName Name="ShowRegisterFormCommand" />
     <RootPropertyPathName Name="ShowLoginFormCommand" />
+    <RootPropertyPathName Name="CloseUserOptionsCommand" />
     <RootPropertyPathName Name="LogoutCommand" />
     <RootPropertyPathName Name="User" />
     <RootPropertyPathName Name="UserName" />
@@ -32,6 +33,7 @@
     <RootPropertyPathName Name="GameDetailsVisible" />
     <RootPropertyPathName Name="GameImage" />
     <RootPropertyPathName Name="Content" />
+    <RootPropertyPathName Name="AddToCartCommand" />
     <RootPropertyPathName Name="Game" />
     <RootPropertyPathName Name="Description" />
     <RootPropertyPathName Name="Genre" />

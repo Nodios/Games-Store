@@ -6,10 +6,12 @@ using GameStore.WindowsApp.Service.Common;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using Windows.UI.Popups;
 
 namespace GameStore.WindowsApp.ViewModel
 {
-    public enum GameSearchType { ByName, EmptySearch};
+    public enum GameSearchType { ByName, EmptySearch };
 
     public class GamesViewModel : ViewModelBase
     {
@@ -29,6 +31,7 @@ namespace GameStore.WindowsApp.ViewModel
         private bool goForwardButtonVisible;
         private bool previousButtonVisible;
         private bool showUserSubMenu;
+        private bool showUserLogged;
         private Game game;
         private GameImage gameImage;
         private ObservableCollection<Game> gamesCollection;
@@ -38,6 +41,7 @@ namespace GameStore.WindowsApp.ViewModel
         private readonly INavigationService navigation;
         private readonly IGamesService gamesService;
         private readonly IGameImageService gameImageService;
+        private readonly ICartService cartService;
 
         // Commands
         private RelayCommand<Guid> getGameCommand;
@@ -47,6 +51,11 @@ namespace GameStore.WindowsApp.ViewModel
         private RelayCommand backInList;
         private RelayCommand forwardInList;
         private RelayCommand showUserOptionsMenuCommand;
+        private RelayCommand closeUserOptionsCommand;
+        private RelayCommand logoutCommand;
+        private RelayCommand addToCartCommand;
+
+
 
         #endregion
 
@@ -128,14 +137,8 @@ namespace GameStore.WindowsApp.ViewModel
         /// </summary>
         public bool ShowUserLogged
         {
-            get 
-            {
-                if (String.IsNullOrEmpty(WindowsApp.Common.UserInfo.Username))
-                    return false;
-                else
-                    return true;
-
-            }
+            get { return showUserLogged; }
+            set { Set(() => this.ShowUserLogged, ref showUserLogged, value); }
         }
 
         /// <summary>
@@ -144,7 +147,7 @@ namespace GameStore.WindowsApp.ViewModel
         public bool ShowUserSubMenu
         {
             get { return showUserSubMenu; }
-            set { Set(()=> this.ShowUserSubMenu, ref showUserSubMenu, value);}
+            set { Set(() => this.ShowUserSubMenu, ref showUserSubMenu, value); }
         }
 
         /// <summary>
@@ -152,7 +155,7 @@ namespace GameStore.WindowsApp.ViewModel
         /// </summary>
         public User User
         {
-            get 
+            get
             {
 
                 if (!String.IsNullOrEmpty(GameStore.WindowsApp.Common.UserInfo.Username))
@@ -176,18 +179,31 @@ namespace GameStore.WindowsApp.ViewModel
         /// <summary>
         /// Initializes new instance of GamesViewModel
         /// </summary>
-        public GamesViewModel(INavigationService navigation, IGamesService gamesService, IGameImageService gameImageService)
+        public GamesViewModel(INavigationService navigation, IGamesService gamesService, IGameImageService gameImageService, ICartService cartService)
         {
             this.navigation = navigation;
             this.gamesService = gamesService;
             this.gameImageService = gameImageService;
+            this.cartService = cartService;
 
             gamesCollection = new ObservableCollection<Game>();
 
-            title = "Find games";            
+            title = "Find games";
             GameDetailsVisible = false;
             PreviousButtonVisible = false;
-            GoForwardButtonVisible = false;                     
+            GoForwardButtonVisible = false;
+
+            if (!String.IsNullOrEmpty(GameStore.WindowsApp.Common.UserInfo.Username))
+                ShowUserLogged = true;
+
+            // Notify when user name is changed
+            GameStore.WindowsApp.Common.UserInfo.OnUserNameChange += () =>
+            {
+                if (String.IsNullOrEmpty(GameStore.WindowsApp.Common.UserInfo.Username))
+                    ShowUserLogged = false;
+                else
+                    ShowUserLogged = true;
+            };
         }
 
         #endregion
@@ -277,13 +293,70 @@ namespace GameStore.WindowsApp.ViewModel
                             pageNumber++;
                             getGames();
                             sizeAndPageNumberChecks();
-                       }));
+                        }));
             }
         }
 
+        /// <summary>
+        /// Show user options
+        /// </summary>
         public RelayCommand ShowUserOptionsMenuCommand
         {
-            get { return showUserOptionsMenuCommand ?? (showUserOptionsMenuCommand = new RelayCommand(()=> ShowUserSubMenu = true)); }
+            get { return showUserOptionsMenuCommand ?? (showUserOptionsMenuCommand = new RelayCommand(() => ShowUserSubMenu = true)); }
+        }
+
+        /// <summary>
+        /// Hide user options
+        /// </summary>
+        public RelayCommand CloseUserOptionsCommand
+        {
+            get { return closeUserOptionsCommand ?? (closeUserOptionsCommand = new RelayCommand(() => ShowUserSubMenu = false)); }
+        }
+
+        public RelayCommand LogoutCommand
+        {
+            get
+            {
+                return logoutCommand ?? (logoutCommand = new RelayCommand(() =>
+                {
+                    ShowUserSubMenu = false;
+                    GameStore.WindowsApp.Common.UserInfo.Id = "";
+                    GameStore.WindowsApp.Common.UserInfo.Token = "";
+                    GameStore.WindowsApp.Common.UserInfo.Username = "";
+                }));
+            }
+        }
+
+        /// <summary>
+        /// Adds game to cart
+        /// </summary>
+        public RelayCommand AddToCartCommand
+        {
+            get
+            {
+                return addToCartCommand ?? (addToCartCommand = new RelayCommand(async () =>
+                    {
+                        MessageDialog messagedialog = null;
+
+                        try
+                        {
+                            int result = await addToCart();
+                            string msg;
+                            if (result >= 1)
+                                msg = "Added to cart.";
+                            else
+                                msg = "Please login and try again.";
+
+                            messagedialog = new MessageDialog(msg);
+                        }
+                        catch (Exception ex)
+                        {
+                            messagedialog = new MessageDialog(ex.Message);
+                        }
+
+                        await messagedialog.ShowAsync();
+                    }));
+            }
         }
         #endregion
 
@@ -303,7 +376,7 @@ namespace GameStore.WindowsApp.ViewModel
                 if (String.IsNullOrEmpty(searchString))
                 {
                     // Check if previous search way by name and sets page number and search type 
-                    if(searchType == GameSearchType.ByName)
+                    if (searchType == GameSearchType.ByName)
                     {
                         pageNumber = 1;
                         searchType = GameSearchType.EmptySearch;
@@ -322,7 +395,7 @@ namespace GameStore.WindowsApp.ViewModel
                 else
                 {
                     // Checks if previous search way empty search and sets page number and search type
-                    if(searchType == GameSearchType.EmptySearch)
+                    if (searchType == GameSearchType.EmptySearch)
                     {
                         pageNumber = 1;
                         searchType = GameSearchType.ByName;
@@ -366,6 +439,26 @@ namespace GameStore.WindowsApp.ViewModel
                     GameDetailsVisible = true;
                 else
                     GameDetailsVisible = false;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        private async Task<int> addToCart()
+        {
+            try
+            {
+                Cart cart = new Cart(GameStore.WindowsApp.Common.UserInfo.Id);
+                cart.GamesInCart.Add(game);
+
+                int result = await cartService.UpdateAsync(cart);
+
+
+
+                return result;
             }
             catch (Exception ex)
             {

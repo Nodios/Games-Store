@@ -13,7 +13,6 @@ namespace GameStore.WindowsApp.Views
         {
             this.InitializeComponent();
         }
-
-       
+   
     }
 }

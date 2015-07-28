@@ -14,6 +14,6 @@
         <Button Style="{StaticResource UserDropMenuStyle}" Margin="0 10 0 0">Cart</Button>
         <Button Style="{StaticResource UserDropMenuStyle}">Orders</Button>
         <Button Style="{StaticResource UserDropMenuStyle}" Command="{Binding LogoutCommand}">Logout</Button>
-        <Button Style="{StaticResource UserDropMenuStyle}">Close</Button>
+        <Button Style="{StaticResource UserDropMenuStyle}" Command="{Binding CloseUserOptionsCommand}">Close</Button>
     </StackPanel>
 </UserControl>

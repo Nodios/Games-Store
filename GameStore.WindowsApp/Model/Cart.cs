@@ -1,50 +1,44 @@
 ﻿using GalaSoft.MvvmLight;
+using System;
 using System.Collections.Generic;
 
 namespace GameStore.WindowsApp.Model
 {
+    /// <summary>
+    /// Cart entity
+    /// </summary>
     public class Cart : ObservableObject
     {
-        public string UserId { get; set; }
-        public virtual IList<Game> GamesInCart { get; set; }
 
-        //private string userId;
-        //private ICollection<Game> gamesInCart;
+        private string userId;
+        private ICollection<Game> gamesInCart;
 
-        //public string UserId
-        //{
-        //    get { return this.userId; }
-        //    set
-        //    {
-        //        this.userId = value;
-        //        NotifyPropertyChanged();
-        //    }
-        //}
+        /// <summary>
+        /// Get user id
+        /// </summary>
+        public string UserId
+        {
+            get { return this.userId; }
+        }
 
-        //public ICollection<Game> GamesInCart
-        //{
-        //    get { return this.gamesInCart; }
-        //    set
-        //    {
-        //        this.gamesInCart = value;
-        //        NotifyPropertyChanged();
-        //    }
-        //}
+        /// <summary>
+        /// Gets and sets games in cart
+        /// </summary>
+        public ICollection<Game> GamesInCart
+        {
+            get { return this.gamesInCart; }
+            set { Set(() => this.GamesInCart, ref gamesInCart, value); }
+           
+        }
 
-        //#region Notify property changed implementation
-
-        ///// <summary>
-        ///// Property changed event handler
-        ///// </summary>
-        //public event PropertyChangedEventHandler PropertyChanged;
-
-        //// Notify that property is changed, called by set accessors
-        //private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        //{
-        //    if (PropertyChanged != null)
-        //        PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        //}
-
-        //#endregion
+        /// <summary>
+        /// Initialies new cart
+        /// </summary>
+        /// <param name="id">Cart id</param>
+        public Cart(string id)
+        {
+            userId = id;
+            gamesInCart = new List<Game>();
+        }
     }
 }

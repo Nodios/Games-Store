@@ -75,6 +75,7 @@ namespace GameStore.WindowsApp.ViewModel
                 SimpleIoc.Default.Register<IGamesService, GamesService>();
                 SimpleIoc.Default.Register<IGameImageService, GameImageService>();
                 SimpleIoc.Default.Register<IUserService, UserService>();
+                SimpleIoc.Default.Register<ICartService, CartService>();
             }
             else
             {
@@ -82,6 +83,7 @@ namespace GameStore.WindowsApp.ViewModel
                 SimpleIoc.Default.Register<IGamesService, GamesService>();
                 SimpleIoc.Default.Register<IGameImageService, GameImageService>();
                 SimpleIoc.Default.Register<IUserService, UserService>();
+                SimpleIoc.Default.Register<ICartService, CartService>();
             }
 
             // Configure navigation service pages here

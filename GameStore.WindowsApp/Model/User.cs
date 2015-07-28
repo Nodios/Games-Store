@@ -77,6 +77,14 @@ namespace GameStore.WindowsApp.Model
 
         #endregion
 
-       
+        #region Constructor
+
+        public User()
+        {
+            Cart = new Cart(Id);
+        }
+        #endregion
+
+
     }
 }
