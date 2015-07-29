@@ -163,9 +163,13 @@
     </Compile>
     <Compile Include="Utilities\Constants.cs" />
     <Compile Include="Utilities\GenericFilter.cs" />
+    <Compile Include="ViewModel\CartViewModel.cs" />
     <Compile Include="ViewModel\GamesViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="Views\CartPage.xaml.cs">
+      <DependentUpon>CartPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\GamesPage.xaml.cs">
       <DependentUpon>GamesPage.xaml</DependentUpon>
     </Compile>
@@ -214,6 +218,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="TestUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CartPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

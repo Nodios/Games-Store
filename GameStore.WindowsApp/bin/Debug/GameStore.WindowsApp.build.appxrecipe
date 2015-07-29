@@ -80,6 +80,9 @@
     <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\TestUserControl.xbf">
       <PackagePath>TestUserControl.xbf</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\Views\CartPage.xbf">
+      <PackagePath>Views\CartPage.xbf</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\Views\GamesPage.xbf">
       <PackagePath>Views\GamesPage.xbf</PackagePath>
     </AppxPackagedFile>

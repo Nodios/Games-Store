@@ -88,3 +88,16 @@ C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Custom con
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Custom controls\UserLogged.xaml
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Custom controls\Login.xbf
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Custom controls\UserLogged.xbf
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Views\CartPage.g.i.cs
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Views\CartPage.g.cs
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\Views\CartPage.xbf
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Views\CartPage.xaml
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Views\CartPage.xbf
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Microsoft.Practices.ServiceLocation\layout.resfiles
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Microsoft.Practices.ServiceLocation\layout.resfiles.intermediate
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Microsoft.Practices.ServiceLocation\Resources.resfiles
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Microsoft.Practices.ServiceLocation\Resources.resfiles.intermediate
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Microsoft.Practices.ServiceLocation\pri.resfiles
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Microsoft.Practices.ServiceLocation\pri.resfiles.intermediate
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Microsoft.Practices.ServiceLocation\priconfig.xml
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Microsoft.Practices.ServiceLocation\priconfig.xml.intermediate

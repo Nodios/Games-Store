@@ -1,4 +1,5 @@
-﻿using GameStore.WindowsApp.Service.Common;
+﻿using GameStore.WindowsApp.Model;
+using GameStore.WindowsApp.Service.Common;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -21,9 +22,29 @@ namespace GameStore.WindowsApp.Service
             url = Utilities.Constants.GAMESTORE_API + "/cart/";
         }
 
-        public Task<Model.Cart> GetAsync(string userId)
+        /// <summary>
+        /// Gets cart based on user id
+        /// </summary>
+        /// <param name="userId">user id</param>
+        /// <returns>Cart</returns>
+        public async Task<Model.Cart> GetAsync(string userId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, url + userId);
+                HttpResponseMessage response = await client.SendAsync(request);
+
+                string result = await response.Content.ReadAsStringAsync();
+
+                Cart cart = JsonConvert.DeserializeObject<Cart>(result);
+
+                return cart;
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
         }
 
         /// <summary>

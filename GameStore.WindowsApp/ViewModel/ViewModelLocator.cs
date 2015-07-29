@@ -34,6 +34,7 @@ namespace GameStore.WindowsApp.ViewModel
         public const string SECOND_PAGE_KEY = "SecondPage";
         public const string GAMES_PAGE_KEY = "GamesPage";
         public const string MAIN_PAGE_KEY = "MainPage";
+        public const string CART_PAGE_KEY = "CartPage";
 
         #endregion
 
@@ -60,6 +61,14 @@ namespace GameStore.WindowsApp.ViewModel
             {
                 return ServiceLocator.Current.GetInstance<GamesViewModel>();
             }
+        }
+
+        [SuppressMessage("Microsoft.Performance",
+            "CA1822:MarkMembersAsStatic",
+            Justification = "This non-static member is needed for data binding purposes.")]
+        public CartViewModel CartVM
+        {
+            get { return ServiceLocator.Current.GetInstance<CartViewModel>(); }
         }
 
         /// <summary>
@@ -91,12 +100,15 @@ namespace GameStore.WindowsApp.ViewModel
             nav.Configure(ViewModelLocator.SECOND_PAGE_KEY, typeof(SecondPage));
             nav.Configure(ViewModelLocator.GAMES_PAGE_KEY, typeof(GamesPage));
             nav.Configure(ViewModelLocator.MAIN_PAGE_KEY, typeof(MainPage));
+            nav.Configure(ViewModelLocator.CART_PAGE_KEY, typeof(CartPage));
+
             SimpleIoc.Default.Register<INavigationService>(() => nav);
 
             // Register view models
             SimpleIoc.Default.Register<IDialogService, DialogService>();
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<GamesViewModel>();
+            SimpleIoc.Default.Register<CartViewModel>();
         }
 
         /// <summary>

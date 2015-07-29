@@ -29,6 +29,8 @@
     <RootPropertyPathName Name="RegisterAndLoginButtonVisibility" />
     <RootPropertyPathName Name="NavigateToGamesPageCommand" />
     <RootPropertyPathName Name="Title" />
+    <RootPropertyPathName Name="CartVM" />
+    <RootPropertyPathName Name="LoadedCommand" />
     <RootPropertyPathName Name="Games" />
     <RootPropertyPathName Name="GameDetailsVisible" />
     <RootPropertyPathName Name="GameImage" />
@@ -69,6 +71,7 @@
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Width" />
       <RootProperty Name="Visibility" />
+      <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Control">
       <RootProperty Name="FontSize" />
@@ -250,6 +253,15 @@
       <RootProperty Name="Resources" />
       <RootProperty Name="Content" />
     </RootType>
+    <RootType FullName="Microsoft.Xaml.Interactions.Core.EventTriggerBehavior">
+      <RootProperty Name="EventName" />
+      <RootProperty Name="Actions" />
+    </RootType>
+    <RootType FullName="Microsoft.Xaml.Interactions.Core.InvokeCommandAction">
+      <RootProperty Name="Command" />
+      <RootProperty Name="CommandParameter" />
+    </RootType>
+    <RootType FullName="GameStore.WindowsApp.Views.CartPage" />
     <RootType FullName="GameStore.WindowsApp.Common.ImageConverter" />
     <RootType FullName="GameStore.WindowsApp.Common.VisibilityConverterReverse" />
     <RootType FullName="Windows.UI.Xaml.Controls.SearchBox">
@@ -276,14 +288,6 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Documents.Run">
       <RootProperty Name="Text" />
-    </RootType>
-    <RootType FullName="Microsoft.Xaml.Interactions.Core.EventTriggerBehavior">
-      <RootProperty Name="EventName" />
-      <RootProperty Name="Actions" />
-    </RootType>
-    <RootType FullName="Microsoft.Xaml.Interactions.Core.InvokeCommandAction">
-      <RootProperty Name="Command" />
-      <RootProperty Name="CommandParameter" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.DataTemplate">
       <RootProperty Name="Template" />

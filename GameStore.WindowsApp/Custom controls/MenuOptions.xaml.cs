@@ -1,4 +1,7 @@
-﻿using GameStore.WindowsApp.Common;
+﻿using GalaSoft.MvvmLight.Views;
+using GameStore.WindowsApp.Common;
+using GameStore.WindowsApp.ViewModel;
+using GameStore.WindowsApp.Views;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -20,9 +23,17 @@ namespace GameStore.WindowsApp.Custom_controls
 {
     public sealed partial class MenuOptions : UserControl
     {
+
         public MenuOptions()
         {
             this.InitializeComponent();
+        }
+
+        private void Cart_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService service = new NavigationService();
+            service.Configure(ViewModelLocator.CART_PAGE_KEY, typeof(CartPage));
+            service.NavigateTo(ViewModelLocator.CART_PAGE_KEY);
         }
 
     }
