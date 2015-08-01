@@ -39,6 +39,7 @@ namespace GameStore.WindowsApp.ViewModel
         private readonly IUserService userService;
 
         private RelayCommand navigateToGamesPageCommand;
+        private RelayCommand navigateToPublisherPageCommand;
         private RelayCommand loginCommand;
         private RelayCommand registerCommand;
         private RelayCommand showLoginFormCommand;
@@ -257,6 +258,14 @@ namespace GameStore.WindowsApp.ViewModel
             }
         }
 
+        public RelayCommand NavigateToPublisherPageCommand
+        {
+            get
+            {
+                return navigateToPublisherPageCommand?? (navigateToPublisherPageCommand = new RelayCommand(() => navigationService.NavigateTo(ViewModelLocator.PUBLISHER_PAGE_KEY)));
+            }
+        }
+
         /// <summary>
         /// Login command
         /// </summary>
@@ -289,9 +298,9 @@ namespace GameStore.WindowsApp.ViewModel
         {
             get
             {
-                return registerCommand ?? (registerCommand = new RelayCommand(async() =>
+                return registerCommand ?? (registerCommand = new RelayCommand(async () =>
                     {
-                       MessageDialog messagedialog = null;
+                        MessageDialog messagedialog = null;
 
                         try
                         {
@@ -306,16 +315,16 @@ namespace GameStore.WindowsApp.ViewModel
                             messagedialog = new MessageDialog(ex.Message);
 
 
-                            messagedialog.Commands.Add(new UICommand("Try again", 
+                            messagedialog.Commands.Add(new UICommand("Try again",
                                 new UICommandInvokedHandler((IUICommand uiCommand) => { this.RegisterCommand.Execute(null); })));
 
                             messagedialog.Commands.Add(new UICommand("Cancel"));
 
-                            
+
                         }
 
-                        if(messagedialog != null)
-                           await messagedialog.ShowAsync();
+                        if (messagedialog != null)
+                            await messagedialog.ShowAsync();
                     }));
             }
         }

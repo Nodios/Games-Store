@@ -93,6 +93,11 @@ C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Views\Cart
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\Views\CartPage.xbf
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Views\CartPage.xaml
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Views\CartPage.xbf
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\Views\PublisherPage.xbf
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Views\PublisherPage.g.i.cs
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Views\PublisherPage.g.cs
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Views\PublisherPage.xaml
+C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Views\PublisherPage.xbf
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Microsoft.Practices.ServiceLocation\layout.resfiles
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Microsoft.Practices.ServiceLocation\layout.resfiles.intermediate
 C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\obj\Debug\Microsoft.Practices.ServiceLocation\Resources.resfiles

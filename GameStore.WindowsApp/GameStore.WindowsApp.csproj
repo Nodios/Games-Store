@@ -153,10 +153,14 @@
     <Compile Include="Service.Common\ICartService.cs" />
     <Compile Include="Service.Common\IGameImageService.cs" />
     <Compile Include="Service.Common\IGamesService.cs" />
+    <Compile Include="Service.Common\IOrderService.cs" />
+    <Compile Include="Service.Common\IPublisherService.cs" />
     <Compile Include="Service.Common\IUserService.cs" />
     <Compile Include="Service\CartService.cs" />
     <Compile Include="Service\GameImageService.cs" />
     <Compile Include="Service\GamesService.cs" />
+    <Compile Include="Service\OrderService.cs" />
+    <Compile Include="Service\PublisherService.cs" />
     <Compile Include="Service\UserService.cs" />
     <Compile Include="TestUserControl.xaml.cs">
       <DependentUpon>TestUserControl.xaml</DependentUpon>
@@ -166,12 +170,16 @@
     <Compile Include="ViewModel\CartViewModel.cs" />
     <Compile Include="ViewModel\GamesViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\PublisherViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="Views\CartPage.xaml.cs">
       <DependentUpon>CartPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\GamesPage.xaml.cs">
       <DependentUpon>GamesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PublisherPage.xaml.cs">
+      <DependentUpon>PublisherPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -226,6 +234,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\GamesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PublisherPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

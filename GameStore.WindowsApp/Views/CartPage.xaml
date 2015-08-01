@@ -20,6 +20,10 @@
     <Page.Resources>
         <!-- TODO: Delete this line if the key AppName is declared in App.xaml -->
         <x:String x:Key="AppName">In Cart</x:String>
+
+        <!-- Visibiliy converters -->
+        <common:VisibilityConverter x:Key="VisibilityConverter"/>
+        <common:VisibilityConverterReverse x:Key="VisibilityConverterReverse"/>
     </Page.Resources>
 
     <!--
@@ -52,6 +56,92 @@
                         AutomationProperties.ItemType="Navigation Button"/>
             <TextBlock x:Name="pageTitle" Text="{StaticResource AppName}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
                         IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40"/>
+        </Grid>
+
+        <!-- Body -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120" />
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- List of games in cart -->
+            <ListView Grid.Column="1" Margin="0 100 0 100"
+                      ItemsSource="{Binding Cart.GamesInCart}" SelectedItem="{Binding SelectedGame,Mode=TwoWay}"
+                      Visibility="{Binding ShowIfThereAreGames, Converter={StaticResource VisibilityConverter}}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="10 10 0 0" Width="150">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
+                                <TextBlock>
+                                <Run Text="Price: "/>
+                                <Run Text="{Binding Price}"/>
+                                <Run Text="$"/>
+                                </TextBlock>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <!-- Details -->
+            <Grid Grid.Column="2" Visibility="{Binding ShowIfThereAreGames, Converter={StaticResource VisibilityConverter}}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="211*"/>
+                    <ColumnDefinition Width="262*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Margin="100 100 0 0" Orientation="Vertical" Grid.ColumnSpan="2">
+
+                    <TextBlock Style="{StaticResource TitleTextBlockStyle}">
+                        <Run Text="Total price: " />
+                        <Run Text="{Binding Price}" />
+                        <Run Text="$"/>
+                    </TextBlock>
+                    <TextBlock Margin="0 10 0 0" Style="{StaticResource TitleTextBlockStyle}">
+                        <Run Text="Games in cart: " />
+                        <Run Text="{Binding Cart.GamesInCart.Count}" />
+                    </TextBlock>
+                    <Button  Margin="0 10 0 0" Style="{StaticResource AppButtonStyle}"
+                                    Background="Transparent" Content="Delete game from cart"
+                                    Command="{Binding DeleteGameCommand}" CommandParameter="{Binding SelectedGame.Id }"/>
+                    <Button Margin="0 10 0 0" Style="{StaticResource AppButtonStyle}" Content="Order" Command="{Binding ShowOrderFormCommand}" />
+                </StackPanel>
+            </Grid>
+
+            <!-- Show if there are no games in collection -->
+            <Grid Grid.Column="2" Visibility="{Binding ShowIfThereAreGames, Converter={StaticResource VisibilityConverterReverse}}">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Style="{StaticResource SubheaderTextBlockStyle}" Text="No games in cart."/>
+                    <Button Margin="0 20 0 0" Style="{StaticResource AccountButtonStyle}"
+                            Content="Click to find games!" Command="{Binding GamesPageCommand}"/>
+                </StackPanel>
+            </Grid>
+            
+            <!-- Order form -->
+            <Grid Grid.Column="2" HorizontalAlignment="Right" Width="500" Visibility="{Binding ShowOrderForm, Converter={StaticResource VisibilityConverter}}">
+                <StackPanel Orientation="Vertical" Width="350">
+                    <TextBlock Margin="0 70 0 0">Name: </TextBlock>
+                    <TextBox PlaceholderText="Name" Text="{Binding Order.Name,Mode=TwoWay}" />
+                    <TextBlock Margin="0 10 0 0">Surname: </TextBlock>
+                    <TextBox PlaceholderText="Surname" Text="{Binding Order.Surname, Mode=TwoWay}"/>
+                    <TextBlock Margin="0 10 0 0">Email: </TextBlock>
+                    <TextBox PlaceholderText="Email" Text="{Binding Order.ContactEmail, Mode=TwoWay}"/>
+                    <TextBlock Margin="0 10 0 0">Address</TextBlock>
+                    <TextBox PlaceholderText="Address" Text="{Binding Order.DeliveryAddress, Mode=TwoWay}"/>
+                    <TextBlock Margin="0 10 0 0" Style="{StaticResource TitleTextBlockStyle}">
+                        <Run Text="Price: "/>
+                        <Run Text="{Binding Price}"/>
+                        <Run Text="$"/>
+                    </TextBlock>
+                    <!--  Buttons -->
+                    <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                        <Button Style="{StaticResource AppButtonStyle}" Content="Submit" Command="{Binding OrderCommand}"/>
+                        <Button Style="{StaticResource AppButtonStyle}" Margin="10 0 0 0" Content="Cancel" Command="{Binding HideOrderFormCommand}"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
         </Grid>
     </Grid>
 </Page>

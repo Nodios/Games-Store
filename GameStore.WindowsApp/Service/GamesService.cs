@@ -24,6 +24,9 @@ namespace GameStore.WindowsApp.Service
             url = Constants.GAMESTORE_API + "/game/";
         }
 
+        /// <summary>
+        /// Get game by id
+        /// </summary>
         public async Task<Model.Game> GetAsync(Guid id)
         {
             try
@@ -43,6 +46,12 @@ namespace GameStore.WindowsApp.Service
             }
         }
 
+        /// <summary>
+        /// Get games 
+        /// </summary>
+        /// <param name="name">game name or part of name</param>
+        /// <param name="filter">filter options</param>
+        /// <returns>Collection of games</returns>
         public async Task<IEnumerable<Model.Game>> GetRangeAsync(string name, Utilities.GenericFilter filter)
         {
             try
@@ -63,6 +72,11 @@ namespace GameStore.WindowsApp.Service
             }
         }
 
+        /// <summary>
+        /// Get collection of games 
+        /// </summary>
+        /// <param name="filter">Filter options</param>
+        /// <returns>Collection of games</returns>
         public async Task<IEnumerable<Model.Game>> GetRangeAsync(Utilities.GenericFilter filter = null)
         {
             try
@@ -92,12 +106,33 @@ namespace GameStore.WindowsApp.Service
             throw new NotImplementedException();
         }
 
-        public Task<int> DeleteAsync(Guid id)
+        /// <summary>
+        /// Delete game 
+        /// </summary>
+        /// <param name="id">Game id</param>
+        /// <returns>True is succeed , false otherwise</returns>
+        public async Task<bool> DeleteAsync(Guid id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Delete, url + "delete/" + id);
+                request.Headers.Add("Authorization", "Bearer " + GameStore.WindowsApp.Common.UserInfo.Token);
+
+                HttpResponseMessage response = await client.SendAsync(request);
+
+                if (response.IsSuccessStatusCode)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
         }
 
-        public Task<int> DeleteAsync(params Guid[] id)
+        public Task<bool> DeleteAsync(params Guid[] id)
         {
             throw new NotImplementedException();
         }

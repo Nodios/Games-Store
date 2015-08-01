@@ -35,6 +35,7 @@ namespace GameStore.WindowsApp.ViewModel
         public const string GAMES_PAGE_KEY = "GamesPage";
         public const string MAIN_PAGE_KEY = "MainPage";
         public const string CART_PAGE_KEY = "CartPage";
+        public const string PUBLISHER_PAGE_KEY = "PublisherPage";
 
         #endregion
 
@@ -71,6 +72,14 @@ namespace GameStore.WindowsApp.ViewModel
             get { return ServiceLocator.Current.GetInstance<CartViewModel>(); }
         }
 
+          [SuppressMessage("Microsoft.Performance",
+            "CA1822:MarkMembersAsStatic",
+            Justification = "This non-static member is needed for data binding purposes.")]
+        public PublisherViewModel Publisher
+        {
+            get { return ServiceLocator.Current.GetInstance<PublisherViewModel>(); }
+        }
+
         /// <summary>
         /// Register all services here 
         /// </summary>
@@ -85,6 +94,8 @@ namespace GameStore.WindowsApp.ViewModel
                 SimpleIoc.Default.Register<IGameImageService, GameImageService>();
                 SimpleIoc.Default.Register<IUserService, UserService>();
                 SimpleIoc.Default.Register<ICartService, CartService>();
+                SimpleIoc.Default.Register<IOrderService, OrderService>();
+                SimpleIoc.Default.Register<IPublisherService, PublisherService>();
             }
             else
             {
@@ -93,6 +104,8 @@ namespace GameStore.WindowsApp.ViewModel
                 SimpleIoc.Default.Register<IGameImageService, GameImageService>();
                 SimpleIoc.Default.Register<IUserService, UserService>();
                 SimpleIoc.Default.Register<ICartService, CartService>();
+                SimpleIoc.Default.Register<IOrderService, OrderService>();
+                SimpleIoc.Default.Register<IPublisherService, PublisherService>();
             }
 
             // Configure navigation service pages here
@@ -101,6 +114,7 @@ namespace GameStore.WindowsApp.ViewModel
             nav.Configure(ViewModelLocator.GAMES_PAGE_KEY, typeof(GamesPage));
             nav.Configure(ViewModelLocator.MAIN_PAGE_KEY, typeof(MainPage));
             nav.Configure(ViewModelLocator.CART_PAGE_KEY, typeof(CartPage));
+            nav.Configure(ViewModelLocator.PUBLISHER_PAGE_KEY, typeof(PublisherPage));
 
             SimpleIoc.Default.Register<INavigationService>(() => nav);
 
@@ -109,6 +123,7 @@ namespace GameStore.WindowsApp.ViewModel
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<GamesViewModel>();
             SimpleIoc.Default.Register<CartViewModel>();
+            SimpleIoc.Default.Register<PublisherViewModel>();
         }
 
         /// <summary>

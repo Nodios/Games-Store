@@ -6,114 +6,64 @@ namespace GameStore.WindowsApp.Model
     public class Order : ObservableObject
     {
 
-        public Guid Id { get; set; }
-        public string UserId { get; set; }
 
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public string DeliveryAddress { get; set; }
-        public string ContactEmail { get; set; }
-        public string ContactPhone { get; set; }
-        public string OrderDate { get; set; }
-        public double Amount { get; set; }
+        #region Fields
 
+        private Guid id;
+        private string userId;
+        private string name;
+        private string surname;
+        private string deliveryAddress;
+        private string contactEmail;
+        private double amount;
 
-        //#region Fields
+        #endregion
 
-        //private Guid id;
-        //private string userId;
-        //private string name;
-        //private string surname;
-        //private string deliveryAddress;
-        //private string contactEmail;
-        //private double amount; 
+        #region Proporties
 
-        //#endregion
+        public Guid Id
+        {
+            get { return id; }          
+        }
 
-        //#region Proporties
+        public string UserId
+        {
+            get { return userId; }
+            set { Set(() => this.UserId, ref userId, value); }
+            
+        }
 
-        //public Guid Id
-        //{
-        //    get { return id; }
-        //    set
-        //    {
-        //        id = value;
-        //        NotifyPropertyChanged();
-        //    }
-        //}
+        public string Name
+        {
+            get { return name; }
+            set { Set(() => this.Name, ref name, value); }
+        }
 
-        //public string UserId
-        //{
-        //    get { return userId; }
-        //    set
-        //    {
-        //        userId = value;
-        //        NotifyPropertyChanged();
-        //    }
-        //}
+        public string Surname
+        {
+            get { return surname; }
+            set { Set(() => this.Surname, ref surname, value); }
+        }
 
-        //public string Name
-        //{
-        //    get { return name; }
-        //    set
-        //    {
-        //        name = value;
-        //        NotifyPropertyChanged();
-        //    }
-        //}
+        public string DeliveryAddress
+        {
+            get { return deliveryAddress; }
+            set { Set(() => this.DeliveryAddress, ref deliveryAddress, value); }
+        }
 
-        //public string Surname
-        //{
-        //    get { return surname; }
-        //    set
-        //    {
-        //        surname = value;
-        //        NotifyPropertyChanged();
-        //    }
-        //}
+        public string ContactEmail
+        {
+            get { return contactEmail; }
+            set { Set(() => this.ContactEmail, ref contactEmail, value); }
+        }
 
-        //public string DeliveryAddress
-        //{
-        //    get { return deliveryAddress; }
-        //    set
-        //    {
-        //        deliveryAddress = value;
-        //        NotifyPropertyChanged();
-        //    }
-        //}
+        public double Amount
+        {
+            get { return amount; }
+            set { Set(() => this.Amount, ref amount, value); }
+        }
 
-        //public string ContactEmail
-        //{
-        //    get { return contactEmail; }
-        //    set
-        //    {
-        //        contactEmail = value;
-        //        NotifyPropertyChanged();
-        //    }
-        //}
+        #endregion
 
-        //public double Amount
-        //{
-        //    get { return amount; }
-        //    set { amount = value; }
-        //}
-
-        //#endregion
-
-        //#region Notify property changed implementation
-
-        ///// <summary>
-        ///// Property changed event handler
-        ///// </summary>
-        //public event PropertyChangedEventHandler PropertyChanged;
-
-        //// Notify that property is changed, called by set accessors
-        //public void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        //{
-        //    if (PropertyChanged != null)
-        //        PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        //}
-
-        //#endregion
     }
 }

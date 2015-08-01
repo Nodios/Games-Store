@@ -27,10 +27,29 @@
     <RootPropertyPathName Name="ShowUserSubMenu" />
     <RootPropertyPathName Name="UserLoggedinButtonVisibility" />
     <RootPropertyPathName Name="RegisterAndLoginButtonVisibility" />
+    <RootPropertyPathName Name="NavigateToPublisherPageCommand" />
     <RootPropertyPathName Name="NavigateToGamesPageCommand" />
     <RootPropertyPathName Name="Title" />
     <RootPropertyPathName Name="CartVM" />
     <RootPropertyPathName Name="LoadedCommand" />
+    <RootPropertyPathName Name="ShowOrderForm" />
+    <RootPropertyPathName Name="HideOrderFormCommand" />
+    <RootPropertyPathName Name="OrderCommand" />
+    <RootPropertyPathName Name="Price" />
+    <RootPropertyPathName Name="Order" />
+    <RootPropertyPathName Name="DeliveryAddress" />
+    <RootPropertyPathName Name="ContactEmail" />
+    <RootPropertyPathName Name="Surname" />
+    <RootPropertyPathName Name="Name" />
+    <RootPropertyPathName Name="ShowIfThereAreGames" />
+    <RootPropertyPathName Name="GamesPageCommand" />
+    <RootPropertyPathName Name="ShowOrderFormCommand" />
+    <RootPropertyPathName Name="DeleteGameCommand" />
+    <RootPropertyPathName Name="SelectedGame" />
+    <RootPropertyPathName Name="Id" />
+    <RootPropertyPathName Name="Cart" />
+    <RootPropertyPathName Name="GamesInCart" />
+    <RootPropertyPathName Name="Count" />
     <RootPropertyPathName Name="Games" />
     <RootPropertyPathName Name="GameDetailsVisible" />
     <RootPropertyPathName Name="GameImage" />
@@ -40,13 +59,10 @@
     <RootPropertyPathName Name="Description" />
     <RootPropertyPathName Name="Genre" />
     <RootPropertyPathName Name="OsSupport" />
-    <RootPropertyPathName Name="Price" />
-    <RootPropertyPathName Name="Name" />
     <RootPropertyPathName Name="ForwardInList" />
     <RootPropertyPathName Name="GoForwardButtonVisible" />
     <RootPropertyPathName Name="GamesCollection" />
     <RootPropertyPathName Name="GetGame" />
-    <RootPropertyPathName Name="Id" />
     <RootPropertyPathName Name="BackInList" />
     <RootPropertyPathName Name="PreviousButtonVisible" />
     <RootPropertyPathName Name="ShowUserLogged" />
@@ -54,6 +70,7 @@
     <RootPropertyPathName Name="SearchString" />
     <RootPropertyPathName Name="GetGames" />
     <RootPropertyPathName Name="GoBack" />
+    <RootPropertyPathName Name="Publisher" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
     <RootType FullName="Windows.UI.Xaml.Application">
@@ -70,6 +87,8 @@
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Width" />
+      <RootProperty Name="Background" />
+      <RootProperty Name="CommandParameter" />
       <RootProperty Name="Visibility" />
       <RootEvent Name="Click" />
     </RootType>
@@ -112,6 +131,8 @@
       <RootMethod Name="SetColumn" />
       <RootMethod Name="GetRow" />
       <RootMethod Name="SetRow" />
+      <RootMethod Name="GetColumnSpan" />
+      <RootMethod Name="SetColumnSpan" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
       <RootProperty Name="Margin" />
@@ -261,22 +282,29 @@
       <RootProperty Name="Command" />
       <RootProperty Name="CommandParameter" />
     </RootType>
+    <RootType FullName="GameStore.WindowsApp.Common.VisibilityConverterReverse" />
+    <RootType FullName="Windows.UI.Xaml.Controls.ListView">
+      <RootProperty Name="Margin" />
+      <RootProperty Name="ItemsSource" />
+      <RootProperty Name="SelectedItem" />
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="ItemTemplate" />
+      <RootProperty Name="TabIndex" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Documents.Run">
+      <RootProperty Name="Text" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.DataTemplate">
+      <RootProperty Name="Template" />
+    </RootType>
     <RootType FullName="GameStore.WindowsApp.Views.CartPage" />
     <RootType FullName="GameStore.WindowsApp.Common.ImageConverter" />
-    <RootType FullName="GameStore.WindowsApp.Common.VisibilityConverterReverse" />
     <RootType FullName="Windows.UI.Xaml.Controls.SearchBox">
       <RootProperty Name="PlaceholderText" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="QueryText" />
       <RootProperty Name="Width" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.ListView">
-      <RootProperty Name="TabIndex" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="ItemsSource" />
-      <RootProperty Name="SelectedItem" />
-      <RootProperty Name="ItemTemplate" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Image">
       <RootProperty Name="Width" />
@@ -286,12 +314,7 @@
       <RootProperty Name="Margin" />
       <RootProperty Name="Source" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Documents.Run">
-      <RootProperty Name="Text" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.DataTemplate">
-      <RootProperty Name="Template" />
-    </RootType>
     <RootType FullName="GameStore.WindowsApp.Views.GamesPage" />
+    <RootType FullName="GameStore.WindowsApp.Views.PublisherPage" />
   </Roots.RootTypes>
 </Roots>

@@ -15,7 +15,7 @@ namespace GameStore.WindowsApp.Service.Common
         Task<IEnumerable<Game>> GetRangeAsync(string name, GenericFilter filter);
         Task<IEnumerable<Game>> GetRangeAsync(GenericFilter filter = null);
         Task<IEnumerable<Game>> GetRangeAsync(Guid publisherId, GenericFilter filter = null);
-        Task<int> DeleteAsync(Guid id);
-        Task<int> DeleteAsync(params Guid[] id);
+        Task<bool> DeleteAsync(Guid id);
+        Task<bool> DeleteAsync(params Guid[] id);
     }
 }
