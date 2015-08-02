@@ -11,6 +11,9 @@ MainPage.xbf
 SecondPage.xbf
 Skins\MainSkin.xbf
 TestUserControl.xbf
+Views\AccountPage.xbf
 Views\CartPage.xbf
 Views\GamesPage.xbf
+Views\InfoPage.xbf
+Views\OrderPage.xbf
 Views\PublisherPage.xbf

@@ -11,8 +11,9 @@
     d:DesignWidth="400">
 
     <StackPanel Orientation="Vertical" x:Name="thisControl">
-        <Button x:ConnectionId='1' Style="{StaticResource UserDropMenuStyle}" Margin="0 10 0 0"                   >Cart</Button>
-        <Button Style="{StaticResource UserDropMenuStyle}">Orders</Button>
+        <Button x:ConnectionId='1' Style="{StaticResource UserDropMenuStyle}" Margin="0 10 0 0"                      >Account</Button>
+        <Button x:ConnectionId='2' Style="{StaticResource UserDropMenuStyle}"                   >Cart</Button>
+        <Button x:ConnectionId='3' Style="{StaticResource UserDropMenuStyle}"                    >Orders</Button>
         <Button Style="{StaticResource UserDropMenuStyle}" Command="{Binding LogoutCommand}">Logout</Button>
         <Button Style="{StaticResource UserDropMenuStyle}" Command="{Binding CloseUserOptionsCommand}">Close</Button>
     </StackPanel>

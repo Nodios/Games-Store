@@ -275,16 +275,26 @@ namespace GameStore.WindowsApp.ViewModel
             {
                 return loginCommand ?? (loginCommand = new RelayCommand(async () =>
                     {
+                        MessageDialog dialog = null;
                         try
                         {
                             User = await login();
+
+                            if(User == null)
+                            {
+                                dialog = new MessageDialog("Error while trying to login. Make sure that password is correct.");
+                                dialog.Commands.Add(new UICommand("OK"));
+                            }
                         }
                         catch (Exception ex)
                         {
-                            MessageDialog dialog = new MessageDialog(ex.Message);
+                            dialog = new MessageDialog(ex.Message);
 
                             dialog.Commands.Add(new UICommand("OK"));
                         }
+                        if (dialog != null)
+                            await dialog.ShowAsync();
+
                     }
                         ));
             }
@@ -375,7 +385,7 @@ namespace GameStore.WindowsApp.ViewModel
                 GameStore.WindowsApp.Common.UserInfo.Username = loginUserName;
 
 
-                if (!String.IsNullOrEmpty(loginUserName))
+                if (!String.IsNullOrEmpty(loginUserName) && !String.IsNullOrEmpty(result.UserName))
                 {
                     UserLoggedinButtonVisibility = true;
 
@@ -383,6 +393,8 @@ namespace GameStore.WindowsApp.ViewModel
                     RegisterFormVisibility = false;
                     RegisterAndLoginButtonVisibility = false;
                 }
+                else
+                    return null;
 
                 return result;
             }

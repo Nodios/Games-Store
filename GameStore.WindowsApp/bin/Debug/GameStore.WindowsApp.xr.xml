@@ -30,8 +30,20 @@
     <RootPropertyPathName Name="NavigateToPublisherPageCommand" />
     <RootPropertyPathName Name="NavigateToGamesPageCommand" />
     <RootPropertyPathName Name="Title" />
-    <RootPropertyPathName Name="CartVM" />
+    <RootPropertyPathName Name="Account" />
     <RootPropertyPathName Name="LoadedCommand" />
+    <RootPropertyPathName Name="ShowChangeEmail" />
+    <RootPropertyPathName Name="SubmitEmailCommand" />
+    <RootPropertyPathName Name="ConfirmNewEmail" />
+    <RootPropertyPathName Name="NewEmail" />
+    <RootPropertyPathName Name="ShowChangePassword" />
+    <RootPropertyPathName Name="SubmitPasswordCommand" />
+    <RootPropertyPathName Name="ConfirmNewPassword" />
+    <RootPropertyPathName Name="NewPassword" />
+    <RootPropertyPathName Name="UserPassword" />
+    <RootPropertyPathName Name="ShowChangeEmailCommand" />
+    <RootPropertyPathName Name="ShowChangePasswordCommand" />
+    <RootPropertyPathName Name="CartVM" />
     <RootPropertyPathName Name="ShowOrderForm" />
     <RootPropertyPathName Name="HideOrderFormCommand" />
     <RootPropertyPathName Name="OrderCommand" />
@@ -70,7 +82,17 @@
     <RootPropertyPathName Name="SearchString" />
     <RootPropertyPathName Name="GetGames" />
     <RootPropertyPathName Name="GoBack" />
+    <RootPropertyPathName Name="DefaultViewModel" />
+    <RootPropertyPathName Name="Orders" />
+    <RootPropertyPathName Name="Amount" />
     <RootPropertyPathName Name="Publisher" />
+    <RootPropertyPathName Name="PublisherDetailsVisible" />
+    <RootPropertyPathName Name="Support" />
+    <RootPropertyPathName Name="Phone" />
+    <RootPropertyPathName Name="Address" />
+    <RootPropertyPathName Name="Publishers" />
+    <RootPropertyPathName Name="GetSupportCommand" />
+    <RootPropertyPathName Name="GetPublishersCommand" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
     <RootType FullName="Windows.UI.Xaml.Application">
@@ -95,7 +117,6 @@
     <RootType FullName="Windows.UI.Xaml.Controls.Control">
       <RootProperty Name="FontSize" />
       <RootProperty Name="FontWeight" />
-      <RootProperty Name="FontStyle" />
       <RootProperty Name="Background" />
       <RootProperty Name="BorderBrush" />
       <RootProperty Name="BorderThickness" />
@@ -148,6 +169,7 @@
       <RootProperty Name="ElementName" />
       <RootProperty Name="Source" />
       <RootProperty Name="Converter" />
+      <RootProperty Name="RelativeSource" />
     </RootType>
     <RootType FullName="GameStore.WindowsApp.Custom_controls.Login">
       <RootProperty Name="Visibility" />
@@ -282,6 +304,7 @@
       <RootProperty Name="Command" />
       <RootProperty Name="CommandParameter" />
     </RootType>
+    <RootType FullName="GameStore.WindowsApp.Views.AccountPage" />
     <RootType FullName="GameStore.WindowsApp.Common.VisibilityConverterReverse" />
     <RootType FullName="Windows.UI.Xaml.Controls.ListView">
       <RootProperty Name="Margin" />
@@ -315,6 +338,9 @@
       <RootProperty Name="Source" />
     </RootType>
     <RootType FullName="GameStore.WindowsApp.Views.GamesPage" />
+    <RootType FullName="Windows.UI.Xaml.Data.RelativeSource" />
+    <RootType FullName="GameStore.WindowsApp.Views.InfoPage" />
+    <RootType FullName="GameStore.WindowsApp.Views.OrderPage" />
     <RootType FullName="GameStore.WindowsApp.Views.PublisherPage" />
   </Roots.RootTypes>
 </Roots>

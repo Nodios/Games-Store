@@ -80,11 +80,20 @@
     <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\TestUserControl.xbf">
       <PackagePath>TestUserControl.xbf</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\Views\AccountPage.xbf">
+      <PackagePath>Views\AccountPage.xbf</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\Views\CartPage.xbf">
       <PackagePath>Views\CartPage.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\Views\GamesPage.xbf">
       <PackagePath>Views\GamesPage.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\Views\InfoPage.xbf">
+      <PackagePath>Views\InfoPage.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\Views\OrderPage.xbf">
+      <PackagePath>Views\OrderPage.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\Views\PublisherPage.xbf">
       <PackagePath>Views\PublisherPage.xbf</PackagePath>

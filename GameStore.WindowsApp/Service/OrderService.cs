@@ -22,9 +22,26 @@ namespace GameStore.WindowsApp.Service
             url = Constants.GAMESTORE_API + "/order/";
         }
 
-        public Task<ICollection<Model.Order>> GetAsync(string userId)
+        public async Task<ICollection<Model.Order>> GetAsync(string userId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, url + "/" + userId + "/1/100");
+                request.Headers.Add("Authorization", "Bearer " + GameStore.WindowsApp.Common.UserInfo.Token);
+
+                HttpResponseMessage response = await client.SendAsync(request);
+             
+
+                string content = await response.Content.ReadAsStringAsync();
+                ICollection<Order> orders = JsonConvert.DeserializeObject<ICollection<Order>>(content);
+
+                return orders;
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
         }
 
         /// <summary>

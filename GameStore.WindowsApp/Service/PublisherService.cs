@@ -29,7 +29,7 @@ namespace GameStore.WindowsApp.Service
         {
             try
             {
-                HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, url + "/searchbyname/"
+                HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, url + "getbyname/"
                     + name + "/" + filter.PageNumber + "/" + filter.PageSize);
 
                 HttpResponseMessage content = await client.SendAsync(request);
@@ -49,11 +49,18 @@ namespace GameStore.WindowsApp.Service
         /// <summary>
         /// Get collection of games by name
         /// </summary>
-        public Task<Model.Support> GetSupportAsync(Guid id)
+        public async Task<Model.Support> GetSupportAsync(Guid id)
         {
             try
             {
-                return null;
+                HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, url + "/Getsupport/" + id);
+
+                HttpResponseMessage content = await client.SendAsync(request);
+                string json = await content.Content.ReadAsStringAsync();
+
+                Support support = JsonConvert.DeserializeObject<Support>(json);
+
+                return support;
             }
             catch (Exception ex)
             {

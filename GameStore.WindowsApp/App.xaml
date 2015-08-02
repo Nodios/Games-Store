@@ -35,7 +35,6 @@
             <Setter Property="Margin" Value="0 20 0 0"></Setter>
             <Setter Property="HorizontalAlignment" Value="Center"></Setter>
             <Setter Property="FontSize" Value="20"></Setter>
-            <Setter Property="FontStyle" Value="Italic"></Setter>
         </Style>
 
         <!-- Colors for various list options -->

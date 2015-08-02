@@ -36,5 +36,19 @@ namespace GameStore.WindowsApp.Custom_controls
             service.NavigateTo(ViewModelLocator.CART_PAGE_KEY);
         }
 
+        private void Account_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService service = new NavigationService();
+            service.Configure(ViewModelLocator.ACCOUNT_PAGE_KEY, typeof(AccountPage));
+            service.NavigateTo(ViewModelLocator.ACCOUNT_PAGE_KEY);
+        }
+
+        private void Order_Click(Object sender, RoutedEventArgs e)
+        {
+            NavigationService service = new NavigationService();
+            service.Configure(ViewModelLocator.ORDER_PAGE_KEY, typeof(OrderPage));
+            service.NavigateTo(ViewModelLocator.ORDER_PAGE_KEY);
+        }
+
     }
 }

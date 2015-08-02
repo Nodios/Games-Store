@@ -36,6 +36,8 @@ namespace GameStore.WindowsApp.ViewModel
         public const string MAIN_PAGE_KEY = "MainPage";
         public const string CART_PAGE_KEY = "CartPage";
         public const string PUBLISHER_PAGE_KEY = "PublisherPage";
+        public const string ACCOUNT_PAGE_KEY = "AccountPage";
+        public const string ORDER_PAGE_KEY = "OrderPage";
 
         #endregion
 
@@ -72,12 +74,28 @@ namespace GameStore.WindowsApp.ViewModel
             get { return ServiceLocator.Current.GetInstance<CartViewModel>(); }
         }
 
-          [SuppressMessage("Microsoft.Performance",
-            "CA1822:MarkMembersAsStatic",
-            Justification = "This non-static member is needed for data binding purposes.")]
+        [SuppressMessage("Microsoft.Performance",
+          "CA1822:MarkMembersAsStatic",
+          Justification = "This non-static member is needed for data binding purposes.")]
         public PublisherViewModel Publisher
         {
             get { return ServiceLocator.Current.GetInstance<PublisherViewModel>(); }
+        }
+
+        [SuppressMessage("Microsoft.Performance",
+         "CA1822:MarkMembersAsStatic",
+         Justification = "This non-static member is needed for data binding purposes.")]
+        public AccountViewModel Account
+        {
+            get { return ServiceLocator.Current.GetInstance<AccountViewModel>(); }
+        }
+
+        [SuppressMessage("Microsoft.Performance",
+          "CA1822:MarkMembersAsStatic",
+          Justification = "This non-static member is needed for data binding purposes.")]
+        public OrderViewModel Order
+        {
+            get { return ServiceLocator.Current.GetInstance<OrderViewModel>(); }
         }
 
         /// <summary>
@@ -115,6 +133,8 @@ namespace GameStore.WindowsApp.ViewModel
             nav.Configure(ViewModelLocator.MAIN_PAGE_KEY, typeof(MainPage));
             nav.Configure(ViewModelLocator.CART_PAGE_KEY, typeof(CartPage));
             nav.Configure(ViewModelLocator.PUBLISHER_PAGE_KEY, typeof(PublisherPage));
+            nav.Configure(ViewModelLocator.ACCOUNT_PAGE_KEY, typeof(AccountPage));
+            nav.Configure(ViewModelLocator.ORDER_PAGE_KEY, typeof(OrderPage));
 
             SimpleIoc.Default.Register<INavigationService>(() => nav);
 
@@ -124,6 +144,8 @@ namespace GameStore.WindowsApp.ViewModel
             SimpleIoc.Default.Register<GamesViewModel>();
             SimpleIoc.Default.Register<CartViewModel>();
             SimpleIoc.Default.Register<PublisherViewModel>();
+            SimpleIoc.Default.Register<AccountViewModel>();
+            SimpleIoc.Default.Register<OrderViewModel>();
         }
 
         /// <summary>

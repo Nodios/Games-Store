@@ -20,13 +20,13 @@
     <AppXManifest Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-08-01T11:07:27.158</Modified>
+      <Modified>2015-08-02T19:14:45.800</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\GameStore.WindowsApp.exe">
       <PackagePath>GameStore.WindowsApp.exe</PackagePath>
-      <Modified>2015-08-01T11:22:20.752</Modified>
+      <Modified>2015-08-02T19:17:17.575</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\BehaviorsXamlSDKManaged\12.0\References\CommonConfiguration\Neutral\Microsoft.Xaml.Interactions.dll">
       <PackagePath>Microsoft.Xaml.Interactions.dll</PackagePath>
@@ -78,7 +78,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2015-07-25T14:20:33.394</Modified>
+      <Modified>2015-08-02T19:17:14.657</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\Custom controls\Login.xbf">
       <PackagePath>Custom controls\Login.xbf</PackagePath>
@@ -86,7 +86,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\Custom controls\MenuOptions.xbf">
       <PackagePath>Custom controls\MenuOptions.xbf</PackagePath>
-      <Modified>2015-07-29T19:21:15.247</Modified>
+      <Modified>2015-08-02T16:51:12.439</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\Custom controls\UserLogged.xbf">
       <PackagePath>Custom controls\UserLogged.xbf</PackagePath>
@@ -108,6 +108,10 @@
       <PackagePath>TestUserControl.xbf</PackagePath>
       <Modified>2015-07-20T20:16:54.108</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\Views\AccountPage.xbf">
+      <PackagePath>Views\AccountPage.xbf</PackagePath>
+      <Modified>2015-08-02T16:51:12.550</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\Views\CartPage.xbf">
       <PackagePath>Views\CartPage.xbf</PackagePath>
       <Modified>2015-08-01T09:42:53.952</Modified>
@@ -116,17 +120,25 @@
       <PackagePath>Views\GamesPage.xbf</PackagePath>
       <Modified>2015-07-28T19:59:29.687</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\Views\InfoPage.xbf">
+      <PackagePath>Views\InfoPage.xbf</PackagePath>
+      <Modified>2015-08-02T19:17:14.698</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\Views\OrderPage.xbf">
+      <PackagePath>Views\OrderPage.xbf</PackagePath>
+      <Modified>2015-08-02T19:17:14.703</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\Views\PublisherPage.xbf">
       <PackagePath>Views\PublisherPage.xbf</PackagePath>
-      <Modified>2015-08-01T11:22:19.092</Modified>
+      <Modified>2015-08-02T12:13:51.500</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\GameStore.WindowsApp.xr.xml">
       <PackagePath>GameStore.WindowsApp.xr.xml</PackagePath>
-      <Modified>2015-08-01T11:22:18.870</Modified>
+      <Modified>2015-08-02T19:14:43.909</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\luka\Desktop\Praksa\GameStore\GameStore.WindowsApp\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2015-08-01T11:22:21.795</Modified>
+      <Modified>2015-08-02T19:17:19.479</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

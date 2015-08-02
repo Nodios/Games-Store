@@ -56,7 +56,7 @@
 
         <!-- Title -->
         <TextBlock Style="{StaticResource HeaderTextBlockStyle}" 
-                       Text="{Binding Title}"
+                       Text="Publishers"
                        VerticalAlignment="Bottom"
                        Grid.Row="0"
                        Grid.Column="1"/>
@@ -66,24 +66,16 @@
                        VerticalAlignment="Bottom"
                        Grid.Row="1" Grid.Column="1"
                        HorizontalAlignment="Left"
-                      QueryText="{Binding SearchString, Mode=TwoWay}"
-                        Width="300">
+                       QueryText="{Binding SearchString, Mode=TwoWay}"
+                       Width="300">
 
             <!-- Bindt event to command -->
             <interactivity:Interaction.Behaviors>
                 <core:EventTriggerBehavior EventName="QuerySubmitted">
-                    <core:InvokeCommandAction Command="{Binding GetGames}" />
+                    <core:InvokeCommandAction Command="{Binding GetPublishersCommand}" />
                 </core:EventTriggerBehavior>
             </interactivity:Interaction.Behaviors>
         </SearchBox>
-
-        <!-- User log -->
-        <Grid Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" Margin="0 0 30 0">
-            <customControls:UserLogged  Visibility="{Binding ShowUserLogged, Converter={StaticResource VisibilityConverter},Mode=TwoWay}" />
-            <Button Margin="0 30 0 0" Visibility="{Binding ShowUserLogged, Converter={StaticResource VisibilityConverterReverse},Mode=TwoWay}" HorizontalAlignment="Right"  Style="{StaticResource AccountButtonStyle}" Command="{Binding MainpageCommand}">Login</Button>
-        </Grid>
-        <customControls:MenuOptions Width="150"  Grid.Row="2"  Grid.Column="1" VerticalAlignment="Top"  HorizontalAlignment="Right" Height="200" Visibility="{Binding ShowUserSubMenu, Converter={StaticResource VisibilityConverter}}" />
-
 
         <!-- Details view , body view -->
         <Grid Grid.Column="1" Grid.Row="2">
@@ -103,13 +95,13 @@
                 TabIndex="1"
                 Grid.Row="2"
                 Margin="0 120 0 0"
-                ItemsSource="{Binding GamesCollection, Mode=TwoWay}" 
-                SelectedItem="{Binding Game, Mode=TwoWay}">
+                ItemsSource="{Binding Publishers, Mode=TwoWay}" 
+                SelectedItem="{Binding Publisher, Mode=TwoWay}">
 
                 <!-- Commands for list -->
                 <interactivity:Interaction.Behaviors>
                     <core:EventTriggerBehavior EventName="SelectionChanged">
-                        <core:InvokeCommandAction Command="{Binding GetGame}" CommandParameter="{Binding Game.Id}" />
+                        <core:InvokeCommandAction Command="{Binding GetSupportCommand}" CommandParameter="{Binding Publisher.Id}" />
                     </core:EventTriggerBehavior>
                 </interactivity:Interaction.Behaviors>
 
@@ -137,8 +129,8 @@
                     Visibility="{Binding GoForwardButtonVisible, Converter={StaticResource VisibilityConverter},Mode=TwoWay}"
                     />
 
-            <!-- Game Details -->
-            <Grid Grid.Column="2" Visibility="{Binding GameDetailsVisible, Converter={StaticResource VisibilityConverter}}">
+            <!-- Publisher Details -->
+            <Grid Grid.Column="2" Visibility="{Binding PublisherDetailsVisible, Mode=TwoWay, Converter={StaticResource VisibilityConverter}}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"/>
                     <RowDefinition Height="*"/>
@@ -150,35 +142,21 @@
 
                 <StackPanel Grid.Row="1" Orientation="Vertical">
                     <TextBlock Style="{StaticResource SubheaderTextBlockStyle}" Margin="20 20 0 0">
-                        <Run Text="{Binding Game.Name}"/>
+                        <Run Text="{Binding Publisher.Name}"/>
                     </TextBlock>
-                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" Margin="20 5 0 0">
-                        <Run Text="Price: "/>
-                        <Run Text="{Binding Game.Price}"/>
+                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" Margin="20 20 0 0" >
+                        <Run Text="Address: "/>
+                        <Run Text="{Binding Support.Address, Mode=TwoWay}"/>
                     </TextBlock>
-                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" Margin="20 5 0 0">
-                        <Run Text="Available for: "/>
-                        <Run Text="{Binding Game.OsSupport}"/>
+                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" Margin="20 20 0 0" >
+                        <Run Text="Email: "/>
+                        <Run Text="{Binding Support.Email,Mode=TwoWay}"/>
                     </TextBlock>
-                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" Margin="20 5 0 0">
-                        <Run Text="Genre : "/>
-                        <Run Text="{Binding Game.Genre}"/>
-                    </TextBlock>
-                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" Margin="20 5 0 0" Text="Description: "/>
-                    <TextBlock Style="{StaticResource BodyTextBlockStyle}" Margin="20 5 0 0" Text="{Binding Game.Description}"/>
-                    <Button Margin="40 30 0 0" 
-                            Style="{StaticResource AppButtonStyle}"
-                            Command="{Binding AddToCartCommand}"
-                            >Add to cart</Button>
+                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" Margin="20 20 0 0" >
+                        <Run Text="Phone : "/>
+                        <Run Text="{Binding Support.Phone,Mode=TwoWay}"/>
+                    </TextBlock>                     
                 </StackPanel>
-
-                <!-- Image part -->
-
-                <Image Width="256" Height="256" Grid.Row="1" Grid.Column="1"
-                       VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50 20 0 0"
-                       Source="{Binding GameImage.Content, Converter={StaticResource ImageConverter}}"></Image>
-
-
             </Grid>
         </Grid>
     </Grid>
